@@ -4,11 +4,18 @@ import { useRapier, RigidBody } from "@react-three/rapier";
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import useGame from "./stores/useGame";
+import usePlayer from "./stores/usePlayer";
+import { useControls } from "leva";
 
 export default function Player() {
   const body = useRef();
   const [subscribeKeys, getKeys] = useKeyboardControls();
   const { rapier, world } = useRapier();
+  const setPlayerRef = usePlayer((state) => state.setPlayerRef);
+
+  const { cameraFollowsBall } = useControls({
+    cameraFollowsBall: false,
+  });
 
   const [smoothedCameraPosition] = useState(
     () => new THREE.Vector3(10, 10, 10)
@@ -19,6 +26,10 @@ export default function Player() {
   const restart = useGame((state) => state.restart);
   const end = useGame((state) => state.end);
   const blocksCount = useGame((state) => state.blocksCount);
+
+  useEffect(() => {
+    setPlayerRef(body);
+  }, [setPlayerRef]);
 
   const jump = () => {
     const origin = body.current.translation();
@@ -107,25 +118,27 @@ export default function Player() {
      * Camera
      */
     const bodyPosition = body.current.translation();
+    if (cameraFollowsBall) {
+      const cameraPosition = new THREE.Vector3();
+      cameraPosition.copy(bodyPosition);
+      cameraPosition.z += 2.25;
+      cameraPosition.y += 1.65;
 
-    const cameraPosition = new THREE.Vector3();
-    cameraPosition.copy(bodyPosition);
-    cameraPosition.z += 2.25;
-    cameraPosition.y += 0.65;
+      const cameraTarget = new THREE.Vector3();
+      cameraTarget.copy(bodyPosition);
+      cameraTarget.y += 0.25;
 
-    const cameraTarget = new THREE.Vector3();
-    cameraTarget.copy(bodyPosition);
-    cameraTarget.y += 0.25;
+      smoothedCameraPosition.lerp(cameraPosition, 5 * delta);
+      smoothedCameraTarget.lerp(cameraTarget, 5 * delta);
 
-    smoothedCameraPosition.lerp(cameraPosition, 5 * delta);
-    smoothedCameraTarget.lerp(cameraTarget, 5 * delta);
-
-    state.camera.position.copy(smoothedCameraPosition);
-    state.camera.lookAt(smoothedCameraTarget);
+      state.camera.position.copy(smoothedCameraPosition);
+      state.camera.lookAt(smoothedCameraTarget);
+    }
 
     /**
      * Phases
      */
+
     if (bodyPosition.z < -(blocksCount * 4 + 2)) {
       end();
     }
@@ -147,8 +160,12 @@ export default function Player() {
       canSleep={false}
     >
       <mesh castShadow>
-        <icosahedronGeometry args={[0.3, 1]} />
-        <meshStandardMaterial flatShading color={"mediumpurple"} />
+        {/* <icosahedronGeometry args={[0.3, 1]} /> */}
+        <sphereGeometry args={[0.3, 16, 16]} />
+        <meshStandardMaterial
+          //flatShading
+          color={"mediumpurple"}
+        />
       </mesh>
     </RigidBody>
   );

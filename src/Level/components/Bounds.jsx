@@ -1,38 +1,63 @@
 import React from "react";
-import { boxGeometry, wallMaterial } from "../Level";
+import { boxGeometry, floor1Material, wallMaterial } from "../Level";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 
 export default function Bounds({ length = 1 }) {
+  const wallHeight = 0.3;
+  const wallThickness = 0.06;
+  const trackWidth = 0.8;
+
   return (
     <>
-      <RigidBody type="fixed" restitution={0.2} friction={0}>
+      <RigidBody
+        rotation={[-0.05, 0, 0]}
+        type="fixed"
+        restitution={0.2}
+        friction={0}
+      >
         {/* Right wall */}
         <mesh
-          position={[2.15, 0.75, -(length * 2) + 2]}
+          position={[
+            trackWidth / 2 + wallThickness / 2,
+            wallHeight / 2,
+            -(length * 2) + 2,
+          ]}
           geometry={boxGeometry}
           material={wallMaterial}
-          scale={[0.3, 1.5, 4 * length]}
+          scale={[wallThickness, wallHeight, 4 * length]}
           castShadow
         />
         {/* Left wall */}
         <mesh
-          position={[-2.15, 0.75, -(length * 2) + 2]}
+          position={[
+            -(trackWidth / 2 + wallThickness / 2),
+            wallHeight / 2,
+            -(length * 2) + 2,
+          ]}
           geometry={boxGeometry}
           material={wallMaterial}
-          scale={[0.3, 1.5, 4 * length]}
+          scale={[wallThickness, wallHeight, 4 * length]}
           receiveShadow
         />
         {/* End wall */}
         <mesh
-          position={[0, 0.75, -(length * 4) + 2]}
+          position={[0, wallHeight / 2, -(length * 4) + 2]}
           geometry={boxGeometry}
           material={wallMaterial}
-          scale={[4, 1.5, 0.3]}
+          scale={[trackWidth + wallThickness * 2, wallHeight, 0.3]}
+          receiveShadow
+        />
+        {/* Floor */}
+        <mesh
+          position={[0, -0.05, -(length * 2) + 2]}
+          geometry={boxGeometry}
+          material={floor1Material}
+          scale={[trackWidth, 0.1, 4 * length]}
           receiveShadow
         />
         {/* Floor collider */}
         <CuboidCollider
-          args={[2, 0.1, 2 * length]}
+          args={[trackWidth / 2, 0.1, 2 * length]}
           position={[0, -0.1, -(length * 2) + 2]}
           restitution={0.2}
           friction={1}

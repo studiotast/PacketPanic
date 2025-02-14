@@ -1,11 +1,9 @@
-import * as THREE from "three";
 import { useMemo } from "react";
-import BlockStart from "./components/BlockStart";
-import BlockSpinner from "./components/BlockSpinner";
+import * as THREE from "three";
 import BlockAxe from "./components/BlockAxe";
 import BlockLimbo from "./components/BlockLimbo";
-import BlockEnd from "./components/BlockEnd";
-import Bounds from "./components/Bounds";
+import BlockSpinner from "./components/BlockSpinner";
+import Track from "./components/CustomLevel/Track";
 
 // reusable geometries
 export const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -42,12 +40,13 @@ export default function Level({
 
   return (
     <>
-      <BlockStart position={[0, 0, 0]} />
+      {/* <BlockStart position={[0, 0, 0]} />
       {blocks.map((Block, index) => (
         <Block key={index} position={[0, 0, -(index + 1) * 4]} />
       ))}
-      <BlockEnd position={[0, 0, -(count + 1) * 4]} />
-      <Bounds length={count + 2} />
+      <BlockEnd position={[0, 0, -(count + 1) * 4]} /> */}
+      {/* <Bounds length={count + 2} /> */}
+      <Track />
     </>
   );
 }
