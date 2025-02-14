@@ -4,6 +4,8 @@ import TrackStraight from "./TrackStraight";
 import TrackToRight from "./TrackToRight";
 import TrackToLeft from "./TrackToLeft";
 import Building from "./Building";
+import Splitter from "./Splitter";
+import Bar from "./Bar";
 
 export default function Track({}) {
   return (
@@ -12,6 +14,8 @@ export default function Track({}) {
         <TrackStraight length={2} />
         <TrackToRight length={2} />
         <TrackToLeft length={2} />
+        {/* <Splitter /> */}
+        <Bar position={[0, -0.2, -7]} />
       </RigidBody>
       <Building />
     </group>

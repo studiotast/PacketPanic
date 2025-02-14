@@ -4,18 +4,23 @@ import { Physics } from "@react-three/rapier";
 import Player from "./Player.jsx";
 import useGame from "./stores/useGame.js";
 import { OrbitControls } from "@react-three/drei";
-import Ball from "./Level/components/CustomLevel/Ball";
 import { useControls, button } from "leva";
+import React, { useRef } from "react";
+import Balls from "./Level/components/CustomLevel/Balls";
 
 export default function Experience() {
   const blocksCount = useGame((state) => state.blocksCount);
   const blocksSeed = useGame((state) => state.blocksSeed);
+  const ballRef = useRef();
 
   const { clickMe } = useControls({
     clickMe: button(() => {
-      console.log("clicked");
+      if (ballRef.current) {
+        ballRef.current.addBall();
+      }
     }),
   });
+
   return (
     <>
       <OrbitControls makeDefault />
@@ -24,7 +29,7 @@ export default function Experience() {
         <Lights />
         <Level count={blocksCount} seed={blocksSeed} />
         <Player />
-        <Ball />
+        <Balls ref={ballRef} />
       </Physics>
     </>
   );

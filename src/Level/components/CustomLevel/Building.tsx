@@ -23,7 +23,7 @@ export default function Building() {
         args={[1, 1, 0.15]}
         sensor
         onIntersectionEnter={(intersect) => {
-          console.log("Goal!", intersect);
+          console.log("Goal!", intersect?.colliderObject?.name, intersect);
           end();
         }}
       />
