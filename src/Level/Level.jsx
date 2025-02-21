@@ -84,6 +84,14 @@ export const yellowBallMaterial = new THREE.MeshStandardMaterial({
   color: "yellow",
 });
 
+export const purpleBallMaterial = new THREE.MeshStandardMaterial({
+  color: "mediumpurple",
+});
+
+export const blueBallMaterial = new THREE.MeshStandardMaterial({
+  color: "dodgerblue",
+});
+
 export default function Level({
   count = 5,
   types = [BlockSpinner, BlockAxe, BlockLimbo],

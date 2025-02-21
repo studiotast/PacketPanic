@@ -5,9 +5,9 @@ import Ball from "./Ball";
 const Balls = forwardRef((props, ref) => {
   const [balls, setBalls] = useState([]);
 
-  const addBall = () => {
+  const addBall = (color) => {
     const newBall = {
-      id: THREE.MathUtils.generateUUID(),
+      id: `${THREE.MathUtils.generateUUID()}|${color}`,
       position: [0, 5, 0], // Fixed position
       ref: React.createRef(),
     };
