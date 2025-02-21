@@ -3,8 +3,9 @@ import { CuboidCollider } from "@react-three/rapier";
 import { boxGeometry, obstacleMaterial } from "../../Level";
 import useBalls from "../../../stores/useBalls";
 import { GroupProps } from "@react-three/fiber";
+import Sign from "./Sign";
 
-export default function Accelerator() {
+export default function Accelerator({ colors }: { colors: string[] }) {
   const balls = useBalls((state) => state.balls);
 
   return (
@@ -39,6 +40,13 @@ export default function Accelerator() {
           }
         }}
       />
+      {colors.map((color, index) => (
+        <Sign
+          key={index}
+          color={color}
+          position={[0, 0.25 * (index - 0.5), 0]}
+        />
+      ))}
     </group>
   );
 }

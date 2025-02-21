@@ -25,7 +25,7 @@ export default function Track({}) {
         <Straight rotation={[0, 0, 0]} position={[2, 0, -2]} />
       </RigidBody>
 
-      <Accelerator />
+      <Accelerator colors={["purple", "yellow"]} />
       <Building colors={["purple"]} position={[2, 0.5, -3]} />
       <Building colors={["yellow"]} position={[-2, 0.5, -3]} />
     </group>
