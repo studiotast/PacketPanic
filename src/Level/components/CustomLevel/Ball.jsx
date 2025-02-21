@@ -1,5 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import { RigidBody } from "@react-three/rapier";
+import { sphereGeometry, yellowBallMaterial } from "../../Level";
 
 const Ball = forwardRef((props, ref) => {
   console.log(props.id);
@@ -18,14 +19,11 @@ const Ball = forwardRef((props, ref) => {
       colliders="ball"
       position={props.position}
     >
-      <mesh castShadow>
-        {/* <icosahedronGeometry args={[0.3, 1]} /> */}
-        <sphereGeometry args={[0.3, 16, 16]} />
-        <meshStandardMaterial
-          //flatShading
-          color={"yellow"}
-        />
-      </mesh>
+      <mesh
+        castShadow
+        geometry={sphereGeometry}
+        material={yellowBallMaterial}
+      />
     </RigidBody>
   );
 });

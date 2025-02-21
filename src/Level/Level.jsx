@@ -7,6 +7,7 @@ import Track from "./components/CustomLevel/Track";
 
 // reusable geometries
 export const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
+export const sphereGeometry = new THREE.SphereGeometry(0.3, 16, 16);
 export const triangleGeometry = new THREE.BufferGeometry();
 
 // Define the vertices of the 3D triangle
@@ -77,6 +78,10 @@ export const traingleMaterial = new THREE.MeshStandardMaterial({
 });
 export const wallMaterial = new THREE.MeshStandardMaterial({
   color: "slategrey",
+});
+
+export const yellowBallMaterial = new THREE.MeshStandardMaterial({
+  color: "yellow",
 });
 
 export default function Level({

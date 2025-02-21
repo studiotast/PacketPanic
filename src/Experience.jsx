@@ -7,6 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 import { useControls, button } from "leva";
 import React, { useRef } from "react";
 import Balls from "./Level/components/CustomLevel/Balls";
+import { Perf } from "r3f-perf";
 
 export default function Experience() {
   const blocksCount = useGame((state) => state.blocksCount);
@@ -23,6 +24,7 @@ export default function Experience() {
 
   return (
     <>
+      <Perf position="top-left" />
       <OrbitControls makeDefault />
       <color args={["#bdedfc"]} attach="background" />
       <Physics debug={false}>
