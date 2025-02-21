@@ -1,30 +1,42 @@
-import { useFrame } from "@react-three/fiber";
+import { Euler, useFrame, Vector3 } from "@react-three/fiber";
 import React, { useRef } from "react";
 import { CuboidCollider, RigidBody, useRapier } from "@react-three/rapier";
 import * as THREE from "three";
-import usePlayer from "../../../stores/usePlayer";
+import useBalls from "../../../stores/useBalls"; // Import de zustand store
 import { boxGeometry, obstacleMaterial, wallMaterial } from "../../Level";
 import useGame from "../../../stores/useGame";
 
-export default function Building() {
-  const buildingRef = useRef();
-  const playerRef = usePlayer((state) => state.playerRef);
-  const { world } = useRapier();
+interface BuildingProps {
+  position?: Vector3;
+  rotation?: Euler;
+}
 
-  const end = useGame((state) => state.end);
+export default function Building({
+  position = [0, 0, 0],
+  rotation = [0, 0, 0],
+}: BuildingProps) {
+  const incrementScore = useGame((state) => state.incrementScore);
+  const removeBall = useBalls((state) => state.removeBall); // Haal de removeBall functie uit de store
+
   return (
-    <group position={[5, 0, -7.5]} rotation={[0, -(Math.PI / 2.5), 0]}>
+    <group rotation={rotation} position={position}>
       <mesh
         geometry={boxGeometry}
-        scale={[1, 1, 0.15]}
+        scale={[1, 1, 1]}
         material={obstacleMaterial}
       />
       <CuboidCollider
-        args={[1, 1, 0.15]}
+        args={[0.5, 0.5, 0.5]}
         sensor
         onIntersectionEnter={(intersect) => {
-          console.log("Goal!", intersect?.colliderObject?.name, intersect);
-          end();
+          const collidedObjectName = intersect?.colliderObject?.name;
+          console.log("Done!", collidedObjectName, intersect);
+
+          // Verwijder de bal als deze intersectie de naam van de bal heeft
+          if (collidedObjectName) {
+            removeBall(collidedObjectName); // Verwijder de bal met het id
+            incrementScore(); // Verhoog de score
+          }
         }}
       />
     </group>

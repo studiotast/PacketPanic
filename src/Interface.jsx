@@ -5,6 +5,7 @@ import { addEffect } from "@react-three/fiber";
 
 export default function Interface() {
   const time = useRef();
+  const score = useGame((state) => state.score); // Haal de score uit de store
 
   const restart = useGame((state) => state.restart);
   const phase = useGame((state) => state.phase);
@@ -42,8 +43,12 @@ export default function Interface() {
   return (
     <div className="interface">
       {/* Time */}
-      <div ref={time} className="time">
+      {/* <div ref={time} className="time">
         0.00
+      </div> */}
+      {/* Score */}
+      <div className="score">
+        Score: {score} {/* Toon de score */}
       </div>
       {/* Restart */}
       {phase === "ended" && (

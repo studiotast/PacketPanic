@@ -1,30 +1,24 @@
-import React, { useEffect, useRef } from "react";
-import { Vector3, Euler } from "@react-three/fiber";
-import * as THREE from "three";
+import { Euler, Vector3 } from "@react-three/fiber";
+import React, { useMemo } from "react";
+import { useModels } from "../../../stores/useModels";
 
 interface CornerProps {
   position?: Vector3;
   rotation?: Euler;
-  model: THREE.Group; // type voor je GLTF-model
 }
 
 export default function Corner({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
-  model,
 }: CornerProps) {
-  const ref = useRef<THREE.Group>(null);
+  const { cornerModel } = useModels((state) => state.getModels());
 
-  useEffect(() => {
-    if (ref.current) {
-      // Het model klonen zodat elke instantie een unieke referentie heeft
-      const clonedScene = model.clone();
-      ref.current.add(clonedScene);
-    }
-  }, [model]);
+  // Gebruik useMemo om een gekloonde instantie te maken per component
+  const clonedModel = useMemo(() => cornerModel.clone(), [cornerModel]);
+
   return (
-    <group ref={ref} rotation={rotation} position={position} scale={[1, 1, 1]}>
-      {/* Het gekloonde object wordt nu hier aan de group toegevoegd */}
+    <group rotation={rotation} position={position} scale={[1, 1, 1]}>
+      <primitive object={clonedModel} />
     </group>
   );
 }

@@ -14,6 +14,9 @@ export default function Experience() {
   const blocksSeed = useGame((state) => state.blocksSeed);
   const ballRef = useRef();
 
+  const { player } = useControls({
+    player: false,
+  });
   return (
     <>
       <Perf position="top-left" />
@@ -22,7 +25,7 @@ export default function Experience() {
       <Physics debug={false}>
         <Lights />
         <Level count={blocksCount} seed={blocksSeed} />
-        <Player />
+        {player && <Player />}
         <Balls ref={ballRef} />
       </Physics>
     </>

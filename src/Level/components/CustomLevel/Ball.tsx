@@ -5,40 +5,41 @@ import {
   sphereGeometry,
   yellowBallMaterial,
 } from "../../Level";
+import { Vector3 } from "@react-three/fiber";
 
-const Ball = forwardRef((props, ref) => {
-  const { id, position } = props;
-  console.log(props.id);
-  const ballRef = useRef();
+const Ball = forwardRef(
+  ({ id, position }: { id: string; position: Vector3 }, ref) => {
+    const ballRef = useRef();
 
-  useImperativeHandle(ref, () => ({
-    applyImpulse: (impulse) => {
-      ballRef.current.applyImpulse(impulse);
-    },
-  }));
+    useImperativeHandle(ref, () => ({
+      applyImpulse: (impulse) => {
+        ballRef.current.applyImpulse(impulse);
+      },
+    }));
 
-  const getBallMaterial = (id) => {
-    const color = id.split("|")[1];
-    console.log(color);
-    switch (color) {
-      case "yellow":
-        return yellowBallMaterial;
-      case "purple":
-        return purpleBallMaterial;
-      default:
-        return yellowBallMaterial;
-    }
-  };
+    const getBallMaterial = (id) => {
+      const color = id.split("|")[1];
+      console.log(color);
+      switch (color) {
+        case "yellow":
+          return yellowBallMaterial;
+        case "purple":
+          return purpleBallMaterial;
+        default:
+          return yellowBallMaterial;
+      }
+    };
 
-  return (
-    <RigidBody name={id} ref={ballRef} colliders="ball" position={position}>
-      <mesh
-        castShadow
-        geometry={sphereGeometry}
-        material={getBallMaterial(id)}
-      />
-    </RigidBody>
-  );
-});
+    return (
+      <RigidBody name={id} ref={ballRef} colliders="ball" position={position}>
+        <mesh
+          castShadow
+          geometry={sphereGeometry}
+          material={getBallMaterial(id)}
+        />
+      </RigidBody>
+    );
+  }
+);
 
 export default Ball;

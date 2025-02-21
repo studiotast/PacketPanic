@@ -13,6 +13,10 @@ export default create(
 
       // Phases
       phase: "ready",
+
+      // Score
+      score: 0, // Voeg score toe
+
       start: () => {
         set((state) => {
           if (state.phase === "ready") {
@@ -36,6 +40,12 @@ export default create(
           }
           return {};
         });
+      },
+      // Functie om de score te verhogen
+      incrementScore: () => {
+        set((state) => ({
+          score: state.score + 1, // Verhoog de score met het gegeven bedrag
+        }));
       },
     };
   })

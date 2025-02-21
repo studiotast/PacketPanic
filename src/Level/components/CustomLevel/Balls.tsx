@@ -1,10 +1,10 @@
 import React, { forwardRef } from "react";
 import * as THREE from "three";
 import Ball from "./Ball";
-import useBalls from "../../../stores/useBalls"; // Zorg ervoor dat je de juiste hook importeert
+import useBalls from "../../../stores/useBalls";
 import { useControls, button } from "leva";
 
-const Balls = forwardRef(({ props }, ref) => {
+const Balls = forwardRef((props, ref) => {
   const { balls, addBall } = useBalls((state) => ({
     balls: state.balls,
     addBall: state.addBall,

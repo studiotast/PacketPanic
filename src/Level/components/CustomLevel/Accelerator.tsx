@@ -1,12 +1,12 @@
 import React from "react";
 import { CuboidCollider } from "@react-three/rapier";
 import { boxGeometry, obstacleMaterial } from "../../Level";
-import usePlayer from "../../../stores/usePlayer";
 import useBalls from "../../../stores/useBalls";
+import { GroupProps } from "@react-three/fiber";
 
 export default function Accelerator() {
-  const playerRef = usePlayer((state) => state.playerRef);
   const balls = useBalls((state) => state.balls);
+
   return (
     <group position={[0, 0.5, -1.2]}>
       <mesh
