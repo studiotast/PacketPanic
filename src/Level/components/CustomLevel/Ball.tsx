@@ -1,14 +1,13 @@
-import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import { RigidBody } from "@react-three/rapier";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import {
   purpleBallMaterial,
   sphereGeometry,
   yellowBallMaterial,
 } from "../../Level";
-import { useFrame } from "@react-three/fiber";
 
 const Ball = forwardRef((props, ref) => {
-  const { id, position, direction } = props;
+  const { id, position } = props;
   console.log(props.id);
   const ballRef = useRef();
 
@@ -31,25 +30,12 @@ const Ball = forwardRef((props, ref) => {
     }
   };
 
-  // Gebruik useFrame voor voortdurende updates van de positie
-  useFrame(() => {
-    if (ballRef.current && direction) {
-      // Verhoog de snelheid van de bal
-      ballRef.current.applyImpulse(direction);
-    }
-  });
-
   return (
-    <RigidBody
-      name={props.id}
-      ref={ballRef}
-      colliders="ball"
-      position={props.position}
-    >
+    <RigidBody name={id} ref={ballRef} colliders="ball" position={position}>
       <mesh
         castShadow
         geometry={sphereGeometry}
-        material={getBallMaterial(props.id)}
+        material={getBallMaterial(id)}
       />
     </RigidBody>
   );

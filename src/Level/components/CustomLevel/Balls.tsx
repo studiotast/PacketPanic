@@ -4,7 +4,7 @@ import Ball from "./Ball";
 import useBalls from "../../../stores/useBalls"; // Zorg ervoor dat je de juiste hook importeert
 import { useControls, button } from "leva";
 
-const Balls = forwardRef((props, ref) => {
+const Balls = forwardRef(({ props }, ref) => {
   const { balls, addBall } = useBalls((state) => ({
     balls: state.balls,
     addBall: state.addBall,
@@ -16,14 +16,14 @@ const Balls = forwardRef((props, ref) => {
       addBall({
         id: `${THREE.MathUtils.generateUUID()}|yellow`,
         position: [0, 5, 0], // Fixed position
-        direction: null, // Start zonder richting
+        ref: React.createRef(), // Maak ref aan
       });
     }),
     purpleBall: button(() => {
       addBall({
         id: `${THREE.MathUtils.generateUUID()}|purple`,
         position: [0, 5, 0], // Fixed position
-        direction: null, // Start zonder richting
+        ref: React.createRef(), // Maak ref aan
       });
     }),
   });
@@ -35,7 +35,7 @@ const Balls = forwardRef((props, ref) => {
           id={ball.id}
           key={ball.id}
           position={ball.position}
-          direction={ball.direction} // Geef de richting door naar de Ball component
+          ref={ball.ref}
         />
       ))}
     </>

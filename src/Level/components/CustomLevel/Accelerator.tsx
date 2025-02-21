@@ -6,7 +6,7 @@ import useBalls from "../../../stores/useBalls";
 
 export default function Accelerator() {
   const playerRef = usePlayer((state) => state.playerRef);
-  const accelerateBall = useBalls((state) => state.accelerateBall);
+  const balls = useBalls((state) => state.balls);
   return (
     <group position={[0, 0.5, -1.2]}>
       <mesh
@@ -19,16 +19,23 @@ export default function Accelerator() {
         sensor
         onIntersectionEnter={(intersect) => {
           if (intersect?.colliderObject) {
-            // const ballId = intersect.colliderObject.name;
-            // playerRef.current.applyImpulse({ x: -0.02, y: 0, z: 0 });
-            // console.log("Ball hit accelerator!", ballId);
-            const ballId = intersect.colliderObject.name;
-            const color = ballId.split("|")[1];
-            const direction =
-              color === "yellow"
-                ? { x: -0.0005, y: 0, z: 0 }
-                : { x: 0.0005, y: 0, z: 0 };
-            accelerateBall(ballId, direction);
+            if (intersect?.colliderObject) {
+              const ballId = intersect.colliderObject.name;
+
+              // Vind de bal met het juiste ID
+              const ball = balls.find((ball) => ball.id === ballId);
+              if (ball) {
+                const direction =
+                  ballId.split("|")[1] === "yellow"
+                    ? { x: -0.02, y: 0, z: 0 }
+                    : { x: 0.02, y: 0, z: 0 };
+
+                // Toepassen van de impuls op de bal via de ref
+                if (ball.ref.current) {
+                  ball.ref.current.applyImpulse(direction);
+                }
+              }
+            }
           }
         }}
       />

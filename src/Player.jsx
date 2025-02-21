@@ -92,7 +92,7 @@ export default function Player() {
     const impulse = { x: 0, y: 0, z: 0 };
     const torque = { x: 0, y: 0, z: 0 };
 
-    const impulseStrength = 0.05 * delta;
+    const impulseStrength = 0.01 * delta;
     const torqueStrength = 0.025 * delta;
 
     if (forward) {
