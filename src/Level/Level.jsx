@@ -7,7 +7,7 @@ import Track from "./components/CustomLevel/Track";
 
 // reusable geometries
 export const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-export const sphereGeometry = new THREE.SphereGeometry(0.3, 16, 16);
+export const sphereGeometry = new THREE.SphereGeometry(0.1, 16, 16);
 export const triangleGeometry = new THREE.BufferGeometry();
 
 // Define the vertices of the 3D triangle

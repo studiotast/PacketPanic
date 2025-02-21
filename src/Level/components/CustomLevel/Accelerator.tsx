@@ -6,19 +6,19 @@ import usePlayer from "../../../stores/usePlayer";
 export default function Accelerator() {
   const playerRef = usePlayer((state) => state.playerRef);
   return (
-    <group position={[0, 0, -6]}>
+    <group position={[0, 0.5, -1.2]}>
       <mesh
         geometry={boxGeometry}
-        scale={[1, 1, 0.5]}
+        scale={[0.25, 0.25, 0.25]}
         material={obstacleMaterial}
       />
       <CuboidCollider
-        args={[0.5, 0.5, 0.25]}
+        args={[0.125, 0.125, 0.125]}
         sensor
         onIntersectionEnter={(intersect) => {
           if (intersect?.colliderObject) {
             const ballId = intersect.colliderObject.name;
-            playerRef.current.applyImpulse({ x: -0.6, y: 0, z: 0 });
+            playerRef.current.applyImpulse({ x: -0.02, y: 0, z: 0 });
             console.log("Ball hit accelerator!", ballId);
           }
         }}

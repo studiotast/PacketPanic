@@ -41,7 +41,7 @@ export default function Player() {
     const hit = world.castRay(ray, 10, true);
 
     if (hit.timeOfImpact < 0.15) {
-      body.current.applyImpulse({ x: 0, y: 0.5, z: 0 });
+      body.current.applyImpulse({ x: 0, y: 0.2, z: 0 });
     }
   };
 
@@ -92,8 +92,8 @@ export default function Player() {
     const impulse = { x: 0, y: 0, z: 0 };
     const torque = { x: 0, y: 0, z: 0 };
 
-    const impulseStrength = 0.6 * delta;
-    const torqueStrength = 0.2 * delta;
+    const impulseStrength = 0.05 * delta;
+    const torqueStrength = 0.025 * delta;
 
     if (forward) {
       impulse.z -= impulseStrength;
