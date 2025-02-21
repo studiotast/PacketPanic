@@ -14,19 +14,6 @@ export default function Experience() {
   const blocksSeed = useGame((state) => state.blocksSeed);
   const ballRef = useRef();
 
-  const { yellowBall, purpleBall } = useControls({
-    yellowBall: button(() => {
-      if (ballRef.current) {
-        ballRef.current.addBall("yellow");
-      }
-    }),
-    purpleBall: button(() => {
-      if (ballRef.current) {
-        ballRef.current.addBall("purple");
-      }
-    }),
-  });
-
   return (
     <>
       <Perf position="top-left" />

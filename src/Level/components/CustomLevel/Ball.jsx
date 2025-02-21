@@ -5,8 +5,10 @@ import {
   sphereGeometry,
   yellowBallMaterial,
 } from "../../Level";
+import { useFrame } from "@react-three/fiber";
 
 const Ball = forwardRef((props, ref) => {
+  const { id, position, direction } = props;
   console.log(props.id);
   const ballRef = useRef();
 
@@ -28,6 +30,14 @@ const Ball = forwardRef((props, ref) => {
         return yellowBallMaterial;
     }
   };
+
+  // Gebruik useFrame voor voortdurende updates van de positie
+  useFrame(() => {
+    if (ballRef.current && direction) {
+      // Verhoog de snelheid van de bal
+      ballRef.current.applyImpulse(direction);
+    }
+  });
 
   return (
     <RigidBody

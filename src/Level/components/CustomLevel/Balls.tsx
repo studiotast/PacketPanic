@@ -1,22 +1,32 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { forwardRef } from "react";
 import * as THREE from "three";
 import Ball from "./Ball";
+import useBalls from "../../../stores/useBalls"; // Zorg ervoor dat je de juiste hook importeert
+import { useControls, button } from "leva";
 
 const Balls = forwardRef((props, ref) => {
-  const [balls, setBalls] = useState([]);
-
-  const addBall = (color) => {
-    const newBall = {
-      id: `${THREE.MathUtils.generateUUID()}|${color}`,
-      position: [0, 5, 0], // Fixed position
-      ref: React.createRef(),
-    };
-    setBalls((prevBalls) => [...prevBalls, newBall]);
-  };
-
-  useImperativeHandle(ref, () => ({
-    addBall,
+  const { balls, addBall } = useBalls((state) => ({
+    balls: state.balls,
+    addBall: state.addBall,
   }));
+
+  // Voeg knoppen toe om ballen te maken
+  const { yellowBall, purpleBall } = useControls({
+    yellowBall: button(() => {
+      addBall({
+        id: `${THREE.MathUtils.generateUUID()}|yellow`,
+        position: [0, 5, 0], // Fixed position
+        direction: null, // Start zonder richting
+      });
+    }),
+    purpleBall: button(() => {
+      addBall({
+        id: `${THREE.MathUtils.generateUUID()}|purple`,
+        position: [0, 5, 0], // Fixed position
+        direction: null, // Start zonder richting
+      });
+    }),
+  });
 
   return (
     <>
@@ -24,8 +34,8 @@ const Balls = forwardRef((props, ref) => {
         <Ball
           id={ball.id}
           key={ball.id}
-          ref={ball.ref}
           position={ball.position}
+          direction={ball.direction} // Geef de richting door naar de Ball component
         />
       ))}
     </>
