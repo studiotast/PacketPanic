@@ -26,8 +26,8 @@ export default function Track({}) {
       </RigidBody>
 
       <Accelerator />
-      <Building color="purple" position={[2, 0.5, -3]} />
-      <Building color="yellow" position={[-2, 0.5, -3]} />
+      <Building colors={["purple"]} position={[2, 0.5, -3]} />
+      <Building colors={["yellow"]} position={[-2, 0.5, -3]} />
     </group>
   );
 }

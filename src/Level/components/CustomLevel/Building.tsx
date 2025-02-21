@@ -9,11 +9,13 @@ import useGame from "../../../stores/useGame";
 interface BuildingProps {
   position?: Vector3;
   rotation?: Euler;
+  colors: string[];
 }
 
 export default function Building({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
+  colors,
 }: BuildingProps) {
   const incrementScore = useGame((state) => state.incrementScore);
   const removeBall = useBalls((state) => state.removeBall); // Haal de removeBall functie uit de store

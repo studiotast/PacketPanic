@@ -11,7 +11,7 @@ const Balls = forwardRef((props, ref) => {
   }));
 
   // Voeg knoppen toe om ballen te maken
-  const { yellowBall, purpleBall } = useControls({
+  const controls = useControls(() => ({
     yellowBall: button(() => {
       addBall({
         id: `${THREE.MathUtils.generateUUID()}|yellow`,
@@ -26,7 +26,7 @@ const Balls = forwardRef((props, ref) => {
         ref: React.createRef(), // Maak ref aan
       });
     }),
-  });
+  }));
 
   return (
     <>
