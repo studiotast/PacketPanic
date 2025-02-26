@@ -72,6 +72,9 @@ export const floor2Material = new THREE.MeshStandardMaterial({
 export const obstacleMaterial = new THREE.MeshStandardMaterial({
   color: "tomato",
 });
+export const whiteMaterial = new THREE.MeshStandardMaterial({
+  color: "white",
+});
 export const traingleMaterial = new THREE.MeshStandardMaterial({
   color: "tomato",
   side: THREE.DoubleSide, // Ensure both sides are rendered

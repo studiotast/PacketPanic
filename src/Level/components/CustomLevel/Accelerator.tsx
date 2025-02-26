@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { CuboidCollider } from "@react-three/rapier";
 import { boxGeometry, obstacleMaterial } from "../../Level";
 import useBalls from "../../../stores/useBalls";
@@ -6,18 +6,14 @@ import Sign from "./Sign";
 
 export default function Accelerator({ colors }: { colors: string[] }) {
   const balls = useBalls((state) => state.balls);
-  const directionsRef = useRef<boolean[]>([]);
 
-  useMemo(() => {
-    // Richtingen initialiseren op basis van het aantal kleuren
-    const initialDirections = colors.map((_, index) => index % 2 === 0); // Alternating true/false
-    directionsRef.current = initialDirections;
-    console.log(directionsRef);
-  }, [colors]);
+  // Gebruik useState in plaats van useRef
+  const [directions, setDirections] = useState<boolean[]>(() =>
+    colors.map((_, index) => index % 2 === 0)
+  );
 
   function onClickSign(index: number) {
-    console.log("geklikt", index, directionsRef.current[index]);
-    directionsRef.current[index] = !directionsRef.current[index];
+    setDirections((prev) => prev.map((dir, i) => (i === index ? !dir : dir)));
   }
 
   return (
@@ -39,7 +35,7 @@ export default function Accelerator({ colors }: { colors: string[] }) {
             if (ball) {
               const colorIndex = colors.indexOf(ballColor);
               if (colorIndex !== -1) {
-                const direction = directionsRef.current[colorIndex]
+                const direction = directions[colorIndex]
                   ? { x: 0.02, y: 0, z: 0 }
                   : { x: -0.02, y: 0, z: 0 };
 
@@ -56,9 +52,7 @@ export default function Accelerator({ colors }: { colors: string[] }) {
           key={index}
           color={color}
           position={[0, 0.25 * (index - 0.5), 0]}
-          ref={directionsRef}
-          index={index}
-          // rotation={[0, directionsRef.current[index] ? Math.PI : 0, 0]}
+          rotation={[0, directions[index] ? 0 : Math.PI, 0]}
           onClick={() => onClickSign(index)}
         />
       ))}

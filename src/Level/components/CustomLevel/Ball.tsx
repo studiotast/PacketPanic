@@ -1,11 +1,8 @@
 import { RapierRigidBody, RigidBody } from "@react-three/rapier";
 import React, { forwardRef, useImperativeHandle, useRef } from "react";
-import {
-  purpleBallMaterial,
-  sphereGeometry,
-  yellowBallMaterial,
-} from "../../Level";
+import { sphereGeometry } from "../../Level";
 import { Vector3 } from "@react-three/fiber";
+import { getColorMaterial } from "../../../utils/getColorMaterial";
 
 interface BallProps {
   id: string;
@@ -29,19 +26,6 @@ const Ball = forwardRef<BallRef, BallProps>(({ id, position }, ref) => {
     },
   }));
 
-  const getBallMaterial = (id: string) => {
-    const color = id.split("|")[1];
-    console.log(color);
-    switch (color) {
-      case "yellow":
-        return yellowBallMaterial;
-      case "purple":
-        return purpleBallMaterial;
-      default:
-        return yellowBallMaterial;
-    }
-  };
-
   return (
     <RigidBody
       name={id}
@@ -52,7 +36,7 @@ const Ball = forwardRef<BallRef, BallProps>(({ id, position }, ref) => {
       <mesh
         castShadow
         geometry={sphereGeometry}
-        material={getBallMaterial(id)}
+        material={getColorMaterial(id.split("|")[1])}
       />
     </RigidBody>
   );
