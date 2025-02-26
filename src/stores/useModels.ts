@@ -18,10 +18,10 @@ export const useModels = create<ModelsState>((set) => {
       if (loaded) return models;
 
       models = {
-        straightModel: useGLTF("/assets/models/tube_straight_a02.glb").scene,
-        cornerModel: useGLTF("/assets/models/tube_corner_a02.glb").scene,
-        junctionModel: useGLTF("/assets/models/tube_junction_a02.glb").scene,
-        signPost: useGLTF("/assets/models/signPost_a02.glb").scene,
+        straightModel: useGLTF("assets/models/tube_straight_a02.glb").scene,
+        cornerModel: useGLTF("assets/models/tube_corner_a02.glb").scene,
+        junctionModel: useGLTF("assets/models/tube_junction_a02.glb").scene,
+        signPost: useGLTF("assets/models/signpost_a02.glb").scene,
       };
       loaded = true;
 
