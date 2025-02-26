@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useRef, useEffect, useMemo } from "react";
 import { CuboidCollider } from "@react-three/rapier";
 import { boxGeometry, obstacleMaterial } from "../../Level";
 import useBalls from "../../../stores/useBalls";
-import { GroupProps } from "@react-three/fiber";
 import Sign from "./Sign";
 
 export default function Accelerator({ colors }: { colors: string[] }) {
   const balls = useBalls((state) => state.balls);
+  const directionsRef = useRef<boolean[]>([]);
+
+  useMemo(() => {
+    // Richtingen initialiseren op basis van het aantal kleuren
+    const initialDirections = colors.map((_, index) => index % 2 === 0); // Alternating true/false
+    directionsRef.current = initialDirections;
+    console.log(directionsRef);
+  }, [colors]);
+
+  function onClickSign(index: number) {
+    console.log("geklikt", index, directionsRef.current[index]);
+    directionsRef.current[index] = !directionsRef.current[index];
+  }
 
   return (
     <group position={[0, 0.5, -1.2]}>
@@ -20,18 +32,17 @@ export default function Accelerator({ colors }: { colors: string[] }) {
         sensor
         onIntersectionEnter={(intersect) => {
           if (intersect?.colliderObject) {
-            if (intersect?.colliderObject) {
-              const ballId = intersect.colliderObject.name;
+            const ballId = intersect.colliderObject.name;
+            const ballColor = ballId.split("|")[1];
 
-              // Vind de bal met het juiste ID
-              const ball = balls.find((ball) => ball.id === ballId);
-              if (ball) {
-                const direction =
-                  ballId.split("|")[1] === "yellow"
-                    ? { x: -0.02, y: 0, z: 0 }
-                    : { x: 0.02, y: 0, z: 0 };
+            const ball = balls.find((ball) => ball.id === ballId);
+            if (ball) {
+              const colorIndex = colors.indexOf(ballColor);
+              if (colorIndex !== -1) {
+                const direction = directionsRef.current[colorIndex]
+                  ? { x: 0.02, y: 0, z: 0 }
+                  : { x: -0.02, y: 0, z: 0 };
 
-                // Toepassen van de impuls op de bal via de ref
                 if (ball.ref.current) {
                   ball.ref.current.applyImpulse(direction);
                 }
@@ -45,6 +56,10 @@ export default function Accelerator({ colors }: { colors: string[] }) {
           key={index}
           color={color}
           position={[0, 0.25 * (index - 0.5), 0]}
+          ref={directionsRef}
+          index={index}
+          // rotation={[0, directionsRef.current[index] ? Math.PI : 0, 0]}
+          onClick={() => onClickSign(index)}
         />
       ))}
     </group>
