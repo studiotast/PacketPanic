@@ -9,13 +9,15 @@ import { boxGeometry, whiteMaterial } from "../../Level";
 interface BuildingProps {
   position?: Vector3;
   rotation?: Euler;
-  colors: string[];
+  colors?: string[];
+  type?: string;
 }
 
 export default function Building({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
   colors,
+  type,
 }: BuildingProps) {
   const incrementScore = useGame((state) => state.incrementScore);
   const removeBall = useBalls((state) => state.removeBall); // Haal de removeBall functie uit de store
@@ -23,32 +25,51 @@ export default function Building({
   return (
     <group rotation={rotation} position={position}>
       <mesh geometry={boxGeometry} scale={[1, 1, 1]} material={whiteMaterial} />
-      {colors.map((color, i) => {
-        const positionFromLeft = -0.34 + i * 0.22; // Tel 0.34 op per index
-        return (
-          <mesh
-            key={i}
-            geometry={boxGeometry}
-            scale={[0.18, 0.06, 0.18]}
-            position={[positionFromLeft, 0.4, 0.5]}
-            material={getColorMaterial(color)}
-          />
-        );
-      })}
+      {colors &&
+        colors?.map((color, i) => {
+          const positionFromLeft = -0.34 + i * 0.22; // Tel 0.34 op per index
+          return (
+            <mesh
+              key={i}
+              geometry={boxGeometry}
+              scale={[0.18, 0.06, 0.18]}
+              position={[positionFromLeft, 0.4, 0.5]}
+              material={getColorMaterial(color)}
+            />
+          );
+        })}
       <CuboidCollider
         args={[0.5, 0.5, 0.5]}
         sensor
-        onIntersectionEnter={(intersect) => {
-          const collidedObjectName = intersect?.colliderObject?.name;
-          const ballColor = intersect?.colliderObject?.name.split("|")[1];
+        onIntersectionEnter={(intersection) => {
+          if (!intersection.colliderObject) return;
 
-          // Verwijder de bal als deze intersectie de naam van de bal heeft
-          if (ballColor) {
-            removeBall(collidedObjectName); // Verwijder de bal met het id
-            if (colors.includes(ballColor)) {
-              // Controleer of de kleur voorkomt in de array
-              incrementScore(); // Verhoog de score
-            }
+          // Get the ball's ID (which includes color information)
+          const ballId = intersection.colliderObject.name;
+
+          if (!ballId) return;
+
+          // Extract the color part from the ID (format: "uuid|color")
+          const ballParts = ballId.split("|");
+          if (ballParts.length < 2) return;
+
+          const ballColor = ballParts[1];
+
+          console.log(
+            `Ball collision detected: ${ballColor}. Building accepts: ${colors?.join(
+              ","
+            )}`
+          );
+
+          // Remove the ball always
+          if (type !== "spawner") {
+            removeBall(ballId);
+          }
+
+          // Check if this building accepts this ball color
+          if (colors?.includes(ballColor)) {
+            console.log(`Score incremented for ${ballColor} ball!`);
+            incrementScore();
           }
         }}
       />
