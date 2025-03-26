@@ -1,13 +1,18 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 import { CuboidCollider } from "@react-three/rapier";
 import { boxGeometry, obstacleMaterial } from "../../Level";
 import useBalls from "../../../stores/useBalls";
 import Sign from "./Sign";
 
-export default function Accelerator({ colors }: { colors: string[] }) {
+export default function Accelerator({
+  position = [0, 0.5, -1.2],
+  colors,
+}: {
+  position?: [number, number, number];
+  colors: string[];
+}) {
   const balls = useBalls((state) => state.balls);
 
-  // Gebruik useState in plaats van useRef
   const [directions, setDirections] = useState<boolean[]>(() =>
     colors.map((_, index) => index % 2 === 0)
   );
@@ -17,7 +22,7 @@ export default function Accelerator({ colors }: { colors: string[] }) {
   }
 
   return (
-    <group position={[0, 0.5, -1.2]}>
+    <group position={position}>
       <mesh
         geometry={boxGeometry}
         scale={[0.25, 0.25, 0.25]}
@@ -51,7 +56,7 @@ export default function Accelerator({ colors }: { colors: string[] }) {
         <Sign
           key={index}
           color={color}
-          position={[0, 0.25 * (index - 0.5), 0]}
+          position={[0, 0.25 * (index - (colors.length - 1) / 2), 0]}
           rotation={[0, directions[index] ? 0 : Math.PI, 0]}
           onClick={() => onClickSign(index)}
         />
