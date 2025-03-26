@@ -5,33 +5,91 @@ import Experience from "./Experience.jsx";
 import { KeyboardControls } from "@react-three/drei";
 import Interface from "./Interface.jsx";
 import { Leva } from "leva";
+import useGame from "./stores/useGame.js";
+import IntroScreen from "./Level/components/IntroScreen.jsx";
+import ReadyScreen from "./Level/components/ReadyScreen.jsx";
+import PauseScreen from "./Level/components/PauseScreen.jsx";
+import GameOverScreen from "./Level/components/GameOverScreen.jsx";
+import LevelTransition from "./Level/components/LevelTransition.jsx"; // Import the level transition component
+
+function App() {
+  const phase = useGame((state) => state.phase);
+  const isPaused = useGame((state) => state.isPaused);
+
+  return (
+    <>
+      <Leva />
+      {phase === "intro" ? (
+        <IntroScreen />
+      ) : phase === "ready" ? (
+        <>
+          <ReadyScreen />
+
+          <Canvas
+            shadows
+            camera={{
+              fov: 45,
+              near: 0.1,
+              far: 200,
+              position: [2.5, 4, 6],
+            }}
+          >
+            <Experience />
+          </Canvas>
+        </>
+      ) : phase === "levelComplete" ? ( // Add new level transition phase
+        <>
+          <LevelTransition /> {/* Display the level transition UI */}
+          <Canvas
+            shadows
+            camera={{
+              fov: 45,
+              near: 0.1,
+              far: 200,
+              position: [2.5, 4, 6],
+            }}
+          >
+            <Experience />
+          </Canvas>
+          <Interface />
+        </>
+      ) : phase === "ended" ? (
+        <>
+          <GameOverScreen />
+
+          <Canvas
+            shadows
+            camera={{
+              fov: 45,
+              near: 0.1,
+              far: 200,
+              position: [2.5, 4, 6],
+            }}
+          >
+            <Experience />
+          </Canvas>
+        </>
+      ) : (
+        <>
+          {isPaused && <PauseScreen />}
+
+          <Canvas
+            shadows
+            camera={{
+              fov: 45,
+              near: 0.1,
+              far: 200,
+              position: [2.5, 4, 6],
+            }}
+          >
+            <Experience />
+          </Canvas>
+          <Interface />
+        </>
+      )}
+    </>
+  );
+}
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
-
-root.render(
-  <>
-    <Leva />
-    <KeyboardControls
-      map={[
-        { name: "forward", keys: ["ArrowUp", "KeyW"] },
-        { name: "backward", keys: ["ArrowDown", "KeyS"] },
-        { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
-        { name: "rightward", keys: ["ArrowRight", "KeyD"] },
-        { name: "jump", keys: ["Space"] },
-      ]}
-    >
-      <Canvas
-        shadows
-        camera={{
-          fov: 45,
-          near: 0.1,
-          far: 200,
-          position: [2.5, 4, 6],
-        }}
-      >
-        <Experience />
-      </Canvas>
-      <Interface />
-    </KeyboardControls>
-  </>
-);
+root.render(<App />);
