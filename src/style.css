@@ -105,31 +105,58 @@ body,
  */
 
 .intro-screen {
-  position: fixed;
+  position: relative;
+  min-height: 100dvh;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.intro-inner {
+  min-height: 90dvh;
+  background-color: #9f85ff;
+  border-radius: 30px; /* Inner border radius */
+  display: flex;
+  justify-content: center;
+}
+
+.intro-bg {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
-  color: white;
-  z-index: 1000;
+  mix-blend-mode: soft-light;
+  opacity: 0.15;
+}
+
+.intro-logo {
+  width: 576px;
 }
 
 .intro-content {
-  max-width: 600px;
+  max-width: 80dvw;
   padding: 2rem;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
+  z-index: 100;
+}
+.intro-text-container {
+  position: relative;
+  z-index: 10;
 }
 
-.intro-content h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #61dafb;
+.intro-text-line {
+  opacity: 0; /* Start invisible */
+}
+
+.intro-track {
+  position: absolute;
+  bottom: 15%; /* Default position */
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 5;
+  transition: all 0.8s ease-in-out;
 }
 
 .instructions {
@@ -140,16 +167,19 @@ body,
 .start-button {
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  background-color: #61dafb;
-  color: #000;
+  background-color: #ffc83c;
+  color: #ffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 11px;
   cursor: pointer;
   transition: background-color 0.3s;
-}
-
-.start-button:hover {
-  background-color: #4fa8c3;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  box-shadow: 0 9px 0 0 #dc9329;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 100;
 }
 
 /**
