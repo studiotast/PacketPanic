@@ -10,6 +10,7 @@ import ReadyScreen from "./Level/components/ReadyScreen.jsx";
 import PauseScreen from "./Level/components/PauseScreen/PauseScreen.jsx";
 import GameOverScreen from "./Level/components/GameOverScreen.jsx";
 import LevelTransition from "./Level/components/LevelTransition.jsx"; // Import the level transition component
+import Explanation from "./Level/components/Explanation/Explanation.tsx";
 
 function App() {
   const phase = useGame((state) => state.phase);
@@ -71,6 +72,7 @@ function App() {
       ) : (
         <>
           {isPaused && <PauseScreen />}
+          {1 == 1 && <Explanation />}
 
           <Canvas
             shadows
