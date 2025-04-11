@@ -1,8 +1,8 @@
 import { Euler, Vector3 } from "@react-three/fiber";
 import React, { forwardRef, useMemo } from "react";
 import * as THREE from "three";
-import { useModels } from "../../../stores/useModels";
-import { getColorMaterial } from "../../../utils/getColorMaterial";
+import { useModels } from "../../../../stores/useModels";
+import { getColorMaterial } from "../../../../utils/getColorMaterial";
 
 interface SignProps {
   position?: Vector3;
@@ -13,17 +13,17 @@ interface SignProps {
 
 const Sign = forwardRef<any, SignProps>(
   ({ position = [0, 0, 0], color, rotation, onClick }, ref) => {
-    const { signPost } = useModels((state) => state.getModels());
+    const { signModel } = useModels((state) => state.getModels());
 
     const clonedModel = useMemo(() => {
-      const clone = signPost.clone();
+      const clone = signModel.clone();
       clone.traverse((child) => {
         if (child instanceof THREE.Mesh) {
           child.material = getColorMaterial(color);
         }
       });
       return clone;
-    }, [signPost, color]);
+    }, [signModel, color]);
 
     return (
       <group
