@@ -90,7 +90,7 @@ export default function IntroScreen() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      y: 250,
+      y: 200,
       transition: {
         staggerChildren: 0.3, // Longer delay between paragraphs
         delayChildren: 0.2,
