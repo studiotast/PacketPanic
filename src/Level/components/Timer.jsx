@@ -14,5 +14,5 @@ export default function Timer() {
       .padStart(2, "0")}`;
   };
 
-  return <div className="time">{formatTime(timer)}</div>;
+  return <div className="time">{formatTime(timer)} / 00:60</div>;
 }
