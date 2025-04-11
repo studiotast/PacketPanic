@@ -216,6 +216,12 @@ export default create(
           return { score: newScore };
         });
       },
+
+      toggleMute: () => {
+        set((state) => {
+          return { isMuted: !state.isMuted };
+        });
+      },
     };
   })
 );
