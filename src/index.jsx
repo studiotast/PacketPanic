@@ -2,13 +2,12 @@ import "./style.css";
 import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.jsx";
-import { KeyboardControls } from "@react-three/drei";
 import Interface from "./Interface.jsx";
 import { Leva } from "leva";
 import useGame from "./stores/useGame.js";
-import IntroScreen from "./Level/components/IntroScreen.jsx";
+import IntroScreen from "./Level/components/IntroScreen/IntroScreen.jsx";
 import ReadyScreen from "./Level/components/ReadyScreen.jsx";
-import PauseScreen from "./Level/components/PauseScreen.jsx";
+import PauseScreen from "./Level/components/PauseScreen/PauseScreen.jsx";
 import GameOverScreen from "./Level/components/GameOverScreen.jsx";
 import LevelTransition from "./Level/components/LevelTransition.jsx"; // Import the level transition component
 
