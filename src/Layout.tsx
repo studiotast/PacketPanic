@@ -8,12 +8,12 @@ type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps) {
-  const mute = useGame((state) => state.mute);
-  const unMute = useGame((state) => state.unMute);
+  const toggleMute = useGame((state) => state.toggleMute);
+  const isMuted = useGame((state) => state.isMuted);
   return (
     <div className="layout-container">
-      <div className="mute-icon" onClick={mute ? unMute : undefined}>
-        <FontAwesomeIcon icon={mute ? faVolumeSlash : faVolume} />
+      <div className="mute-icon" onClick={toggleMute}>
+        <FontAwesomeIcon icon={!isMuted ? faVolumeSlash : faVolume} />
       </div>
       <div className="layout-inner">
         {children}
