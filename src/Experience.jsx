@@ -33,6 +33,7 @@ export default function Experience() {
       <OrbitControls makeDefault />
       <color args={["#bdedfc"]} attach="background" />
       <Physics
+        gravity={[0, -5, -0.2]}
         debug={false}
         paused={
           isPaused ||

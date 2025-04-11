@@ -83,7 +83,7 @@ function App() {
           >
             <Experience />
           </Canvas>
-          {/* <Interface /> */}
+          <Interface />
         </>
       )}
     </>
