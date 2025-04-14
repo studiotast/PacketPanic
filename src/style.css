@@ -15,14 +15,142 @@ body,
 /*
 ** Interface
 */
+/* Score Progress Bar Styles */
+.score-progress-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem auto;
+  text-align: center;
+  background-color: #fff;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: 22.63px;
+  color: #000;
+  box-shadow: 0 9px 0 0 #e8eaf1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  position: absolute;
+  top: 60dvh;
+}
+
+.score-label {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.score-icon-container {
+  box-shadow: 0 9px 0 0 #e8eaf1;
+  border-radius: 0.7rem;
+  padding: 0.3rem;
+}
+
+.score-info-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.score-advance {
+  font-size: 1.5rem;
+  font-family: "Karla", sans-serif;
+  color: #c2c2c2;
+  font-weight: 300;
+  position: absolute;
+}
+
+.score-icon {
+  color: #ffc83c;
+  font-size: 2.2rem;
+}
+
+.score-text {
+  font-size: 1.5rem;
+  font-family: "Karla", sans-serif;
+  color: #000;
+  font-weight: 300;
+}
+
+.score-progress-bar {
+  position: relative;
+  height: 35px;
+  background-color: #e8eaf1;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 9px 0 0 #e8eaf1;
+  border: 5px solid #fff;
+}
+
+.score-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #26ffba;
+  border-radius: 30px;
+  transition: width 0.5s ease-in-out;
+}
+
+.score-target-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 5px;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+/* Update interface layout */
 .interface {
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
   pointer-events: none;
-  font-family: "Bebas Neue", cursive;
+}
+
+.score-wrapper {
+  position: relative;
+}
+
+.interface-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.level-info {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  max-width: 300px;
+  pointer-events: all;
+}
+
+.level-info h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+  color: white;
+}
+
+.level-info p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /**
@@ -67,6 +195,7 @@ body,
   padding-top: 10px;
   pointer-events: auto;
   cursor: pointer;
+  pointer-events: all;
 }
 
 /**
