@@ -92,7 +92,7 @@ export default create(
       startFromIntro: () => {
         set((state) => {
           if (state.phase === "intro") {
-            return { phase: "ready" };
+            return { phase: "explanation" };
           }
           return {};
         });

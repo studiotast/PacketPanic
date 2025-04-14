@@ -39,7 +39,8 @@ export default function Experience() {
           isPaused ||
           phase === "ended" ||
           phase === "ready" ||
-          phase === "levelComplete"
+          phase === "levelComplete" ||
+          phase === "explanation"
         }
       >
         <Lights />

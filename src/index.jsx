@@ -69,11 +69,27 @@ function App() {
             <Experience />
           </Canvas>
         </>
-      ) : (
+      ) : phase === "explanation" ? (
         <>
           {isPaused && <PauseScreen />}
           {1 == 1 && <Explanation />}
 
+          <Canvas
+            shadows
+            camera={{
+              fov: 45,
+              near: 0.1,
+              far: 200,
+              position: [2.5, 4, 6],
+            }}
+          >
+            <Experience />
+          </Canvas>
+          <Interface />
+        </>
+      ) : (
+        <>
+          {isPaused && <PauseScreen />}
           <Canvas
             shadows
             camera={{
