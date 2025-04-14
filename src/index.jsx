@@ -2,7 +2,7 @@ import "./style.css";
 import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience.jsx";
-import Interface from "./Interface.jsx";
+import Interface from "./Level/components/Interface/Interface.jsx";
 import { Leva } from "leva";
 import useGame from "./stores/useGame.js";
 import IntroScreen from "./Level/components/IntroScreen/IntroScreen.jsx";
