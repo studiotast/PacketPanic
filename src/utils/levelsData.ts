@@ -2,6 +2,7 @@ export interface LevelData {
   id: number;
   name: string;
   scoreToAdvance: number;
+  maxScore: number;
   timeLimit: number;
   description: string;
   trackConfig: {
@@ -32,7 +33,8 @@ const levelsData: LevelData[] = [
   {
     id: 1,
     name: "Packet Basics",
-    scoreToAdvance: 10,
+    scoreToAdvance: 200,
+    maxScore: 240,
     timeLimit: 60, // 60 seconds
     description: "Direct the colored packets to their matching buildings!",
     trackConfig: {
@@ -64,6 +66,7 @@ const levelsData: LevelData[] = [
     id: 2,
     name: "Network Junction",
     scoreToAdvance: 25,
+    maxScore: 30,
     timeLimit: 90, // 90 seconds
     description: "Navigate through multiple junctions to deliver packets!",
     trackConfig: {
