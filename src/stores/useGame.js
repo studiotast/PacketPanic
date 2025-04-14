@@ -31,6 +31,28 @@ export default create(
             setTimeout(() => set({ canTogglePause: true }), 300);
           }
         }
+
+        if (e.code === "Escape") {
+          e.preventDefault();
+
+          // Only handle pause toggle if in playing phase and not on cooldown
+          if (get().phase === "playing" && get().canTogglePause) {
+            // Prevent rapid toggling
+            set({ canTogglePause: false });
+
+            // Toggle pause state - FIXED LOGIC HERE
+            set((state) => {
+              const newIsPaused = !state.isPaused;
+              return {
+                isPaused: newIsPaused,
+                timerActive: !newIsPaused, // timerActive is opposite of the NEW isPaused value
+              };
+            });
+
+            // Reset debounce after delay
+            setTimeout(() => set({ canTogglePause: true }), 300);
+          }
+        }
       };
 
       // Use keydown for pause since it's no longer conflicting with jump
@@ -206,7 +228,7 @@ export default create(
       incrementScore: () => {
         set((state) => {
           const { score, currentLevel, phase } = state;
-          const newScore = score + 1;
+          const newScore = score + 10;
 
           // Check if level is complete based on score
           if (phase === "playing" && newScore >= currentLevel.scoreToAdvance) {
