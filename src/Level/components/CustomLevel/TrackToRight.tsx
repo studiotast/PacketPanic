@@ -1,9 +1,9 @@
 import React from "react";
 import {
   boxGeometry,
-  floor1Material,
-  obstacleMaterial,
-  wallMaterial,
+  beigeMaterial,
+  magentaMaterial,
+  purpleMaterial,
 } from "../../Level";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 
@@ -20,7 +20,7 @@ export default function TrackToRight({ length = 1 }) {
         <mesh
           position={[0, wallHeight / 2, trackWidth / 2 + wallThickness / 2]}
           geometry={boxGeometry}
-          material={wallMaterial}
+          material={purpleMaterial}
           scale={[4 * length, wallHeight, wallThickness]}
           castShadow
         />
@@ -28,7 +28,7 @@ export default function TrackToRight({ length = 1 }) {
         <mesh
           position={[0, wallHeight / 2, -(trackWidth / 2 + wallThickness / 2)]}
           geometry={boxGeometry}
-          material={wallMaterial}
+          material={purpleMaterial}
           scale={[4 * length + trackWidth / 2, wallHeight, wallThickness]}
           castShadow
         />
@@ -36,7 +36,7 @@ export default function TrackToRight({ length = 1 }) {
         <mesh
           position={[0, -0.05, 0]}
           geometry={boxGeometry}
-          material={floor1Material}
+          material={beigeMaterial}
           scale={[4 * length, 0.1, trackWidth]}
           receiveShadow
         />
@@ -55,7 +55,7 @@ export default function TrackToRight({ length = 1 }) {
           -(trackWidth / 2 + wallThickness / 2),
         ]}
         geometry={boxGeometry}
-        material={wallMaterial}
+        material={purpleMaterial}
         scale={[length * 2 + 2, wallHeight, wallThickness]}
         receiveShadow
       /> */}
@@ -63,7 +63,7 @@ export default function TrackToRight({ length = 1 }) {
         {/* <mesh
         position={[0, wallHeight / 2, -(length * 4) + 2]}
         geometry={boxGeometry}
-        material={wallMaterial}
+        material={purpleMaterial}
         scale={[trackWidth + wallThickness * 2, wallHeight, 0.3]}
         receiveShadow
       /> */}

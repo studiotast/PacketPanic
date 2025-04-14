@@ -1,12 +1,21 @@
-import { purpleBallMaterial, yellowBallMaterial } from "../Level/Level";
+import {
+  blueMaterial,
+  purpleMaterial,
+  redMaterial,
+  yellowMaterial,
+} from "../Level/Level";
 
 export function getColorMaterial(color: string) {
   switch (color) {
     case "yellow":
-      return yellowBallMaterial;
+      return yellowMaterial;
     case "purple":
-      return purpleBallMaterial;
+      return purpleMaterial;
+    case "red":
+      return redMaterial;
+    case "blue":
+      return blueMaterial;
     default:
-      return yellowBallMaterial;
+      return yellowMaterial;
   }
 }

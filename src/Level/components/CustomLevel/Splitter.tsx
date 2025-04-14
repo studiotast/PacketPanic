@@ -3,8 +3,8 @@ import { RigidBody } from "@react-three/rapier";
 import { useRef, useState } from "react";
 import {
   boxGeometry,
-  floor2Material,
-  obstacleMaterial,
+  yellowMaterial,
+  magentaMaterial,
   traingleMaterial,
   triangleGeometry,
 } from "../../Level";

@@ -1,5 +1,5 @@
 import React from "react";
-import { boxGeometry, floor1Material, wallMaterial } from "../../Level";
+import { boxGeometry, beigeMaterial, purpleMaterial } from "../../Level";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 
 export default function TrackStraight({ length = 1 }) {
@@ -18,7 +18,7 @@ export default function TrackStraight({ length = 1 }) {
           -(length * 2) + 2 + trackWidth / 2,
         ]}
         geometry={boxGeometry}
-        material={wallMaterial}
+        material={purpleMaterial}
         scale={[wallThickness, wallHeight, 4 * length - trackWidth]}
         castShadow
       />
@@ -31,7 +31,7 @@ export default function TrackStraight({ length = 1 }) {
           ,
         ]}
         geometry={boxGeometry}
-        material={wallMaterial}
+        material={purpleMaterial}
         scale={[wallThickness, wallHeight, 4 * length - trackWidth]}
         receiveShadow
       />
@@ -39,7 +39,7 @@ export default function TrackStraight({ length = 1 }) {
       <mesh
         position={[0, wallHeight / 2, -(length * 4) + 2]}
         geometry={boxGeometry}
-        material={wallMaterial}
+        material={purpleMaterial}
         scale={[trackWidth + wallThickness, wallHeight, wallThickness]}
         receiveShadow
       />
@@ -47,7 +47,7 @@ export default function TrackStraight({ length = 1 }) {
       <mesh
         position={[0, -0.05, -(length * 2) + 2]}
         geometry={boxGeometry}
-        material={floor1Material}
+        material={beigeMaterial}
         scale={[trackWidth, 0.1, 4 * length]}
         receiveShadow
       />

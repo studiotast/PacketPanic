@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { useRef, useState } from "react";
-import { boxGeometry, floor2Material, obstacleMaterial } from "../../Level";
+import { boxGeometry, yellowMaterial, magentaMaterial } from "../../Level";
 import { useControls } from "leva";
 import * as THREE from "three";
 
@@ -33,7 +33,7 @@ export default function Bar({ position = [0, 0, 0] }) {
       >
         <mesh
           geometry={boxGeometry}
-          material={obstacleMaterial}
+          material={magentaMaterial}
           scale={[3.5, 0.3, 0.3]}
           castShadow
           receiveShadow

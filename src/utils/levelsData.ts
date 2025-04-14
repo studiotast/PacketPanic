@@ -39,24 +39,24 @@ const levelsData: LevelData[] = [
       accelerators: [
         {
           position: [0, 0.5, -4],
-          colors: ["yellow", "purple"],
+          colors: ["blue", "red"],
         },
       ],
       buildings: [
         {
           position: [-2, 0.75, -9],
-          colors: ["purple", "yellow"],
+          colors: ["blue", "red"],
         },
         {
           position: [5, 0.75, -7],
-          colors: ["yellow"],
+          colors: ["red"],
         },
       ],
       spawner: {
         position: [0, 0.75, 2.5],
         spawnRate: 2.0,
         minSpawnRate: 0.4,
-        ballColors: ["yellow", "purple"],
+        ballColors: ["blue", "red"],
       },
     },
   },

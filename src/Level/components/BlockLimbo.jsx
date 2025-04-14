@@ -1,7 +1,7 @@
 import { useFrame } from "@react-three/fiber";
 import { RigidBody } from "@react-three/rapier";
 import { useRef, useState } from "react";
-import { boxGeometry, floor2Material, obstacleMaterial } from "../Level";
+import { boxGeometry, yellowMaterial, magentaMaterial } from "../Level";
 
 export default function BlockLimbo({ position = [0, 0, 0] }) {
   const obstacle = useRef();
@@ -22,7 +22,7 @@ export default function BlockLimbo({ position = [0, 0, 0] }) {
     <group position={position}>
       <mesh
         geometry={boxGeometry}
-        material={floor2Material}
+        material={yellowMaterial}
         position={[0, -0.1, 0]}
         scale={[4, 0.2, 4]}
         receiveShadow
@@ -36,7 +36,7 @@ export default function BlockLimbo({ position = [0, 0, 0] }) {
       >
         <mesh
           geometry={boxGeometry}
-          material={obstacleMaterial}
+          material={magentaMaterial}
           scale={[3.5, 0.3, 0.3]}
           castShadow
           receiveShadow
