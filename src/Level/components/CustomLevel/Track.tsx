@@ -1,6 +1,6 @@
 import { RigidBody } from "@react-three/rapier";
 import React from "react";
-import Accelerator from "./Accelerator";
+import Accelerator from "./Accelerator/Accelerator";
 import Building from "./Building";
 import Corner from "./Corner";
 import Junction from "./Junction";
@@ -12,7 +12,7 @@ export default function Track() {
   const currentLevel = useGame((state) => state.currentLevel);
 
   return (
-    <group rotation={[-0.05, 0, 0]}>
+    <group rotation={[0, 0, 0]}>
       {/* Level 1 Track Layout */}
       {currentLevel.id === 1 && (
         <RigidBody
@@ -21,14 +21,14 @@ export default function Track() {
           restitution={0.2}
           friction={0}
         >
-          <Straight position={[0, 0, 1]} length={3} />
-          <Straight rotation={[0, Math.PI * 0.5, 0]} position={[1, 0, -1]} />
+          <Straight position={[0, 0, 0]} length={3} />
+          {/* <Straight rotation={[0, Math.PI * 0.5, 0]} position={[1, 0, -1]} />
           <Straight rotation={[0, Math.PI * 0.5, 0]} position={[-1, 0, -1]} />
           <Junction position={[0, 0, -1]} />
           <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-2, 0, -1]} />
           <Straight rotation={[0, 0, 0]} position={[-2, 0, -2]} />
           <Corner rotation={[0, Math.PI * 1, 0]} position={[2, 0, -1]} />
-          <Straight rotation={[0, 0, 0]} position={[2, 0, -2]} />
+          <Straight rotation={[0, 0, 0]} position={[2, 0, -2]} /> */}
         </RigidBody>
       )}
 
@@ -76,7 +76,7 @@ export default function Track() {
       )}
 
       {/* Dynamic elements based on level config */}
-      {currentLevel.trackConfig.accelerators.map((acc, index) => (
+      {/* {currentLevel.trackConfig.accelerators.map((acc, index) => (
         <Accelerator
           key={`accelerator-${index}`}
           position={acc.position}
@@ -95,7 +95,7 @@ export default function Track() {
       <Building
         position={currentLevel.trackConfig.spawner.position}
         type="spawner"
-      />
+      /> */}
     </group>
   );
 }

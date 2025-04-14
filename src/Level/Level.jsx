@@ -4,10 +4,11 @@ import BlockAxe from "./components/BlockAxe";
 import BlockLimbo from "./components/BlockLimbo";
 import BlockSpinner from "./components/BlockSpinner";
 import Track from "./components/CustomLevel/Track";
+import TrackLevel1 from "./components/CustomLevel/Tracks/TrackLevel1/TrackLevel1";
 
 // reusable geometries
 export const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-export const sphereGeometry = new THREE.SphereGeometry(0.11, 16, 16);
+export const sphereGeometry = new THREE.SphereGeometry(0.35, 16, 16);
 export const triangleGeometry = new THREE.BufferGeometry();
 
 // Define the vertices of the 3D triangle
@@ -119,7 +120,8 @@ export default function Level({
       ))}
       <BlockEnd position={[0, 0, -(count + 1) * 4]} /> */}
       {/* <Bounds length={count + 2} /> */}
-      <Track />
+      {/* <Track /> */}
+      <TrackLevel1 />
     </>
   );
 }

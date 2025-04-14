@@ -23,17 +23,19 @@ const Balls = forwardRef((props, ref) => {
 
   // Get spawner configuration from current level
   const {
-    position: BUILDING_POSITION,
+    // position: BUILDING_POSITION,
     spawnRate,
     minSpawnRate,
     ballColors,
   } = currentLevel.trackConfig.spawner;
 
+  const BUILDING_POSITION = [0, 1, 2];
+
   // Consistent ball velocity - use the same values for all balls
   const BALL_VELOCITY = [
     0, // No X spread (horizontal movement)
     5, // Strong upward Y velocity
-    -5, // Strong forward velocity (toward player, negative Z)
+    -15, // Strong forward velocity (toward player, negative Z)
   ];
 
   // Control ball generation timing with dynamic speed adjustment
@@ -65,7 +67,7 @@ const Balls = forwardRef((props, ref) => {
       addBall({
         id: `${THREE.MathUtils.generateUUID()}|yellow`,
         position: [
-          BUILDING_POSITION[0] + 0.09,
+          BUILDING_POSITION[0],
           BUILDING_POSITION[1] + 0.1,
           BUILDING_POSITION[2] - 0.5,
         ],
@@ -77,7 +79,7 @@ const Balls = forwardRef((props, ref) => {
       addBall({
         id: `${THREE.MathUtils.generateUUID()}|purple`,
         position: [
-          BUILDING_POSITION[0] + 0.09,
+          BUILDING_POSITION[0],
           BUILDING_POSITION[1] + 0.1,
           BUILDING_POSITION[2] - 0.5,
         ],
@@ -89,7 +91,7 @@ const Balls = forwardRef((props, ref) => {
       addBall({
         id: `${THREE.MathUtils.generateUUID()}|green`,
         position: [
-          BUILDING_POSITION[0] + 0.09,
+          BUILDING_POSITION[0],
           BUILDING_POSITION[1] + 0.1,
           BUILDING_POSITION[2] - 0.5,
         ],
@@ -159,7 +161,7 @@ const Balls = forwardRef((props, ref) => {
         addBall({
           id: `${THREE.MathUtils.generateUUID()}|${randomColor}`,
           position: [
-            BUILDING_POSITION[0] + 0.09,
+            BUILDING_POSITION[0],
             BUILDING_POSITION[1] + 0.1,
             BUILDING_POSITION[2] - 0.5,
           ],

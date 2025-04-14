@@ -4,9 +4,12 @@ import * as THREE from "three";
 
 interface ModelsState {
   straightModel: THREE.Object3D;
+  straightShortModel: THREE.Object3D;
   cornerModel: THREE.Object3D;
+  curveModel: THREE.Object3D;
   junctionModel: THREE.Object3D;
-  signPost: THREE.Object3D;
+  signModel: THREE.Object3D;
+  signPostModel: THREE.Object3D;
   getModels: () => ModelsState;
 }
 export const useModels = create<ModelsState>((set) => {
@@ -18,10 +21,16 @@ export const useModels = create<ModelsState>((set) => {
       if (loaded) return models;
 
       models = {
-        straightModel: useGLTF("assets/models/tube_straight_a02.glb").scene,
-        cornerModel: useGLTF("assets/models/tube_corner_a02.glb").scene,
-        junctionModel: useGLTF("assets/models/tube_junction_a02.glb").scene,
-        signPost: useGLTF("assets/models/signpost_a02.glb").scene,
+        straightModel: useGLTF("assets/models/track_straight_long_a01.glb")
+          .scene,
+        straightShortModel: useGLTF(
+          "assets/models/track_straight_short_a01.glb"
+        ).scene,
+        cornerModel: useGLTF("assets/models/track_corner_a01.glb").scene,
+        curveModel: useGLTF("assets/models/track_curve_a01.glb").scene,
+        junctionModel: useGLTF("assets/models/track_junction_a01.glb").scene,
+        signModel: useGLTF("assets/models/signpost_sign_a01.glb").scene,
+        signPostModel: useGLTF("assets/models/signpost_pole_a01.glb").scene,
       };
       loaded = true;
 
