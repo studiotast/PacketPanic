@@ -26,7 +26,7 @@ export default function Interface() {
 
       {/* Score */}
       <div className="score-wrapper">
-        <ScoreProgress />
+        <ScoreProgress type="game" />
       </div>
 
       {/* Restart button - only shown when game is ended */}

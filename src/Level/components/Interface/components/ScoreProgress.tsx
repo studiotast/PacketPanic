@@ -3,7 +3,11 @@ import useGame from "../../../../stores/useGame";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBox } from "@fortawesome/pro-solid-svg-icons";
 
-const ScoreProgress = () => {
+type ScoreProgressProps = {
+  type: "game" | "end";
+};
+
+export default function ScoreProgress({ type }: ScoreProgressProps) {
   const score = useGame((state) => state.score);
   const currentLevel = useGame((state) => state.currentLevel);
   const scoreToAdvance = currentLevel.scoreToAdvance;
@@ -16,7 +20,22 @@ const ScoreProgress = () => {
   const targetPosition = (scoreToAdvance / maxScore) * 100; // 83.33%
 
   return (
-    <div className="score-progress-container">
+    <div
+      className="score-progress-container"
+      style={
+        type === "game"
+          ? {
+              position: "absolute",
+              top: "60dvh",
+              boxShadow: "0 9px 0 0 #e8eaf1",
+              paddingLeft: "2rem",
+              paddingRight: "2rem",
+              paddingTop: "0.5rem",
+              paddingBottom: "1.5rem",
+            }
+          : {}
+      }
+    >
       <div className="score-info-container">
         <div className="score-label">
           <div className="score-icon-container">
@@ -56,6 +75,4 @@ const ScoreProgress = () => {
       </div>
     </div>
   );
-};
-
-export default ScoreProgress;
+}
