@@ -1,42 +1,32 @@
 import React from "react";
-import useGame from "../../stores/useGame";
 import "../../style.css";
+import ScoreProgress from "./Interface/components/ScoreProgress";
+import Button from "../../Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/pro-solid-svg-icons";
 
 export default function GameOverScreen() {
-  const score = useGame((state) => state.score);
-  const timer = useGame((state) => state.timer);
-  const restart = useGame((state) => state.restart);
-  const completeRestart = useGame((state) => state.completeRestart);
-
-  // Format time function
-  const formatTime = (timeInSeconds) => {
-    const minutes = Math.floor(timeInSeconds / 60);
-    const seconds = Math.floor(timeInSeconds % 60);
-    return `${minutes.toString().padStart(2, "0")}:${seconds
-      .toString()
-      .padStart(2, "0")}`;
-  };
-
   return (
     <div className="game-over-screen">
       <div className="game-over-content">
-        <h2>Game Over!</h2>
-        <div className="game-stats">
-          <p className="final-score">
-            Final Score: <span>{score}</span>
+        <div className="game-over-content-wrapper">
+          <p className="game-over-header">Resultaat van vandaag</p>
+          <p className="game-over-details">
+            Lekker bezig je eerste dag heb je de doelen gehaald.
           </p>
-          <p className="final-time">
-            Time: <span>{formatTime(timer)}</span>
-          </p>
+          <ScoreProgress />
         </div>
-        <div className="game-over-buttons">
-          <button className="restart-button" onClick={restart}>
-            Play Again
-          </button>
-          <button className="menu-button" onClick={completeRestart}>
-            Main Menu
-          </button>
-        </div>
+        <Button
+          className="game-over-button"
+          onClick={() => {
+            window.location.reload();
+          }}
+        >
+          Verder
+          <FontAwesomeIcon icon={faCircleCheck} />
+        </Button>
+
+        <img alt="bg" src="/images/bg.jpg" className="game-over-bg" />
       </div>
     </div>
   );
