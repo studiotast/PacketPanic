@@ -13,7 +13,6 @@ import Card from "./components/Card";
 
 export default function PauseScreen() {
   const togglePause = useGame((state) => state.togglePause);
-  const startFromIntro = useGame((state) => state.startFromIntro);
 
   const pauseScreenData = [
     {
@@ -24,7 +23,7 @@ export default function PauseScreen() {
     {
       title: "Terug naar home",
       icon: faHome,
-      action: startFromIntro,
+      action: "startFromIntro",
     },
     {
       title: "Level kiezen",

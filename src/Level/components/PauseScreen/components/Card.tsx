@@ -3,14 +3,17 @@ import React from "react";
 import "../../../../style.css";
 import { IconDefinition } from "@fortawesome/pro-solid-svg-icons";
 import { motion } from "framer-motion";
+import useGame from "../../../../stores/useGame";
 
 type CardProps = {
   title: string;
   icon: IconDefinition;
-  action: () => void;
+  action: string;
 };
 
 export default function Card({ title, icon, action }: CardProps) {
+  const startFromIntro = useGame((state) => state.startFromIntro);
+
   const buttonVariants = {
     initial: {
       scale: 1,
@@ -26,7 +29,10 @@ export default function Card({ title, icon, action }: CardProps) {
       initial="initial"
       whileTap="tap"
     >
-      <div className="card" onClick={action}>
+      <div
+        className="card"
+        onClick={action === "startFromIntro" ? startFromIntro : undefined}
+      >
         <div className="card-icon">
           <FontAwesomeIcon icon={icon} />
         </div>
