@@ -711,7 +711,9 @@ body,
   mix-blend-mode: soft-light;
   opacity: 0.15;
   pointer-events: none;
+  border-radius: 30px;
   z-index: 1;
+  object-fit: cover;
 }
 
 .mute-icon {
