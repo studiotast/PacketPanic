@@ -4,7 +4,6 @@ import Timer from "../Timer";
 import ScoreProgress from "./components/ScoreProgress";
 
 export default function Interface() {
-  const score = useGame((state) => state.score);
   const restart = useGame((state) => state.restart);
   const phase = useGame((state) => state.phase);
 
