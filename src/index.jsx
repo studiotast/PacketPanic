@@ -85,7 +85,7 @@ function App() {
           >
             <Experience />
           </Canvas>
-          <Interface />
+          {!isPaused && <Interface />}
         </>
       ) : (
         <>
@@ -101,7 +101,7 @@ function App() {
           >
             <Experience />
           </Canvas>
-          <Interface />
+          {!isPaused && <Interface />}
         </>
       )}
     </>
