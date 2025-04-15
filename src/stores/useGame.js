@@ -6,6 +6,20 @@ const TIME_LIMIT = 45; // 45 seconds game limit
 
 export default create(
   subscribeWithSelector((set, get) => {
+    const levelSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/level.mp3") : null;
+
+    const menuSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/menu.mp3") : null;
+
+    const inHoleSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/in-hole.wav") : null;
+
+    const boostSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/boost.wav") : null;
+
+    const scoreSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/score.wav") : null;
     // Setup keyboard listeners
     const setupKeyboardListeners = () => {
       const handleKeyDown = (e) => {
@@ -89,12 +103,49 @@ export default create(
       isPaused: false,
       canTogglePause: true, // Used for debouncing
 
+      // Mute
+      isMuted: true,
+
+      // Level sound
+      sounds: {
+        level: levelSound,
+        menu: menuSound,
+        inHole: inHoleSound,
+        boost: boostSound,
+        score: scoreSound,
+      },
+
       // Score
       score: 0,
 
       // New level properties
       currentLevelId: 1,
       currentLevel: levelsData[0],
+
+      // Play a sound from the sounds object
+      playSound: (soundName) => {
+        const { sounds, isMuted } = get();
+        const sound = sounds[soundName];
+        console.log("playSound", soundName, sound, isMuted);
+
+        if (sound && !isMuted) {
+          sound.currentTime = 0; // Reset to start
+
+          // Only set loop for menu sound
+          sound.loop = soundName === "menu" || soundName === "level";
+
+          // Return the Promise from play()
+          try {
+            sound.play();
+            return sound; // Return the sound object
+          } catch (err) {
+            console.error("Error playing sound:", err);
+            return false;
+          }
+        }
+
+        return false; // Return false if sound doesn't exist or is muted
+      },
 
       // Toggle pause state
       togglePause: () => {
@@ -115,6 +166,9 @@ export default create(
         set((state) => {
           if (state.phase === "intro") {
             return { phase: "explanation" };
+          }
+          if (state.isPaused) {
+            return { phase: "intro", isPaused: false };
           }
           return {};
         });
@@ -239,8 +293,29 @@ export default create(
         });
       },
 
+      stopSound: (soundName) => {
+        const { sounds, isMuted } = get();
+        const sound = sounds[soundName];
+
+        if (sound) {
+          sound.pause();
+          sound.currentTime = 0;
+          return true;
+        }
+        return false;
+      },
+
       toggleMute: () => {
         set((state) => {
+          // Stop all sounds when muting
+          if (!state.isMuted) {
+            Object.values(state.sounds).forEach((sound) => {
+              if (sound && !sound.paused) {
+                sound.pause();
+                sound.currentTime = 0;
+              }
+            });
+          }
           return { isMuted: !state.isMuted };
         });
       },

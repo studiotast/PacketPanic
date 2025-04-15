@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import useBalls from "../../../../stores/useBalls";
 import Sign from "./Sign";
 import SignPost from "./SignPost";
+import useGame from "../../../../stores/useGame";
 
 export default function Accelerator({
   position = [0, 0.5, -1.2],
@@ -12,6 +13,7 @@ export default function Accelerator({
   colors: string[];
 }) {
   const balls = useBalls((state) => state.balls);
+  const playSound = useGame((state) => state.playSound);
 
   const [directions, setDirections] = useState<boolean[]>(() =>
     colors.map((_, index) => index % 2 === 0)
@@ -35,6 +37,7 @@ export default function Accelerator({
         sensor
         onIntersectionEnter={(intersect) => {
           console.log("Intersection detected with accelerator");
+          playSound("boost");
           if (intersect?.colliderObject) {
             const ballId = intersect.colliderObject.name;
             const ballColor = ballId.split("|")[1];

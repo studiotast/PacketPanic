@@ -21,6 +21,7 @@ export default function Building({
 }: BuildingProps) {
   const incrementScore = useGame((state) => state.incrementScore);
   const removeBall = useBalls((state) => state.removeBall); // Haal de removeBall functie uit de store
+  const playSound = useGame((state) => state.playSound);
 
   return (
     <group rotation={rotation} position={position}>
@@ -42,6 +43,7 @@ export default function Building({
         args={[0.5, 0.5, 0.5]}
         sensor
         onIntersectionEnter={(intersection) => {
+          playSound("inHole");
           if (!intersection.colliderObject) return;
 
           // Get the ball's ID (which includes color information)
@@ -69,6 +71,7 @@ export default function Building({
           // Check if this building accepts this ball color
           if (colors?.includes(ballColor)) {
             console.log(`Score incremented for ${ballColor} ball!`);
+            playSound("score");
             incrementScore();
           }
         }}
