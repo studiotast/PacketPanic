@@ -22,18 +22,11 @@ body,
   margin: 1rem auto;
   text-align: center;
   background-color: #fff;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 0.5rem;
-  padding-bottom: 1.5rem;
   border-radius: 22.63px;
   color: #000;
-  box-shadow: 0 9px 0 0 #e8eaf1;
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  position: absolute;
-  top: 60dvh;
 }
 
 .score-label {
@@ -320,7 +313,6 @@ body,
   transition: background-color 0.3s;
   position: absolute;
   bottom: 5%;
-  left: 50%;
   box-shadow: 0 9px 0 0 #dc9329;
   display: flex;
   gap: 0.1rem;
@@ -515,68 +507,74 @@ body,
 }
 
 .game-over-content {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #9f85ff;
   border-radius: 10px;
-  padding: 2rem;
-  text-align: center;
-  max-width: 500px;
-}
-
-.game-over-content h2 {
-  color: #ff5252;
-  font-size: 3rem;
-  margin-bottom: 2rem;
-}
-
-.game-stats {
-  margin-bottom: 2rem;
-}
-
-.final-score,
-.final-time {
-  font-size: 1.5rem;
-  margin: 0.5rem 0;
-  color: white;
-}
-
-.final-score span,
-.final-time span {
-  color: #61dafb;
-  font-weight: bold;
-}
-
-.game-over-buttons {
   display: flex;
+  width: 60dvw;
+  height: 600px;
+  position: relative;
+  align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
+  flex-direction: column;
 }
 
-.restart-button,
-.menu-button {
+.game-over-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  mix-blend-mode: soft-light;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+  object-fit: cover;
+}
+
+.game-over-button {
   padding: 1rem 2rem;
   font-size: 1.2rem;
+  background-color: #ffc83c;
+  color: #ffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 11px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 9px 0 0 #dc9329;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  font-family: "Karla", sans-serif;
+  font-weight: 600;
+  margin: 0 auto;
+  z-index: 2;
 }
 
-.restart-button {
-  background-color: #61dafb;
-  color: #000;
+.game-over-content-wrapper {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 1.5rem;
+  border-radius: 30px;
+  width: 400px;
+  height: 350px;
+  gap: 1rem;
+  z-index: 2;
 }
 
-.menu-button {
-  background-color: #ff5252;
-  color: white;
+.game-over-header {
+  font-size: 2.7rem;
+  color: #9f85ff;
+  font-family: "FatFrank", sans-serif;
+  height: 50px;
 }
 
-.restart-button:hover {
-  background-color: #4fa8c3;
-}
-
-.menu-button:hover {
-  background-color: #ff3838;
+.game-over-details {
+  font-family: "Karla", sans-serif;
+  font-size: 1.2rem;
+  height: 10px;
 }
 
 /**
@@ -700,7 +698,8 @@ body,
   border-radius: 30px;
   display: flex;
   justify-content: center;
-  position: relative; /* Establish stacking context */
+  position: relative;
+  z-index: 2;
 }
 
 .layout-bg {
@@ -711,8 +710,8 @@ body,
   width: 100%;
   mix-blend-mode: soft-light;
   opacity: 0.15;
-  pointer-events: none; /* Already good - keeps mouse events passing through */
-  z-index: 1; /* Place just above the background */
+  pointer-events: none;
+  z-index: 1;
 }
 
 .mute-icon {
@@ -729,5 +728,5 @@ body,
   align-items: center;
   display: flex;
   justify-content: center;
-  z-index: 100;
+  z-index: 3;
 }
