@@ -11,11 +11,9 @@ type ButtonProps = {
 export default function Button({ children, onClick, className }: ButtonProps) {
   const buttonVariants = {
     initial: {
-      x: "-50%",
       scale: 1,
     },
     tap: {
-      x: "-50%",
       scale: 0.95,
     },
   };
