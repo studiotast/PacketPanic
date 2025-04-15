@@ -11,6 +11,7 @@ import PauseScreen from "./Level/components/PauseScreen/PauseScreen.jsx";
 import GameOverScreen from "./Level/components/GameOverScreen.jsx";
 import LevelTransition from "./Level/components/LevelTransition.jsx"; // Import the level transition component
 import Explanation from "./Level/components/Explanation/Explanation.tsx";
+import MuteButton from "./MuteButton.tsx";
 
 function App() {
   const phase = useGame((state) => state.phase);
@@ -18,13 +19,13 @@ function App() {
 
   return (
     <>
+      <MuteButton />
       <Leva />
       {phase === "intro" ? (
         <IntroScreen />
       ) : phase === "ready" ? (
         <>
           <ReadyScreen />
-
           <Canvas
             shadows
             camera={{
@@ -51,7 +52,6 @@ function App() {
           >
             <Experience />
           </Canvas>
-          <Interface />
         </>
       ) : phase === "ended" ? (
         <>
@@ -85,7 +85,6 @@ function App() {
           >
             <Experience />
           </Canvas>
-          {!isPaused && <Interface />}
         </>
       ) : (
         <>

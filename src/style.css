@@ -457,7 +457,7 @@ body,
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  z-index: 1000;
+  z-index: 100;
   /* pointer-events: none; */
 }
 
@@ -718,8 +718,8 @@ body,
 
 .mute-icon {
   position: absolute;
-  top: 65px;
-  right: 65px;
+  top: 55px;
+  right: 55px;
   cursor: pointer;
   font-size: 28px;
   color: #677eff;
@@ -730,5 +730,5 @@ body,
   align-items: center;
   display: flex;
   justify-content: center;
-  z-index: 3;
+  z-index: 1000;
 }
