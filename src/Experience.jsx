@@ -29,6 +29,10 @@ export default function Experience() {
   });
   return (
     <>
+      <ambientLight intensity={1.8} /> // Omgevingslicht voor algemene
+      helderheid
+      <directionalLight intensity={1.5} position={[10, 10, 10]} castShadow />
+      <pointLight intensity={1} position={[0, 5, 0]} />
       <Perf position="top-left" />
       <OrbitControls makeDefault />
       <color args={["#bdedfc"]} attach="background" />

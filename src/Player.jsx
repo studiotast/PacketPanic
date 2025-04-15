@@ -6,7 +6,7 @@ import * as THREE from "three";
 import useGame from "./stores/useGame";
 import usePlayer from "./stores/usePlayer";
 import { useControls } from "leva";
-import { blueBallMaterial, sphereGeometry } from "./Level/Level";
+import { blueMaterial, sphereGeometry } from "./Level/Level";
 
 export default function Player() {
   const body = useRef();
@@ -160,7 +160,7 @@ export default function Player() {
       position={[0, 1, 0]}
       canSleep={false}
     >
-      <mesh castShadow material={blueBallMaterial} geometry={sphereGeometry}>
+      <mesh castShadow material={blueMaterial} geometry={sphereGeometry}>
         {/* <icosahedronGeometry args={[0.3, 1]} /> */}
       </mesh>
     </RigidBody>
