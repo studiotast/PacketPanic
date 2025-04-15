@@ -146,8 +146,8 @@ body,
 
 .intro-text-paragraph {
   color: #fff;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 800;
   line-height: 1.5;
   text-align: center;
 }
@@ -168,9 +168,8 @@ body,
 
 .intro-track {
   position: absolute;
-  bottom: 15%; /* Default position */
-  left: 0;
-  width: 100%;
+  bottom: 0;
+  width: 100dvw;
   height: auto;
   z-index: 5;
   transition: all 0.8s ease-in-out;
@@ -191,7 +190,7 @@ body,
   cursor: pointer;
   transition: background-color 0.3s;
   position: absolute;
-  bottom: 20%;
+  bottom: 5%;
   left: 50%;
   box-shadow: 0 9px 0 0 #dc9329;
   display: flex;
@@ -241,38 +240,88 @@ body,
 
 .pause-content {
   text-align: center;
-  padding: 2rem;
-  border-radius: 10px;
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 55px;
+  position: relative; /* Add this */
+  z-index: 2; /* Place above bg image */
+  width: 100%; /* Add this for proper container sizing */
+}
+
+/* 3. Make card components properly interactive */
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  max-width: 900px;
+  position: relative; /* Add this */
+  z-index: 3; /* Higher than pause-content */
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 2.35rem 1.75rem;
+  box-shadow: 0 7px 0 0 #e5e7ea;
+  color: #000000;
+  text-decoration: none;
+  font-family: "FatFrank", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  width: 200px;
+  min-height: 100px;
+  position: relative; /* Add positioning context */
+  z-index: 1; /* Add z-index */
 }
 
 .pause-content h2 {
   font-size: 5rem;
   margin-bottom: 1rem;
   color: #fff;
-  font-family: "fatfrank", sans-serif;
+  font-family: "FatFrank", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
 
-.pause-content p {
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 30px;
+  cursor: pointer;
 }
 
-.resume-button {
+.card-icon {
+  font-size: 48px;
+  color: #677eff;
+}
+
+.pause-button {
   padding: 1rem 2rem;
   font-size: 1.2rem;
-  background-color: #61dafb;
-  color: #000;
+  background-color: #ffc83c;
+  color: #ffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 11px;
   cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.resume-button:hover {
-  background-color: #4fa8c3;
+  box-shadow: 0 9px 0 0 #dc9329;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  z-index: 100;
+  font-family: "Karla", sans-serif;
+  font-weight: 600;
+  position: static !important;
+  margin: 0 auto;
+  transform: none !important;
 }
 
 /**
@@ -474,9 +523,10 @@ body,
 .layout-inner {
   min-height: calc(100dvh - 64px);
   background-color: #9f85ff;
-  border-radius: 30px; /* Inner border radius */
+  border-radius: 30px;
   display: flex;
   justify-content: center;
+  position: relative; /* Establish stacking context */
 }
 
 .layout-bg {
@@ -484,6 +534,26 @@ body,
   top: 0;
   left: 0;
   height: 100%;
+  width: 100%;
   mix-blend-mode: soft-light;
   opacity: 0.15;
+  pointer-events: none; /* Already good - keeps mouse events passing through */
+  z-index: 1; /* Place just above the background */
+}
+
+.mute-icon {
+  position: absolute;
+  top: 65px;
+  right: 65px;
+  cursor: pointer;
+  font-size: 28px;
+  color: #677eff;
+  background-color: #fff;
+  border-radius: 999px;
+  box-shadow: 0 7px 0 0 #e5e7ea;
+  padding: 1.25rem 1.2rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
 }

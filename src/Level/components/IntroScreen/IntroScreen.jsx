@@ -5,10 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
-import Button from "../../Button";
-import Layout from "../../Layout";
-import useGame from "../../stores/useGame.js";
-import "../../style.css";
+import Button from "../../../Button";
+import Layout from "../../../Layout";
+import useGame from "../../../stores/useGame.js";
+import "../../../style.css";
 
 // Tooltip component for interactive terms
 const InteractiveTerm = ({ term, explanation }) => (
@@ -90,7 +90,7 @@ export default function IntroScreen() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      y: 200,
+      y: 225,
       transition: {
         staggerChildren: 0.3, // Longer delay between paragraphs
         delayChildren: 0.2,
@@ -227,7 +227,7 @@ export default function IntroScreen() {
           </motion.div>
         )}
 
-        <Button onClick={handleClick}>
+        <Button className="start-button" onClick={handleClick}>
           {page === 0 ? "Volgende" : "Beginnen"}
           <FontAwesomeIcon
             icon={page === 0 ? faArrowRight : faPlay}

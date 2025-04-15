@@ -5,9 +5,10 @@ import "./style.css";
 type ButtonProps = {
   children: React.ReactNode;
   onClick: () => void;
+  className: string;
 };
 
-export default function Button({ children, onClick }: ButtonProps) {
+export default function Button({ children, onClick, className }: ButtonProps) {
   const buttonVariants = {
     initial: {
       x: "-50%",
@@ -20,7 +21,7 @@ export default function Button({ children, onClick }: ButtonProps) {
   };
   return (
     <motion.button
-      className="start-button"
+      className={className}
       onClick={onClick}
       variants={buttonVariants}
       initial="initial"
