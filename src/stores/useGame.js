@@ -230,10 +230,10 @@ export default create(
           const { score, currentLevel, phase } = state;
           const newScore = score + 10;
 
-          // Check if level is complete based on score
-          if (phase === "playing" && newScore >= currentLevel.scoreToAdvance) {
-            return { phase: "levelComplete", score: newScore };
-          }
+          // // Check if level is complete based on score
+          // if (phase === "playing" && newScore >= currentLevel.scoreToAdvance) {
+          //   return { phase: "levelComplete", score: newScore };
+          // }
 
           return { score: newScore };
         });
