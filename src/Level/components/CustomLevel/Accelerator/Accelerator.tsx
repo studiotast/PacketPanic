@@ -27,7 +27,7 @@ export default function Accelerator({
         position={[0, 0, 0.7]}
         geometry={boxGeometry}
         scale={[1, 1, 1]}
-        material={obstacleMaterial}
+        material={magentaMaterial}
       /> */}
       <CuboidCollider
         args={[0.125, 0.125, 0.125]}

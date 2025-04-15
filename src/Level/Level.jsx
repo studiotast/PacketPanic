@@ -64,36 +64,34 @@ triangleGeometry.setIndex(indices);
 triangleGeometry.computeVertexNormals(); // Compute normals for shading
 
 // reusable materials
-export const floor1Material = new THREE.MeshStandardMaterial({
-  color: "limegreen",
+export const beigeMaterial = new THREE.MeshStandardMaterial({
+  color: "#EBD8BD",
 });
-export const floor2Material = new THREE.MeshStandardMaterial({
-  color: "greenyellow",
+export const yellowMaterial = new THREE.MeshStandardMaterial({
+  color: "#FFAB32",
 });
-export const obstacleMaterial = new THREE.MeshStandardMaterial({
-  color: "tomato",
+export const pinkMaterial = new THREE.MeshStandardMaterial({
+  color: "#FFB5ED",
 });
+export const blueMaterial = new THREE.MeshStandardMaterial({
+  color: "#425ADF",
+});
+export const redMaterial = new THREE.MeshStandardMaterial({
+  color: "#E72754",
+});
+export const magentaMaterial = new THREE.MeshStandardMaterial({
+  color: "#FF2DCA",
+});
+export const purpleMaterial = new THREE.MeshStandardMaterial({
+  color: "#b19bff",
+});
+
 export const whiteMaterial = new THREE.MeshStandardMaterial({
   color: "white",
 });
 export const traingleMaterial = new THREE.MeshStandardMaterial({
   color: "tomato",
   side: THREE.DoubleSide, // Ensure both sides are rendered
-});
-export const wallMaterial = new THREE.MeshStandardMaterial({
-  color: "slategrey",
-});
-
-export const yellowBallMaterial = new THREE.MeshStandardMaterial({
-  color: "yellow",
-});
-
-export const purpleBallMaterial = new THREE.MeshStandardMaterial({
-  color: "mediumpurple",
-});
-
-export const blueBallMaterial = new THREE.MeshStandardMaterial({
-  color: "dodgerblue",
 });
 
 export default function Level({

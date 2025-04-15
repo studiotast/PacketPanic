@@ -1,4 +1,4 @@
-import { boxGeometry, floor1Material } from "../Level";
+import { boxGeometry, beigeMaterial } from "../Level";
 import { Float, Text } from "@react-three/drei";
 
 export default function BlockStart({ position = [0, 0, 0] }) {
@@ -20,7 +20,7 @@ export default function BlockStart({ position = [0, 0, 0] }) {
       </Float>
       <mesh
         geometry={boxGeometry}
-        material={floor1Material}
+        material={beigeMaterial}
         position={[0, -0.1, 0]}
         scale={[4, 0.2, 4]}
         receiveShadow
