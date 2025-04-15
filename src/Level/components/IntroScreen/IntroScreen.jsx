@@ -27,6 +27,21 @@ export default function IntroScreen() {
   const startFromIntro = useGame((state) => state.startFromIntro);
   const [page, setPage] = useState(0);
   const [delayedTextShow, setDelayedTextShow] = useState(false);
+  const playSound = useGame((state) => state.playSound);
+  const isMuted = useGame((state) => state.isMuted);
+
+  useEffect(() => {
+    // Play sound when the component mounts
+    const sound = playSound("menu");
+
+    // Return cleanup function to stop sound on unmount
+    return () => {
+      if (sound) {
+        sound.pause();
+        sound.currentTime = 0;
+      }
+    };
+  }, [playSound, isMuted]);
 
   // Constants for animation timing
   const LOGO_EXIT_DURATION = 0.4; // Slowed down
@@ -60,12 +75,37 @@ export default function IntroScreen() {
     }
   }, [page, LOGO_EXIT_DURATION, TRACK_ANIMATION_DURATION]);
 
-  // Animation variants
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+
+  // Track window resize and update dimensions
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Calculate dynamic positions based on screen height
+  const logoYVisible = dimensions.height * -0.15; // 15% from top
+  const logoYHidden = dimensions.height * -0.25; // 25% from top
+  const trackYInitial = dimensions.height * 0.02; // 2% from top
+  const trackYAnimated = dimensions.height * -0.45; // 45% up from initial
+  const textContainerY = dimensions.height * 0.35; // 35% from top
+
+  // Animation variants with dynamic values
   const logoVariants = {
-    visible: { opacity: 1, y: -160 },
+    visible: { opacity: 1, y: logoYVisible },
     hidden: {
       opacity: 0,
-      y: -250,
+      y: logoYHidden,
       transition: {
         duration: LOGO_EXIT_DURATION,
         ease: "easeInOut",
@@ -74,10 +114,10 @@ export default function IntroScreen() {
   };
 
   const trackVariants = {
-    initial: { opacity: 1, y: 20 },
+    initial: { opacity: 1, y: trackYInitial },
     animate: {
       opacity: 1,
-      y: page === 0 ? 20 : -350,
+      y: page === 0 ? trackYInitial : trackYAnimated,
       transition: {
         duration: TRACK_ANIMATION_DURATION,
         ease: "easeInOut",
@@ -90,9 +130,9 @@ export default function IntroScreen() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      y: 225,
+      y: textContainerY,
       transition: {
-        staggerChildren: 0.3, // Longer delay between paragraphs
+        staggerChildren: 0.3,
         delayChildren: 0.2,
       },
     },
