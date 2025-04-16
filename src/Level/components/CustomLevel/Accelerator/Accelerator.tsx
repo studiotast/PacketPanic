@@ -33,37 +33,38 @@ export default function Accelerator({
         material={magentaMaterial}
       /> */}
       {/* Toon de collider met een Box-mesh */}
-      <mesh position={[0, 0, 0.9]} scale={[1.5, 1.5, 1.5]}>
-        <sphereGeometry args={[0.75, 16, 16]} />
-        <meshBasicMaterial color="blue" wireframe />
-      </mesh>
-      <BallCollider
-        args={[0.75]} // Straal van de bol
-        position={[0, 0, 0.9]}
-        sensor
-        onIntersectionEnter={(intersect) => {
-          console.log("Intersection detected with accelerator");
-          playSound("boost");
-          if (intersect?.colliderObject) {
-            const ballId = intersect.colliderObject.name;
-            const ballColor = ballId.split("|")[1];
+      <group rotation={[0, Math.PI * 0.25, 0]} position={[0, 0, 0.9]}>
+        <mesh>
+          <boxGeometry args={[1.5, 1.5, 1.5]} />
+          <meshBasicMaterial color="red" wireframe />
+        </mesh>
+        <CuboidCollider
+          args={[0.75, 0.75, 0.75]}
+          sensor
+          onIntersectionEnter={(intersect) => {
+            console.log("Intersection detected with accelerator");
+            playSound("boost");
+            if (intersect?.colliderObject) {
+              const ballId = intersect.colliderObject.name;
+              const ballColor = ballId.split("|")[1];
 
-            const ball = balls.find((ball) => ball.id === ballId);
-            if (ball) {
-              const colorIndex = colors.indexOf(ballColor);
-              if (colorIndex !== -1) {
-                const direction = directions[colorIndex]
-                  ? { x: 6, y: 0, z: -2 }
-                  : { x: -6, y: 0, z: -2 };
+              const ball = balls.find((ball) => ball.id === ballId);
+              if (ball) {
+                const colorIndex = colors.indexOf(ballColor);
+                if (colorIndex !== -1) {
+                  const direction = directions[colorIndex]
+                    ? { x: 6, y: 0, z: -2 }
+                    : { x: -6, y: 0, z: -2 };
 
-                if (ball.ref.current) {
-                  ball.ref.current.applyImpulse(direction);
+                  if (ball.ref.current) {
+                    ball.ref.current.applyImpulse(direction);
+                  }
                 }
               }
             }
-          }
-        }}
-      />
+          }}
+        />
+      </group>
       <SignPost position={[0, -1, 0]} />
       {colors.map((color, index) => (
         <Sign

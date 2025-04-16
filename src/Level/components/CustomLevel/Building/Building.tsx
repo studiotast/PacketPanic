@@ -3,9 +3,8 @@ import { CuboidCollider } from "@react-three/rapier";
 import React from "react";
 import useBalls from "../../../../stores/useBalls"; // Import de zustand store
 import useGame from "../../../../stores/useGame";
-import { getColorMaterial } from "../../../../utils/getColorMaterial";
-import { boxGeometry, whiteMaterial } from "../../../Level";
 import House from "./components/House";
+import Flag from "./components/Flag";
 
 interface BuildingProps {
   position?: Vector3;
@@ -26,20 +25,18 @@ export default function Building({
 
   return (
     <group rotation={rotation} position={position}>
-      {/* <mesh geometry={boxGeometry} scale={[1, 1, 1]} material={whiteMaterial} /> */}
-      {/* {colors &&
+      {colors &&
         colors?.map((color, i) => {
-          const positionFromLeft = -0.34 + i * 0.22; // Tel 0.34 op per index
+          const positionFromLeft = 0.8 - i * 0.75; // Tel 0.34 op per index
           return (
-            <mesh
+            <Flag
+              rotation={[0, Math.PI * 1.5, 0]}
               key={i}
-              geometry={boxGeometry}
-              scale={[0.18, 0.06, 0.18]}
-              position={[positionFromLeft, 0.4, 0.5]}
-              material={getColorMaterial(color)}
+              position={[0.9, 2, positionFromLeft]}
+              color={color}
             />
           );
-        })} */}
+        })}
       <House position={[0, -1.9, 0]} rotation={[0, Math.PI * 1.5, 0]} />
       <group position={[3, 0, -1]}>
         <mesh scale={[1, 1, 1]}>
