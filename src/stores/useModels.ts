@@ -13,6 +13,7 @@ interface ModelsState {
   platformModel: THREE.Object3D;
   buildingsPlatformModel: THREE.Object3D;
   houseModel: THREE.Object3D;
+  flagModel: THREE.Object3D;
   getModels: () => ModelsState;
 }
 export const useModels = create<ModelsState>((set) => {
@@ -37,6 +38,7 @@ export const useModels = create<ModelsState>((set) => {
         platformModel: useGLTF("assets/models/platform_a02.glb").scene,
         buildingsPlatformModel: useGLTF("assets/models/gebouwen_a01.glb").scene,
         houseModel: useGLTF("assets/models/house_a01.glb").scene,
+        flagModel: useGLTF("assets/models/house_flag_a01.glb").scene,
       };
       loaded = true;
 
