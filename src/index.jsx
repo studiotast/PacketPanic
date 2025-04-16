@@ -8,7 +8,7 @@ import useGame from "./stores/useGame.js";
 import IntroScreen from "./Level/components/IntroScreen/IntroScreen.jsx";
 import ReadyScreen from "./Level/components/ReadyScreen.jsx";
 import PauseScreen from "./Level/components/PauseScreen/PauseScreen.jsx";
-import GameOverScreen from "./Level/components/GameOverScreen.jsx";
+import GameOverScreen from "./Level/components/GameOverScreen.tsx";
 import LevelTransition from "./Level/components/LevelTransition.jsx"; // Import the level transition component
 import Explanation from "./Level/components/Explanation/Explanation.tsx";
 import MuteButton from "./MuteButton.tsx";

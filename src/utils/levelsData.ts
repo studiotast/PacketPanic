@@ -5,6 +5,11 @@ export interface LevelData {
   maxScore: number;
   timeLimit: number;
   description: string;
+  newsArticle?: {
+    title: string;
+    content: string;
+    imageUrl: string;
+  };
   trackConfig: {
     accelerators: AcceleratorConfig[];
     buildings: BuildingConfig[];
@@ -37,6 +42,12 @@ const levelsData: LevelData[] = [
     maxScore: 240,
     timeLimit: 60, // 60 seconds
     description: "Direct the colored packets to their matching buildings!",
+    newsArticle: {
+      title: "Packet Basics",
+      content:
+        "Welcome to the world of packet delivery! In this level, you'll learn the basics of directing packets to their respective destinations. Use the accelerators wisely and avoid obstacles!",
+      imageUrl: "/images/news/level1.jpg",
+    },
     trackConfig: {
       accelerators: [
         {
