@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <MuteButton />
-      <Leva />
+      <Leva collapsed />
       {phase === "intro" ? (
         <IntroScreen />
       ) : phase === "ready" ? (

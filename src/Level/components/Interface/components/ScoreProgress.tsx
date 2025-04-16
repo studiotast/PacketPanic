@@ -25,8 +25,9 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
       style={
         type === "game"
           ? {
-              position: "absolute",
-              top: "60dvh",
+              position: "fixed",
+              bottom: "2rem",
+              left: "2rem",
               boxShadow: "0 9px 0 0 #e8eaf1",
               paddingLeft: "2rem",
               paddingRight: "2rem",
