@@ -34,8 +34,8 @@ const Balls = forwardRef((props, ref) => {
   // Consistent ball velocity - use the same values for all balls
   const BALL_VELOCITY = [
     0, // No X spread (horizontal movement)
-    5, // Strong upward Y velocity
-    -15, // Strong forward velocity (toward player, negative Z)
+    10, // Strong upward Y velocity
+    -30, // Strong forward velocity (toward player, negative Z)
   ];
 
   // Control ball generation timing with dynamic speed adjustment

@@ -86,11 +86,11 @@ const Ball = forwardRef<BallRef, BallProps>(
         colliders="ball"
         position={position}
         // restitution={0.2} // Add some bounce
-        friction={1} // Add friction for realistic movement
-        linearDamping={0.1} // REDUCED to allow more movement
+        // friction={1} // Add friction for realistic movement
+        linearDamping={0.05} // REDUCED to allow more movement
         angularDamping={0.1} // REDUCED to allow more rotation
-        mass={0.05} // LOWER mass for better response to impulses
-        gravityScale={0.8} // Slightly reduced gravity effect
+        // mass={5} // LOWER mass for better response to impulses
+        // gravityScale={0.8} // Slightly reduced gravity effect
       >
         <mesh
           castShadow

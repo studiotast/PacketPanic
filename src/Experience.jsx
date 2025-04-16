@@ -54,7 +54,7 @@ export default function Experience() {
 
   return (
     <>
-      <ambientLight intensity={1.8} /> // Omgevingslicht voor algemene
+      <ambientLight intensity={1.6} /> // Omgevingslicht voor algemene
       helderheid
       <directionalLight intensity={1.5} position={[10, 10, 10]} castShadow />
       <pointLight intensity={1} position={[0, 5, 0]} />

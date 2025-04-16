@@ -51,17 +51,17 @@ const levelsData: LevelData[] = [
     trackConfig: {
       accelerators: [
         {
-          position: [0, 0.5, -4],
+          position: [0, 0.5, -6],
           colors: ["blue", "red"],
         },
       ],
       buildings: [
         {
-          position: [-2, 0.75, -9],
+          position: [-3.5, 0.75, -10],
           colors: ["blue", "red"],
         },
         {
-          position: [5, 0.75, -7],
+          position: [3.5, 0.75, -8],
           colors: ["red"],
         },
       ],

@@ -1,9 +1,10 @@
-import { CuboidCollider } from "@react-three/rapier";
+import { BallCollider, CuboidCollider, Debug } from "@react-three/rapier";
 import React, { useState } from "react";
 import useBalls from "../../../../stores/useBalls";
 import Sign from "./Sign";
 import SignPost from "./SignPost";
 import useGame from "../../../../stores/useGame";
+import { boxGeometry, magentaMaterial } from "../../../Level";
 
 export default function Accelerator({
   position = [0, 0.5, -1.2],
@@ -26,14 +27,19 @@ export default function Accelerator({
   return (
     <group position={position}>
       {/* <mesh
-        position={[0, 0, 0.7]}
+        position={[0, 0, 0.9]}
         geometry={boxGeometry}
-        scale={[1, 1, 1]}
+        scale={[1.5, 1.5, 1.5]}
         material={magentaMaterial}
       /> */}
-      <CuboidCollider
-        args={[0.125, 0.125, 0.125]}
-        position={[0, 0, 0.8]}
+      {/* Toon de collider met een Box-mesh */}
+      <mesh position={[0, 0, 0.9]} scale={[1.5, 1.5, 1.5]}>
+        <sphereGeometry args={[0.75, 16, 16]} />
+        <meshBasicMaterial color="blue" wireframe />
+      </mesh>
+      <BallCollider
+        args={[0.75]} // Straal van de bol
+        position={[0, 0, 0.9]}
         sensor
         onIntersectionEnter={(intersect) => {
           console.log("Intersection detected with accelerator");
@@ -47,8 +53,8 @@ export default function Accelerator({
               const colorIndex = colors.indexOf(ballColor);
               if (colorIndex !== -1) {
                 const direction = directions[colorIndex]
-                  ? { x: 0.5, y: 0, z: -0.3 }
-                  : { x: -0.5, y: 0, z: -0.3 };
+                  ? { x: 6, y: 0, z: -2 }
+                  : { x: -6, y: 0, z: -2 };
 
                 if (ball.ref.current) {
                   ball.ref.current.applyImpulse(direction);
@@ -58,12 +64,12 @@ export default function Accelerator({
           }
         }}
       />
-      <SignPost position={[0, -0.5, 0]} />
+      <SignPost position={[0, -1, 0]} />
       {colors.map((color, index) => (
         <Sign
           key={index}
           color={color}
-          position={[0, 2.2 + 0.65 * (index - (colors.length - 1) / 2), 0]}
+          position={[0, 4.4 + 1.3 * (index - (colors.length - 1) / 2), 0]}
           rotation={[0, (directions[index] ? 0 : Math.PI) - Math.PI * 0.5, 0]}
           onClick={() => onClickSign(index)}
         />

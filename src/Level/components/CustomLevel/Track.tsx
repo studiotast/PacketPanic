@@ -1,7 +1,7 @@
 import { RigidBody } from "@react-three/rapier";
 import React from "react";
 import Accelerator from "./Accelerator/Accelerator";
-import Building from "./Building";
+import Building from "./Building/Building";
 import Corner from "./Corner";
 import Junction from "./Junction";
 import Straight from "./Straight";
