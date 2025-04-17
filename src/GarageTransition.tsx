@@ -61,10 +61,10 @@ export default function GarageTransition() {
               setIsTransitioning(false);
               window.isTransitioning = false;
               pendingPhaseRef.current = null;
-            }, 1200); // Match exit animation duration
+            }, 200); // Match exit animation duration
 
             return () => clearTimeout(cleanupTimer);
-          }, 1000);
+          }, 200);
           return () => clearTimeout(timer);
         }
       }, 1000);
