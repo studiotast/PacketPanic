@@ -6,7 +6,6 @@ import Corner from "../../Corner";
 import Junction from "../..//Junction";
 import Straight from "../../Straight";
 import useGame from "../../../../../stores/useGame";
-import StraightShort from "../../StraightShort";
 import Curve from "../../Curve";
 import Platform from "../../Platform";
 import BuildingsPlatform from "../../BuildingsPlatfrom";

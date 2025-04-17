@@ -126,10 +126,11 @@ export default create(
       playSound: (soundName) => {
         const { sounds, isMuted } = get();
         const sound = sounds[soundName];
-        console.log("playSound", soundName, sound, isMuted);
 
         if (sound && !isMuted) {
           sound.currentTime = 0; // Reset to start
+
+          sound.volume = 0.01; // Set volume to 50%
 
           // Only set loop for menu sound
           sound.loop = soundName === "menu" || soundName === "level";
@@ -252,6 +253,56 @@ export default create(
           timerActive: false,
           isPaused: false,
         });
+      },
+
+      // Add this function to your store's return object
+      calculateScene: () => {
+        const { timer, currentLevel } = get();
+
+        // Safety check if timeLine doesn't exist
+        if (!currentLevel.timeLine) {
+          return {
+            spawnRate: 2.5, // Default spawn rate
+            colors: currentLevel.trackConfig.buildings
+              .map((b) => b.colors)
+              .flat(),
+          };
+        }
+
+        const { timeLine } = currentLevel;
+
+        // Determine which scene we're in based on time
+        if (timer < timeLine.scene1.time) {
+          // console.log("scene1");
+          // console.log("spawnRate", timeLine.scene1.spawnRate);
+          // Before first threshold, use initial config
+          return {
+            spawnRate: timeLine.scene1.spawnRate || 2.5,
+            colors: currentLevel.trackConfig.spawner.ballColors,
+          };
+        } else if (timer < timeLine.scene2.time) {
+          // console.log("scene2");
+          // console.log("spawnRate", timeLine.scene2.spawnRate);
+          // Between first and second threshold
+          return {
+            spawnRate: timeLine.scene1.spawnRate,
+            colors: timeLine.scene1.ballColors,
+          };
+        } else if (timer < timeLine.scene3.time) {
+          // console.log("scene3");
+          // console.log("spawnRate", timeLine.scene3.spawnRate);
+          // Between second and third threshold
+          return {
+            spawnRate: timeLine.scene2.spawnRate,
+            colors: timeLine.scene2.ballColors,
+          };
+        } else {
+          // After third threshold
+          return {
+            spawnRate: timeLine.scene3.spawnRate,
+            colors: timeLine.scene3.ballColors,
+          };
+        }
       },
 
       // Improve the existing restart function

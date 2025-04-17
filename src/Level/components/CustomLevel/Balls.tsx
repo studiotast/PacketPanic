@@ -14,55 +14,55 @@ const Balls = forwardRef((props, ref) => {
   }));
 
   // Get game state and level configuration
-  const { phase, isPaused, timer, currentLevel } = useGame((state) => ({
-    phase: state.phase,
-    isPaused: state.isPaused,
-    timer: state.timer,
-    currentLevel: state.currentLevel,
-  }));
+  const { phase, isPaused, timer, currentLevel, calculateScene } = useGame(
+    (state) => ({
+      phase: state.phase,
+      isPaused: state.isPaused,
+      timer: state.timer,
+      currentLevel: state.currentLevel,
+      calculateScene: state.calculateScene,
+    })
+  );
 
   // Get spawner configuration from current level
-  const {
-    // position: BUILDING_POSITION,
-    spawnRate,
-    minSpawnRate,
-    ballColors,
-  } = currentLevel.trackConfig.spawner;
+  const { ballColors } = currentLevel.trackConfig.spawner;
 
   const BUILDING_POSITION = [0, 1, 2];
 
   // Consistent ball velocity - use the same values for all balls
   const BALL_VELOCITY = [
     0, // No X spread (horizontal movement)
-    10, // Strong upward Y velocity
-    -30, // Strong forward velocity (toward player, negative Z)
+    5, // Strong upward Y velocity
+    -15, // Strong forward velocity (toward player, negative Z)
   ];
+
+  const initialSpawnRate = calculateScene();
+  console.log("initialSpawnRate", initialSpawnRate);
 
   // Control ball generation timing with dynamic speed adjustment
   const ballGenerationRef = useRef({
     timer: 0,
-    baseInterval: spawnRate,
-    currentInterval: spawnRate,
-    minInterval: minSpawnRate,
+    baseInterval: initialSpawnRate.spawnRate,
+    currentInterval: initialSpawnRate.spawnRate,
     lastSpeedIncrease: 0,
   });
 
   // Add back the manual controls for testing/debugging
   useControls("Balls", {
-    spawnRate: {
-      value: spawnRate,
-      min: 0.5,
-      max: 5,
-      step: 0.1,
-      onChange: (value) => {
-        // Update base interval from UI
-        ballGenerationRef.current.baseInterval = value;
-        // If we haven't started speeding up yet, also update current interval
-        if (ballGenerationRef.current.lastSpeedIncrease === 0) {
-          ballGenerationRef.current.currentInterval = value;
-        }
-      },
-    },
+    // spawnRate: {
+    //   value: initialSpawnRate,
+    //   min: 0.5,
+    //   max: 5,
+    //   step: 0.1,
+    //   onChange: (value) => {
+    //     // Update base interval from UI
+    //     ballGenerationRef.current.baseInterval = value;
+    //     // If we haven't started speeding up yet, also update current interval
+    //     if (ballGenerationRef.current.lastSpeedIncrease === 0) {
+    //       ballGenerationRef.current.currentInterval = value;
+    //     }
+    //   },
+    // },
     yellowBall: button(() => {
       addBall({
         id: `${THREE.MathUtils.generateUUID()}|yellow`,
@@ -118,6 +118,17 @@ const Balls = forwardRef((props, ref) => {
   // Automatically generate balls when game is playing and not paused
   useFrame((state, delta) => {
     if (phase === "playing" && !isPaused) {
+      // Get the current scene data including spawn rate and colors
+      const sceneData = calculateScene();
+
+      // Get dynamic spawn rate from timeline
+      const currentSpawnRate = sceneData.spawnRate;
+
+      console.log("currentSpawnRate", currentSpawnRate);
+
+      // Update available ball colors
+      const availableBallColors = sceneData.colors;
+
       // Calculate how many 10-second intervals have passed
       const timeIntervals = Math.floor(timer / 10);
 
@@ -126,19 +137,13 @@ const Balls = forwardRef((props, ref) => {
         // Update last speed increase tracker
         ballGenerationRef.current.lastSpeedIncrease = timeIntervals;
 
-        // Calculate new interval: decrease by 20% each time, but don't go below minimum
-        const newInterval = Math.max(
-          ballGenerationRef.current.currentInterval * 0.8,
-          ballGenerationRef.current.minInterval
-        );
-
         // Apply the new interval
-        ballGenerationRef.current.currentInterval = newInterval;
+        ballGenerationRef.current.currentInterval = currentSpawnRate;
 
         console.log(
           `Speed increased at ${timer.toFixed(
             1
-          )}s! New interval: ${newInterval.toFixed(2)}s`
+          )}s! New interval: ${currentSpawnRate.toFixed(2)}s`
         );
       }
 
@@ -153,9 +158,11 @@ const Balls = forwardRef((props, ref) => {
         // Reset timer
         ballGenerationRef.current.timer = 0;
 
-        // Randomly select ball color from available colors for this level
+        // Randomly select ball color from available colors for this scene
         const randomColor =
-          ballColors[Math.floor(Math.random() * ballColors.length)];
+          availableBallColors[
+            Math.floor(Math.random() * availableBallColors.length)
+          ];
 
         // Generate ball at the building position
         addBall({
@@ -168,12 +175,6 @@ const Balls = forwardRef((props, ref) => {
           velocity: BALL_VELOCITY,
           ref: React.createRef(),
         });
-
-        console.log("Ball generated at", [
-          BUILDING_POSITION[0],
-          BUILDING_POSITION[1],
-          BUILDING_POSITION[2],
-        ]);
       }
     }
   });

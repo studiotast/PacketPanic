@@ -5,6 +5,7 @@ import useBalls from "../../../../stores/useBalls"; // Import de zustand store
 import useGame from "../../../../stores/useGame";
 import House from "./components/House";
 import Flag from "./components/Flag";
+import useBuildingFlags from "../hooks/useBuildingFlags";
 
 interface BuildingProps {
   position?: Vector3;
@@ -16,17 +17,23 @@ interface BuildingProps {
 export default function Building({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
-  colors,
+  colors: initialColors,
   type,
 }: BuildingProps) {
   const incrementScore = useGame((state) => state.incrementScore);
   const removeBall = useBalls((state) => state.removeBall); // Haal de removeBall functie uit de store
   const playSound = useGame((state) => state.playSound);
 
+  const currentColors = useBuildingFlags({ initialColors, position });
+
+  console.log("Position:", position);
+  console.log("Initial colors:", initialColors);
+  console.log("Current colors from timeline:", currentColors);
+
   return (
     <group rotation={rotation} position={position}>
-      {colors &&
-        colors?.map((color, i) => {
+      {currentColors &&
+        currentColors?.map((color, i) => {
           const positionFromLeft = 0.8 - i * 0.75; // Tel 0.34 op per index
           return (
             <Flag
@@ -61,13 +68,13 @@ export default function Building({
             const ballColor = ballParts[1];
 
             console.log(
-              `Ball collision detected: ${ballColor}. Building accepts: ${colors?.join(
+              `Ball collision detected: ${ballColor}. Building accepts: ${currentColors?.join(
                 ","
               )}`
             );
 
             // Check if this building accepts this ball color
-            if (colors?.includes(ballColor)) {
+            if (currentColors?.includes(ballColor)) {
               console.log(`Score incremented for ${ballColor} ball!`);
               playSound("score");
               incrementScore();
@@ -100,7 +107,7 @@ export default function Building({
             const ballColor = ballParts[1];
 
             console.log(
-              `Ball collision detected: ${ballColor}. Building accepts: ${colors?.join(
+              `Ball collision detected: ${ballColor}. Building accepts: ${currentColors?.join(
                 ","
               )}`
             );

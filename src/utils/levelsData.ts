@@ -15,6 +15,23 @@ export interface LevelData {
     buildings: BuildingConfig[];
     spawner: SpawnerConfig;
   };
+  timeLine?: {
+    scene1: SceneData;
+    scene2: SceneData;
+    scene3: SceneData;
+  };
+}
+
+interface SceneData {
+  time: number;
+  spawnRate: number;
+  buildingColors: BuildingConfig[];
+  ballColors: string[];
+}
+
+interface BuildingConfig {
+  position: [number, number, number];
+  colors: string[];
 }
 
 interface AcceleratorConfig {
@@ -29,8 +46,6 @@ interface BuildingConfig {
 
 interface SpawnerConfig {
   position: [number, number, number];
-  spawnRate: number;
-  minSpawnRate: number;
   ballColors: string[];
 }
 
@@ -67,8 +82,53 @@ const levelsData: LevelData[] = [
       ],
       spawner: {
         position: [0, 0.75, 2.5],
+        ballColors: ["blue", "red"],
+      },
+    },
+    timeLine: {
+      scene1: {
+        time: 10,
+        spawnRate: 2.5,
+        buildingColors: [
+          {
+            position: [-7, 1.5, -20], // Position of first building
+            colors: ["blue", "red"],
+          },
+          {
+            position: [7, 1.5, -16], // Position of second building
+            colors: ["red"],
+          },
+        ],
+        ballColors: ["blue", "red"], // Colors for the spawner
+      },
+      scene2: {
+        time: 20,
         spawnRate: 2.0,
-        minSpawnRate: 0.4,
+        buildingColors: [
+          {
+            position: [-7, 1.5, -20],
+            colors: ["red"], // Add green flag in scene 2
+          },
+          {
+            position: [7, 1.5, -16],
+            colors: ["blue"], // Add yellow flag in scene 2
+          },
+        ],
+        ballColors: ["blue", "red"], // Add new colors to spawner
+      },
+      scene3: {
+        time: 30,
+        spawnRate: 1.5,
+        buildingColors: [
+          {
+            position: [-7, 1.5, -20],
+            colors: ["blue"],
+          },
+          {
+            position: [7, 1.5, -16],
+            colors: ["red"], // Change to all new colors
+          },
+        ],
         ballColors: ["blue", "red"],
       },
     },
@@ -114,8 +174,6 @@ const levelsData: LevelData[] = [
       ],
       spawner: {
         position: [0, 0.75, 2.5],
-        spawnRate: 1.5, // Faster spawn rate for added difficulty
-        minSpawnRate: 0.3,
         ballColors: ["yellow", "purple"],
       },
     },
