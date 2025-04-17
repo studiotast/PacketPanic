@@ -6,47 +6,79 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/pro-solid-svg-icons";
 import levelsData from "../../utils/levelsData";
 import useGame from "../../stores/useGame";
+import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 
 export default function GameOverScreen() {
   const [page, setPage] = useState(0);
-  const startFromIntro = useGame((state) => state.startFromIntro);
+  const completeRestart = useGame((state) => state.completeRestart);
   const currentLevelId = useGame((state) => state.currentLevelId);
 
   const newsData = levelsData.find((level) => level.id === currentLevelId);
 
+  // Animation variants
+  const pageVariants = {
+    initial: { scale: 0, opacity: 0 },
+    animate: { scale: 1, opacity: 1, transition: { duration: 0.5 } },
+    exit: { scale: 0, opacity: 0, transition: { duration: 0.5 } },
+  };
+
+  const handleClick = () => {
+    if (page === 0) {
+      setPage(1);
+    }
+    if (page === 1) {
+      completeRestart();
+    }
+  };
+
   return (
     <div className="game-over-screen">
       <div className="game-over-content">
-        {page === 0 ? (
-          <div className="game-over-news-wrapper">
-            <p className="game-over-news-header">Nieuws van vangadaag</p>
-            <div className="game-over-content-wrapper">
-              <img
-                src={newsData?.newsArticle?.imageUrl}
-                alt="news"
-                className="game-over-news-image"
-              />
-              <p className="game-over-news-title">
-                {newsData?.newsArticle?.title}
+        <AnimatePresence mode="wait">
+          {page === 0 ? (
+            <motion.div
+              key="news-page"
+              className="game-over-news-wrapper"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+            >
+              <p className="game-over-news-header">Nieuws van vangadaag</p>
+              <div className="game-over-content-wrapper">
+                <img
+                  src={newsData?.newsArticle?.imageUrl}
+                  alt="news"
+                  className="game-over-news-image"
+                />
+                <div className="game-over-news-text">
+                  <p className="game-over-news-title">
+                    {newsData?.newsArticle?.title}
+                  </p>
+                  <p className="game-over-news-description">
+                    {newsData?.newsArticle?.content}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="results-page"
+              className="game-over-content-wrapper"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+            >
+              <p className="game-over-header">Resultaat van vandaag</p>
+              <p className="game-over-details">
+                Lekker bezig je eerste dag heb je de doelen gehaald.
               </p>
-              <p className="game-over-news-description">
-                {newsData?.newsArticle?.content}
-              </p>
-            </div>
-          </div>
-        ) : (
-          <div className="game-over-content-wrapper">
-            <p className="game-over-header">Resultaat van vandaag</p>
-            <p className="game-over-details">
-              Lekker bezig je eerste dag heb je de doelen gehaald.
-            </p>
-            <ScoreProgress type="end" />
-          </div>
-        )}
-        <Button
-          className="game-over-button"
-          onClick={page === 0 ? () => setPage(1) : startFromIntro}
-        >
+              <ScoreProgress type="end" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <Button className="game-over-button" onClick={handleClick}>
           Verder
           <FontAwesomeIcon icon={faCircleCheck} />
         </Button>
