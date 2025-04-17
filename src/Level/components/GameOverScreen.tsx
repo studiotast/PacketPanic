@@ -33,6 +33,7 @@ export default function GameOverScreen() {
 
   return (
     <div className="game-over-screen">
+      <img src="/images/tv.png" alt="tv" className="game-over-tv" />
       <div className="game-over-content">
         <AnimatePresence mode="wait">
           {page === 0 ? (

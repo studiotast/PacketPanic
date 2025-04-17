@@ -516,23 +516,38 @@ body,
   z-index: 1000;
 }
 
+.game-over-tv {
+  max-width: 64dvw;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(
+    -50.5%,
+    -50%
+  ); /* Adjust vertical offset to account for antenna */
+  z-index: 101;
+  pointer-events: none;
+}
+
 .game-over-content {
   background-color: #9f85ff;
-  border-radius: 10px;
   display: flex;
-  width: 60dvw;
-  height: 600px;
+  width: 55dvw;
+  height: 560px;
   position: relative;
   align-items: center;
   justify-content: center;
   gap: 2rem;
   flex-direction: column;
+  z-index: 100;
+  margin-top: 60px; /* Move content down to align with TV screen area */
 }
 
 .game-over-bg {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50;
+  left: 50;
   height: 100%;
   width: 100%;
   mix-blend-mode: soft-light;
