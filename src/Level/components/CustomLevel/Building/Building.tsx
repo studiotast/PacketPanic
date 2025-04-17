@@ -1,11 +1,13 @@
 import { Euler, Vector3 } from "@react-three/fiber";
 import { CuboidCollider } from "@react-three/rapier";
-import React from "react";
+import React, { useRef } from "react";
 import useBalls from "../../../../stores/useBalls"; // Import de zustand store
 import useGame from "../../../../stores/useGame";
 import House from "./components/House";
 import Flag from "./components/Flag";
 import useBuildingFlags from "../hooks/useBuildingFlags";
+import PlusOneLabel from "./components/PlusOneLabel";
+import * as THREE from "three";
 
 interface BuildingProps {
   position?: Vector3;
@@ -26,9 +28,30 @@ export default function Building({
 
   const currentColors = useBuildingFlags({ initialColors, position });
 
-  console.log("Position:", position);
-  console.log("Initial colors:", initialColors);
-  console.log("Current colors from timeline:", currentColors);
+  // console.log("Position:", position);
+  // console.log("Initial colors:", initialColors);
+  // console.log("Current colors from timeline:", currentColors);
+
+  const plusOneLabelsWrapperRef = useRef<any[]>([]); // Houd de labels bij
+
+  function addPlusOneLabel() {
+    const labelId = THREE.MathUtils.generateUUID(); // Genereer een uniek ID
+
+    // Voeg een nieuw PlusOneLabel toe aan de wrapper
+    plusOneLabelsWrapperRef.current.push(
+      <PlusOneLabel
+        key={labelId}
+        id={labelId}
+        onRemove={(id) => {
+          // Verwijder het label met het gegeven ID
+          plusOneLabelsWrapperRef.current =
+            plusOneLabelsWrapperRef.current.filter(
+              (label) => label.props.id !== id
+            );
+        }}
+      />
+    );
+  }
 
   return (
     <group rotation={rotation} position={position}>
@@ -44,6 +67,9 @@ export default function Building({
             />
           );
         })}
+      {/* Render de labels */}
+      <group>{plusOneLabelsWrapperRef.current.map((label) => label)}</group>
+
       <House position={[0, -1.9, 0]} rotation={[0, Math.PI * 1.5, 0]} />
       <group position={[3, 0, -1]}>
         <mesh scale={[1, 1, 1]}>
@@ -77,6 +103,7 @@ export default function Building({
             if (currentColors?.includes(ballColor)) {
               console.log(`Score incremented for ${ballColor} ball!`);
               playSound("score");
+              addPlusOneLabel();
               incrementScore();
             }
           }}
