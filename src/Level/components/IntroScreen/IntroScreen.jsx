@@ -61,7 +61,13 @@ export default function IntroScreen() {
       setPage(1);
       setDelayedTextShow(false); // Reset text visibility
     } else {
-      startFromIntro();
+      // Type-safe check and call
+      if (typeof window.initiatePhaseTransition === "function") {
+        window.initiatePhaseTransition("explanation");
+      } else {
+        // Fallback if transition isn't available
+        startFromIntro();
+      }
     }
   };
 

@@ -12,82 +12,41 @@ import GameOverScreen from "./Level/components/GameOverScreen.tsx";
 import LevelTransition from "./Level/components/LevelTransition.jsx"; // Import the level transition component
 import Explanation from "./Level/components/Explanation/Explanation.tsx";
 import MuteButton from "./MuteButton.tsx";
+import GarageTransition from "./GarageTransition.tsx";
+import { useEffect, useState } from "react";
 
 function App() {
   const phase = useGame((state) => state.phase);
   const isPaused = useGame((state) => state.isPaused);
 
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  // Monitor transition state
+  useEffect(() => {
+    const checkTransition = () => {
+      setIsTransitioning(!!window.isTransitioning);
+    };
+
+    // Check initially and set up interval
+    checkTransition();
+    const interval = setInterval(checkTransition, 100);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <MuteButton />
       <Leva collapsed />
+      <GarageTransition />
       {phase === "intro" ? (
         <IntroScreen />
-      ) : phase === "ready" ? (
-        <>
-          <ReadyScreen />
-          <Canvas
-            shadows
-            camera={{
-              fov: 45,
-              near: 0.1,
-              far: 200,
-              position: [15, 40, 10],
-            }}
-          >
-            <Experience />
-          </Canvas>
-        </>
-      ) : phase === "levelComplete" ? ( // Add new level transition phase
-        <>
-          <LevelTransition /> {/* Display the level transition UI */}
-          <Canvas
-            shadows
-            camera={{
-              fov: 45,
-              near: 0.1,
-              far: 200,
-              position: [15, 40, 10],
-            }}
-          >
-            <Experience />
-          </Canvas>
-        </>
-      ) : phase === "ended" ? (
-        <>
-          <GameOverScreen />
-
-          <Canvas
-            shadows
-            camera={{
-              fov: 45,
-              near: 0.1,
-              far: 200,
-              position: [15, 40, 10],
-            }}
-          >
-            <Experience />
-          </Canvas>
-        </>
-      ) : phase === "explanation" ? (
-        <>
-          {isPaused && <PauseScreen />}
-          {1 == 1 && <Explanation />}
-
-          <Canvas
-            shadows
-            camera={{
-              fov: 45,
-              near: 0.1,
-              far: 200,
-              position: [15, 40, 10],
-            }}
-          >
-            <Experience />
-          </Canvas>
-        </>
       ) : (
         <>
+          {phase === "ready" && <ReadyScreen />}
+          {phase === "levelComplete" && <LevelTransition />}
+          {phase === "ended" && <GameOverScreen />}
+          {phase === "explanation" && <Explanation />}
           {isPaused && <PauseScreen />}
           <Canvas
             shadows
@@ -95,7 +54,7 @@ function App() {
               fov: 45,
               near: 0.1,
               far: 200,
-              position: [15, 40, 5],
+              position: [15, 40, 10],
             }}
           >
             <Experience />
