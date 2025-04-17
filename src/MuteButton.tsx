@@ -8,7 +8,10 @@ export default function MuteButton() {
   const isMuted = useGame((state) => state.isMuted);
   return (
     <div className="mute-icon" onClick={toggleMute}>
-      <FontAwesomeIcon icon={!isMuted ? faVolumeSlash : faVolume} />
+      <FontAwesomeIcon
+        color={isMuted ? "#677eff" : "#C6CAE2"}
+        icon={!isMuted ? faVolumeSlash : faVolume}
+      />
     </div>
   );
 }
