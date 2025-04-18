@@ -34,10 +34,10 @@ export default function Accelerator({
       /> */}
       {/* Toon de collider met een Box-mesh */}
       <group rotation={[0, Math.PI * 0.25, 0]} position={[0, 0, 0.9]}>
-        <mesh>
+        {/* <mesh>
           <boxGeometry args={[1.5, 1.5, 1.5]} />
           <meshBasicMaterial color="red" wireframe />
-        </mesh>
+        </mesh> */}
         <CuboidCollider
           args={[0.75, 0.75, 0.75]}
           sensor
