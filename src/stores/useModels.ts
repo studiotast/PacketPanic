@@ -52,7 +52,7 @@ export const useModels = create<ModelsState>((set, get) => {
         junctionModel: useGLTF("assets/models/track_junction_a02.glb").scene,
         signModel: useGLTF("assets/models/signpost_sign_a02.glb").scene,
         signPostModel: useGLTF("assets/models/signpost_pole_a02.glb").scene,
-        platformModel: useGLTF("assets/models/platform_a02.glb").scene,
+        platformModel: useGLTF("assets/models/platform_level1_a01.glb").scene,
         buildingsPlatformModel: useGLTF("assets/models/gebouwen_a01.glb").scene,
         houseModel: useGLTF("assets/models/house_a01.glb").scene,
         flagModel: useGLTF("assets/models/house_flag_a01.glb").scene,

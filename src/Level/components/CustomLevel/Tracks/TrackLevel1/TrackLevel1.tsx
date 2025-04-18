@@ -26,20 +26,20 @@ export default function TrackLevel1() {
           friction={0}
         >
           <Straight position={[0, 0, 0]} />
-          <Straight position={[0, 0, -2]} />
           <Straight position={[0, 0, -4]} />
-          <Straight position={[0, 0, -6]} />
-          <Junction position={[0, 0, -10]} />
+          <Straight position={[0, 0, -8]} />
+          <Junction position={[0, 0, -12]} />
           {/* Left */}
-          <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-5, 0, -12]} />
-          <StraightShort position={[-6, 0, -15]} />
-          <Curve position={[-5, 0, -18]} />
-          <StraightShort position={[-4, 0, -21]} />
+          <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-5, 0, -14]} />
+          <StraightShort position={[-6, 0, -17]} />
+          <Curve position={[-5, 0, -20]} />
+          <Straight position={[-4, 0, -24]} />
 
           {/* Right */}
-          <Straight position={[5, 0, -11]} rotation={[0, Math.PI * 0.5, 0]} />
-          <Corner rotation={[0, Math.PI * 1, 0]} position={[9, 0, -12]} />
-          <Straight position={[10, 0, -16]} />
+          <Straight position={[5, 0, -13]} rotation={[0, Math.PI * 0.5, 0]} />
+          <Corner rotation={[0, Math.PI * 1, 0]} position={[9, 0, -14]} />
+          <StraightShort position={[10, 0, -17]} />
+          <Straight position={[10, 0, -20]} />
         </RigidBody>
       )}
 
@@ -47,7 +47,7 @@ export default function TrackLevel1() {
       {currentLevel.trackConfig.accelerators.map((acc, index) => (
         <Accelerator
           key={`accelerator-${index}`}
-          position={acc.position.map((value) => value * 2)} // Verdubbel de positie
+          position={acc.position.map((value) => value)}
           colors={acc.colors}
         />
       ))}
@@ -55,20 +55,16 @@ export default function TrackLevel1() {
       {currentLevel.trackConfig.buildings.map((building, index) => (
         <Building
           key={`building-${index}`}
-          position={building.position.map((value) => value * 2)} // Verdubbel de positie
+          name={building.name}
+          position={building.position.map((value) => value)}
           colors={building.colors}
         />
       ))}
-      <Platform rotation={[0, Math.PI * 1.5, 0]} position={[0.6, 0, -12]} />
-      <BuildingsPlatform
+      <Platform rotation={[0, Math.PI * 1.5, 0]} position={[0, 0, -13]} />
+      {/* <BuildingsPlatform
         rotation={[0, Math.PI * 1.5, 0]}
         position={[0.6, 0, -12]}
-      />
-
-      {/* <Building
-      position={currentLevel.trackConfig.spawner.position.map((value) => value * 2)} // Verdubbel de positie
-      type="spawner"
-    /> */}
+      /> */}
     </group>
   );
 }

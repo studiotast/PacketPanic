@@ -14,6 +14,7 @@ interface BuildingProps {
   rotation?: Euler;
   colors?: string[];
   type?: string;
+  name: string;
 }
 
 export default function Building({
@@ -21,6 +22,7 @@ export default function Building({
   rotation = [0, 0, 0],
   colors: initialColors,
   type,
+  name,
 }: BuildingProps) {
   const incrementScore = useGame((state) => state.incrementScore);
   const removeBall = useBalls((state) => state.removeBall); // Haal de removeBall functie uit de store
@@ -54,7 +56,7 @@ export default function Building({
   }
 
   return (
-    <group rotation={rotation} position={position}>
+    <group name={name} rotation={rotation} position={position}>
       {currentColors &&
         currentColors?.map((color, i) => {
           const positionFromLeft = 0.8 - i * 0.75; // Tel 0.34 op per index

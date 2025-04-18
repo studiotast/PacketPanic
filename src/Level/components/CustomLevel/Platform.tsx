@@ -17,7 +17,7 @@ export default function Platform({
   const clonedModel = useMemo(() => platformModel.clone(), [platformModel]);
 
   return (
-    <group rotation={rotation} position={position} scale={[0.87, 0.87, 0.87]}>
+    <group rotation={rotation} position={position}>
       <primitive object={clonedModel} />
     </group>
   );
