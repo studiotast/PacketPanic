@@ -130,7 +130,7 @@ export default create(
         if (sound && !isMuted) {
           sound.currentTime = 0; // Reset to start
 
-          sound.volume = 0.01; // Set volume to 50%
+          sound.volume = 0.5; // Set volume to 50%
 
           // Only set loop for menu sound
           sound.loop = soundName === "menu" || soundName === "level";
@@ -299,8 +299,8 @@ export default create(
         } else {
           // After third threshold
           return {
-            spawnRate: timeLine.scene3.spawnRate,
-            colors: timeLine.scene3.ballColors,
+            spawnRate: timeLine.scene2.spawnRate,
+            colors: timeLine.scene2.ballColors,
           };
         }
       },
