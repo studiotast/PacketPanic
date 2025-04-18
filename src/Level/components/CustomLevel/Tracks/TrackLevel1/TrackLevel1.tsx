@@ -5,6 +5,7 @@ import Building from "../../Building/Building";
 import Corner from "../../Corner";
 import Junction from "../..//Junction";
 import Straight from "../../Straight";
+import StraightShort from "../../StraightShort";
 import useGame from "../../../../../stores/useGame";
 import Curve from "../../Curve";
 import Platform from "../../Platform";
@@ -31,10 +32,9 @@ export default function TrackLevel1() {
           <Junction position={[0, 0, -10]} />
           {/* Left */}
           <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-5, 0, -12]} />
-          <Straight length={0.5} position={[-6, 0, -15]} />
+          <StraightShort position={[-6, 0, -15]} />
           <Curve position={[-5, 0, -18]} />
-          <Straight length={0.5} position={[-4, 0, -21]} />
-          <Straight length={0.5} position={[-4, 0, -21]} />
+          <StraightShort position={[-4, 0, -21]} />
 
           {/* Right */}
           <Straight position={[5, 0, -11]} rotation={[0, Math.PI * 0.5, 0]} />

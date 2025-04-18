@@ -45,7 +45,7 @@ export const useModels = create<ModelsState>((set, get) => {
         straightModel: useGLTF("assets/models/track_straight_long_a02.glb")
           .scene,
         straightShortModel: useGLTF(
-          "assets/models/track_straight_short_a02.glb"
+          "assets/models/track_straight_short_a04.glb"
         ).scene,
         cornerModel: useGLTF("assets/models/track_corner_a02.glb").scene,
         curveModel: useGLTF("assets/models/track_curve_a02.glb").scene,
