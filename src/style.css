@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 :root {
   /* Kleuren */
-  --blue: #677eff; /* check */
+  --blue: #677eff;
+  --green: #26ffba;
   --red: #ff588d;
-  --yellow: #ffc83c; /* check */
+  --yellow: #ffc83c;
   --pink: #ffb5ed;
   --purple: #9f85ff;
   --magenta: #f373ff;
@@ -15,20 +16,23 @@
   --color-shadow: rgba(0, 0, 0, 0.1);
   --overlay: #00000088;
 
+  --box-shadow: 0 8px 0 0 var(--color-shadow);
+
   /* Spacings */
   --spacing2: 2px;
   --spacing5: 5px;
   --spacing8: 8px;
   --spacing10: 10px;
-  --spacing16: 16px;
+  --spacing15: 15px;
   --spacing20: 20px;
-  --spacing32: 32px;
+  --spacing25: 20px;
+  --spacing30: 30px;
   --spacing64: 64px;
 
   /* Border radiussen */
-  --border-radius-small: 5px;
-  --border-radius-medium: 10px;
-  --border-radius-large: 30px;
+  --border-radius5: 5px;
+  --border-radius10: 10px;
+  --border-radius20: 20px;
   --border-radius-circle: 999px;
 }
 
@@ -57,31 +61,28 @@ body,
 .score-progress-container {
   width: 100%;
   max-width: 460px;
-  margin: 1rem auto;
   text-align: center;
-  background-color: var(--white);
-  border-radius: 22.63px;
-  color: #000;
+  border-radius: var(--border-radius20);
+  color: var(--black);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem 1.5rem;
+  gap: var(--spacing20);
+  padding-bottom: var(--spacing10);
 }
 
 .score-label {
   font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: white;
+  color: var(--white);
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
 .score-icon-container {
-  box-shadow: 0 9px 0 0 #e8eaf1;
-  border-radius: 0.7rem;
-  padding: 0.3rem;
+  box-shadow: 0 6px 0 0 #e8eaf1;
+  border-radius: var(--border-radius10);
+  padding: var(--spacing5);
 }
 
 .score-info-container {
@@ -126,9 +127,7 @@ body,
   top: 0;
   left: 0;
   height: 100%;
-  background-color: #26ffba;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
+  background-color: var(--green);
   transition: width 0.5s ease-in-out;
 }
 
@@ -606,7 +605,7 @@ body,
   mix-blend-mode: soft-light;
   opacity: 0.15;
   pointer-events: none;
-  z-index: 10;
+  z-index: -1;
   object-fit: cover;
 }
 
@@ -624,20 +623,14 @@ body,
   align-items: center;
   font-family: "Karla", sans-serif;
   font-weight: 600;
-  margin-top: 2rem;
   z-index: 2;
   position: relative;
   z-index: 10;
 }
 
-.game-over-button-container .button-shadow {
-  top: 40px; /* Special position for game over button shadow */
-}
-
 .game-over-button-wrapper {
   position: relative;
   z-index: 10;
-  margin-top: 2rem;
 }
 
 .game-over-content-wrapper {
@@ -645,23 +638,23 @@ body,
   display: flex;
   flex-direction: column;
   justify-content: end;
-  padding: 1.5rem;
-  border-radius: 30px;
+  padding: var(--spacing15);
+  border-radius: var(--border-radius20);
   width: 440px;
-  height: 350px;
   z-index: 2;
-  gap: 2rem;
+  gap: var(--spacing15);
+  box-shadow: var(--box-shadow);
 }
 
 .game-over-news-text {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--spacing10);
 }
 
 .game-over-header {
   font-size: 2.7rem;
-  color: var(--purple);
+  color: var(--blue);
   font-family: "FatFrank", sans-serif;
 }
 
@@ -670,14 +663,13 @@ body,
   text-align: center;
   color: var(--white);
   font-family: "FatFrank", sans-serif;
-  height: 20px;
 }
 
 .game-over-news-image {
   width: 100%;
   max-height: 160px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--border-radius10);
 }
 
 .game-over-news-wrapper {
@@ -686,35 +678,30 @@ body,
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 2.5rem;
-  height: 350px;
+  gap: var(--spacing30);
 }
 
 .game-over-news-title {
   font-size: 1.5rem;
-  color: var(--purple);
+  color: var(--blue);
   font-family: "FatFrank", sans-serif;
-  height: 5px;
 }
 
 .game-over-news-description {
   font-size: 1.2rem;
-  color: #000;
+  color: var(--black);
   font-family: "Karla", sans-serif;
-  height: 50px;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-bottom: 10px;
   height: auto;
 }
 
 .game-over-details {
   font-family: "Karla", sans-serif;
   font-size: 1.2rem;
-  height: 10px;
 }
 
 /**
