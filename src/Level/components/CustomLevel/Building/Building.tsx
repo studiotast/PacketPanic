@@ -25,6 +25,7 @@ export default function Building({
   name,
 }: BuildingProps) {
   const incrementScore = useGame((state) => state.incrementScore);
+  const phase = useGame((state) => state.phase);
   const removeBall = useBalls((state) => state.removeBall); // Haal de removeBall functie uit de store
   const playSound = useGame((state) => state.playSound);
 
@@ -69,9 +70,12 @@ export default function Building({
             />
           );
         })}
-      {/* Render de labels */}
-      <group>{plusOneLabelsWrapperRef.current.map((label) => label)}</group>
-
+      {phase === "playing" && (
+        <>
+          {/* Render de labels */}
+          <group>{plusOneLabelsWrapperRef.current.map((label) => label)}</group>
+        </>
+      )}
       <House position={[0, -1.9, 0]} rotation={[0, Math.PI * 1.5, 0]} />
       <group position={[3, 0, -1]}>
         <mesh scale={[1, 1, 1]}>
