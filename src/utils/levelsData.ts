@@ -30,6 +30,7 @@ interface SceneData {
 }
 
 interface BuildingConfig {
+  name: string;
   position: [number, number, number];
   colors: string[];
 }
@@ -72,10 +73,12 @@ const levelsData: LevelData[] = [
       ],
       buildings: [
         {
+          name: "Building1",
           position: [-7, 0.75, -24],
           colors: ["blue", "red"],
         },
         {
+          name: "Building2",
           position: [7, 0.75, -20],
           colors: ["red"],
         },
