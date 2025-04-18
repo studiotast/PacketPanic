@@ -30,6 +30,7 @@ interface SceneData {
 }
 
 interface BuildingConfig {
+  name: string;
   position: [number, number, number];
   colors: string[];
 }
@@ -66,17 +67,19 @@ const levelsData: LevelData[] = [
     trackConfig: {
       accelerators: [
         {
-          position: [0, 0.5, -6],
+          position: [0, 1, -14],
           colors: ["blue", "red"],
         },
       ],
       buildings: [
         {
-          position: [-3.5, 0.75, -10],
+          name: "Building1",
+          position: [-7, 0.75, -24],
           colors: ["blue", "red"],
         },
         {
-          position: [3.5, 0.75, -8],
+          name: "Building2",
+          position: [7, 0.75, -20],
           colors: ["red"],
         },
       ],
@@ -91,26 +94,26 @@ const levelsData: LevelData[] = [
         spawnRate: 2.5,
         buildingColors: [
           {
-            position: [-7, 1.5, -20], // Position of first building
+            position: [-7, 0.75, -24], // Position of first building
             colors: ["blue", "red"],
           },
           {
-            position: [7, 1.5, -16], // Position of second building
+            position: [7, 0.75, -20], // Position of second building
             colors: ["red"],
           },
         ],
         ballColors: ["blue", "red"], // Colors for the spawner
       },
       scene2: {
-        time: 20,
+        time: 30,
         spawnRate: 2.0,
         buildingColors: [
           {
-            position: [-7, 1.5, -20],
+            position: [-7, 0.75, -24],
             colors: ["red"], // Add green flag in scene 2
           },
           {
-            position: [7, 1.5, -16],
+            position: [7, 0.75, -20],
             colors: ["blue"], // Add yellow flag in scene 2
           },
         ],
@@ -121,11 +124,11 @@ const levelsData: LevelData[] = [
         spawnRate: 1.5,
         buildingColors: [
           {
-            position: [-7, 1.5, -20],
+            position: [-7, 0.75, -24],
             colors: ["blue"],
           },
           {
-            position: [7, 1.5, -16],
+            position: [7, 0.75, -20],
             colors: ["red"], // Change to all new colors
           },
         ],
