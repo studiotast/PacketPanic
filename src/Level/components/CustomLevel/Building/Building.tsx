@@ -29,7 +29,7 @@ export default function Building({
   const removeBall = useBalls((state) => state.removeBall); // Haal de removeBall functie uit de store
   const playSound = useGame((state) => state.playSound);
 
-  const currentColors = useBuildingFlags({ initialColors, position });
+  const currentColors = useBuildingFlags({ initialColors, name });
 
   // console.log("Position:", position);
   // console.log("Initial colors:", initialColors);

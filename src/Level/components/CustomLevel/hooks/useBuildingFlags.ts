@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useGame from "../../../../stores/useGame";
 
-export default function useBuildingFlags({ initialColors, position }) {
+export default function useBuildingFlags({ initialColors, name }) {
   const [flagColors, setFlagColors] = useState(initialColors || []);
 
   const { timer, currentLevel } = useGame((state) => ({
@@ -28,21 +28,17 @@ export default function useBuildingFlags({ initialColors, position }) {
       currentScene = timeLine.scene3;
     }
 
-    // Find the matching building colors based on position
+    // Find the matching building colors based on name
     const matchingBuilding = currentScene.buildingColors.find((building) => {
-      // Compare positions with a small tolerance for floating point differences
-      return (
-        Math.abs(building.position[0] - position[0]) < 0.1 &&
-        Math.abs(building.position[1] - position[1]) < 0.1 &&
-        Math.abs(building.position[2] - position[2]) < 0.1
-      );
+      // Compare building names
+      return building.name === name;
     });
 
     // Update colors if we found a match
     if (matchingBuilding) {
       setFlagColors(matchingBuilding.colors);
     }
-  }, [timer, position, currentLevel, initialColors]);
+  }, [timer, name, currentLevel, initialColors]);
 
   return flagColors;
 }

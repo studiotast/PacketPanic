@@ -31,16 +31,11 @@ interface SceneData {
 
 interface BuildingConfig {
   name: string;
-  position: [number, number, number];
+  position?: [number, number, number];
   colors: string[];
 }
 
 interface AcceleratorConfig {
-  position: [number, number, number];
-  colors: string[];
-}
-
-interface BuildingConfig {
   position: [number, number, number];
   colors: string[];
 }
@@ -94,11 +89,11 @@ const levelsData: LevelData[] = [
         spawnRate: 2.5,
         buildingColors: [
           {
-            position: [-7, 0.75, -24], // Position of first building
+            name: "Building1",
             colors: ["blue", "red"],
           },
           {
-            position: [7, 0.75, -20], // Position of second building
+            name: "Building2",
             colors: ["red"],
           },
         ],
@@ -109,11 +104,11 @@ const levelsData: LevelData[] = [
         spawnRate: 2.0,
         buildingColors: [
           {
-            position: [-7, 0.75, -24],
+            name: "Building1",
             colors: ["red"], // Add green flag in scene 2
           },
           {
-            position: [7, 0.75, -20],
+            name: "Building2",
             colors: ["blue"], // Add yellow flag in scene 2
           },
         ],
@@ -124,11 +119,11 @@ const levelsData: LevelData[] = [
         spawnRate: 1.5,
         buildingColors: [
           {
-            position: [-7, 0.75, -24],
+            name: "Building1",
             colors: ["blue"],
           },
           {
-            position: [7, 0.75, -20],
+            name: "Building2",
             colors: ["red"], // Change to all new colors
           },
         ],
@@ -163,14 +158,17 @@ const levelsData: LevelData[] = [
       ],
       buildings: [
         {
+          name: "Building1",
           position: [4, 0.75, -5],
           colors: ["purple"],
         },
         {
+          name: "Building2",
           position: [0, 0.75, -5],
           colors: ["green"],
         },
         {
+          name: "Building3",
           position: [-4, 0.75, -5],
           colors: ["yellow"],
         },
