@@ -24,9 +24,11 @@ export default function Interface() {
       </div>
 
       {/* Score */}
-      <div className="score-wrapper">
-        <ScoreProgress type="game" />
-      </div>
+      {phase === "playing" && (
+        <div className="score-wrapper">
+          <ScoreProgress type="game" />
+        </div>
+      )}
 
       {/* Restart button - only shown when game is ended */}
       {phase === "ended" && (

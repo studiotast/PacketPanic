@@ -29,10 +29,6 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
               bottom: "2rem",
               left: "2rem",
               boxShadow: "0 9px 0 0 #e8eaf1",
-              paddingLeft: "2rem",
-              paddingRight: "2rem",
-              paddingTop: "0.5rem",
-              paddingBottom: "1.5rem",
             }
           : {}
       }
@@ -57,10 +53,7 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
         </p>
       </div>
 
-      <div
-        className="score-progress-bar"
-        style={{ width: `${maxScore * 1.65}px` }}
-      >
+      <div className="score-progress-bar">
         <div
           className="score-progress-fill"
           style={{ width: `${progressPercentage}%` }}
