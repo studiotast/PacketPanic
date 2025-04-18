@@ -275,13 +275,19 @@ export default function IntroScreen() {
           </motion.div>
         )}
 
-        <Button className="start-button" onClick={handleClick}>
-          {page === 0 ? "Volgende" : "Beginnen"}
-          <FontAwesomeIcon
-            icon={page === 0 ? faArrowRight : faPlay}
-            style={{ marginLeft: "10px" }}
-          />
-        </Button>
+        <div className="button-position-wrapper">
+          <Button
+            className="start-button"
+            shadowColor="#dc9329"
+            onClick={handleClick}
+          >
+            {page === 0 ? "Volgende" : "Beginnen"}
+            <FontAwesomeIcon
+              icon={page === 0 ? faArrowRight : faPlay}
+              style={{ marginLeft: "10px" }}
+            />
+          </Button>
+        </div>
       </div>
     </Layout>
   );

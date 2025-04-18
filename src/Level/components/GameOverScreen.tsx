@@ -80,12 +80,18 @@ export default function GameOverScreen() {
               </motion.div>
             )}
           </AnimatePresence>
-          <Button className="game-over-button" onClick={handleClick}>
-            Verder
-            <FontAwesomeIcon icon={faCircleCheck} />
-          </Button>
-          <img alt="bg" src="/images/bg.jpg" className="game-over-bg" />
+          <div className="game-over-button-container">
+            <Button
+              className="game-over-button"
+              onClick={handleClick}
+              shadowColor="#dc9329"
+            >
+              Verder
+              <FontAwesomeIcon icon={faCircleCheck} />
+            </Button>
+          </div>
         </div>
+        <img alt="bg" src="/images/bg.jpg" className="game-over-bg" />
       </div>
     </div>
   );

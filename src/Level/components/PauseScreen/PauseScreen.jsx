@@ -46,7 +46,11 @@ export default function PauseScreen() {
             />
           ))}
         </div>
-        <Button className="pause-button" onClick={togglePause}>
+        <Button
+          className="pause-button"
+          onClick={togglePause}
+          shadowColor="#dc9329"
+        >
           Verder spelen
           <FontAwesomeIcon icon={faPlay} />
         </Button>

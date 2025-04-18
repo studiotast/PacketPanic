@@ -15,19 +15,22 @@ export default function Explanation() {
         className="robot-image"
         src={`/assets/images/robot${explanationIndex}.png`}
       />
-      <Button
-        className="explanation-button"
-        onClick={() => {
-          if (readyToStart) {
-            useGame.setState({ phase: "ready" });
-            return;
-          }
-          setExplanationIndex((prev) => prev + 1);
-        }}
-      >
-        {readyToStart ? "Starten" : "Volgende"}
-        <FontAwesomeIcon icon={faArrowRight} />
-      </Button>
+      <div className="explanation-button-wrapper">
+        <Button
+          className="explanation-button"
+          onClick={() => {
+            if (readyToStart) {
+              useGame.setState({ phase: "ready" });
+              return;
+            }
+            setExplanationIndex((prev) => prev + 1);
+          }}
+          shadowColor="#dc9329"
+        >
+          {readyToStart ? "Starten" : "Volgende"}
+          <FontAwesomeIcon icon={readyToStart ? faPlay : faArrowRight} />
+        </Button>
+      </div>
     </div>
   );
 }
