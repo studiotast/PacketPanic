@@ -8,6 +8,7 @@ type ButtonProps = {
   onClick: () => void;
   shadowColor?: string;
   className?: string;
+  type?: string;
 };
 
 export default function Button({
@@ -15,6 +16,7 @@ export default function Button({
   onClick,
   shadowColor,
   className,
+  type = "button", // Default to "button" type
 }: ButtonProps) {
   // Create ref for the top button
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -65,13 +67,15 @@ export default function Button({
       </motion.div>
 
       {/* Shadow underneath that stays static */}
-      <div
-        className="button-shadow"
-        style={{
-          backgroundColor: shadowColor || "#dc9329",
-          ...buttonStyle, // Apply computed styles from the button
-        }}
-      />
+      {type === "button" && (
+        <div
+          className="button-shadow"
+          style={{
+            backgroundColor: shadowColor || "#dc9329",
+            ...buttonStyle, // Apply computed styles from the button
+          }}
+        />
+      )}
     </div>
   );
 }

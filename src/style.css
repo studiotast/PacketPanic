@@ -727,37 +727,35 @@ body,
   text-align: center;
 }
 
-.ready-content h2 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: #61dafb;
-}
-
-.countdown {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.countdown-number {
-  display: inline-block;
-  font-size: 3rem;
-  font-weight: bold;
-  color: #61dafb;
+/* SVG image animations */
+.countdown-svg-text {
   animation: pulse 1s infinite;
-  min-width: 3rem;
-  text-align: center;
 }
 
 @keyframes pulse {
   0% {
     transform: scale(1);
+    transform-origin: center center;
   }
   50% {
     transform: scale(1.2);
+    transform-origin: center center;
   }
   100% {
     transform: scale(1);
+    transform-origin: center center;
   }
+}
+
+/* Adjust container styles */
+.ready-heading {
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
 }
 
 /**
@@ -844,43 +842,6 @@ body,
   pointer-events: none;
 }
 
-.mute-icon {
-  position: absolute;
-  top: 55px;
-  right: 55px;
-  cursor: pointer;
-  font-size: 28px;
-  color: var(--blue);
-  background-color: var(--white);
-  border-radius: 999px;
-  box-shadow: 0 7px 0 0 #e5e7ea;
-  width: 75px;
-  height: 75px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.mute-button-wrapper {
-  position: absolute;
-  top: 55px;
-  right: 55px;
-  z-index: 1000;
-}
-
-.mute-button {
-  cursor: pointer;
-  font-size: 28px;
-  background-color: var(--white);
-  border-radius: 999px;
-  width: 75px;
-  height: 75px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
 .building-label > div {
   font-family: Helvetica, Arial;
   position: absolute;
@@ -924,4 +885,53 @@ Button styling
   left: 0;
   z-index: -1;
   opacity: 0.9;
+}
+
+/**
+  Mute Button
+  */
+
+.mute-button-wrapper {
+  position: absolute;
+  top: 55px;
+  right: 55px;
+  z-index: 1000;
+}
+
+.mute-button {
+  cursor: pointer;
+  font-size: 55px;
+  border-radius: 999px;
+  width: 75px;
+  height: 75px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-wrapper {
+  filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.2));
+}
+
+/**
+    Pause Button
+    */
+
+.pause-button-wrapper {
+  position: absolute;
+  top: 55px;
+  left: 55px;
+  z-index: 1000;
+}
+
+.pause-icon-button {
+  cursor: pointer;
+  font-size: 28px;
+  background-color: var(--white);
+  border-radius: 999px;
+  width: 75px;
+  height: 75px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
