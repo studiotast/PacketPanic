@@ -29,7 +29,6 @@ export default function IntroScreen() {
   const [delayedTextShow, setDelayedTextShow] = useState(false);
   const playSound = useGame((state) => state.playSound);
   const isMuted = useGame((state) => state.isMuted);
-  const toggleMute = useGame((state) => state.toggleMute);
 
   useEffect(() => {
     // Play sound when the component mounts
@@ -42,7 +41,7 @@ export default function IntroScreen() {
         sound.currentTime = 0;
       }
     };
-  }, [playSound, isMuted]);
+  }, [playSound, isMuted, page]);
 
   // Constants for animation timing
   const LOGO_EXIT_DURATION = 0.4; // Slowed down
@@ -57,7 +56,6 @@ export default function IntroScreen() {
   // Handle button click
   const handleClick = () => {
     if (page === 0) {
-      toggleMute(); // Toggle mute state so sound plays
       setPage(1);
       setDelayedTextShow(false); // Reset text visibility
     } else {
