@@ -20,6 +20,9 @@ export default create(
 
     const scoreSound =
       typeof Audio !== "undefined" ? new Audio("/audio/score.wav") : null;
+
+    const buttonSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/button.wav") : null;
     // Setup keyboard listeners
     const setupKeyboardListeners = () => {
       const handleKeyDown = (e) => {
@@ -113,6 +116,7 @@ export default create(
         inHole: inHoleSound,
         boost: boostSound,
         score: scoreSound,
+        button: buttonSound,
       },
 
       // Score

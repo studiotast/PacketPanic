@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import "./style.css";
+import useGame from "./stores/useGame";
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -19,6 +20,8 @@ export default function Button({
   const buttonRef = useRef<HTMLDivElement>(null);
   // Track button styles
   const [buttonStyle, setButtonStyle] = useState({});
+
+  const playSound = useGame((state) => state.playSound);
 
   // Get computed styles from the button to apply to shadow
   useEffect(() => {
@@ -41,8 +44,14 @@ export default function Button({
     },
   };
 
+  const handleClick = () => {
+    // Play sound when button is clicked
+    playSound("button");
+    onClick();
+  };
+
   return (
-    <div className="button-container" onClick={onClick}>
+    <div className="button-container" onClick={handleClick}>
       {/* Top button that animates */}
       <motion.div
         ref={buttonRef}
