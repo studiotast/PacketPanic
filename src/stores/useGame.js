@@ -107,7 +107,7 @@ export default create(
       canTogglePause: true, // Used for debouncing
 
       // Mute
-      isMuted: true,
+      isMuted: false,
 
       // Level sound
       sounds: {
