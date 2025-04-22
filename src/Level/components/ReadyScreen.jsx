@@ -34,9 +34,25 @@ export default function ReadyScreen() {
   return (
     <div className="ready-screen">
       <div className="ready-content">
-        <h2>Get Ready!</h2>
+        {/* Use external SVG file for heading */}
+        <div className="ready-heading">
+          <img
+            src="/images/We-gaan-beginnen.svg"
+            alt="We gaan beginnen!"
+            width="600"
+            height="180"
+          />
+        </div>
+
+        {/* Use dynamic external SVG file for countdown */}
         <div className="countdown">
-          Starting in <span className="countdown-number">{countdown}</span>...
+          <img
+            src={`/images/${countdown}.svg`}
+            alt={`Countdown: ${countdown}`}
+            width="300"
+            height="300"
+            className="countdown-svg-text"
+          />
         </div>
       </div>
     </div>
