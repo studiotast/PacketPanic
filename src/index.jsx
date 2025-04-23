@@ -14,6 +14,7 @@ import Explanation from "./Level/components/Explanation/Explanation.tsx";
 import MuteButton from "./MuteButton.tsx";
 import GarageTransition from "./GarageTransition.tsx";
 import { useEffect, useState } from "react";
+import PauseButton from "./PauseButton.tsx";
 
 function App() {
   const phase = useGame((state) => state.phase);
@@ -43,6 +44,7 @@ function App() {
         <IntroScreen />
       ) : (
         <>
+          <PauseButton />
           {phase === "ready" && <ReadyScreen />}
           {phase === "levelComplete" && <LevelTransition />}
           {phase === "ended" && <GameOverScreen />}

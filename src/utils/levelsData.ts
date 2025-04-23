@@ -85,12 +85,12 @@ const levelsData: LevelData[] = [
     },
     timeLine: {
       scene1: {
-        time: 10,
+        time: 20,
         spawnRate: 2.5,
         buildingColors: [
           {
             name: "Building1",
-            colors: ["blue", "red"],
+            colors: ["blue"],
           },
           {
             name: "Building2",
@@ -116,18 +116,18 @@ const levelsData: LevelData[] = [
       },
       scene3: {
         time: 30,
-        spawnRate: 1.5,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
-            colors: ["blue"],
+            colors: ["red"], // Add green flag in scene 2
           },
           {
             name: "Building2",
-            colors: ["red"], // Change to all new colors
+            colors: ["blue"], // Add yellow flag in scene 2
           },
         ],
-        ballColors: ["blue", "red"],
+        ballColors: ["blue", "red"], // Add new colors to spawner
       },
     },
   },

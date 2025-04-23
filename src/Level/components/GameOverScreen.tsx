@@ -36,6 +36,7 @@ export default function GameOverScreen() {
       <div className="game-over-wrapper">
         <img src="/images/tv.png" alt="tv" className="game-over-tv" />
         <div className="game-over-content">
+          <img alt="bg" src="/images/bg.jpg" className="game-over-bg" />
           <AnimatePresence mode="wait">
             {page === 0 ? (
               <motion.div
@@ -46,7 +47,7 @@ export default function GameOverScreen() {
                 exit="exit"
                 variants={pageVariants}
               >
-                <p className="game-over-news-header">Nieuws van vangadaag</p>
+                <p className="game-over-news-header">Nieuws van vandaag</p>
                 <div className="game-over-content-wrapper">
                   <img
                     src={newsData?.newsArticle?.imageUrl}
@@ -71,6 +72,7 @@ export default function GameOverScreen() {
                 animate="animate"
                 exit="exit"
                 variants={pageVariants}
+                style={{ padding: "25px" }}
               >
                 <p className="game-over-header">Resultaat van vandaag</p>
                 <p className="game-over-details">
@@ -91,7 +93,6 @@ export default function GameOverScreen() {
             </Button>
           </div>
         </div>
-        <img alt="bg" src="/images/bg.jpg" className="game-over-bg" />
       </div>
     </div>
   );

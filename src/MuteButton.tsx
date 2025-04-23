@@ -14,11 +14,15 @@ export default function MuteButton() {
         className="mute-button"
         onClick={toggleMute}
         shadowColor="#e5e7ea"
+        type="icon"
       >
-        <FontAwesomeIcon
-          color={isMuted ? "#677eff" : "#C6CAE2"}
-          icon={!isMuted ? faVolumeSlash : faVolume}
-        />
+        <div className="icon-wrapper">
+          <FontAwesomeIcon
+            className="mute-icon"
+            color={!isMuted ? "#fff" : "#C6CAE2"}
+            icon={isMuted ? faVolumeSlash : faVolume}
+          />
+        </div>
       </Button>
     </div>
   );
