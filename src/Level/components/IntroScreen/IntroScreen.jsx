@@ -9,6 +9,8 @@ import Button from "../../../Button";
 import Layout from "../../../Layout";
 import useGame from "../../../stores/useGame.js";
 import "../../../style.css";
+import LeftCornerPiece from "./components/LeftCornerPiece.tsx";
+import RightCornerPiece from "./components/RightCornerPiece.tsx";
 
 // Tooltip component for interactive terms
 const InteractiveTerm = ({ term, explanation }) => (
@@ -100,11 +102,11 @@ export default function IntroScreen() {
   }, []);
 
   // Calculate dynamic positions based on screen height
-  const logoYVisible = dimensions.height * -0.15; // 15% from top
+  const logoYVisible = dimensions.height * -0.2; // 15% from top
   const logoYHidden = dimensions.height * -0.25; // 25% from top
-  const trackYInitial = dimensions.height * 0.02; // 2% from top
-  const trackYAnimated = dimensions.height * -0.45; // 45% up from initial
-  const textContainerY = dimensions.height * 0.35; // 35% from top
+  const trackYInitial = dimensions.height * -0.1; // 2% from top
+  const trackYAnimated = dimensions.height * -1.2; // 45% up from initial
+  const textContainerY = dimensions.height * 0.28; // 35% from top
 
   // Animation variants with dynamic values
   const logoVariants = {
@@ -287,6 +289,8 @@ export default function IntroScreen() {
           </Button>
         </div>
       </div>
+      <LeftCornerPiece />
+      <RightCornerPiece />
     </Layout>
   );
 }
