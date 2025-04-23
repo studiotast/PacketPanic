@@ -8,6 +8,7 @@ import Level from "./Level/Level.jsx";
 import Lights from "./Lights.jsx";
 import Player from "./Player.jsx";
 import useGame from "./stores/useGame.js";
+import { Perf } from "r3f-perf";
 
 export default function Experience() {
   const blocksCount = useGame((state) => state.blocksCount);
@@ -58,7 +59,7 @@ export default function Experience() {
       helderheid
       <directionalLight intensity={1.5} position={[10, 10, 10]} castShadow />
       <pointLight intensity={1} position={[0, 5, 0]} />
-      {/* <Perf position="top-left" /> */}
+      <Perf position="top-left" />
       <OrbitControls makeDefault />
       <color args={["#bdedfc"]} attach="background" />
       <Physics

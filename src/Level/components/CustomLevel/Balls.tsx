@@ -32,8 +32,8 @@ const Balls = forwardRef((props, ref) => {
   // Consistent ball velocity - use the same values for all balls
   const BALL_VELOCITY = [
     0, // No X spread (horizontal movement)
-    5, // Strong upward Y velocity
-    -15, // Strong forward velocity (toward player, negative Z)
+    0, // Strong upward Y velocity
+    -50, // Strong forward velocity (toward player, negative Z)
   ];
 
   const initialSpawnRate = calculateScene();
@@ -169,8 +169,8 @@ const Balls = forwardRef((props, ref) => {
           id: `${THREE.MathUtils.generateUUID()}|${randomColor}`,
           position: [
             BUILDING_POSITION[0],
-            BUILDING_POSITION[1] + 0.1,
-            BUILDING_POSITION[2] - 0.5,
+            BUILDING_POSITION[1] + 2,
+            BUILDING_POSITION[2] + 2,
           ],
           velocity: BALL_VELOCITY,
           ref: React.createRef(),
