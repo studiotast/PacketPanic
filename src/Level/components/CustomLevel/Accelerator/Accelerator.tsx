@@ -34,10 +34,10 @@ export default function Accelerator({
       /> */}
       {/* Toon de collider met een Box-mesh */}
       <group rotation={[0, Math.PI * 0.25, 0]} position={[0, 0, 0.8]}>
-        <mesh>
+        {/* <mesh>
           <boxGeometry args={[1.5, 1.5, 1.5]} />
           <meshBasicMaterial color="red" wireframe />
-        </mesh>
+        </mesh> */}
         <CuboidCollider
           args={[0.75, 0.75, 0.75]}
           sensor
@@ -53,8 +53,8 @@ export default function Accelerator({
                 const colorIndex = colors.indexOf(ballColor);
                 if (colorIndex !== -1) {
                   const direction = directions[colorIndex]
-                    ? { x: 8, y: 0, z: -1 }
-                    : { x: -8, y: 0, z: -1 };
+                    ? { x: 8, y: 0, z: -2 }
+                    : { x: -8, y: 0, z: -2 };
 
                   if (ball.ref.current) {
                     ball.ref.current.applyImpulse(direction);

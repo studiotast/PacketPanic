@@ -19,7 +19,7 @@ export default function MuteButton() {
         <div className="icon-wrapper">
           <FontAwesomeIcon
             className="mute-icon"
-            color={!isMuted ? "#fff" : "#C6CAE2"}
+            color={"#fff"}
             icon={isMuted ? faVolumeSlash : faVolume}
           />
         </div>
