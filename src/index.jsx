@@ -37,14 +37,16 @@ function App() {
 
   return (
     <>
-      <MuteButton />
+      <div className="top-right-buttons">
+        {phase === "playing" && !isTransitioning && <PauseButton />}
+        <MuteButton />
+      </div>
       <Leva collapsed />
       <GarageTransition />
       {phase === "intro" ? (
         <IntroScreen />
       ) : (
         <>
-          <PauseButton />
           {phase === "ready" && <ReadyScreen />}
           {phase === "levelComplete" && <LevelTransition />}
           {phase === "ended" && <GameOverScreen />}
@@ -61,7 +63,11 @@ function App() {
           >
             <Experience />
           </Canvas>
-          {!isPaused && <Interface />}
+          {!isPaused && (
+            <>
+              <Interface />
+            </>
+          )}
         </>
       )}
     </>

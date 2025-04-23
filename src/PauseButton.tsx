@@ -9,17 +9,14 @@ export default function PauseButton() {
   const isPaused = useGame((state) => state.isPaused);
 
   return (
-    <div className="pause-button-wrapper">
-      <Button
-        className="pause-icon-button"
-        onClick={togglePause}
-        shadowColor="#e5e7ea"
-      >
-        <FontAwesomeIcon
-          color={isPaused ? "#fff" : "#C6CAE2"}
-          icon={!isPaused ? faPause : faPlay}
-        />
-      </Button>
-    </div>
+    <Button
+      className="pause-button"
+      onClick={togglePause}
+      shadowColor="transparent"
+    >
+      <div className="icon-wrapper">
+        <FontAwesomeIcon color={"#fff"} icon={!isPaused ? faPause : faPlay} />
+      </div>
+    </Button>
   );
 }

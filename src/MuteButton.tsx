@@ -9,21 +9,19 @@ export default function MuteButton() {
   const isMuted = useGame((state) => state.isMuted);
 
   return (
-    <div className="mute-button-wrapper">
-      <Button
-        className="mute-button"
-        onClick={toggleMute}
-        shadowColor="#e5e7ea"
-        type="icon"
-      >
-        <div className="icon-wrapper">
-          <FontAwesomeIcon
-            className="mute-icon"
-            color={"#fff"}
-            icon={isMuted ? faVolumeSlash : faVolume}
-          />
-        </div>
-      </Button>
-    </div>
+    <Button
+      className="mute-button"
+      onClick={toggleMute}
+      shadowColor="#e5e7ea"
+      type="icon"
+    >
+      <div className="icon-wrapper">
+        <FontAwesomeIcon
+          className="mute-icon"
+          color={"#fff"}
+          icon={isMuted ? faVolumeSlash : faVolume}
+        />
+      </div>
+    </Button>
   );
 }

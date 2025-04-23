@@ -887,16 +887,20 @@ Button styling
   opacity: 0.9;
 }
 
-/**
-  Mute Button
-  */
-
-.mute-button-wrapper {
+.top-right-buttons {
   position: absolute;
   top: 55px;
   right: 55px;
   z-index: 1000;
+
+  display: flex;
+  gap: var(--spacing10);
+  align-items: center;
 }
+
+/**
+  Mute Button
+  */
 
 .mute-button {
   cursor: pointer;
@@ -910,28 +914,21 @@ Button styling
 }
 
 .icon-wrapper {
-  filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 8px 0 rgba(0, 0, 0, 0.1));
 }
 
 /**
     Pause Button
     */
 
-.pause-button-wrapper {
-  position: absolute;
-  top: 55px;
-  left: 55px;
-  z-index: 1000;
-}
-
-.pause-icon-button {
+.pause-button {
   cursor: pointer;
-  font-size: 28px;
-  background-color: var(--white);
+  font-size: 55px;
   border-radius: 999px;
   width: 75px;
   height: 75px;
   align-items: center;
   display: flex;
   justify-content: center;
+  background-color: transparent;
 }
