@@ -999,10 +999,10 @@ Button styling
   padding: 6%;
   padding-left: 36px;
   padding-right: 25%;
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
   justify-content: center;
   align-items: center;
+  gap: var(--spacing10);
 }
 
 .left-corner-piece-content p {
@@ -1012,4 +1012,12 @@ Button styling
   font-size: 1.6dvh;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  font-weight: 600;
+  font-family: "Karla", sans-serif;
+}
+.left-corner-piece svg {
+  color: var(--black);
+  font-size: 1.6vh;
+  font-size: 1.6dvh;
+  z-index: 1;
 }
