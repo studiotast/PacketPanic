@@ -903,8 +903,10 @@ Button styling
 
 .top-right-buttons {
   position: absolute;
-  top: 55px;
-  right: 55px;
+  top: 2vw;
+  right: 2vw;
+  top: 2dvw;
+  right: 2dvw;
   z-index: 1000;
 
   display: flex;
