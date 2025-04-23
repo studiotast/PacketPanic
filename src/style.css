@@ -270,6 +270,7 @@ body,
 }
 
 .intro-content {
+  max-width: 80vw;
   max-width: 80dvw;
   padding: 2rem;
   border-radius: 10px;
@@ -333,6 +334,7 @@ body,
 .intro-track {
   position: absolute;
   bottom: 0;
+  width: 100vw;
   width: 100dvw;
   height: auto;
   z-index: 5;
@@ -510,6 +512,7 @@ body,
 }
 
 .robot-image {
+  max-width: 100vw;
   max-width: 100dvw;
   width: 1200px;
   position: absolute;
@@ -540,6 +543,8 @@ body,
 /* Add wrapper for positioning */
 .explanation-button-wrapper {
   position: absolute;
+  bottom: 4vw;
+  right: 4vw;
   bottom: 4dvw;
   right: 4dvw;
   z-index: 100;
@@ -561,6 +566,7 @@ body,
   z-index: 1000;
 }
 .game-over-wrapper {
+  width: 90vw;
   width: 90dvw;
   max-width: 1200px;
   position: relative;
@@ -811,6 +817,7 @@ body,
 
 .layout-container {
   position: relative;
+  min-height: 100vh;
   min-height: 100dvh;
   background-color: var(--white);
   border-radius: 20px;
@@ -818,6 +825,7 @@ body,
 }
 
 .layout-inner {
+  min-height: calc(100vh - 64px);
   min-height: calc(100dvh - 64px);
   background-color: var(--purple);
   border-radius: 30px;
