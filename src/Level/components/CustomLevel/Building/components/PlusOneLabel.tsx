@@ -12,9 +12,7 @@ export default function PlusOneLabel({ id, onRemove }: PlusOneLabelProps) {
   const groupRef = useRef<THREE.Group>(null); // Ref for the group
 
   useFrame((state, delta) => {
-    const time = state.clock.getElapsedTime();
     if (groupRef.current) {
-      // console.log(positionRef.current[1]);
       groupRef.current.position.y += 5 * delta;
     }
   });
