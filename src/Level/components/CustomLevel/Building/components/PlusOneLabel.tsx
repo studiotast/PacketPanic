@@ -1,6 +1,7 @@
 import { Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import React, { useEffect, useRef } from "react";
+import * as THREE from "three";
 
 interface PlusOneLabelProps {
   id: string;
@@ -8,13 +9,13 @@ interface PlusOneLabelProps {
 }
 
 export default function PlusOneLabel({ id, onRemove }: PlusOneLabelProps) {
-  const positionRef = useRef<[number, number, number]>([0, 3, 0]); // Startpositie
+  const groupRef = useRef<THREE.Group>(null); // Ref for the group
 
   useFrame((state, delta) => {
     const time = state.clock.getElapsedTime();
-    if (positionRef.current) {
+    if (groupRef.current) {
       // console.log(positionRef.current[1]);
-      positionRef.current[1] += time + delta * 2;
+      groupRef.current.position.y += 5 * delta;
     }
   });
 
@@ -28,13 +29,10 @@ export default function PlusOneLabel({ id, onRemove }: PlusOneLabelProps) {
   }, [id, onRemove]);
 
   return (
-    <Html
-      name={id}
-      position={positionRef.current}
-      center
-      wrapperClass="building-label"
-    >
-      <b>+ 1</b>
-    </Html>
+    <group ref={groupRef} position={[0, 3, 0]}>
+      <Html name={id} center wrapperClass="building-label">
+        <b>+ 1</b>
+      </Html>
+    </group>
   );
 }
