@@ -62,7 +62,6 @@ body,
 /* Score Progress Bar Styles */
 .score-progress-container {
   width: 100%;
-  max-width: 460px;
   text-align: center;
   border-radius: var(--border-radius20);
   color: var(--black);
@@ -70,6 +69,29 @@ body,
   flex-direction: column;
   gap: var(--spacing20);
   padding-bottom: var(--spacing10);
+  max-width: 460px;
+}
+.score-progress-container.game {
+  /* Stijlen voor de game-modus */
+  background-color: #fff;
+  position: fixed;
+  bottom: 2vh;
+  bottom: 2dvh;
+  left: 2vh;
+  left: 2dvh;
+  box-shadow: 0 9px 0 0 #e8eaf1;
+  padding: 1.2%;
+
+  gap: 3vh;
+  gap: 3dvh;
+  margin-bottom: 9px;
+  width: 100%;
+  max-width: min(460px, 35dvw);
+}
+.score-progress-container.end {
+  /* Stijlen voor de end-modus */
+  background-color: transparent;
+  border: none;
 }
 
 .score-label {

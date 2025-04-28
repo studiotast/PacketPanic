@@ -21,19 +21,7 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
 
   return (
     <div
-      className="score-progress-container"
-      style={
-        type === "game"
-          ? {
-              position: "fixed",
-              bottom: "2rem",
-              left: "2rem",
-              boxShadow: "0 9px 0 0 #e8eaf1",
-              backgroundColor: type === "game" ? "#fff" : "transparent",
-              padding: type === "game" ? "1.5rem" : "0px",
-            }
-          : {}
-      }
+      className={`score-progress-container ${type === "game" ? "game" : "end"}`}
     >
       <div className="score-info-container">
         <div className="score-label">
