@@ -71,7 +71,7 @@ export default function Accelerator({
           key={index}
           color={color}
           position={[0, 4.4 + 1.3 * (index - (colors.length - 1) / 2), 0]}
-          rotation={[0, (directions[index] ? 0 : Math.PI) - Math.PI * 0.5, 0]}
+          direction={directions[index]}
           onClick={() => onClickSign(index)}
         />
       ))}
