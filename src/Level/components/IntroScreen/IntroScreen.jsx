@@ -321,8 +321,8 @@ export default function IntroScreen() {
 
             <div className="button-position-wrapper">
               <Button
-                className="continue-button"
-                shadowColor="#677eff"
+                className="start-button"
+                shadowColor="#dc9329"
                 onClick={handleContinue}
               >
                 Doorgaan (Level {savedLevel?.id || "?"})
