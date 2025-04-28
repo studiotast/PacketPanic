@@ -166,6 +166,62 @@ export default create(
         });
       },
 
+      // Save current level to localStorage
+      saveCurrentLevel: () => {
+        const { currentLevelId } = get();
+        try {
+          localStorage.setItem(
+            "packetPanicSavedLevel",
+            currentLevelId.toString()
+          );
+          console.log("Saved level:", currentLevelId);
+        } catch (e) {
+          console.error("Failed to save level to localStorage:", e);
+        }
+      },
+
+      // Load level from localStorage
+      loadSavedLevel: () => {
+        try {
+          const savedLevelId = localStorage.getItem("packetPanicSavedLevel");
+          if (savedLevelId) {
+            const levelId = parseInt(savedLevelId, 10);
+            const level = levelsData.find((level) => level.id === levelId);
+            if (level) {
+              set({
+                currentLevelId: levelId,
+                currentLevel: level,
+              });
+              return true;
+            }
+          }
+          return false;
+        } catch (e) {
+          console.error("Failed to load level from localStorage:", e);
+          return false;
+        }
+      },
+
+      // Check if there's a saved level
+      hasSavedLevel: () => {
+        try {
+          const savedLevel = localStorage.getItem("packetPanicSavedLevel");
+          return !!savedLevel;
+        } catch (e) {
+          return false;
+        }
+      },
+
+      // Get saved level ID
+      getSavedLevelId: () => {
+        try {
+          const savedLevel = localStorage.getItem("packetPanicSavedLevel");
+          return savedLevel ? parseInt(savedLevel, 10) : null;
+        } catch (e) {
+          return null;
+        }
+      },
+
       // Start from intro screen
       startFromIntro: () => {
         set((state) => {
@@ -207,6 +263,9 @@ export default create(
             timer: 0,
             // Keep the score between levels
           });
+
+          // Save progress to localStorage
+          get().saveCurrentLevel();
         } else {
           // No more levels, game is complete
           set({ phase: "gameOver" });

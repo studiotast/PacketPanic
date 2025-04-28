@@ -377,6 +377,14 @@ body,
   z-index: 100;
 }
 
+.button-container-row {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  bottom: 5%;
+  z-index: 100;
+}
+
 /* And modify the start-button to remove positioning */
 .start-button {
   padding: 1rem 2rem;
