@@ -11,6 +11,7 @@ import useGame from "../../../stores/useGame.js";
 import "../../../style.css";
 import LeftCornerPiece from "./components/LeftCornerPiece.tsx";
 import RightCornerPiece from "./components/RightCornerPiece.tsx";
+import levelsData from "../../../utils/levelsData.ts";
 
 // Tooltip component for interactive terms
 const InteractiveTerm = ({ term, explanation }) => (
@@ -27,10 +28,40 @@ const InteractiveTerm = ({ term, explanation }) => (
 
 export default function IntroScreen() {
   const startFromIntro = useGame((state) => state.startFromIntro);
+  const loadSavedLevel = useGame((state) => state.loadSavedLevel);
+  const hasSavedLevel = useGame((state) => state.hasSavedLevel);
+  const getSavedLevelId = useGame((state) => state.getSavedLevelId);
   const [page, setPage] = useState(0);
   const [delayedTextShow, setDelayedTextShow] = useState(false);
   const playSound = useGame((state) => state.playSound);
   const isMuted = useGame((state) => state.isMuted);
+  // Check if there's a saved game on mount
+  const [savedGame, setSavedGame] = useState(false);
+  const [savedLevel, setSavedLevel] = useState(null);
+
+  useEffect(() => {
+    // Check for saved level
+    const hasLevel = hasSavedLevel();
+    setSavedGame(hasLevel);
+
+    if (hasLevel) {
+      const levelId = getSavedLevelId();
+      const level = levelsData.find((l) => l.id === levelId);
+      setSavedLevel(level);
+    }
+  }, [hasSavedLevel, getSavedLevelId]);
+
+  // Handle continue game click
+  const handleContinue = () => {
+    // Play button sound
+    playSound("button");
+
+    // Load the saved level
+    loadSavedLevel();
+
+    // Start from intro with the loaded level
+    startFromIntro();
+  };
 
   useEffect(() => {
     // Play sound when the component mounts
@@ -275,19 +306,48 @@ export default function IntroScreen() {
           </motion.div>
         )}
 
-        <div className="button-position-wrapper">
-          <Button
-            className="start-button"
-            shadowColor="#dc9329"
-            onClick={handleClick}
-          >
-            {page === 0 ? "Volgende" : "Beginnen"}
-            <FontAwesomeIcon
-              icon={page === 0 ? faArrowRight : faPlay}
-              style={{ marginLeft: "10px" }}
-            />
-          </Button>
-        </div>
+        {page === 0 && savedGame ? (
+          <div className="button-container-row">
+            <div className="button-position-wrapper">
+              <Button
+                className="start-button"
+                shadowColor="#dc9329"
+                onClick={handleClick}
+              >
+                Nieuw spel
+                <FontAwesomeIcon icon={faPlay} style={{ marginLeft: "10px" }} />
+              </Button>
+            </div>
+
+            <div className="button-position-wrapper">
+              <Button
+                className="continue-button"
+                shadowColor="#677eff"
+                onClick={handleContinue}
+              >
+                Doorgaan (Level {savedLevel?.id || "?"})
+                <FontAwesomeIcon
+                  icon={faForward}
+                  style={{ marginLeft: "10px" }}
+                />
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div className="button-position-wrapper">
+            <Button
+              className="start-button"
+              shadowColor="#dc9329"
+              onClick={handleClick}
+            >
+              {page === 0 ? "Volgende" : "Beginnen"}
+              <FontAwesomeIcon
+                icon={page === 0 ? faArrowRight : faPlay}
+                style={{ marginLeft: "10px" }}
+              />
+            </Button>
+          </div>
+        )}
       </div>
       <LeftCornerPiece />
       <RightCornerPiece />
