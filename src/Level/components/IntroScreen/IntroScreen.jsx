@@ -104,7 +104,7 @@ export default function IntroScreen() {
   // Calculate dynamic positions based on screen height
   const logoYVisible = dimensions.height * -0.2; // 15% from top
   const logoYHidden = dimensions.height * -0.25; // 25% from top
-  const trackYInitial = dimensions.height * -0.1; // 2% from top
+  const trackYInitial = dimensions.height * 0.025; // 2% from top
   const trackYAnimated = dimensions.height * -1.2; // 45% up from initial
   const textContainerY = dimensions.height * 0.28; // 35% from top
 
