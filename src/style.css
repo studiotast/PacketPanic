@@ -47,6 +47,10 @@
 html,
 body,
 #root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
   width: 100%;
   background: var(--white);
   font-family: "Inter", sans-serif;
@@ -361,6 +365,11 @@ body,
 
 .intro-track-container {
   margin: 0 calc(-5dvw - 32px);
+
+  @media screen and (max-width: 768px) {
+    margin: 0 calc(-80px - 40px);
+    /* this is based on the width of the white padding and intro-content padding */
+  }
 }
 
 .intro-track {
@@ -852,7 +861,10 @@ body,
  */
 
 .layout-container {
-  height: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: grid;
   position: relative;
   min-height: 100vh;
