@@ -365,6 +365,7 @@ body,
 }
 
 .intro-track-container {
+  margin: 0 calc(-5vw - 32px);
   margin: 0 calc(-5dvw - 32px);
 
   @media screen and (max-width: 768px) {
