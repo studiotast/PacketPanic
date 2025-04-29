@@ -21,6 +21,7 @@ export default function Accelerator({
   );
 
   function onClickSign(index: number) {
+    playSound("woosh");
     setDirections((prev) => prev.map((dir, i) => (i === index ? !dir : dir)));
   }
 
