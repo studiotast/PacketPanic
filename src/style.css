@@ -290,27 +290,30 @@ body,
  */
 
 .intro-logo {
-  width: 576px;
+  width: 50vh;
+  max-width: 100%;
+  align-self: center;
 }
 
 .intro-content {
-  max-width: 80vw;
-  max-width: 80dvw;
-  padding: 2rem;
-  border-radius: 10px;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
+  padding: 5dvw;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  gap: var(--spacing40);
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    padding: var(--spacing40);
+  }
 }
 .intro-text-container {
-  position: relative;
-  z-index: 10;
   font-family: "Karla", sans-serif;
   font-weight: 100;
-  width: 90%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: var(--spacing20);
+  justify-content: center;
 }
 
 .intro-text-line {
@@ -355,9 +358,11 @@ body,
   border-top-color: var(--black);
 }
 
+.intro-track-container {
+  margin: 0 calc(-5dvw - 32px);
+}
+
 .intro-track {
-  position: absolute;
-  bottom: 0;
   width: 100vw;
   width: 100dvw;
   height: auto;
@@ -372,9 +377,6 @@ body,
 }
 
 .button-position-wrapper {
-  position: absolute;
-  bottom: 5%;
-  z-index: 100;
 }
 
 .button-container-row {
@@ -849,23 +851,35 @@ body,
  */
 
 .layout-container {
+  display: grid;
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
   background-color: var(--white);
   border-radius: 20px;
   padding: 32px;
+  @media screen and (max-width: 768px) {
+    padding: 0px;
+    border-radius: 0px;
+  }
 }
 
 .layout-inner {
-  min-height: calc(100vh - 64px);
-  min-height: calc(100dvh - 64px);
   background-color: var(--purple);
-  border-radius: 30px;
   display: flex;
   justify-content: center;
   position: relative;
   z-index: 2;
+  border-radius: var(--border-radius20);
+  @media screen and (max-width: 768px) {
+    border-radius: 0px;
+  }
+}
+
+.corner-pieces {
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .layout-bg {
@@ -878,7 +892,7 @@ body,
   opacity: 0.15;
   pointer-events: none;
   border-radius: 30px;
-  z-index: 1;
+  z-index: -1;
   object-fit: cover;
   pointer-events: none;
 }
@@ -930,15 +944,23 @@ Button styling
 
 .top-right-buttons {
   position: absolute;
-  top: 2vw;
-  right: 2vw;
-  top: 2dvw;
-  right: 2dvw;
+  top: var(--spacing20);
+  right: var(--spacing20);
   z-index: 1000;
 
   display: flex;
   gap: var(--spacing10);
   align-items: center;
+}
+
+.top-right-buttons.intro {
+  top: var(--spacing40);
+  right: var(--spacing40);
+
+  @media screen and (max-width: 768px) {
+    top: var(--spacing20);
+    right: var(--spacing20);
+  }
 }
 
 /**

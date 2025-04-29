@@ -135,8 +135,8 @@ export default function IntroScreen() {
   // Calculate dynamic positions based on screen height
   const logoYVisible = dimensions.height * -0.2; // 15% from top
   const logoYHidden = dimensions.height * -0.25; // 25% from top
-  const trackYInitial = dimensions.height * 0.025; // 2% from top
-  const trackYAnimated = dimensions.height * -1.2; // 45% up from initial
+  const trackYInitial = 0;
+  const trackYAnimated = dimensions.height;
   const textContainerY = dimensions.height * 0.28; // 35% from top
 
   // Animation variants with dynamic values
@@ -257,7 +257,7 @@ export default function IntroScreen() {
     return (
       <motion.p
         key={index}
-        variants={paragraphAnimation}
+        // variants={paragraphAnimation}
         className="intro-text-paragraph"
       >
         {parts}
@@ -278,32 +278,40 @@ export default function IntroScreen() {
               initial="visible"
               animate="visible"
               exit="hidden"
-              variants={logoVariants}
+              // variants={logoVariants}
             />
           )}
         </AnimatePresence>
 
-        <motion.img
-          alt="track"
-          src="./images/intro.png"
-          className="intro-track"
-          variants={trackVariants}
-          initial="initial"
-          animate="animate"
-        />
+        {page === 0 && (
+          <AnimatePresence>
+            <div className="intro-track-container">
+              <motion.img
+                alt="track"
+                src="./images/intro.png"
+                className="intro-track"
+                initial="visible"
+                animate="visible"
+                exit="hidden"
+              />
+            </div>
+          </AnimatePresence>
+        )}
 
         {/* Only show text after track animation completes */}
-        {page === 1 && delayedTextShow && (
-          <motion.div
-            className="intro-text-container"
-            variants={textContainer}
-            initial="hidden"
-            animate="show"
-          >
-            {paragraphs.map((paragraph, index) =>
-              renderParagraphWithTerms(paragraph, index)
-            )}
-          </motion.div>
+        {page === 1 && (
+          <AnimatePresence>
+            <motion.div
+              className="intro-text-container"
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+            >
+              {paragraphs.map((paragraph, index) =>
+                renderParagraphWithTerms(paragraph, index)
+              )}
+            </motion.div>
+          </AnimatePresence>
         )}
 
         {page === 0 && savedGame ? (
@@ -349,8 +357,10 @@ export default function IntroScreen() {
           </div>
         )}
       </div>
-      <LeftCornerPiece />
-      <RightCornerPiece />
+      <div className="corner-pieces">
+        <LeftCornerPiece />
+        <RightCornerPiece />
+      </div>
     </Layout>
   );
 }
