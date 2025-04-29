@@ -23,6 +23,9 @@ export default create(
 
     const buttonSound =
       typeof Audio !== "undefined" ? new Audio("/audio/button.wav") : null;
+
+    const wooshSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/quick-woosh.wav") : null;
     // Setup keyboard listeners
     const setupKeyboardListeners = () => {
       const handleKeyDown = (e) => {
@@ -117,6 +120,7 @@ export default create(
         boost: boostSound,
         score: scoreSound,
         button: buttonSound,
+        woosh: wooshSound,
       },
 
       // Score
