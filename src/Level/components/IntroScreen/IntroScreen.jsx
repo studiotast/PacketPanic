@@ -115,37 +115,21 @@ export default function IntroScreen() {
     }
   }, [page, LOGO_EXIT_DURATION, TRACK_ANIMATION_DURATION]);
 
-  const [dimensions, setDimensions] = useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
-
-  // Track window resize and update dimensions
-  useEffect(() => {
-    const handleResize = () => {
-      setDimensions({
-        height: window.innerHeight,
-        width: window.innerWidth,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Calculate dynamic positions based on screen height
-  const logoYVisible = dimensions.height * -0.2; // 15% from top
-  const logoYHidden = dimensions.height * -0.25; // 25% from top
-  const trackYInitial = dimensions.height * 0.025; // 2% from top
-  const trackYAnimated = dimensions.height * -1.2; // 45% up from initial
-  const textContainerY = dimensions.height * 0.28; // 35% from top
-
   // Animation variants with dynamic values
   const logoVariants = {
-    visible: { opacity: 1, y: logoYVisible },
+    initial: { opacity: 0, y: "-100vh" },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8, // Duur van de animatie
+        ease: "easeInOut",
+        // delay: 0.2, // Vertraging van 1 seconde
+      },
+    },
     hidden: {
       opacity: 0,
-      y: logoYHidden,
+      y: "-100%",
       transition: {
         duration: LOGO_EXIT_DURATION,
         ease: "easeInOut",
@@ -154,10 +138,18 @@ export default function IntroScreen() {
   };
 
   const trackVariants = {
-    initial: { opacity: 1, y: trackYInitial },
+    initial: { opacity: 1, y: "-100%" },
     animate: {
       opacity: 1,
-      y: trackYAnimated,
+      y: 0,
+      transition: {
+        duration: TRACK_ANIMATION_DURATION,
+        ease: "easeInOut",
+      },
+    },
+    hidden: {
+      opacity: 0,
+      y: "-100%",
       transition: {
         duration: TRACK_ANIMATION_DURATION,
         ease: "easeInOut",
@@ -167,10 +159,10 @@ export default function IntroScreen() {
 
   // Staggered paragraph animation
   const textContainer = {
-    hidden: { opacity: 0, y: textContainerY + 50 }, // Start below final position
+    hidden: { opacity: 0, y: 0 }, // Start below final position
     show: {
       opacity: 1,
-      y: textContainerY,
+      y: 0,
       transition: {
         type: "spring", // Use spring physics for smoother motion
         stiffness: 50, // Lower stiffness for gentler motion
@@ -184,10 +176,10 @@ export default function IntroScreen() {
   };
 
   const paragraphAnimation = {
-    hidden: { opacity: 0, y: 0 }, // Start further down
+    hidden: { opacity: 0, y: "100%" }, // Start further down
     show: {
       opacity: 1,
-      y: -200,
+      y: 0,
       transition: {
         type: "spring",
         stiffness: 50,
@@ -283,6 +275,8 @@ export default function IntroScreen() {
               alt="PacketPanic"
               src="./images/packet-panic.svg"
               className="intro-logo"
+              initial="initial"
+              animate="animate"
               exit="hidden"
               variants={logoVariants}
             />
@@ -293,7 +287,9 @@ export default function IntroScreen() {
           {page === 0 && (
             <motion.div
               variants={trackVariants}
-              exit="animate"
+              initial="initial"
+              animate="animate"
+              exit="hidden"
               className="intro-track-container"
             >
               <motion.img
@@ -306,8 +302,8 @@ export default function IntroScreen() {
         </AnimatePresence>
 
         {/* Only show text after track animation completes */}
-        {page === 1 && delayedTextShow && (
-          <AnimatePresence>
+        {page === 1 && (
+          <AnimatePresence delay={0.3}>
             <motion.div
               className="intro-text-container"
               initial="hidden"
