@@ -15,10 +15,13 @@ import MuteButton from "./MuteButton.tsx";
 import GarageTransition from "./GarageTransition.tsx";
 import { useEffect, useState } from "react";
 import PauseButton from "./PauseButton.tsx";
+import { useModels } from "./stores/useModels.ts";
 
 function App() {
   const phase = useGame((state) => state.phase);
   const isPaused = useGame((state) => state.isPaused);
+  // begin alvast met het laden van de modellen
+  const models = useModels((state) => state.getModels());
 
   const [isTransitioning, setIsTransitioning] = useState(false);
 
