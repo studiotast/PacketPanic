@@ -1,6 +1,6 @@
 import { Euler, Vector3 } from "@react-three/fiber";
 import { CuboidCollider } from "@react-three/rapier";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import useBalls from "../../../../stores/useBalls"; // Import de zustand store
 import useGame from "../../../../stores/useGame";
 import House from "./components/House";
@@ -29,7 +29,30 @@ export default function Building({
   const removeBall = useBalls((state) => state.removeBall); // Haal de removeBall functie uit de store
   const playSound = useGame((state) => state.playSound);
 
-  const currentColors = useBuildingFlags({ initialColors, name });
+  // Updated to use the new return type
+  const { currentColors, isTransitioning, nextColors } = useBuildingFlags({
+    initialColors,
+    name,
+  });
+
+  // Add transition animation ref
+  const transitionAnimRef = useRef<THREE.Group>(null);
+
+  // Animation for transition indicator
+  useEffect(() => {
+    if (isTransitioning && transitionAnimRef.current) {
+      // Add pulsing animation when transitioning
+      const animate = () => {
+        if (!transitionAnimRef.current) return;
+        const scale = 1 + Math.sin(Date.now() * 0.01) * 0.1;
+        transitionAnimRef.current.scale.set(scale, scale, scale);
+        requestAnimationFrame(animate);
+      };
+
+      const animation = requestAnimationFrame(animate);
+      return () => cancelAnimationFrame(animation);
+    }
+  }, [isTransitioning]);
 
   // console.log("Position:", position);
   // console.log("Initial colors:", initialColors);
@@ -70,6 +93,22 @@ export default function Building({
             />
           );
         })}
+      {/* Transition Indicator */}
+      {isTransitioning && (
+        <group ref={transitionAnimRef} position={[0, 3.5, 0]}>
+          <mesh>
+            <sphereGeometry args={[0.3, 16, 16]} />
+            <meshStandardMaterial color="#ffff00" emissive="#ffaa00" />
+          </mesh>
+          {nextColors &&
+            nextColors.map((color, i) => (
+              <mesh key={i} position={[0, 0.6 + i * 0.3, 0]} scale={0.2}>
+                <sphereGeometry args={[0.5, 16, 16]} />
+                <meshStandardMaterial color={color} />
+              </mesh>
+            ))}
+        </group>
+      )}
       {phase === "playing" && (
         <>
           {/* Render de labels */}
