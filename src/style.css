@@ -459,10 +459,11 @@ body,
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 55px;
+  gap: var(--spacing40);
   position: relative; /* Add this */
   z-index: 2; /* Place above bg image */
   width: 100%; /* Add this for proper container sizing */
+  padding: var(--spacing40);
 }
 
 /* 3. Make card components properly interactive */
@@ -478,6 +479,10 @@ body,
 
 /* Update card styling for Button component compatibility */
 .card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: var(--white);
   border-radius: 25px;
   padding: 2.35rem 1.75rem;

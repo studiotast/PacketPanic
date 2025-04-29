@@ -65,7 +65,7 @@ const levelsData: LevelData[] = [
     },
     trackConfig: {
       cameraStartLookAt: new THREE.Vector3(0, 0, -13),
-      cameraStartPosition: [20, 20, 0],
+      cameraStartPosition: [35, 25, 15],
       accelerators: [
         {
           position: [0, 1, -14],
