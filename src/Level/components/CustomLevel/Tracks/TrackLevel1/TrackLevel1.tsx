@@ -1,18 +1,16 @@
 import { RigidBody } from "@react-three/rapier";
 import React from "react";
+import useGame from "../../../../../stores/useGame";
+import Junction from "../..//Junction";
 import Accelerator from "../../Accelerator/Accelerator";
 import Building from "../../Building/Building";
 import Corner from "../../Corner";
-import Junction from "../..//Junction";
-import Straight from "../../Straight";
-import StraightShort from "../../StraightShort";
-import useGame from "../../../../../stores/useGame";
 import Curve from "../../Curve";
 import Platform from "../../Platform";
-import BuildingsPlatform from "../../BuildingsPlatfrom";
+import Straight from "../../Straight";
+import StraightShort from "../../StraightShort";
 
 export default function TrackLevel1() {
-  // Get current level configuration from game state
   const currentLevel = useGame((state) => state.currentLevel);
 
   return (
@@ -60,6 +58,7 @@ export default function TrackLevel1() {
           colors={building.colors}
         />
       ))}
+
       <Platform rotation={[0, Math.PI * 1.5, 0]} position={[0, 0, -13]} />
       {/* <BuildingsPlatform
         rotation={[0, Math.PI * 1.5, 0]}

@@ -1,3 +1,5 @@
+import * as THREE from "three";
+
 export interface LevelData {
   id: number;
   name: string;
@@ -14,6 +16,8 @@ export interface LevelData {
     accelerators: AcceleratorConfig[];
     buildings: BuildingConfig[];
     spawner: SpawnerConfig;
+    cameraStartLookAt: THREE.Vector3;
+    cameraStartPosition: [number, number, number];
   };
   timeLine?: {
     scene1: SceneData;
@@ -60,6 +64,8 @@ const levelsData: LevelData[] = [
       imageUrl: "/images/news/level1.jpg",
     },
     trackConfig: {
+      cameraStartLookAt: new THREE.Vector3(0, 0, -13),
+      cameraStartPosition: [20, 20, 0],
       accelerators: [
         {
           position: [0, 1, -14],

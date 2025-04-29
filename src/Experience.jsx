@@ -1,5 +1,5 @@
 import { OrbitControls } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import { useControls } from "leva";
 import React, { useEffect, useRef } from "react";
@@ -53,6 +53,31 @@ export default function Experience() {
     prevPhaseRef.current = phase;
   }, [phase, isPaused, playSound, stopSound, isMuted]);
 
+  // set camera position and look at
+  const currentLevel = useGame((state) => state.currentLevel); // Haal de huidige levelconfig op
+  const controls = useThree((state) => state.controls); // Haal de OrbitControls op
+  const { camera } = useThree(); // Haal de camera op
+
+  useEffect(() => {
+    if (currentLevel?.trackConfig) {
+      const { cameraStartPosition, cameraStartLookAt } =
+        currentLevel.trackConfig;
+
+      // Stel de camera-positie in
+      camera.position.set(
+        cameraStartPosition[0],
+        cameraStartPosition[1],
+        cameraStartPosition[2]
+      );
+
+      // Stel de target van OrbitControls in
+      if (controls) {
+        controls.target.set(...cameraStartLookAt);
+        controls.update(); // Update de controls
+      }
+    }
+  }, [camera, controls, currentLevel]);
+
   return (
     <>
       <ambientLight intensity={1.6} /> // Omgevingslicht voor algemene
@@ -60,7 +85,10 @@ export default function Experience() {
       <directionalLight intensity={1.5} position={[10, 10, 10]} castShadow />
       <pointLight intensity={1} position={[0, 5, 0]} />
       <Perf position="top-left" />
-      <OrbitControls makeDefault />
+      <OrbitControls
+        // target={[0, 0, -13]}
+        makeDefault
+      />
       <color args={["#bdedfc"]} attach="background" />
       <Physics
         gravity={[0, -5, -0.2]}
