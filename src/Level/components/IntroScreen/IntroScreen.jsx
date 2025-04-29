@@ -1,7 +1,7 @@
 import { faArrowRight, faPlay } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, delay, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
@@ -77,8 +77,9 @@ export default function IntroScreen() {
   }, [playSound, isMuted, page]);
 
   // Constants for animation timing
-  const LOGO_EXIT_DURATION = 0.4; // Slowed down
-  const TRACK_ANIMATION_DURATION = 0.4; // Slowed down
+  const LOGO_EXIT_DURATION = 0.4;
+  const TRACK_ANIMATION_DURATION = 0.6;
+  const TEXT_DELAY = 0; // Additional delay before text appears
 
   // Split text into paragraphs
   const paragraphs = [
@@ -105,12 +106,12 @@ export default function IntroScreen() {
   // Trigger text animation after track has moved
   useEffect(() => {
     if (page === 1) {
-      // Wait for logo to fade and track to move up
+      // Wait for logo to fade and track to move up, plus additional delay
       const timer = setTimeout(() => {
         setDelayedTextShow(true);
-      }, (LOGO_EXIT_DURATION + TRACK_ANIMATION_DURATION) * 1000); // Convert to ms
+      }, (LOGO_EXIT_DURATION + TRACK_ANIMATION_DURATION + TEXT_DELAY) * 300);
 
-      return () => clearTimeout(timer); // Clean up
+      return () => clearTimeout(timer);
     }
   }, [page, LOGO_EXIT_DURATION, TRACK_ANIMATION_DURATION]);
 
@@ -135,8 +136,8 @@ export default function IntroScreen() {
   // Calculate dynamic positions based on screen height
   const logoYVisible = dimensions.height * -0.2; // 15% from top
   const logoYHidden = dimensions.height * -0.25; // 25% from top
-  const trackYInitial = dimensions.height * 0.025; // value at beginning when page loads
-  const trackYAnimated = dimensions.height * -1.2; // value at end when button is clicked
+  const trackYInitial = dimensions.height * 0.025; // 2% from top
+  const trackYAnimated = dimensions.height * -1.2; // 45% up from initial
   const textContainerY = dimensions.height * 0.28; // 35% from top
 
   // Animation variants with dynamic values
@@ -156,7 +157,7 @@ export default function IntroScreen() {
     initial: { opacity: 1, y: trackYInitial },
     animate: {
       opacity: 1,
-      y: page === 0 ? trackYInitial : trackYAnimated,
+      y: trackYAnimated,
       transition: {
         duration: TRACK_ANIMATION_DURATION,
         ease: "easeInOut",
@@ -166,25 +167,32 @@ export default function IntroScreen() {
 
   // Staggered paragraph animation
   const textContainer = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: textContainerY + 50 }, // Start below final position
     show: {
       opacity: 1,
       y: textContainerY,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2,
+        type: "spring", // Use spring physics for smoother motion
+        stiffness: 50, // Lower stiffness for gentler motion
+        mass: 0.8,
+        damping: 15, // Higher damping to prevent bouncing
+        staggerChildren: 0.2, // More time between paragraphs
+        delayChildren: 0.3,
+        duration: 0.2, // Longer overall duration
       },
     },
   };
 
   const paragraphAnimation = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 0 }, // Start further down
     show: {
       opacity: 1,
-      y: 0,
+      y: -200,
       transition: {
         type: "spring",
-        damping: 12,
+        stiffness: 50,
+        damping: 15,
+        duration: 0.5,
       },
     },
   };
@@ -257,7 +265,7 @@ export default function IntroScreen() {
     return (
       <motion.p
         key={index}
-        // variants={paragraphAnimation}
+        variants={paragraphAnimation}
         className="intro-text-paragraph"
       >
         {parts}
@@ -275,37 +283,36 @@ export default function IntroScreen() {
               alt="PacketPanic"
               src="./images/packet-panic.svg"
               className="intro-logo"
-              initial="visible"
-              animate="visible"
               exit="hidden"
-              // variants={logoVariants}
+              variants={logoVariants}
             />
           )}
         </AnimatePresence>
 
-        {page === 0 && (
-          <AnimatePresence>
-            <div className="intro-track-container">
+        <AnimatePresence>
+          {page === 0 && (
+            <motion.div
+              variants={trackVariants}
+              exit="animate"
+              className="intro-track-container"
+            >
               <motion.img
                 alt="track"
                 src="./images/intro.png"
                 className="intro-track"
-                initial="visible"
-                animate="visible"
-                exit="hidden"
               />
-            </div>
-          </AnimatePresence>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Only show text after track animation completes */}
-        {page === 1 && (
+        {page === 1 && delayedTextShow && (
           <AnimatePresence>
             <motion.div
               className="intro-text-container"
               initial="hidden"
               animate="show"
-              exit="hidden"
+              variants={textContainer}
             >
               {paragraphs.map((paragraph, index) =>
                 renderParagraphWithTerms(paragraph, index)
