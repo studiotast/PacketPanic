@@ -10,7 +10,7 @@ export default function PauseButton() {
 
   return (
     <Button
-      className="pause-button"
+      className="pause-icon"
       onClick={togglePause}
       shadowColor="transparent"
     >

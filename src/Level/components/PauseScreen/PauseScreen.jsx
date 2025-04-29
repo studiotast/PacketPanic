@@ -47,7 +47,7 @@ export default function PauseScreen() {
           ))}
         </div>
         <Button
-          className="start-button"
+          className="pause-button"
           onClick={togglePause}
           shadowColor="#dc9329"
         >

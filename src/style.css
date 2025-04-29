@@ -515,15 +515,12 @@ body,
   border: none;
   border-radius: 11px;
   cursor: pointer;
+  transition: background-color 0.3s;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.65rem;
-  z-index: 100;
+  gap: 0.6rem;
   font-family: "Karla", sans-serif;
   font-weight: 600;
-  position: static !important;
-  transform: none !important;
+  align-items: center;
 }
 
 /**
@@ -967,7 +964,7 @@ Button styling
     Pause Button
     */
 
-.pause-button {
+.pause-icon {
   cursor: pointer;
   font-size: 55px;
   border-radius: 999px;
