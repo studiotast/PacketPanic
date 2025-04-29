@@ -69,12 +69,12 @@ const levelsData: LevelData[] = [
       buildings: [
         {
           name: "Building1",
-          position: [-7, 0.75, -24],
+          position: [-7, 1.5, -24],
           colors: ["blue", "red"],
         },
         {
           name: "Building2",
-          position: [7, 0.75, -20],
+          position: [7, 1.5, -20],
           colors: ["red"],
         },
       ],
