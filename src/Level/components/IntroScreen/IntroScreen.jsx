@@ -76,11 +76,6 @@ export default function IntroScreen() {
     };
   }, [playSound, isMuted, page]);
 
-  // Constants for animation timing
-  const LOGO_EXIT_DURATION = 0.4;
-  const TRACK_ANIMATION_DURATION = 0.6;
-  const TEXT_DELAY = 0; // Additional delay before text appears
-
   // Split text into paragraphs
   const paragraphs = [
     "Het internet bestaat uit pakketjes die op weg zijn naar hun eindbestemming. De weg van de pakketjes gaan van router naar router. Vaak gaat de reis over de grenzen van meerdere autonome systemen.",
@@ -91,7 +86,6 @@ export default function IntroScreen() {
   const handleClick = () => {
     if (page === 0) {
       setPage(1);
-      setDelayedTextShow(false); // Reset text visibility
     } else {
       // Type-safe check and call
       if (typeof window.initiatePhaseTransition === "function") {
@@ -102,18 +96,6 @@ export default function IntroScreen() {
       }
     }
   };
-
-  // Trigger text animation after track has moved
-  useEffect(() => {
-    if (page === 1) {
-      // Wait for logo to fade and track to move up, plus additional delay
-      const timer = setTimeout(() => {
-        setDelayedTextShow(true);
-      }, (LOGO_EXIT_DURATION + TRACK_ANIMATION_DURATION + TEXT_DELAY) * 300);
-
-      return () => clearTimeout(timer);
-    }
-  }, [page, LOGO_EXIT_DURATION, TRACK_ANIMATION_DURATION]);
 
   // Animation variants with dynamic values
   const logoVariants = {
@@ -127,11 +109,11 @@ export default function IntroScreen() {
         // delay: 0.2, // Vertraging van 1 seconde
       },
     },
-    hidden: {
+    exit: {
       opacity: 0,
       y: "-100%",
       transition: {
-        duration: LOGO_EXIT_DURATION,
+        duration: 0.4,
         ease: "easeInOut",
       },
     },
@@ -143,15 +125,15 @@ export default function IntroScreen() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: TRACK_ANIMATION_DURATION,
+        duration: 0.6,
         ease: "easeInOut",
       },
     },
-    hidden: {
+    exit: {
       opacity: 0,
       y: "-100%",
       transition: {
-        duration: TRACK_ANIMATION_DURATION,
+        duration: 0.6,
         ease: "easeInOut",
       },
     },
@@ -159,32 +141,22 @@ export default function IntroScreen() {
 
   // Staggered paragraph animation
   const textContainer = {
-    hidden: { opacity: 0, y: 0 }, // Start below final position
-    show: {
+    initial: { opacity: 0, y: "100%" },
+    animate: {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring", // Use spring physics for smoother motion
-        stiffness: 50, // Lower stiffness for gentler motion
-        mass: 0.8,
-        damping: 15, // Higher damping to prevent bouncing
-        staggerChildren: 0.2, // More time between paragraphs
-        delayChildren: 0.3,
-        duration: 0.2, // Longer overall duration
+        duration: 1, // Duur van de animatie
+        ease: "easeInOut",
+        // delay: 0.2, // Vertraging van 1 seconde
       },
     },
-  };
-
-  const paragraphAnimation = {
-    hidden: { opacity: 0, y: "100%" }, // Start further down
-    show: {
-      opacity: 1,
-      y: 0,
+    exit: {
+      opacity: 0,
+      y: "-100%",
       transition: {
-        type: "spring",
-        stiffness: 50,
-        damping: 15,
-        duration: 0.5,
+        duration: 0.6,
+        ease: "easeInOut",
       },
     },
   };
@@ -255,13 +227,9 @@ export default function IntroScreen() {
     }
 
     return (
-      <motion.p
-        key={index}
-        variants={paragraphAnimation}
-        className="intro-text-paragraph"
-      >
+      <p key={index} className="intro-text-paragraph">
         {parts}
-      </motion.p>
+      </p>
     );
   };
 
@@ -277,7 +245,7 @@ export default function IntroScreen() {
               className="intro-logo"
               initial="initial"
               animate="animate"
-              exit="hidden"
+              exit="exit"
               variants={logoVariants}
             />
           )}
@@ -289,7 +257,7 @@ export default function IntroScreen() {
               variants={trackVariants}
               initial="initial"
               animate="animate"
-              exit="hidden"
+              exit="exit"
               className="intro-track-container"
             >
               <motion.img
@@ -303,11 +271,12 @@ export default function IntroScreen() {
 
         {/* Only show text after track animation completes */}
         {page === 1 && (
-          <AnimatePresence delay={0.3}>
+          <AnimatePresence>
             <motion.div
               className="intro-text-container"
-              initial="hidden"
-              animate="show"
+              initial="initial"
+              animate="animate"
+              exit="exit"
               variants={textContainer}
             >
               {paragraphs.map((paragraph, index) =>
