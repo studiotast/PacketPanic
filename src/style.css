@@ -609,7 +609,7 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: var(--overlay);
   z-index: 1000;
 }
 .game-over-wrapper {
@@ -770,7 +770,7 @@ body,
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--overlay);
   color: white;
   z-index: 100;
   pointer-events: none;
@@ -778,6 +778,9 @@ body,
 
 .ready-content {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* SVG image animations */
@@ -804,11 +807,27 @@ body,
 .ready-heading {
   margin-bottom: 1rem;
   max-width: 100%;
+  width: 40vh;
+  width: 40dvh;
+  max-width: 550px;
+}
+.ready-heading img {
+  width: 100%;
+  height: auto;
 }
 
 .countdown {
   display: flex;
   justify-content: center;
+  height: 30vh;
+  height: 30dvh;
+  max-height: 350px;
+  aspect-ratio: 1/1;
+}
+
+.countdown img {
+  width: 100%;
+  height: auto;
 }
 
 /**
