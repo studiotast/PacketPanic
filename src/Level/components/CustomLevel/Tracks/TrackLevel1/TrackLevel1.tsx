@@ -6,7 +6,7 @@ import Accelerator from "../../Accelerator/Accelerator";
 import Building from "../../Building/Building";
 import Corner from "../../Corner";
 import Curve from "../../Curve";
-import Platform from "../../Platform";
+import Platform from "./PlatformLevel1";
 import Straight from "../../Straight";
 import StraightShort from "../../StraightShort";
 

@@ -55,7 +55,7 @@ const levelsData: LevelData[] = [
     name: "Packet Basics",
     scoreToAdvance: 200,
     maxScore: 240,
-    timeLimit: 60, // 60 seconds
+    timeLimit: 6000, // 60 seconds
     description: "Direct the colored packets to their matching buildings!",
     newsArticle: {
       title: "Packet Basics",
@@ -68,7 +68,7 @@ const levelsData: LevelData[] = [
       cameraStartPosition: [35, 25, 15],
       accelerators: [
         {
-          position: [0, 1, -14],
+          position: [0, 1, -16],
           colors: ["blue", "red"],
         },
       ],

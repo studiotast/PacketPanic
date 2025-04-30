@@ -1,20 +1,23 @@
 import { Euler, Vector3 } from "@react-three/fiber";
 import React, { useMemo } from "react";
-import { useModels } from "../../../stores/useModels";
+import { useModels } from "../../../../../stores/useModels";
 
 interface JunctionProps {
   position?: Vector3;
   rotation?: Euler;
 }
 
-export default function Platform({
+export default function PlatformLevel1({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
 }: JunctionProps) {
-  const { platformModel } = useModels((state) => state.getModels());
+  const { platformLevel1Model } = useModels((state) => state.getModels());
 
   // Gebruik useMemo om een gekloonde instantie te maken per component
-  const clonedModel = useMemo(() => platformModel.clone(), [platformModel]);
+  const clonedModel = useMemo(
+    () => platformLevel1Model.clone(),
+    [platformLevel1Model]
+  );
 
   return (
     <group rotation={rotation} position={position}>
