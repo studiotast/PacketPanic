@@ -117,10 +117,10 @@ export default function Building({
       )}
       <House position={[0, -1.9, 0]} rotation={[0, Math.PI * 1.5, 0]} />
       <group position={[3, 0, -1]}>
-        {/* <mesh scale={[1, 1, 1]}>
+        <mesh scale={[1, 1, 1]}>
           <boxGeometry args={[1.5, 1.5, 1.5]} />
           <meshBasicMaterial color="red" wireframe />
-        </mesh> */}
+        </mesh>
         <CuboidCollider
           args={[0.75, 0.75, 0.75]}
           sensor
@@ -156,10 +156,10 @@ export default function Building({
       </group>
 
       <group position={[3, -3, -4]}>
-        {/* <mesh scale={[1, 1, 1]}>
+        <mesh scale={[1, 1, 1]}>
           <boxGeometry args={[1.5, 1.5, 1.5]} />
           <meshBasicMaterial color="blue" wireframe />
-        </mesh> */}
+        </mesh>
         <CuboidCollider
           args={[0.75, 0.75, 0.75]}
           sensor
