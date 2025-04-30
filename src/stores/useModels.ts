@@ -11,10 +11,11 @@ interface ModelsState {
   junctionModel: THREE.Object3D | null;
   signModel: THREE.Object3D | null;
   signPostModel: THREE.Object3D | null;
-  platformModel: THREE.Object3D | null;
   buildingsPlatformModel: THREE.Object3D | null;
   houseModel: THREE.Object3D | null;
   flagModel: THREE.Object3D | null;
+  platformLevel1Model: THREE.Object3D | null;
+  platformLevel2Model: THREE.Object3D | null;
   getModels: () => ModelsState;
 }
 
@@ -29,10 +30,11 @@ export const useModels = create<ModelsState>((set, get) => {
     junctionModel: null,
     signModel: null,
     signPostModel: null,
-    platformModel: null,
     buildingsPlatformModel: null,
     houseModel: null,
     flagModel: null,
+    platformLevel1Model: null,
+    platformLevel2Model: null,
   };
 
   return {
@@ -52,10 +54,13 @@ export const useModels = create<ModelsState>((set, get) => {
         junctionModel: useGLTF("assets/models/track_junction_a02.glb").scene,
         signModel: useGLTF("assets/models/signpost_sign_a02.glb").scene,
         signPostModel: useGLTF("assets/models/signpost_pole_a02.glb").scene,
-        platformModel: useGLTF("assets/models/platform_level1_a01.glb").scene,
         buildingsPlatformModel: useGLTF("assets/models/gebouwen_a01.glb").scene,
         houseModel: useGLTF("assets/models/house_a01.glb").scene,
         flagModel: useGLTF("assets/models/house_flag_a01.glb").scene,
+        platformLevel1Model: useGLTF("assets/models/platform_level1_a01.glb")
+          .scene,
+        platformLevel2Model: useGLTF("assets/models/platform_level2_a01.glb")
+          .scene,
       };
 
       // Update the store with all the models and set loaded to true

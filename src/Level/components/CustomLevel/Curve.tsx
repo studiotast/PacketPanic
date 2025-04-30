@@ -5,11 +5,13 @@ import { useModels } from "../../../stores/useModels";
 interface CornerProps {
   position?: Vector3;
   rotation?: Euler;
+  scale?: Vector3;
 }
 
 export default function Curve({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
+  scale = [1, 1, 1],
 }: CornerProps) {
   const { curveModel } = useModels((state) => state.getModels());
 
@@ -17,7 +19,7 @@ export default function Curve({
   const clonedModel = useMemo(() => curveModel.clone(), [curveModel]);
 
   return (
-    <group rotation={rotation} position={position} scale={[1, 1, 1]}>
+    <group rotation={rotation} scale={scale} position={position}>
       <primitive object={clonedModel} />
     </group>
   );

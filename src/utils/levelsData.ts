@@ -55,7 +55,7 @@ const levelsData: LevelData[] = [
     name: "Packet Basics",
     scoreToAdvance: 200,
     maxScore: 240,
-    timeLimit: 60, // 60 seconds
+    timeLimit: 6000, // 60 seconds
     description: "Direct the colored packets to their matching buildings!",
     newsArticle: {
       title: "Packet Basics",
@@ -68,19 +68,37 @@ const levelsData: LevelData[] = [
       cameraStartPosition: [35, 25, 15],
       accelerators: [
         {
-          position: [0, 1, -14],
+          position: [0, 1, -16],
+          colors: ["blue", "red"],
+        },
+        {
+          position: [-8, 1, -24],
+          colors: ["blue", "red"],
+        },
+        {
+          position: [10, 1, -22],
           colors: ["blue", "red"],
         },
       ],
       buildings: [
         {
           name: "Building1",
-          position: [-7, 1.5, -24],
+          position: [-17, 2, -26],
           colors: ["blue", "red"],
         },
         {
           name: "Building2",
-          position: [7, 1.5, -20],
+          position: [-7, 2, -32],
+          colors: ["blue", "red"],
+        },
+        {
+          name: "Building3",
+          position: [3, 2, -32],
+          colors: ["red"],
+        },
+        {
+          name: "Building4",
+          position: [13, 2, -24],
           colors: ["red"],
         },
       ],
@@ -165,22 +183,22 @@ const levelsData: LevelData[] = [
       buildings: [
         {
           name: "Building1",
-          position: [4, 0.75, -5],
+          position: [4, 1.5, -5],
           colors: ["purple"],
         },
         {
           name: "Building2",
-          position: [0, 0.75, -5],
+          position: [0, 1.5, -5],
           colors: ["green"],
         },
         {
           name: "Building3",
-          position: [-4, 0.75, -5],
+          position: [-4, 1.5, -5],
           colors: ["yellow"],
         },
       ],
       spawner: {
-        position: [0, 0.75, 2.5],
+        position: [0, 1.5, 2.5],
         ballColors: ["yellow", "purple"],
       },
     },
