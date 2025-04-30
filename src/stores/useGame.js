@@ -7,10 +7,10 @@ const TIME_LIMIT = 45; // 45 seconds game limit
 export default create(
   subscribeWithSelector((set, get) => {
     const levelSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/level.mp3") : null;
+      typeof Audio !== "undefined" ? new Audio("/audio/level.wav") : null;
 
     const menuSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/menu.mp3") : null;
+      typeof Audio !== "undefined" ? new Audio("/audio/menu.wav") : null;
 
     const inHoleSound =
       typeof Audio !== "undefined" ? new Audio("/audio/in-hole.wav") : null;
@@ -26,6 +26,22 @@ export default create(
 
     const wooshSound =
       typeof Audio !== "undefined" ? new Audio("/audio/quick-woosh.wav") : null;
+
+    const countDownSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/count-down.wav") : null;
+
+    const garageOpenSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/garage-open.wav") : null;
+
+    const garageCloseSound =
+      typeof Audio !== "undefined"
+        ? new Audio("/audio/garage-close.wav")
+        : null;
+
+    const robotTalkingSound =
+      typeof Audio !== "undefined"
+        ? new Audio("/audio/robot-talking.wav")
+        : null;
     // Setup keyboard listeners
     const setupKeyboardListeners = () => {
       const handleKeyDown = (e) => {
@@ -121,6 +137,10 @@ export default create(
         score: scoreSound,
         button: buttonSound,
         woosh: wooshSound,
+        countDown: countDownSound,
+        garageOpen: garageOpenSound,
+        garageClose: garageCloseSound,
+        robotTalking: robotTalkingSound,
       },
 
       // Score

@@ -14,6 +14,7 @@ export default function GarageTransition() {
   const loaded = useModels((state) => state.loaded);
   const phase = useGame((state) => state.phase);
   const startFromIntro = useGame((state) => state.startFromIntro);
+  const playSound = useGame((state) => state.playSound);
 
   // Track states
   const [showGarage, setShowGarage] = useState(false);
@@ -44,6 +45,8 @@ export default function GarageTransition() {
   useEffect(() => {
     if (showGarage && isTransitioning && pendingPhaseRef.current) {
       console.log("Models loaded, initiating phase change");
+      playSound("garageClose");
+      console.log("Garage transition animation started");
 
       setTimeout(() => {
         // First trigger the phase change - IMPORTANT: Do this before animation
@@ -54,6 +57,8 @@ export default function GarageTransition() {
           // Then wait before starting the exit animation
           const timer = setTimeout(() => {
             console.log("Starting garage exit animation");
+            playSound("garageOpen");
+            console.log("Garage transition animation ended");
             setShowGarage(false);
 
             // Reset states after animation completes
