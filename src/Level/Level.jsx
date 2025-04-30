@@ -78,6 +78,9 @@ export const pinkMaterial = new THREE.MeshStandardMaterial({
 export const blueMaterial = new THREE.MeshStandardMaterial({
   color: "#425ADF",
 });
+export const greenMaterial = new THREE.MeshStandardMaterial({
+  color: "#4AF01C",
+});
 export const redMaterial = new THREE.MeshStandardMaterial({
   color: "#E72754",
 });

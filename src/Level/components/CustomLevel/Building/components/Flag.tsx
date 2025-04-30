@@ -18,7 +18,7 @@ const Flag = forwardRef<any, SignProps>(
       const clone = flagModel.clone();
       clone.traverse((child) => {
         if (child instanceof THREE.Mesh) {
-          child.material = getColorMaterial(color);
+          child.material = getColorMaterial(color.color);
         }
       });
       return clone;

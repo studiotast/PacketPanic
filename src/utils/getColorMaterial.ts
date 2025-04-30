@@ -3,6 +3,7 @@ import {
   purpleMaterial,
   redMaterial,
   yellowMaterial,
+  greenMaterial,
 } from "../Level/Level";
 
 export function getColorMaterial(color: string) {
@@ -15,6 +16,8 @@ export function getColorMaterial(color: string) {
       return redMaterial;
     case "blue":
       return blueMaterial;
+    case "green":
+      return greenMaterial;
     default:
       return yellowMaterial;
   }
