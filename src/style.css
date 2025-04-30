@@ -67,7 +67,7 @@ body,
   color: var(--black);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing20);
+  gap: var(--spacing15);
   padding-bottom: var(--spacing10);
   max-width: 460px;
 }
@@ -99,9 +99,6 @@ body,
 }
 
 .score-icon-container {
-  box-shadow: 0 6px 0 0 #e8eaf1;
-  border-radius: var(--border-radius10);
-  padding: var(--spacing5);
 }
 
 .score-info-container {
@@ -137,7 +134,7 @@ body,
   background-color: #e8eaf1;
   overflow: hidden;
   border-radius: 30px;
-  box-shadow: 0 9px 0 0 #e8eaf1;
+  box-shadow: 0 9px 0 0 rgba(0, 0, 0, 0.1);
   border: 5px solid var(--white);
 }
 
