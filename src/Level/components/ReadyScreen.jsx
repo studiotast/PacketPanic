@@ -4,9 +4,12 @@ import useGame from "../../stores/useGame.js";
 export default function ReadyScreen() {
   const start = useGame((state) => state.start);
   const [countdown, setCountdown] = useState(3);
+  const playSound = useGame((state) => state.playSound);
 
   // Handle the countdown animation and game start
   useEffect(() => {
+    // Play countdown sound
+    playSound("countDown");
     // Update the countdown every second
     const countdownInterval = setInterval(() => {
       setCountdown((prevCount) => {

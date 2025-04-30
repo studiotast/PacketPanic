@@ -8,6 +8,13 @@ export default function Explanation() {
   const [explanationIndex, setExplanationIndex] = React.useState(1);
   const numberOfImages = 2;
   const readyToStart = explanationIndex === numberOfImages;
+  const playSound = useGame((state) => state.playSound);
+
+  useEffect(() => {
+    setTimeout(() => {
+      playSound("robotTalking");
+    }, 1000);
+  }, []);
 
   return (
     <div className="explanation-overlay">
@@ -23,6 +30,7 @@ export default function Explanation() {
               useGame.setState({ phase: "ready" });
               return;
             }
+            playSound("robotTalking");
             setExplanationIndex((prev) => prev + 1);
           }}
           shadowColor="#dc9329"

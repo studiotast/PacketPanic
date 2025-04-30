@@ -169,19 +169,24 @@ export default function IntroScreen() {
     // Create a collection of terms and their tooltips
     const terms = [
       {
+        term: "pakketjes",
+        explanation:
+          "Een stukje data dat over het internet reist, zoals een e-mail, een videostream een website of een verzoek om een website te bezoeken.",
+      },
+      {
         term: "router naar router",
         explanation:
-          "Routers zijn apparaten die pakketjes doorsturen tussen netwerken. Pakketjes reizen van de ene router naar de andere om hun bestemming te bereiken.",
+          "Routers zijn apparaten die pakketjes doorsturen binnen en tussen netwerken.",
       },
       {
         term: "autonome systemen",
         explanation:
-          "Een autonoom systeem (AS) is een netwerk of verzameling van netwerken onder beheer van één organisatie, zoals een internetprovider of groot bedrijf.",
+          "Een autonoom systeem (AS) is een netwerk of verzameling netwerken onder het beheer van één organisatie, zoals een internetprovider of een groot bedrijf.",
       },
       {
         term: "Border Gateway Protocol",
         explanation:
-          "BGP is het routeringsprotocol dat wordt gebruikt om te bepalen hoe pakketjes tussen autonome systemen op het internet worden doorgestuurd.",
+          "Het BGP is het routeringsprotocol dat gebruikt wordt om de beste route te bepalen naar een bestemming die buiten het huidige autonome systeem ligt.",
       },
     ];
 
