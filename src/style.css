@@ -642,7 +642,7 @@ body,
   position: relative;
   align-items: center;
   justify-content: center;
-  gap: 5%;
+  gap: 2vmin;
   flex-direction: column;
   z-index: 100;
   margin-top: 6%; /* Move content down to align with TV screen area */
@@ -660,8 +660,8 @@ body,
 }
 
 .game-over-button {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
+  padding: 1vmin 2vmin;
+  font-size: clamp(0.4rem, 2vmin, 1.2rem);
   background-color: var(--yellow);
   color: var(--white);
   border: none;
@@ -693,24 +693,24 @@ body,
 
   width: clamp(100px, 70%, 360px);
   z-index: 2;
-  gap: 3%;
+  gap: 1vmin;
   box-shadow: var(--box-shadow);
 }
 
 .game-over-news-text {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing10);
+  gap: 0.6vmin;
 }
 
 .game-over-header {
-  font-size: clamp(1rem, 5vmin, 2.5rem);
+  font-size: clamp(1rem, 5vmin, 2.2rem);
   color: var(--blue);
   font-family: "FatFrank", sans-serif;
 }
 
 .game-over-news-header {
-  font-size: clamp(1rem, 3vmin, 2.5rem);
+  font-size: clamp(1rem, 3vmin, 2.2rem);
   text-align: center;
   color: var(--white);
   font-family: "FatFrank", sans-serif;
@@ -729,7 +729,7 @@ body,
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: var(--spacing30);
+  gap: 1vmin;
 }
 
 .game-over-news-title {
@@ -964,6 +964,7 @@ Button styling
   position: relative;
   display: inline-block;
   z-index: 10;
+  border-radius: var(--border-radius10);
 }
 
 .button-shadow {
@@ -972,6 +973,7 @@ Button styling
   left: 0;
   z-index: -1;
   opacity: 0.9;
+  border-radius: var(--border-radius10);
 }
 
 .top-right-buttons {

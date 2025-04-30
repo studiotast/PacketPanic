@@ -30,8 +30,6 @@ export default function Button({
     if (buttonRef.current) {
       const computedStyle = window.getComputedStyle(buttonRef.current);
       setButtonStyle({
-        width: buttonRef.current.offsetWidth + "px",
-        height: buttonRef.current.offsetHeight + "px",
         borderRadius: computedStyle.borderRadius,
       });
     }
@@ -72,7 +70,8 @@ export default function Button({
           className="button-shadow"
           style={{
             backgroundColor: shadowColor || "#dc9329",
-            ...buttonStyle, // Apply computed styles from the button
+            height: "100%",
+            width: "100%",
           }}
         />
       )}
