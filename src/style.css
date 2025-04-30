@@ -73,20 +73,15 @@ body,
 }
 .score-progress-container.game {
   /* Stijlen voor de game-modus */
-  background-color: #fff;
   position: fixed;
-  bottom: 2vh;
-  bottom: 2dvh;
-  left: 2vh;
-  left: 2dvh;
-  box-shadow: 0 9px 0 0 #e8eaf1;
-  padding: 1.2%;
+  bottom: 3vh;
+  bottom: 3dvh;
+  left: 3vh;
+  left: 3dvh;
 
-  gap: 3vh;
-  gap: 3dvh;
   margin-bottom: 9px;
   width: 100%;
-  max-width: min(460px, 35dvw);
+  max-width: 350px;
 }
 .score-progress-container.end {
   /* Stijlen voor de end-modus */
@@ -214,14 +209,14 @@ body,
  */
 .time {
   position: absolute;
-  top: 15%;
-  left: 0;
-  width: 100%;
+  top: var(--spacing20);
+  left: var(--spacing20);
+  width: fit-content;
   color: var(--white);
   font-size: 6vh;
-  background-color: var(--overlay);
   padding-top: 5px;
-  text-align: center;
+  text-align: left;
+  filter: drop-shadow(0px 6px 0px rgba(0, 0, 0, 0.1));
 }
 .score {
   position: absolute;
@@ -424,11 +419,10 @@ body,
   top: 15px;
   right: 15px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 8px 16px;
   border-radius: 4px;
-  font-size: 24px;
-  font-family: monospace;
+  font-size: 50px;
+  font-family: "FatFrank", sans-serif;
 }
 
 .timer-display {
@@ -442,11 +436,10 @@ body,
   top: 15px;
   right: 15px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 8px 16px;
   border-radius: 4px;
-  font-size: 24px;
-  font-family: monospace;
+  font-size: 50px;
+  font-family: "FatFrank", sans-serif;
 }
 
 /**

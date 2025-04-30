@@ -16,12 +16,12 @@ export default function Interface() {
       <Timer />
 
       {/* Level Info */}
-      <div className="level-info">
+      {/* <div className="level-info">
         <h3>
           Level {currentLevelId}: {currentLevel.name}
         </h3>
         <p>Goal: {currentLevel.scoreToAdvance} points</p>
-      </div>
+      </div> */}
 
       {/* Score */}
       {phase === "playing" && (
