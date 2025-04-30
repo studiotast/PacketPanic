@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 export default function GameOverScreen() {
   const [page, setPage] = useState(0);
   const completeRestart = useGame((state) => state.completeRestart);
+  const advanceToNextLevel = useGame((state) => state.advanceToNextLevel);
   const currentLevelId = useGame((state) => state.currentLevelId);
 
   const newsData = levelsData.find((level) => level.id === currentLevelId);
@@ -27,7 +28,11 @@ export default function GameOverScreen() {
       setPage(1);
     }
     if (page === 1) {
-      completeRestart();
+      if (currentLevelId === 2) {
+        completeRestart();
+        return;
+      }
+      advanceToNextLevel();
     }
   };
 

@@ -16,52 +16,50 @@ export default function TrackLevel2() {
   return (
     <group rotation={[0, 0, 0]}>
       {/* Level 1 Track Layout */}
-      {currentLevel.id === 1 && (
-        <RigidBody
-          type="fixed"
-          colliders="trimesh"
-          restitution={0.2}
-          friction={0}
-        >
-          <StraightShort position={[0, 0, 1]} />
-          <Straight position={[0, 0, -2]} />
-          <Straight position={[0, 0, -6]} />
-          <Straight position={[0, 0, -10]} />
-          <Junction position={[0, 0, -14]} />
-          {/* Left */}
-          <StraightShort
-            rotation={[0, Math.PI * 0.5, 0]}
-            position={[-4, 0, -15]}
-          />
-          <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-7, 0, -16]} />
-          <StraightShort position={[-8, 0, -19]} />
-          <Junction position={[-8, 0, -22]} />
+      <RigidBody
+        type="fixed"
+        colliders="trimesh"
+        restitution={0.2}
+        friction={0}
+      >
+        <StraightShort position={[0, 0, 1]} />
+        <Straight position={[0, 0, -2]} />
+        <Straight position={[0, 0, -6]} />
+        <Straight position={[0, 0, -10]} />
+        <Junction position={[0, 0, -14]} />
+        {/* Left */}
+        <StraightShort
+          rotation={[0, Math.PI * 0.5, 0]}
+          position={[-4, 0, -15]}
+        />
+        <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-7, 0, -16]} />
+        <StraightShort position={[-8, 0, -19]} />
+        <Junction position={[-8, 0, -22]} />
 
-          <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-13, 0, -24]} />
-          <StraightShort position={[-14, 0, -27]} />
+        <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-13, 0, -24]} />
+        <StraightShort position={[-14, 0, -27]} />
 
-          <Corner rotation={[0, Math.PI, 0]} position={[-3, 0, -24]} />
-          <Curve
-            scale={[-1, 1, 1]}
-            rotation={[0, Math.PI, 0]}
-            position={[-3, 0, -28]}
-          />
-          <Straight position={[-4, 0, -32]} />
+        <Corner rotation={[0, Math.PI, 0]} position={[-3, 0, -24]} />
+        <Curve
+          scale={[-1, 1, 1]}
+          rotation={[0, Math.PI, 0]}
+          position={[-3, 0, -28]}
+        />
+        <Straight position={[-4, 0, -32]} />
 
-          {/* Right */}
-          <Straight rotation={[0, Math.PI * 0.5, 0]} position={[5, 0, -15]} />
-          <Corner rotation={[0, Math.PI, 0]} position={[9, 0, -16]} />
-          <Junction position={[10, 0, -20]} />
+        {/* Right */}
+        <Straight rotation={[0, Math.PI * 0.5, 0]} position={[5, 0, -15]} />
+        <Corner rotation={[0, Math.PI, 0]} position={[9, 0, -16]} />
+        <Junction position={[10, 0, -20]} />
 
-          <Corner rotation={[0, Math.PI * 0.5, 0]} position={[5, 0, -22]} />
-          <StraightShort position={[4, 0, -25]} />
-          <Curve rotation={[0, Math.PI, 0]} position={[5, 0, -28]} />
-          <Straight position={[6, 0, -32]} />
+        <Corner rotation={[0, Math.PI * 0.5, 0]} position={[5, 0, -22]} />
+        <StraightShort position={[4, 0, -25]} />
+        <Curve rotation={[0, Math.PI, 0]} position={[5, 0, -28]} />
+        <Straight position={[6, 0, -32]} />
 
-          <Corner rotation={[0, Math.PI, 0]} position={[15, 0, -22]} />
-          <StraightShort position={[16, 0, -25]} />
-        </RigidBody>
-      )}
+        <Corner rotation={[0, Math.PI, 0]} position={[15, 0, -22]} />
+        <StraightShort position={[16, 0, -25]} />
+      </RigidBody>
 
       {/* Dynamic elements based on level config */}
       {currentLevel.trackConfig.accelerators.map((acc, index) => (

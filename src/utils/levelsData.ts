@@ -481,15 +481,15 @@ const levelsData: LevelData[] = [
       accelerators: [
         {
           position: [0, 1, -16],
-          colors: ["blue", "red"],
+          colors: ["blue", "red", "yellow"],
         },
         {
           position: [-8, 1, -24],
-          colors: ["blue", "red"],
+          colors: ["blue", "red", "yellow"],
         },
         {
           position: [10, 1, -22],
-          colors: ["blue", "red"],
+          colors: ["blue", "red", "yellow"],
         },
       ],
       buildings: [
