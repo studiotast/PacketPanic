@@ -72,12 +72,11 @@ export default function GameOverScreen() {
             ) : (
               <motion.div
                 key="results-page"
-                className="game-over-content-wrapper"
+                className="game-over-content-wrapper end"
                 initial="initial"
                 animate="animate"
                 exit="exit"
                 variants={pageVariants}
-                style={{ padding: "25px" }}
               >
                 <p className="game-over-header">Resultaat van vandaag</p>
                 <p className="game-over-details">
