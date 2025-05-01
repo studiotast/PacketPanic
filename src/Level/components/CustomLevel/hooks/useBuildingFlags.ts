@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import useGame from "../../../../stores/useGame";
+import { ColorConfig } from "../../../../utils/levelsData";
 
 interface BuildingFlagsState {
-  currentColors: string[];
+  currentColors: ColorConfig[];
   isTransitioning: boolean;
-  nextColors?: string[];
+  nextColors?: ColorConfig[];
 }
 
 export default function useBuildingFlags({ initialColors, name }) {
@@ -45,59 +46,41 @@ export default function useBuildingFlags({ initialColors, name }) {
       });
       return;
     }
-    // Transition to scene2
-    else if (
-      timer >= timeLine.scene1.time - TRANSITION_PERIOD &&
-      timer < timeLine.scene1.time
-    ) {
-      currentScene = null; // Still using initial colors
-      isTransitioning = true;
 
-      // Find next colors from scene1
-      const nextScene = timeLine.scene1;
-      const nextBuilding = nextScene.buildingColors.find(
-        (b) => b.name === name
-      );
-      nextColors = nextBuilding?.colors || [];
-    }
-    // In scene1
-    else if (timer < timeLine.scene2.time - TRANSITION_PERIOD) {
-      currentScene = timeLine.scene1;
-      isTransitioning = false;
-    }
-    // Transition to scene2
-    else if (timer < timeLine.scene2.time) {
-      currentScene = timeLine.scene1; // Still using scene1 colors
-      isTransitioning = true;
+    // Process all scenes (dynamic version)
+    const sceneKeys = Object.keys(timeLine).sort((a, b) => {
+      const aNumber = parseInt(a.replace("scene", ""));
+      const bNumber = parseInt(b.replace("scene", ""));
+      return timeLine[a].time - timeLine[b].time;
+    });
 
-      // Find next colors from scene2
-      const nextScene = timeLine.scene2;
-      const nextBuilding = nextScene.buildingColors.find(
-        (b) => b.name === name
-      );
-      nextColors = nextBuilding?.colors || [];
-    }
-    // In scene2
-    else if (timer < timeLine.scene3.time - TRANSITION_PERIOD) {
-      currentScene = timeLine.scene2;
-      isTransitioning = false;
-    }
-    // Transition to scene3
-    else if (timer < timeLine.scene3.time) {
-      currentScene = timeLine.scene2; // Still using scene2 colors
-      isTransitioning = true;
+    // Find current scene and check for transition periods
+    for (let i = 0; i < sceneKeys.length; i++) {
+      const currentSceneKey = sceneKeys[i];
+      const currentSceneTime = timeLine[currentSceneKey].time;
+      const nextSceneKey = sceneKeys[i + 1];
 
-      // Find next colors from scene3
-      const nextScene = timeLine.scene3;
-      const nextBuilding = nextScene.buildingColors.find(
-        (b) => b.name === name
-      );
-      nextColors = nextBuilding?.colors || [];
-    }
-    // In scene3
-    else {
-      currentScene = timeLine.scene3;
-      isTransitioning = false;
+      if (
+        !nextSceneKey ||
+        timer < timeLine[nextSceneKey].time - TRANSITION_PERIOD
+      ) {
+        // In current scene
+        currentScene = timeLine[currentSceneKey];
+        isTransitioning = false;
+        break;
+      } else if (timer < timeLine[nextSceneKey].time) {
+        // In transition to next scene
+        currentScene = timeLine[currentSceneKey];
+        isTransitioning = true;
+
+        // Get next scene colors
+        const nextScene = timeLine[nextSceneKey];
+        const nextBuilding = nextScene.buildingColors.find(
+          (b) => b.name === name
+        );
+        nextColors = nextBuilding?.colors || [];
+        break;
+      }
     }
 
     // Find the matching building colors for current scene
@@ -108,7 +91,7 @@ export default function useBuildingFlags({ initialColors, name }) {
 
       if (matchingBuilding) {
         setFlagState({
-          currentColors: matchingBuilding.colors,
+          currentColors: matchingBuilding.colors || [],
           isTransitioning: isTransitioning,
           nextColors: isTransitioning ? nextColors : undefined,
         });
