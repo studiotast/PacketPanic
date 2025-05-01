@@ -18,11 +18,13 @@ const Flag = forwardRef<any, SignProps>(
       const clone = flagModel.clone();
       clone.traverse((child) => {
         if (child instanceof THREE.Mesh) {
-          child.material = getColorMaterial(color.color);
+          child.material = getColorMaterial(color);
         }
       });
       return clone;
     }, [flagModel, color]);
+
+    console.log("Flag color", color);
 
     return (
       <group rotation={rotation} position={position} scale={[1, 1, 1]}>
