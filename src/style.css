@@ -606,153 +606,149 @@ body,
   justify-content: center;
   background-color: var(--overlay);
   z-index: 1000;
-}
-.game-over-wrapper {
-  width: 98vh;
-  margin: var(--spacing40);
-  width: 98dvh;
-  max-height: 90vh;
-  max-width: 1200px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .game-over-wrapper {
+    width: 98vh;
+    margin: var(--spacing40);
+    width: 98dvh;
+    max-height: 90vh;
+    max-width: 1200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-.game-over-tv {
-  width: 100%;
-  height: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Adjust vertical offset to account for antenna */
-  z-index: 101;
-  pointer-events: none;
-}
+    .game-over-tv {
+      width: 100%;
+      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(
+        -50%,
+        -50%
+      ); /* Adjust vertical offset to account for antenna */
+      z-index: 101;
+      pointer-events: none;
+    }
 
-.game-over-content {
-  width: 85%;
-  aspect-ratio: 10 / 6.8;
-  overflow: hidden;
-  background-color: var(--purple);
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  gap: 2vmin;
-  flex-direction: column;
-  z-index: 100;
-  margin-top: 6%; /* Move content down to align with TV screen area */
-}
+    .game-over-content {
+      width: 85%;
+      aspect-ratio: 10 / 6.8;
+      overflow: hidden;
+      background-color: var(--purple);
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      gap: 2vmin;
+      flex-direction: column;
+      z-index: 100;
+      margin-top: 6%; /* Move content down to align with TV screen area */
+      .game-over-bg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        mix-blend-mode: soft-light;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: -1;
+        object-fit: cover;
+      }
+      .game-over-news-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 1vmin;
+      }
+      .game-over-news-header {
+        font-size: clamp(1rem, 3vmin, 2.2rem);
+        text-align: center;
+        color: var(--white);
+        font-family: "FatFrank", sans-serif;
+      }
 
-.game-over-bg {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  mix-blend-mode: soft-light;
-  opacity: 0.15;
-  pointer-events: none;
-  z-index: -1;
-  object-fit: cover;
-}
+      .game-over-content-wrapper {
+        background-color: var(--white);
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        padding: clamp(2px, 2%, 12px);
+        border-radius: clamp(10px, 2vmin, 20px);
 
-.game-over-button {
-  padding: 1vmin 2vmin;
-  font-size: clamp(0.4rem, 2vmin, 1.2rem);
-  background-color: var(--yellow);
-  color: var(--white);
-  border: none;
-  border-radius: 11px;
-  cursor: pointer;
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  font-family: "Karla", sans-serif;
-  font-weight: 600;
-  z-index: 2;
-  position: relative;
-  z-index: 10;
-}
+        width: clamp(100px, 70%, 360px);
+        z-index: 2;
+        gap: 1vmin;
+        box-shadow: var(--box-shadow);
 
-.game-over-button-wrapper {
-  position: relative;
-  z-index: 10;
-}
+        .game-over-news-image {
+          width: 100%;
+          aspect-ratio: 3/1;
+          object-fit: cover;
+          border-radius: clamp(8px, 1.5vmin, 15px);
+        }
+        .game-over-news-text {
+          display: flex;
+          flex-direction: column;
+          gap: 0.6vmin;
 
-.game-over-content-wrapper {
-  background-color: var(--white);
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  padding: clamp(2px, 3%, 12px);
-  border-radius: var(--border-radius20);
+          .game-over-news-title {
+            font-size: clamp(0.8rem, 2vmin, 1.5rem);
+            color: var(--blue);
+            font-family: "FatFrank", sans-serif;
+          }
 
-  width: clamp(100px, 70%, 360px);
-  z-index: 2;
-  gap: 1vmin;
-  box-shadow: var(--box-shadow);
-}
+          .game-over-news-description {
+            font-size: clamp(0.6rem, 1.5vmin, 1.2rem);
+            color: var(--black);
+            font-family: "Karla", sans-serif;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: auto;
+          }
+        }
+        .game-over-header {
+          font-size: clamp(1rem, 5vmin, 2.2rem);
+          color: var(--blue);
+          font-family: "FatFrank", sans-serif;
+        }
+      }
 
-.game-over-news-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6vmin;
-}
+      .game-over-details {
+        font-family: "Karla", sans-serif;
+        font-size: clamp(0.6rem, 1.5vmin, 1.2rem);
+      }
 
-.game-over-header {
-  font-size: clamp(1rem, 5vmin, 2.2rem);
-  color: var(--blue);
-  font-family: "FatFrank", sans-serif;
-}
-
-.game-over-news-header {
-  font-size: clamp(1rem, 3vmin, 2.2rem);
-  text-align: center;
-  color: var(--white);
-  font-family: "FatFrank", sans-serif;
-}
-
-.game-over-news-image {
-  width: 100%;
-  aspect-ratio: 3/1;
-  object-fit: cover;
-  border-radius: var(--border-radius10);
-}
-
-.game-over-news-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  gap: 1vmin;
-}
-
-.game-over-news-title {
-  font-size: clamp(0.8rem, 2vmin, 1.5rem);
-  color: var(--blue);
-  font-family: "FatFrank", sans-serif;
-}
-
-.game-over-news-description {
-  font-size: clamp(0.6rem, 1.5vmin, 1.2rem);
-  color: var(--black);
-  font-family: "Karla", sans-serif;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: auto;
-}
-
-.game-over-details {
-  font-family: "Karla", sans-serif;
-  font-size: clamp(0.6rem, 1.5vmin, 1.2rem);
+      .game-over-button-container {
+        .game-over-button {
+          padding: 1vmin 2vmin;
+          font-size: clamp(0.4rem, 2vmin, 1.2rem);
+          background-color: var(--yellow);
+          color: var(--white);
+          border: none;
+          border-radius: 11px;
+          cursor: pointer;
+          display: flex;
+          gap: 0.5rem;
+          justify-content: center;
+          align-items: center;
+          font-family: "Karla", sans-serif;
+          font-weight: 600;
+          z-index: 2;
+          position: relative;
+          z-index: 10;
+          border-radius: clamp(8px, 1.5vmin, 15px);
+        }
+        .button-shadow {
+          border-radius: clamp(8px, 1.5vmin, 15px);
+        }
+      }
+    }
+  }
 }
 
 /**

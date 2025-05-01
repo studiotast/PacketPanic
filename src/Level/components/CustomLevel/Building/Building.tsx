@@ -90,13 +90,13 @@ export default function Building({
               position={[0.9, 2, positionFromLeft]}
               color={colorConfig.color}
               // isBadActor={colorConfig.badActor || false}
-              // isTransitioning={colorConfig.transition || false}
+              isFading={colorConfig.transition || false}
             />
           );
         })}
 
       {/* Transition Indicator */}
-      {isTransitioning && (
+      {/* {isTransitioning && (
         <group ref={transitionAnimRef} position={[0, 3.5, 0]}>
           <mesh>
             <sphereGeometry args={[0.3, 16, 16]} />
@@ -110,7 +110,7 @@ export default function Building({
               </mesh>
             ))}
         </group>
-      )}
+      )} */}
 
       {phase === "playing" && (
         <group>{plusOneLabelsWrapperRef.current.map((label) => label)}</group>
