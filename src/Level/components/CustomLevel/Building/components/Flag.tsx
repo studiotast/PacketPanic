@@ -3,6 +3,7 @@ import React, { forwardRef, useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { useModels } from "../../../../../stores/useModels";
 import { getColorMaterial } from "../../../../../utils/getColorMaterial";
+import useGame from "../../../../../stores/useGame";
 
 interface SignProps {
   position?: Vector3;
@@ -14,6 +15,7 @@ interface SignProps {
 const Flag = forwardRef<any, SignProps>(
   ({ position = [0, 0, 0], color, rotation, isFading }, ref) => {
     const { flagModel } = useModels((state) => state.getModels());
+    const playSound = useGame((state) => state.playSound);
     // console.log(isFading, isFading);
 
     const clonedModel = useMemo(() => {
@@ -30,12 +32,14 @@ const Flag = forwardRef<any, SignProps>(
       clonedModel.traverse((child) => {
         if (child instanceof THREE.Mesh) {
           if (isFading) {
+            playSound("flagDisappear");
             const fadedMaterial = child.material.clone();
             fadedMaterial.transparent = true;
             fadedMaterial.opacity = 0.5;
             fadedMaterial.needsUpdate = true;
             child.material = fadedMaterial;
           } else {
+            playSound("flagAppear");
             const normalMaterial = getColorMaterial(color);
             child.material = normalMaterial;
           }
