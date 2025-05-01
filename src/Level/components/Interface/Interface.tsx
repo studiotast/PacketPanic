@@ -29,13 +29,6 @@ export default function Interface() {
           <ScoreProgress type="game" />
         </div>
       )}
-
-      {/* Restart button - only shown when game is ended */}
-      {phase === "ended" && (
-        <div className="restart" onClick={restart}>
-          Restart
-        </div>
-      )}
     </div>
   );
 }

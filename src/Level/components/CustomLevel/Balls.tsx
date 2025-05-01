@@ -37,7 +37,7 @@ const Balls = forwardRef((props, ref) => {
   ];
 
   const initialSpawnRate = calculateScene();
-  console.log("initialSpawnRate", initialSpawnRate);
+  // console.log("initialSpawnRate", initialSpawnRate);
 
   // Control ball generation timing with dynamic speed adjustment
   const ballGenerationRef = useRef({
@@ -124,7 +124,7 @@ const Balls = forwardRef((props, ref) => {
       // Get dynamic spawn rate from timeline
       const currentSpawnRate = sceneData.spawnRate;
 
-      console.log("currentSpawnRate", currentSpawnRate);
+      // console.log("currentSpawnRate", currentSpawnRate);
 
       // Update available ball colors
       const availableBallColors = sceneData.colors;
@@ -140,11 +140,11 @@ const Balls = forwardRef((props, ref) => {
         // Apply the new interval
         ballGenerationRef.current.currentInterval = currentSpawnRate;
 
-        console.log(
-          `Speed increased at ${timer.toFixed(
-            1
-          )}s! New interval: ${currentSpawnRate.toFixed(2)}s`
-        );
+        // console.log(
+        //   `Speed increased at ${timer.toFixed(
+        //     1
+        //   )}s! New interval: ${currentSpawnRate.toFixed(2)}s`
+        // );
       }
 
       // Increment the ball generation timer

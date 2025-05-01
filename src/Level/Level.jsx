@@ -117,8 +117,6 @@ export default function Level({
     return blocks;
   }, [count, types, seed]);
 
-  console.log(currentLevelId, "currentlevelIDDD");
-
   return (
     <>
       {/* <BlockStart position={[0, 0, 0]} />
