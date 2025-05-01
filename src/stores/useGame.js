@@ -342,7 +342,6 @@ export default create(
         });
       },
 
-      // Add this function to your store's return object
       calculateScene: () => {
         const { timer, currentLevel } = get();
 
@@ -358,38 +357,40 @@ export default create(
 
         const { timeLine } = currentLevel;
 
-        // Determine which scene we're in based on time
-        if (timer < timeLine.scene1.time) {
-          // console.log("scene1");
-          // console.log("spawnRate", timeLine.scene1.spawnRate);
-          // Before first threshold, use initial config
+        // Get all scene keys and sort them by time
+        const sceneKeys = Object.keys(timeLine)
+          .filter((key) => key.startsWith("scene"))
+          .sort((a, b) => {
+            return timeLine[a].time - timeLine[b].time;
+          });
+
+        // Before the first scene
+        if (timer < timeLine[sceneKeys[0]].time) {
           return {
-            spawnRate: timeLine.scene1.spawnRate || 2.5,
+            spawnRate: timeLine[sceneKeys[0]].spawnRate || 2.5,
             colors: currentLevel.trackConfig.spawner.ballColors,
           };
-        } else if (timer < timeLine.scene2.time) {
-          // console.log("scene2");
-          // console.log("spawnRate", timeLine.scene2.spawnRate);
-          // Between first and second threshold
-          return {
-            spawnRate: timeLine.scene1.spawnRate,
-            colors: timeLine.scene1.ballColors,
-          };
-        } else if (timer < timeLine.scene3.time) {
-          // console.log("scene3");
-          // console.log("spawnRate", timeLine.scene3.spawnRate);
-          // Between second and third threshold
-          return {
-            spawnRate: timeLine.scene2.spawnRate,
-            colors: timeLine.scene2.ballColors,
-          };
-        } else {
-          // After third threshold
-          return {
-            spawnRate: timeLine.scene2.spawnRate,
-            colors: timeLine.scene2.ballColors,
-          };
         }
+
+        // Find current scene
+        let currentSceneKey = sceneKeys[0];
+
+        for (let i = 0; i < sceneKeys.length; i++) {
+          const sceneKey = sceneKeys[i];
+          const nextSceneKey = sceneKeys[i + 1];
+
+          // If this is the last scene or we're before the next scene's time
+          if (!nextSceneKey || timer < timeLine[nextSceneKey].time) {
+            currentSceneKey = sceneKey;
+            break;
+          }
+        }
+
+        // Return data for the current scene
+        return {
+          spawnRate: timeLine[currentSceneKey].spawnRate,
+          colors: timeLine[currentSceneKey].ballColors,
+        };
       },
 
       // Improve the existing restart function

@@ -31,29 +31,10 @@ export default function Building({
   const playSound = useGame((state) => state.playSound);
 
   // Get flag state with new ColorConfig format
-  const { currentColors, isTransitioning, nextColors } = useBuildingFlags({
+  const { currentColors } = useBuildingFlags({
     initialColors,
     name,
   });
-
-  // Add transition animation ref
-  const transitionAnimRef = useRef<THREE.Group>(null);
-
-  // Animation for transition indicator
-  useEffect(() => {
-    if (isTransitioning && transitionAnimRef.current) {
-      // Add pulsing animation when transitioning
-      const animate = () => {
-        if (!transitionAnimRef.current) return;
-        const scale = 1 + Math.sin(Date.now() * 0.01) * 0.1;
-        transitionAnimRef.current.scale.set(scale, scale, scale);
-        requestAnimationFrame(animate);
-      };
-
-      const animation = requestAnimationFrame(animate);
-      return () => cancelAnimationFrame(animation);
-    }
-  }, [isTransitioning]);
 
   const plusOneLabelsWrapperRef = useRef<any[]>([]);
 
@@ -94,23 +75,6 @@ export default function Building({
             />
           );
         })}
-
-      {/* Transition Indicator */}
-      {/* {isTransitioning && (
-        <group ref={transitionAnimRef} position={[0, 3.5, 0]}>
-          <mesh>
-            <sphereGeometry args={[0.3, 16, 16]} />
-            <meshStandardMaterial color="#ffff00" emissive="#ffaa00" />
-          </mesh>
-          {nextColors &&
-            nextColors.map((colorConfig, i) => (
-              <mesh key={i} position={[0, 0.6 + i * 0.3, 0]} scale={0.2}>
-                <sphereGeometry args={[0.5, 16, 16]} />
-                <meshStandardMaterial color={colorConfig.color} />
-              </mesh>
-            ))}
-        </group>
-      )} */}
 
       {phase === "playing" && (
         <group>{plusOneLabelsWrapperRef.current.map((label) => label)}</group>
