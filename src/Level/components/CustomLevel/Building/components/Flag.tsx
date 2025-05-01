@@ -24,8 +24,6 @@ const Flag = forwardRef<any, SignProps>(
       return clone;
     }, [flagModel, color]);
 
-    console.log("Flag color", color);
-
     return (
       <group rotation={rotation} position={position} scale={[1, 1, 1]}>
         <primitive object={clonedModel} />
