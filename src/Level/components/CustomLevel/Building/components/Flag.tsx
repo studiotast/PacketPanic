@@ -32,7 +32,7 @@ const Flag = forwardRef<any, SignProps>(
           if (isFading) {
             const fadedMaterial = child.material.clone();
             fadedMaterial.transparent = true;
-            fadedMaterial.opacity = 0.3;
+            fadedMaterial.opacity = 0.5;
             fadedMaterial.needsUpdate = true;
             child.material = fadedMaterial;
           } else {
