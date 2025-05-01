@@ -39,13 +39,14 @@ export default function Building({
 
   const plusOneLabelsWrapperRef = useRef<any[]>([]);
 
-  function addPlusOneLabel(isBad = false) {
+  function addPlusOneLabel(isBad = false, amount = 1) {
     const labelId = THREE.MathUtils.generateUUID();
     plusOneLabelsWrapperRef.current.push(
       <PlusOneLabel
         key={labelId}
         id={labelId}
         // isBad={isBad}
+        // amount={amount}
         onRemove={(id) => {
           plusOneLabelsWrapperRef.current =
             plusOneLabelsWrapperRef.current.filter(
@@ -82,7 +83,6 @@ export default function Building({
               key={i}
               position={[0.9, 2, positionFromLeft]}
               color={colorConfig.color}
-              // isBadActor={colorConfig.badActor || false}
               isFading={colorConfig.transition || false}
             />
           );
@@ -126,8 +126,8 @@ export default function Building({
                 console.log(
                   `Score decremented for ${ballColor} ball by ${colorInfo.minusScoreNumber}!`
                 );
-                playSound("inHole"); // Play negative sound
-                addPlusOneLabel(true); // Pass true to indicate penalty
+                playSound("failScore"); // Play negative sound
+                addPlusOneLabel(true, colorInfo.minusScoreNumber); // Pass true to indicate penalty, need to pass in the amount also
                 decrementScore(colorInfo.minusScoreNumber);
               } else {
                 // Normal flag - increment score
