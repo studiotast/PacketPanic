@@ -24,7 +24,7 @@ export default function GarageTransition() {
   // Function to initiate phase transition with garage animation
   const initiateTransition = (targetPhase: string) => {
     if (phase === "intro" && !isTransitioning) {
-      console.log("Starting transition to", targetPhase);
+      // console.log("Starting transition to", targetPhase);
       setIsTransitioning(true);
       window.isTransitioning = true;
       setShowGarage(true);
@@ -44,9 +44,9 @@ export default function GarageTransition() {
   // Handle the transition when models are loaded
   useEffect(() => {
     if (showGarage && isTransitioning && pendingPhaseRef.current) {
-      console.log("Models loaded, initiating phase change");
+      // console.log("Models loaded, initiating phase change");
       playSound("garageClose");
-      console.log("Garage transition animation started");
+      // console.log("Garage transition animation started");
 
       setTimeout(() => {
         // First trigger the phase change - IMPORTANT: Do this before animation
@@ -56,9 +56,9 @@ export default function GarageTransition() {
         if (loaded) {
           // Then wait before starting the exit animation
           const timer = setTimeout(() => {
-            console.log("Starting garage exit animation");
+            // console.log("Starting garage exit animation");
             playSound("garageOpen");
-            console.log("Garage transition animation ended");
+            // console.log("Garage transition animation ended");
             setShowGarage(false);
 
             // Reset states after animation completes

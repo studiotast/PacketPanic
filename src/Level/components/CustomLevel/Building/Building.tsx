@@ -99,15 +99,15 @@ export default function Building({
 
             const ballColor = ballParts[1];
 
-            console.log(
-              `Ball collision detected: ${ballColor}. Building accepts: ${acceptedColors.join(
-                ","
-              )}`
-            );
+            // console.log(
+            //   `Ball collision detected: ${ballColor}. Building accepts: ${acceptedColors.join(
+            //     ","
+            //   )}`
+            // );
 
             // Check if this building accepts this ball color
             if (acceptedColors.includes(ballColor)) {
-              console.log(`Score incremented for ${ballColor} ball!`);
+              // console.log(`Score incremented for ${ballColor} ball!`);
               playSound("score");
               addPlusOneLabel();
               incrementScore();

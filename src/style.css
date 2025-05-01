@@ -87,6 +87,14 @@ body,
   /* Stijlen voor de end-modus */
   background-color: transparent;
   border: none;
+  gap: clamp(1px, 1vmin, 15px);
+  p,
+  svg {
+    font-size: clamp(0.8rem, 3vmin, 1.2rem);
+  }
+  .score-progress-bar {
+    height: clamp(10px, 5vmin, 35px);
+  }
 }
 
 .score-label {
@@ -106,14 +114,6 @@ body,
   justify-content: space-between;
   align-items: center;
   position: relative;
-}
-
-.score-advance {
-  font-size: 1.5rem;
-  font-family: "Karla", sans-serif;
-  color: #c2c2c2;
-  font-weight: 300;
-  position: absolute;
 }
 
 .score-icon {
@@ -385,9 +385,7 @@ body,
 
 .button-container-row {
   display: flex;
-  gap: 20px;
-  position: absolute;
-  bottom: 5%;
+  gap: var(--spacing20);
   z-index: 100;
 }
 
@@ -712,7 +710,7 @@ body,
           }
         }
         .game-over-header {
-          font-size: clamp(1rem, 5vmin, 2.2rem);
+          font-size: clamp(1rem, 4vmin, 2rem);
           color: var(--blue);
           font-family: "FatFrank", sans-serif;
         }

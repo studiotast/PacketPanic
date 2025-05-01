@@ -43,7 +43,7 @@ export default function Accelerator({
           args={[0.75, 0.75, 0.75]}
           sensor
           onIntersectionEnter={(intersect) => {
-            console.log("Intersection detected with accelerator");
+            // console.log("Intersection detected with accelerator");
             playSound("boost");
             if (intersect?.colliderObject) {
               const ballId = intersect.colliderObject.name;

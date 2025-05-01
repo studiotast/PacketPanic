@@ -33,7 +33,7 @@ const Ball = forwardRef<BallRef, BallProps>(
     useFrame(() => {
       // Apply velocity only once when body is ready
       if (ballRef.current && !velocityApplied.current && velocity) {
-        console.log(`Applying velocity to ball ${id}:`, velocity);
+        // console.log(`Applying velocity to ball ${id}:`, velocity);
 
         // Apply strong impulse
         ballRef.current.applyImpulse(

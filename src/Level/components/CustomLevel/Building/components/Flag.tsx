@@ -14,7 +14,7 @@ interface SignProps {
 const Flag = forwardRef<any, SignProps>(
   ({ position = [0, 0, 0], color, rotation, isFading }, ref) => {
     const { flagModel } = useModels((state) => state.getModels());
-    console.log(isFading, isFading);
+    // console.log(isFading, isFading);
 
     const clonedModel = useMemo(() => {
       const clone = flagModel.clone();

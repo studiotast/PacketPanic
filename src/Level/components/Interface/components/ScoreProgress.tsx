@@ -14,10 +14,7 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
   const maxScore = currentLevel.maxScore;
 
   // Calculate the progress percentage (capped at 100%)
-  const progressPercentage = Math.min((score / maxScore) * 100, 100);
-
-  // Calculate the position of the target indicator (200 point mark)
-  const targetPosition = (scoreToAdvance / maxScore) * 100; // 83.33%
+  const progressPercentage = Math.min((score / scoreToAdvance) * 100, 100);
 
   return (
     <div
@@ -30,18 +27,9 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
               <FontAwesomeIcon icon={faBox} className="score-icon" />{" "}
             </div>
             <p className="score-text">
-              {score}/{maxScore}
+              {score}/{scoreToAdvance}
             </p>
           </div>
-          <p
-            className="score-advance"
-            style={{
-              left: `${targetPosition}%`,
-              transform: "translateX(-50%)",
-            }}
-          >
-            {scoreToAdvance}
-          </p>
         </div>
       )}
 
@@ -49,14 +37,6 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
         <div
           className="score-progress-fill"
           style={{ width: `${progressPercentage}%` }}
-        />
-        {/* Target indicator line */}
-        <div
-          className="score-target-indicator"
-          style={{
-            left: `${targetPosition}%`,
-            right: "auto",
-          }}
         />
       </div>
     </div>
