@@ -1,4 +1,8 @@
-import { faArrowRight, faPlay } from "@fortawesome/pro-solid-svg-icons";
+import {
+  faArrowRight,
+  faForward,
+  faPlay,
+} from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react";
 import { AnimatePresence, delay, motion } from "framer-motion";

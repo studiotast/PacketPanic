@@ -6,6 +6,7 @@ import BlockSpinner from "./components/BlockSpinner";
 import Track from "./components/CustomLevel/Track";
 import TrackLevel1 from "./components/CustomLevel/Tracks/TrackLevel1/TrackLevel1";
 import TrackLevel2 from "./components/CustomLevel/Tracks/TrackLevel2/TrackLevel2";
+import useGame from "../stores/useGame";
 
 // reusable geometries
 export const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -77,6 +78,9 @@ export const pinkMaterial = new THREE.MeshStandardMaterial({
 export const blueMaterial = new THREE.MeshStandardMaterial({
   color: "#425ADF",
 });
+export const greenMaterial = new THREE.MeshStandardMaterial({
+  color: "#4AF01C",
+});
 export const redMaterial = new THREE.MeshStandardMaterial({
   color: "#E72754",
 });
@@ -100,6 +104,8 @@ export default function Level({
   types = [BlockSpinner, BlockAxe, BlockLimbo],
   seed = 0,
 }) {
+  const currentLevelId = useGame((state) => state.currentLevelId);
+
   const blocks = useMemo(() => {
     const blocks = [];
 
@@ -111,6 +117,8 @@ export default function Level({
     return blocks;
   }, [count, types, seed]);
 
+  console.log(currentLevelId, "currentlevelIDDD");
+
   return (
     <>
       {/* <BlockStart position={[0, 0, 0]} />
@@ -120,8 +128,8 @@ export default function Level({
       <BlockEnd position={[0, 0, -(count + 1) * 4]} /> */}
       {/* <Bounds length={count + 2} /> */}
       {/* <Track /> */}
-      {/* <TrackLevel1 /> */}
-      <TrackLevel2 />
+      {currentLevelId == 1 && <TrackLevel1 />}
+      {currentLevelId == 2 && <TrackLevel2 />}
     </>
   );
 }
