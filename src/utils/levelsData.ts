@@ -576,7 +576,7 @@ const levelsData: LevelData[] = [
             colors: [],
           },
         ],
-        ballColors: ["blue", "red", "green"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
       },
       // ------------- transition scene -----------
       scene2: {
@@ -617,7 +617,7 @@ const levelsData: LevelData[] = [
             ],
           },
         ],
-        ballColors: ["blue", "red", "green"],
+        ballColors: ["blue", "red", "green", "yellow"],
       },
       // --------------------------------
       scene3: {
@@ -653,7 +653,7 @@ const levelsData: LevelData[] = [
             ],
           },
         ],
-        ballColors: ["blue", "red", "green"],
+        ballColors: ["blue", "red", "green", "yellow"],
       },
       // ------------- transition scene -----------
       scene4: {
@@ -704,7 +704,7 @@ const levelsData: LevelData[] = [
             ],
           },
         ],
-        ballColors: ["blue", "red", "green"],
+        ballColors: ["blue", "red", "green", "yellow"],
       },
       // --------------------------------
       scene5: {
