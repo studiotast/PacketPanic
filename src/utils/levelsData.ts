@@ -142,14 +142,6 @@ const levelsData: LevelData[] = [
       cameraStartPosition: [35, 25, 15],
       accelerators: [
         {
-          position: [0, 1, -16],
-          colors: ["blue", "red"],
-        },
-        {
-          position: [-8, 1, -24],
-          colors: ["blue", "red"],
-        },
-        {
           position: [0, 1, -14],
           colors: ["blue", "red"],
         },
@@ -465,7 +457,7 @@ const levelsData: LevelData[] = [
     name: "Packet Basics",
     scoreToAdvance: 200,
     maxScore: 240,
-    timeLimit: 9000, // 1min 30secs
+    timeLimit: 90, // 1min 30secs
     description: "Direct the colored packets to their matching buildings!",
     storyLine: [
       {
