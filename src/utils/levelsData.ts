@@ -51,6 +51,7 @@ export interface ColorConfig {
   color: string;
   badActor?: boolean;
   transition?: boolean;
+  minusScoreNumber?: number;
 }
 
 interface BuildingConfig {
@@ -86,8 +87,8 @@ const levelsData: LevelData[] = [
   {
     id: 1,
     name: "Packet Basics",
-    scoreToAdvance: 200,
-    maxScore: 240,
+    scoreToAdvance: 150,
+    maxScore: 200,
     timeLimit: 60, // 60 seconds
     description: "Direct the colored packets to their matching buildings!",
     storyLine: [
@@ -189,7 +190,7 @@ const levelsData: LevelData[] = [
       },
       // ------------- transition scene -----------
       scene2: {
-        time: 5,
+        time: 10,
         spawnRate: 2.5,
         buildingColors: [
           {
@@ -218,7 +219,7 @@ const levelsData: LevelData[] = [
       },
       // --------------------------------
       scene3: {
-        time: 10,
+        time: 15,
         spawnRate: 2.4,
         buildingColors: [
           {
@@ -241,7 +242,7 @@ const levelsData: LevelData[] = [
       },
       // ------------- transition scene -----------
       scene4: {
-        time: 15,
+        time: 25,
         spawnRate: 2.4,
         buildingColors: [
           {
@@ -289,7 +290,7 @@ const levelsData: LevelData[] = [
       },
       // ------------- transition scene -----------
       scene6: {
-        time: 25,
+        time: 30,
         spawnRate: 2.4,
         buildingColors: [
           {
@@ -321,7 +322,7 @@ const levelsData: LevelData[] = [
       },
       // --------------------------------
       scene7: {
-        time: 30,
+        time: 35,
         spawnRate: 2.3,
         buildingColors: [
           {
@@ -344,7 +345,7 @@ const levelsData: LevelData[] = [
       },
       // ------------- transition scene -----------
       scene8: {
-        time: 35,
+        time: 45,
         spawnRate: 2.3,
         buildingColors: [
           {
@@ -372,70 +373,14 @@ const levelsData: LevelData[] = [
       },
       // --------------------------------
       scene9: {
-        time: 40,
-        spawnRate: 2.2,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [
-              {
-                color: "blue",
-              },
-            ],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
-                color: "red",
-              },
-            ],
-          },
-        ],
-        ballColors: ["blue", "red"],
-      },
-      // ------------- transition scene -----------
-      scene10: {
-        time: 45,
-        spawnRate: 2.2,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [
-              {
-                color: "blue",
-                transition: true,
-              },
-              {
-                color: "red",
-              },
-            ],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
-                color: "red",
-                transition: true,
-              },
-              {
-                color: "blue",
-              },
-            ],
-          },
-        ],
-        ballColors: ["blue", "red"],
-      },
-      // --------------------------------
-      scene11: {
         time: 50,
-        spawnRate: 2.1,
+        spawnRate: 2.2,
         buildingColors: [
           {
             name: "Building1",
             colors: [
               {
-                color: "red",
+                color: "blue",
               },
             ],
           },
@@ -443,7 +388,7 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "blue",
+                color: "red",
               },
             ],
           },
@@ -580,7 +525,7 @@ const levelsData: LevelData[] = [
       },
       // ------------- transition scene -----------
       scene2: {
-        time: 5,
+        time: 10,
         spawnRate: 2.2,
         buildingColors: [
           {
@@ -621,7 +566,7 @@ const levelsData: LevelData[] = [
       },
       // --------------------------------
       scene3: {
-        time: 10,
+        time: 15,
         spawnRate: 2.1,
         buildingColors: [
           {
@@ -657,7 +602,7 @@ const levelsData: LevelData[] = [
       },
       // ------------- transition scene -----------
       scene4: {
-        time: 15,
+        time: 25,
         spawnRate: 2.2,
         buildingColors: [
           {
@@ -682,6 +627,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -708,7 +654,7 @@ const levelsData: LevelData[] = [
       },
       // --------------------------------
       scene5: {
-        time: 20,
+        time: 30,
         spawnRate: 2.1,
         buildingColors: [
           {
@@ -728,6 +674,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -744,7 +691,7 @@ const levelsData: LevelData[] = [
       },
       // ------------- transition scene -----------
       scene6: {
-        time: 25,
+        time: 40,
         spawnRate: 2.1,
         buildingColors: [
           {
@@ -765,6 +712,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "green",
@@ -788,7 +736,7 @@ const levelsData: LevelData[] = [
       },
       // --------------------------------
       scene7: {
-        time: 30,
+        time: 45,
         spawnRate: 2.1,
         buildingColors: [
           {
@@ -805,6 +753,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "green",
@@ -828,7 +777,7 @@ const levelsData: LevelData[] = [
       },
       // ------------- transition scene -----------
       scene8: {
-        time: 35,
+        time: 55,
         spawnRate: 2.1,
         buildingColors: [
           {
@@ -845,6 +794,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "green",
@@ -861,6 +811,7 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
                 badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -878,7 +829,7 @@ const levelsData: LevelData[] = [
       },
       // --------------------------------
       scene9: {
-        time: 40,
+        time: 60,
         spawnRate: 2.1,
         buildingColors: [
           {
@@ -895,6 +846,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 badActor: true,
+                minusScoreNumber: 5,
               },
 
               {
@@ -908,6 +860,7 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
                 badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -920,7 +873,7 @@ const levelsData: LevelData[] = [
       },
       // ------------- transition scene -----------
       scene10: {
-        time: 45,
+        time: 70,
         spawnRate: 2.0,
         buildingColors: [
           {
@@ -938,6 +891,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 badActor: true,
+                minusScoreNumber: 5,
                 transition: true,
               },
 
@@ -947,6 +901,7 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -956,6 +911,7 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
                 badActor: true,
+                minusScoreNumber: 5,
                 transition: true,
               },
               {
@@ -972,243 +928,23 @@ const levelsData: LevelData[] = [
       },
       // --------------------------------
       scene11: {
-        time: 50,
-        spawnRate: 2.0,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
-                color: "yellow",
-              },
-              {
-                color: "red",
-                badActor: true,
-              },
-            ],
-          },
-          {
-            name: "Building3",
-            colors: [
-              {
-                color: "green",
-                badActor: true,
-              },
-              {
-                color: "blue",
-              },
-            ],
-          },
-          {
-            name: "Building4",
-            colors: [],
-          },
-        ],
-        ballColors: ["blue", "red", "green", "yellow"],
-      },
-      // ------------- transition scene -----------
-      scene12: {
-        time: 55,
-        spawnRate: 2.0,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
-                color: "yellow",
-              },
-              {
-                color: "red",
-                badActor: true,
-              },
-              {
-                color: "green",
-              },
-            ],
-          },
-          {
-            name: "Building3",
-            colors: [
-              {
-                color: "green",
-                badActor: true,
-                transition: true,
-              },
-              {
-                color: "blue",
-              },
-            ],
-          },
-          {
-            name: "Building4",
-            colors: [],
-          },
-        ],
-        ballColors: ["blue", "red", "green", "yellow"],
-      },
-      // --------------------------------
-      scene13: {
-        time: 60,
-        spawnRate: 1.9,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
-                color: "yellow",
-              },
-              {
-                color: "red",
-                badActor: true,
-              },
-              {
-                color: "green",
-              },
-            ],
-          },
-          {
-            name: "Building3",
-            colors: [
-              {
-                color: "blue",
-              },
-            ],
-          },
-          {
-            name: "Building4",
-            colors: [],
-          },
-        ],
-        ballColors: ["blue", "red", "green", "yellow"],
-      },
-      // ------------- transition scene -----------
-      scene14: {
-        time: 65,
-        spawnRate: 1.9,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
-                color: "yellow",
-              },
-              {
-                color: "red",
-                badActor: true,
-              },
-              {
-                color: "green",
-              },
-              {
-                color: "blue",
-                badActor: true,
-              },
-            ],
-          },
-          {
-            name: "Building3",
-            colors: [
-              {
-                color: "blue",
-                transition: true,
-              },
-            ],
-          },
-          {
-            name: "Building4",
-            colors: [],
-          },
-        ],
-        ballColors: ["blue", "red", "green", "yellow"],
-      },
-      // --------------------------------
-      scene15: {
-        time: 70,
-        spawnRate: 1.8,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
-                color: "yellow",
-              },
-              {
-                color: "red",
-                badActor: true,
-              },
-              {
-                color: "green",
-              },
-              {
-                color: "blue",
-                badActor: true,
-              },
-            ],
-          },
-          {
-            name: "Building3",
-            colors: [],
-          },
-          {
-            name: "Building4",
-            colors: [],
-          },
-        ],
-        ballColors: ["blue", "red", "green", "yellow"],
-      },
-      // ------------- transition scene -----------
-      scene16: {
         time: 75,
-        spawnRate: 1.9,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "yellow",
-                badActor: true,
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
             colors: [
               {
                 color: "yellow",
-                transition: true,
               },
               {
                 color: "red",
                 badActor: true,
-                transition: true,
-              },
-              {
-                color: "green",
-              },
-              {
-                color: "blue",
-                badActor: true,
-                transition: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -1216,46 +952,10 @@ const levelsData: LevelData[] = [
             name: "Building3",
             colors: [
               {
-                color: "blue",
-              },
-            ],
-          },
-          {
-            name: "Building4",
-            colors: [
-              {
-                color: "red",
-              },
-            ],
-          },
-        ],
-        ballColors: ["blue", "red", "green", "yellow"],
-      },
-      // --------------------------------
-      scene17: {
-        time: 80,
-        spawnRate: 1.8,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [
-              {
-                color: "yellow",
-                badActor: true,
-              },
-            ],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
                 color: "green",
+                badActor: true,
+                minusScoreNumber: 5,
               },
-            ],
-          },
-          {
-            name: "Building3",
-            colors: [
               {
                 color: "blue",
               },
@@ -1263,11 +963,7 @@ const levelsData: LevelData[] = [
           },
           {
             name: "Building4",
-            colors: [
-              {
-                color: "red",
-              },
-            ],
+            colors: [],
           },
         ],
         ballColors: ["blue", "red", "green", "yellow"],
