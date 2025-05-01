@@ -42,6 +42,17 @@ export default create(
       typeof Audio !== "undefined"
         ? new Audio("/audio/robot-talking.wav")
         : null;
+
+    const flagAppearSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/flag-appear.wav") : null;
+
+    const flagDisappearSound =
+      typeof Audio !== "undefined"
+        ? new Audio("/audio/flag-disappear.wav")
+        : null;
+
+    const failScoreSound =
+      typeof Audio !== "undefined" ? new Audio("/audio/fail-score.wav") : null;
     // Setup keyboard listeners
     const setupKeyboardListeners = () => {
       const handleKeyDown = (e) => {
@@ -141,6 +152,9 @@ export default create(
         garageOpen: garageOpenSound,
         garageClose: garageCloseSound,
         robotTalking: robotTalkingSound,
+        flagAppear: flagAppearSound,
+        flagDisappear: flagDisappearSound,
+        failScore: failScoreSound,
       },
 
       // Score
@@ -161,7 +175,10 @@ export default create(
           sound.volume = 0.5; // Set volume to 50%
 
           // Only set loop for menu sound
-          sound.loop = soundName === "menu" || soundName === "level";
+          sound.loop =
+            soundName === "menu" ||
+            soundName === "level" ||
+            soundName === "flagDisappear";
 
           // Return the Promise from play()
           try {
