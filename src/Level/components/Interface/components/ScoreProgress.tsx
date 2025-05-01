@@ -23,25 +23,27 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
     <div
       className={`score-progress-container ${type === "game" ? "game" : "end"}`}
     >
-      <div className="score-info-container">
-        <div className="score-label">
-          <div className="score-icon-container">
-            <FontAwesomeIcon icon={faBox} className="score-icon" />{" "}
+      {type === "end" && (
+        <div className="score-info-container">
+          <div className="score-label">
+            <div className="score-icon-container">
+              <FontAwesomeIcon icon={faBox} className="score-icon" />{" "}
+            </div>
+            <p className="score-text">
+              {score}/{maxScore}
+            </p>
           </div>
-          <p className="score-text">
-            {score}/{maxScore}
+          <p
+            className="score-advance"
+            style={{
+              left: `${targetPosition}%`,
+              transform: "translateX(-50%)",
+            }}
+          >
+            {scoreToAdvance}
           </p>
         </div>
-        <p
-          className="score-advance"
-          style={{
-            left: `${targetPosition}%`,
-            transform: "translateX(-50%)",
-          }}
-        >
-          {scoreToAdvance}
-        </p>
-      </div>
+      )}
 
       <div className="score-progress-bar">
         <div

@@ -88,7 +88,7 @@ const levelsData: LevelData[] = [
     name: "Packet Basics",
     scoreToAdvance: 200,
     maxScore: 240,
-    timeLimit: 6000, // 60 seconds
+    timeLimit: 60, // 60 seconds
     description: "Direct the colored packets to their matching buildings!",
     storyLine: [
       {

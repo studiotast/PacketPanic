@@ -84,7 +84,7 @@ export default function Experience() {
       helderheid
       <directionalLight intensity={1.5} position={[10, 10, 10]} castShadow />
       <pointLight intensity={1} position={[0, 5, 0]} />
-      <Perf position="top-left" />
+      <Perf position="top-right" />
       <OrbitControls
         // target={[0, 0, -13]}
         makeDefault
