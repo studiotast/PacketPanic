@@ -432,6 +432,15 @@ export default create(
         });
       },
 
+      decrementScore: (minusScoreNumber = 5) => {
+        set((state) => {
+          const { score } = state;
+          // Ensure score doesn't go below 0
+          const newScore = Math.max(0, score - minusScoreNumber);
+          return { score: newScore };
+        });
+      },
+
       stopSound: (soundName) => {
         const { sounds, isMuted } = get();
         const sound = sounds[soundName];

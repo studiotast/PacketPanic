@@ -26,6 +26,7 @@ export default function Building({
   name,
 }: BuildingProps) {
   const incrementScore = useGame((state) => state.incrementScore);
+  const decrementScore = useGame((state) => state.decrementScore); // Add this line
   const phase = useGame((state) => state.phase);
   const removeBall = useBalls((state) => state.removeBall);
   const playSound = useGame((state) => state.playSound);
@@ -38,12 +39,13 @@ export default function Building({
 
   const plusOneLabelsWrapperRef = useRef<any[]>([]);
 
-  function addPlusOneLabel() {
+  function addPlusOneLabel(isBad = false) {
     const labelId = THREE.MathUtils.generateUUID();
     plusOneLabelsWrapperRef.current.push(
       <PlusOneLabel
         key={labelId}
         id={labelId}
+        // isBad={isBad}
         onRemove={(id) => {
           plusOneLabelsWrapperRef.current =
             plusOneLabelsWrapperRef.current.filter(
@@ -54,9 +56,19 @@ export default function Building({
     );
   }
 
-  // Extract just colors for collision detection
-  const acceptedColors =
-    currentColors?.map((colorConfig) => colorConfig.color) || [];
+  // Extract all the necessary data for collision detection
+  const acceptedColorsMap =
+    currentColors?.reduce((map, colorConfig) => {
+      map[colorConfig.color] = {
+        isBadActor: colorConfig.badActor || false,
+        minusScoreNumber: colorConfig.minusScoreNumber || 5,
+      };
+      return map;
+    }, {} as Record<string, { isBadActor: boolean; minusScoreNumber: number }>) ||
+    {};
+
+  // Get just the color names for quick lookup
+  const acceptedColors = Object.keys(acceptedColorsMap);
 
   return (
     <group name={name} rotation={rotation} position={position}>
@@ -99,18 +111,31 @@ export default function Building({
 
             const ballColor = ballParts[1];
 
-            // console.log(
-            //   `Ball collision detected: ${ballColor}. Building accepts: ${acceptedColors.join(
-            //     ","
-            //   )}`
-            // );
+            console.log(
+              `Ball collision detected: ${ballColor}. Building accepts: ${acceptedColors.join(
+                ","
+              )}`
+            );
 
             // Check if this building accepts this ball color
             if (acceptedColors.includes(ballColor)) {
-              // console.log(`Score incremented for ${ballColor} ball!`);
-              playSound("score");
-              addPlusOneLabel();
-              incrementScore();
+              const colorInfo = acceptedColorsMap[ballColor];
+
+              if (colorInfo.isBadActor) {
+                // This is a bad actor flag - decrement score
+                console.log(
+                  `Score decremented for ${ballColor} ball by ${colorInfo.minusScoreNumber}!`
+                );
+                playSound("inHole"); // Play negative sound
+                addPlusOneLabel(true); // Pass true to indicate penalty
+                decrementScore(colorInfo.minusScoreNumber);
+              } else {
+                // Normal flag - increment score
+                console.log(`Score incremented for ${ballColor} ball!`);
+                playSound("score");
+                addPlusOneLabel(false);
+                incrementScore();
+              }
             }
           }}
         />
