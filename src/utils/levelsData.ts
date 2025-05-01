@@ -539,7 +539,7 @@ const levelsData: LevelData[] = [
       ],
       spawner: {
         position: [0, 0.75, 2.5],
-        ballColors: ["blue", "red"],
+        ballColors: ["blue", "red", "green", "yellow"],
       },
     },
     timeLine: {
