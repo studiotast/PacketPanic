@@ -399,7 +399,7 @@ const levelsData: LevelData[] = [
     description: "Direct the colored packets to their matching buildings!",
     tutorial: [
       {
-        text: "Pakketje gaan nu langs meerdere wegqijzers, zet ze allemaal goed als een route wijzigt.",
+        text: "Pakketje gaan nu langs meerdere wegwijzers, zet ze allemaal goed als een route wijzigt.",
       },
     ],
     storyLine: [
