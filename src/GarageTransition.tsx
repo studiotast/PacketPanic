@@ -14,17 +14,23 @@ export default function GarageTransition() {
   const loaded = useModels((state) => state.loaded);
   const phase = useGame((state) => state.phase);
   const startFromIntro = useGame((state) => state.startFromIntro);
+  const startTutorial = useGame((state) => state.startTutorial); // Add this if it doesn't exist
   const playSound = useGame((state) => state.playSound);
 
   // Track states
   const [showGarage, setShowGarage] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const pendingPhaseRef = useRef<string | null>(null);
+  const sourcePhaseRef = useRef<string | null>(null);
 
   // Function to initiate phase transition with garage animation
   const initiateTransition = (targetPhase: string) => {
-    if (phase === "intro" && !isTransitioning) {
-      // console.log("Starting transition to", targetPhase);
+    // Allow transitions from both intro and explanation phases
+    if (
+      (phase === "intro" || phase === "explanation" || phase === "tutorial") &&
+      !isTransitioning
+    ) {
+      sourcePhaseRef.current = phase; // Store source phase
       setIsTransitioning(true);
       window.isTransitioning = true;
       setShowGarage(true);
@@ -44,21 +50,36 @@ export default function GarageTransition() {
   // Handle the transition when models are loaded
   useEffect(() => {
     if (showGarage && isTransitioning && pendingPhaseRef.current) {
-      // console.log("Models loaded, initiating phase change");
       playSound("garageClose");
-      // console.log("Garage transition animation started");
 
       setTimeout(() => {
-        // First trigger the phase change - IMPORTANT: Do this before animation
-        if (pendingPhaseRef.current === "explanation") {
+        // Handle different target phases
+        if (
+          pendingPhaseRef.current === "explanation" &&
+          sourcePhaseRef.current === "intro"
+        ) {
           startFromIntro();
+        } else if (
+          pendingPhaseRef.current === "tutorial" &&
+          sourcePhaseRef.current === "explanation"
+        ) {
+          // Transition to tutorial
+          if (typeof startTutorial === "function") {
+            startTutorial();
+          } else {
+            console.warn("startTutorial function not found in useGame");
+          }
+        } else if (
+          pendingPhaseRef.current === "ready" &&
+          sourcePhaseRef.current === "tutorial"
+        ) {
+          useGame.setState({ phase: "ready" });
         }
+
         if (loaded) {
           // Then wait before starting the exit animation
           const timer = setTimeout(() => {
-            // console.log("Starting garage exit animation");
             playSound("garageOpen");
-            // console.log("Garage transition animation ended");
             setShowGarage(false);
 
             // Reset states after animation completes
@@ -66,15 +87,16 @@ export default function GarageTransition() {
               setIsTransitioning(false);
               window.isTransitioning = false;
               pendingPhaseRef.current = null;
-            }, 200); // Match exit animation duration
+              sourcePhaseRef.current = null;
+            }, 200);
 
             return () => clearTimeout(cleanupTimer);
-          }, 200);
+          }, 500);
           return () => clearTimeout(timer);
         }
       }, 1000);
     }
-  }, [loaded, showGarage, isTransitioning, startFromIntro]);
+  }, [loaded, showGarage, isTransitioning, startFromIntro, startTutorial]);
 
   // Animation variants
   const garageVariants = {
