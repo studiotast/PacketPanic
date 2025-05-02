@@ -106,7 +106,7 @@ const Balls = forwardRef((props, ref) => {
 
   // Clear balls when phase changes to "ready" or "intro"
   useEffect(() => {
-    if (phase === "ready" || phase === "intro") {
+    if (phase === "ready" || phase === "intro" || phase === "explanation") {
       clearBalls();
       // Reset spawn interval when game restarts
       ballGenerationRef.current.currentInterval =
