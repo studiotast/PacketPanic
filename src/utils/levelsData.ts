@@ -8,6 +8,7 @@ export interface LevelData {
   timeLimit: number;
   description: string;
   storyLine: StoryLine[];
+  tutorial: Tutorial[];
   newsArticle?: NewsArticle;
   trackConfig: {
     accelerators: AcceleratorConfig[];
@@ -45,6 +46,10 @@ interface SceneData {
   spawnRate: number;
   buildingColors: BuildingConfig[];
   ballColors: string[];
+}
+
+interface Tutorial {
+  text: string;
 }
 
 export interface ColorConfig {
@@ -91,6 +96,23 @@ const levelsData: LevelData[] = [
     maxScore: 200,
     timeLimit: 60, // 60 seconds
     description: "Direct the colored packets to their matching buildings!",
+    tutorial: [
+      {
+        text: "Stuur de pakketjes de goede kant op.",
+      },
+      {
+        text: "De pakketjes volgen richting van de wegwijzer.",
+      },
+      {
+        text: "De vlaggetjes geven aan wat de beste route is volgens het BGP.",
+      },
+      {
+        text: "Wat de beste route is kan tijdens het level veranderen.",
+      },
+      {
+        text: "Klik op de wegwijzer op de pakketjes een andere kant op te sturen",
+      },
+    ],
     storyLine: [
       {
         text: "Welkom op je eerste werkdag als verkeersleider bij Packet Panic B.V.",
@@ -357,6 +379,11 @@ const levelsData: LevelData[] = [
     maxScore: 240,
     timeLimit: 90, // 1min 30secs
     description: "Direct the colored packets to their matching buildings!",
+    tutorial: [
+      {
+        text: "Pakketje gaan nu langs meerdere wegqijzers, zet ze allemaal goed als een route wijzigt.",
+      },
+    ],
     storyLine: [
       {
         text: "Dus je hebt gister helemaal geen problemen met het BGP ervaren?",
