@@ -23,9 +23,11 @@ export default function Explanation() {
 
   useEffect(() => {
     setTimeout(() => {
-      playSound("robotTalking");
+      // Generate a random integer between 1 and 3 (inclusive)
+      const random = Math.floor(Math.random() * 3) + 1;
+      playSound(`robotTalking${random}`);
     }, 1000);
-  }, []);
+  }, [explanationIndex]);
 
   return (
     <div className="explanation-overlay">

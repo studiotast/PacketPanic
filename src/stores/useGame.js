@@ -38,9 +38,19 @@ export default create(
         ? new Audio("/audio/garage-close.wav")
         : null;
 
-    const robotTalkingSound =
+    const robotTalkingSound1 =
       typeof Audio !== "undefined"
         ? new Audio("/audio/robot-talking.wav")
+        : null;
+
+    const robotTalkingSound2 =
+      typeof Audio !== "undefined"
+        ? new Audio("/audio/robot-talking2.wav")
+        : null;
+
+    const robotTalkingSound3 =
+      typeof Audio !== "undefined"
+        ? new Audio("/audio/robot-talking3.wav")
         : null;
 
     const flagAppearSound =
@@ -151,7 +161,9 @@ export default create(
         countDown: countDownSound,
         garageOpen: garageOpenSound,
         garageClose: garageCloseSound,
-        robotTalking: robotTalkingSound,
+        robotTalking1: robotTalkingSound1,
+        robotTalking2: robotTalkingSound2,
+        robotTalking3: robotTalkingSound3,
         flagAppear: flagAppearSound,
         flagDisappear: flagDisappearSound,
         failScore: failScoreSound,
@@ -172,13 +184,10 @@ export default create(
         if (sound && !isMuted) {
           sound.currentTime = 0; // Reset to start
 
-          sound.volume = 0.7; // Set volume to 70%
+          sound.volume = 0.5; // Set volume to 50%
 
           // Only set loop for menu sound
-          sound.loop =
-            soundName === "menu" ||
-            soundName === "level" ||
-            soundName === "flagDisappear";
+          sound.loop = soundName === "menu" || soundName === "level";
 
           // Return the Promise from play()
           try {
