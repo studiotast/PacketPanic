@@ -7,6 +7,7 @@ import { faCircleCheck } from "@fortawesome/pro-solid-svg-icons";
 import levelsData from "../../utils/levelsData";
 import useGame from "../../stores/useGame";
 import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
+import TvWrapper from "./TvWrapper";
 
 export default function GameOverScreen() {
   const [page, setPage] = useState(0);
@@ -37,67 +38,64 @@ export default function GameOverScreen() {
   };
 
   return (
-    <div className="game-over-screen">
-      <div className="game-over-wrapper">
-        <img src="/images/tv.png" alt="tv" className="game-over-tv" />
-        <div className="game-over-content">
-          <img alt="bg" src="/images/bg.jpg" className="game-over-bg" />
-          <AnimatePresence mode="wait">
-            {page === 0 ? (
-              <motion.div
-                key="news-page"
-                className="game-over-news-wrapper"
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={pageVariants}
-              >
-                <p className="game-over-news-header">Nieuws van vandaag</p>
-                <div className="game-over-content-wrapper">
-                  <img
-                    src={newsData?.newsArticle?.imageUrl}
-                    alt="news"
-                    className="game-over-news-image"
-                  />
-                  <div className="game-over-news-text">
-                    <p className="game-over-news-title">
-                      {newsData?.newsArticle?.title}
-                    </p>
-                    <p className="game-over-news-description">
-                      {newsData?.newsArticle?.content}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="results-page"
-                className="game-over-content-wrapper end"
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={pageVariants}
-              >
-                <p className="game-over-header">Resultaat van vandaag</p>
-                <p className="game-over-details">
-                  Lekker bezig je eerste dag heb je de doelen gehaald.
-                </p>
-                <ScoreProgress type="end" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <div className="game-over-button-container">
-            <Button
-              className="game-over-button"
-              onClick={handleClick}
-              shadowColor="#dc9329"
+    <TvWrapper>
+      <div className="game-over-content">
+        <img alt="bg" src="/images/bg.jpg" className="game-over-bg" />
+        <AnimatePresence mode="wait">
+          {page === 0 ? (
+            <motion.div
+              key="news-page"
+              className="game-over-news-wrapper"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
             >
-              Verder
-              <FontAwesomeIcon icon={faCircleCheck} />
-            </Button>
-          </div>
+              <p className="game-over-news-header">Nieuws van vandaag</p>
+              <div className="game-over-content-wrapper">
+                <img
+                  src={newsData?.newsArticle?.imageUrl}
+                  alt="news"
+                  className="game-over-news-image"
+                />
+                <div className="game-over-news-text">
+                  <p className="game-over-news-title">
+                    {newsData?.newsArticle?.title}
+                  </p>
+                  <p className="game-over-news-description">
+                    {newsData?.newsArticle?.content}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="results-page"
+              className="game-over-content-wrapper end"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+            >
+              <p className="game-over-header">Resultaat van vandaag</p>
+              <p className="game-over-details">
+                Lekker bezig je eerste dag heb je de doelen gehaald.
+              </p>
+              <ScoreProgress type="end" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <div className="game-over-button-container">
+          <Button
+            className="game-over-button"
+            onClick={handleClick}
+            shadowColor="#dc9329"
+          >
+            Verder
+            <FontAwesomeIcon icon={faCircleCheck} />
+          </Button>
         </div>
       </div>
-    </div>
+    </TvWrapper>
   );
 }
