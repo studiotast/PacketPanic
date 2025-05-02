@@ -172,7 +172,7 @@ export default create(
         if (sound && !isMuted) {
           sound.currentTime = 0; // Reset to start
 
-          sound.volume = 0.5; // Set volume to 50%
+          sound.volume = 0.7; // Set volume to 70%
 
           // Only set loop for menu sound
           sound.loop =
