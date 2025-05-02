@@ -9,6 +9,8 @@ type ButtonProps = {
   shadowColor?: string;
   className?: string;
   type?: string;
+  style?: React.CSSProperties;
+  isCard?: boolean; // Optional prop to indicate if it's a card
 };
 
 export default function Button({
@@ -17,6 +19,8 @@ export default function Button({
   shadowColor,
   className,
   type = "button", // Default to "button" type
+  style,
+  isCard = false, // Default to false
 }: ButtonProps) {
   // Create ref for the top button
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -60,6 +64,9 @@ export default function Button({
         initial="initial"
         whileTap="tap"
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        style={{
+          ...style,
+        }}
       >
         {children}
       </motion.div>
@@ -72,6 +79,7 @@ export default function Button({
             backgroundColor: shadowColor || "#dc9329",
             height: "100%",
             width: "100%",
+            borderRadius: isCard ? "20px" : "",
           }}
         />
       )}
