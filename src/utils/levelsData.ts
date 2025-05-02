@@ -10,6 +10,7 @@ export interface LevelData {
   storyLine: StoryLine[];
   tutorial: Tutorial[];
   newsArticle?: NewsArticle;
+  scoreScreen: ScoreScreen[];
   trackConfig: {
     accelerators: AcceleratorConfig[];
     buildings: BuildingConfig[];
@@ -50,6 +51,11 @@ interface SceneData {
 
 interface Tutorial {
   text: string;
+}
+
+interface ScoreScreen {
+  title: string;
+  description: string;
 }
 
 export interface ColorConfig {
@@ -149,6 +155,18 @@ const levelsData: LevelData[] = [
       {
         text: "In ieder geval niet op je eerste dag... Oké. Dan kom je er wel uit hé. Succes!",
         button: "Bedankt...",
+      },
+    ],
+    scoreScreen: [
+      {
+        title: "Pakket afgeleverd!",
+        description:
+          "Natuurlijk is het gelukt. Je had mijn geniale voorbereiding achter je. Toch?",
+      },
+      {
+        title: "Zending zoekgeraakt",
+        description:
+          "Hmm. Die heb ik... even niet gevolgd. Maar goed, fouten zijn ook een soort data.",
       },
     ],
     newsArticle: {
@@ -400,6 +418,18 @@ const levelsData: LevelData[] = [
       {
         text: "Laten we hopen dat dat vandaag zo blijft!",
         button: "Verder",
+      },
+    ],
+    scoreScreen: [
+      {
+        title: "Routerend goed!",
+        description:
+          "Zo! Dat was precies zoals ik het niet had voorspeld. Maar hé, werkt ook.",
+      },
+      {
+        title: "Verkeerde afslag genomen",
+        description:
+          "Tja, Pakistan is óók een bestemming. Niet mijn eerste keuze, maar goed.",
       },
     ],
     newsArticle: {
