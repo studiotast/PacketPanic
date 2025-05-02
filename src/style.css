@@ -491,6 +491,7 @@ body,
   min-height: 200px;
   position: relative;
   z-index: 1;
+  cursor: pointer;
   /* Remove box-shadow as it's handled by Button component now */
 }
 
