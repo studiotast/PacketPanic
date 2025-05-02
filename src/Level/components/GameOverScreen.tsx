@@ -3,8 +3,11 @@ import "../../style.css";
 import ScoreProgress from "./Interface/components/ScoreProgress";
 import Button from "../../Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleCheck } from "@fortawesome/pro-solid-svg-icons";
-import levelsData from "../../utils/levelsData";
+import {
+  faArrowRight,
+  faCircleCheck,
+  faRotate,
+} from "@fortawesome/pro-solid-svg-icons";
 import useGame from "../../stores/useGame";
 import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 import TvWrapper from "./TvWrapper";
@@ -13,9 +16,13 @@ export default function GameOverScreen() {
   const [page, setPage] = useState(0);
   const completeRestart = useGame((state) => state.completeRestart);
   const advanceToNextLevel = useGame((state) => state.advanceToNextLevel);
-  const currentLevelId = useGame((state) => state.currentLevelId);
+  const score = useGame((state) => state.score);
+  const currentLevel = useGame((state) => state.currentLevel);
+  const scoreToAdvance = currentLevel.scoreToAdvance;
+  const restart = useGame((state) => state.restart);
 
-  const newsData = levelsData.find((level) => level.id === currentLevelId);
+  // Calculate the progress percentage (capped at 100%)
+  const progressPercentage = Math.min((score / scoreToAdvance) * 100, 100);
 
   // Animation variants
   const pageVariants = {
@@ -29,20 +36,69 @@ export default function GameOverScreen() {
       setPage(1);
     }
     if (page === 1) {
-      if (currentLevelId === 2) {
+      if (currentLevel.id === 2) {
         completeRestart();
         return;
       }
-      advanceToNextLevel();
+      if (typeof window.initiatePhaseTransition === "function") {
+        window.initiatePhaseTransition("explanation");
+        setTimeout(() => {
+          advanceToNextLevel();
+        }, 1000);
+      } else {
+        advanceToNextLevel();
+      }
     }
+  };
+
+  const handleRepeatLevel = () => {
+    restart();
   };
 
   return (
     <TvWrapper>
-      <div className="game-over-content">
+      <div
+        className="game-over-content"
+        style={{
+          backgroundColor:
+            progressPercentage >= 100
+              ? "#9f85ff"
+              : progressPercentage < 100 && page === 0
+              ? "#ff588d"
+              : "#9f85ff",
+        }}
+      >
         <img alt="bg" src="/images/bg.jpg" className="game-over-bg" />
         <AnimatePresence mode="wait">
           {page === 0 ? (
+            <motion.div
+              key="results-page"
+              className="game-over-content-wrapper end"
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={pageVariants}
+            >
+              <p
+                className="game-over-header"
+                style={{
+                  color: progressPercentage >= 100 ? "#677eff" : "#ff588d",
+                }}
+              >{`${
+                progressPercentage >= 100
+                  ? currentLevel.scoreScreen[0].title
+                  : currentLevel.scoreScreen[1].title
+              }`}</p>
+              <p className="game-over-details">
+                {`${
+                  progressPercentage >= 100
+                    ? currentLevel.scoreScreen[0].description
+                    : currentLevel.scoreScreen[1].description
+                }`}
+              </p>
+              <ScoreProgress type="end" />
+            </motion.div>
+          ) : (
             <motion.div
               key="news-page"
               className="game-over-news-wrapper"
@@ -54,46 +110,55 @@ export default function GameOverScreen() {
               <p className="game-over-news-header">Nieuws van vandaag</p>
               <div className="game-over-content-wrapper">
                 <img
-                  src={newsData?.newsArticle?.imageUrl}
+                  src={currentLevel?.newsArticle?.imageUrl}
                   alt="news"
                   className="game-over-news-image"
                 />
                 <div className="game-over-news-text">
                   <p className="game-over-news-title">
-                    {newsData?.newsArticle?.title}
+                    {currentLevel?.newsArticle?.title}
                   </p>
                   <p className="game-over-news-description">
-                    {newsData?.newsArticle?.content}
+                    {currentLevel?.newsArticle?.content}
                   </p>
                 </div>
               </div>
             </motion.div>
-          ) : (
-            <motion.div
-              key="results-page"
-              className="game-over-content-wrapper end"
-              initial="initial"
-              animate="animate"
-              exit="exit"
-              variants={pageVariants}
-            >
-              <p className="game-over-header">Resultaat van vandaag</p>
-              <p className="game-over-details">
-                Lekker bezig je eerste dag heb je de doelen gehaald.
-              </p>
-              <ScoreProgress type="end" />
-            </motion.div>
           )}
         </AnimatePresence>
         <div className="game-over-button-container">
-          <Button
-            className="game-over-button"
-            onClick={handleClick}
-            shadowColor="#dc9329"
-          >
-            Verder
-            <FontAwesomeIcon icon={faCircleCheck} />
-          </Button>
+          {page === 0 ? (
+            <Button
+              className="game-over-button"
+              onClick={handleClick}
+              shadowColor="#dc9329"
+            >
+              Verder
+              <FontAwesomeIcon icon={faCircleCheck} />
+            </Button>
+          ) : (
+            <>
+              <Button
+                className="game-over-button"
+                onClick={handleRepeatLevel}
+                shadowColor="#5B6FE0"
+                style={{
+                  backgroundColor: "#677eff",
+                }}
+              >
+                {`Level ${currentLevel.id} `}
+                <FontAwesomeIcon icon={faRotate} />
+              </Button>
+              <Button
+                className="game-over-button"
+                onClick={handleClick}
+                shadowColor="#dc9329"
+              >
+                {`Naar level ${currentLevel.id + 1} `}
+                <FontAwesomeIcon icon={faArrowRight} />
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </TvWrapper>
