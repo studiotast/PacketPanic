@@ -8,29 +8,34 @@ export default function ReadyScreen() {
 
   // Handle the countdown animation and game start
   useEffect(() => {
-    // Play countdown sound
-    playSound("countDown");
-    // Update the countdown every second
-    const countdownInterval = setInterval(() => {
-      setCountdown((prevCount) => {
-        // Stop at 1, don't go to 0
-        if (prevCount <= 1) {
-          clearInterval(countdownInterval);
-          return 1;
-        }
-        return prevCount - 1;
-      });
-    }, 1000);
+    const delayStartInterval = setTimeout(() => {
+      playSound("countDown");
+      // Update the countdown every second
+      const countdownInterval = setInterval(() => {
+        setCountdown((prevCount) => {
+          // Stop at 1, don't go to 0
+          if (prevCount <= 1) {
+            clearInterval(countdownInterval);
+            return 1;
+          }
+          return prevCount - 1;
+        });
+      }, 1000);
 
-    // Start the game after 3 seconds
-    const startTimer = setTimeout(() => {
-      start();
-    }, 3000);
+      // Start the game after 3 seconds
+      const startTimer = setTimeout(() => {
+        start();
+      }, 3000);
+
+      return () => {
+        clearInterval(countdownInterval);
+        clearTimeout(startTimer);
+      };
+    }, 1250); // Delay before starting the countdown
 
     // Clean up both timers when component unmounts
     return () => {
-      clearInterval(countdownInterval);
-      clearTimeout(startTimer);
+      clearTimeout(delayStartInterval);
     };
   }, [start]);
 
