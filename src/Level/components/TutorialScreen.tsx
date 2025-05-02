@@ -56,6 +56,7 @@ export default function TutorialScreen() {
                 setTutorialIndex((prev) => prev + 1);
               }}
               shadowColor="#dc9329"
+              shadowStyle="tutorial-button-shadow"
             >
               Verder
               <FontAwesomeIcon icon={faCircleCheck} />

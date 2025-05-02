@@ -653,6 +653,7 @@ body,
   z-index: 100;
   margin-top: 6%;
   padding: 2rem;
+  border-radius: 20px;
 }
 
 .tutorial-bg {
@@ -711,6 +712,15 @@ body,
   font-weight: 600;
   z-index: 2;
   position: relative;
+}
+
+.tutorial-button-shadow {
+  position: absolute;
+  top: clamp(2px, 1vmin, 9px);
+  left: 0;
+  z-index: -1;
+  opacity: 0.9;
+  border-radius: clamp(1px, 1.5vmin, 10px);
 }
 
 /**
@@ -1086,11 +1096,11 @@ Button styling
 
 .button-shadow {
   position: absolute;
-  top: clamp(2px, 1.5vmin, 9px);
+  top: 9px;
   left: 0;
   z-index: -1;
   opacity: 0.9;
-  border-radius: clamp(4px, 2vmin, 10px);
+  border-radius: var(--border-radius10);
 }
 
 .top-right-buttons {

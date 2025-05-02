@@ -11,6 +11,7 @@ type ButtonProps = {
   type?: string;
   style?: React.CSSProperties;
   isCard?: boolean; // Optional prop to indicate if it's a card
+  shadowStyle?: string;
 };
 
 export default function Button({
@@ -21,6 +22,7 @@ export default function Button({
   type = "button", // Default to "button" type
   style,
   isCard = false, // Default to false
+  shadowStyle, // Default to empty object
 }: ButtonProps) {
   // Create ref for the top button
   const buttonRef = useRef<HTMLDivElement>(null);
@@ -44,7 +46,8 @@ export default function Button({
       y: 0,
     },
     tap: {
-      y: 9, // Move DOWN to overlap with shadow when tapped
+      y: shadowStyle ? 3 : 9, // shadowStyle is only given on the tutorial button
+      //  @Todo update the game over screen button to use this shadowStyle
     },
   };
 
@@ -74,7 +77,7 @@ export default function Button({
       {/* Shadow underneath that stays static */}
       {type === "button" && (
         <div
-          className="button-shadow"
+          className={shadowStyle ? shadowStyle : "button-shadow"}
           style={{
             backgroundColor: shadowColor || "#dc9329",
             height: "100%",
