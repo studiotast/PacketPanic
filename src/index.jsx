@@ -7,7 +7,7 @@ import { Leva } from "leva";
 import useGame from "./stores/useGame.js";
 import IntroScreen from "./Level/components/IntroScreen/IntroScreen.jsx";
 import ReadyScreen from "./Level/components/ReadyScreen.jsx";
-import PauseScreen from "./Level/components/PauseScreen/PauseScreen.jsx";
+import PauseScreen from "./Level/components/PauseScreen.jsx";
 import GameOverScreen from "./Level/components/GameOverScreen.tsx";
 import LevelTransition from "./Level/components/LevelTransition.jsx"; // Import the level transition component
 import Explanation from "./Level/components/Explanation/Explanation.tsx";
@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import PauseButton from "./PauseButton.tsx";
 import { useModels } from "./stores/useModels.ts";
 import TutorialScreen from "./Level/components/TutorialScreen.tsx";
+import LevelPicker from "./Level/components/LevelPicker.tsx";
 
 function App() {
   const phase = useGame((state) => state.phase);
@@ -57,6 +58,7 @@ function App() {
           {phase === "ended" && <GameOverScreen />}
           {phase === "explanation" && <Explanation />}
           {phase === "tutorial" && <TutorialScreen />}
+          {phase === "levelPicker" && <LevelPicker />}
           {isPaused && <PauseScreen />}
           <Canvas
             shadows
