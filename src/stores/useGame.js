@@ -309,8 +309,9 @@ export default create(
           set({
             currentLevelId: nextLevelId,
             currentLevel: nextLevel,
-            phase: "ready",
+            phase: "explanation",
             timer: 0,
+            score: 0, // Reset score for the new level
             // Keep the score between levels
           });
 
@@ -366,6 +367,35 @@ export default create(
           timerActive: false,
           isPaused: false,
         });
+      },
+
+      levelPicker: () => {
+        set((state) => {
+          if (state.phase === "playing" || state.phase === "pause") {
+            return { phase: "levelPicker" };
+          }
+          return {};
+        });
+      },
+
+      levelSelect: (levelId) => {
+        // Find the level with the matching ID
+        const level = levelsData.find((level) => level.id === levelId);
+
+        if (level) {
+          set({
+            currentLevelId: levelId,
+            currentLevel: level,
+            phase: "explanation", // Change to explanation phase
+            timer: 0, // Reset timer for new level
+            score: 0, // Reset score for new level
+            isPaused: false, // Ensure the game isn't paused
+          });
+
+          return true; // Return success
+        }
+
+        return false; // Return failure if level not found
       },
 
       calculateScene: () => {
@@ -425,10 +455,8 @@ export default create(
           if (state.phase === "playing" || state.phase === "ended") {
             return {
               phase: "ready",
-              blocksSeed: Math.random(),
               timer: 0,
               score: 0,
-              timerActive: false,
               isPaused: false,
             };
           }
