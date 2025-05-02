@@ -22,19 +22,6 @@ export default function TutorialScreen() {
     }
   }, [tutorialIndex]);
 
-  useEffect(() => {
-    // Play sound when the component mounts
-    const sound = playSound("level");
-
-    // Return cleanup function to stop sound on unmount
-    return () => {
-      if (sound) {
-        sound.pause();
-        sound.currentTime = 0;
-      }
-    };
-  }, [playSound, isMuted]);
-
   return (
     <TvWrapper>
       <div className="tutorial-content">

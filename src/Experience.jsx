@@ -41,11 +41,21 @@ export default function Experience() {
     stopSound("level");
 
     // Start appropriate sounds for the new phase
-    if (phase === "playing" || phase === "explanation") {
+    if (
+      phase === "playing" ||
+      phase === "explanation" ||
+      phase === "tutorial"
+    ) {
       if (!isPaused && !isMuted) {
         // Playing phase - start level music
         const levelSound = playSound("level");
         if (levelSound) levelSound.loop = true;
+      }
+    } else if (phase === "ended") {
+      if (!isMuted) {
+        // Game over phase - play menu sound
+        const menuSound = playSound("menu");
+        if (menuSound) menuSound.loop = true;
       }
     }
 
