@@ -221,6 +221,15 @@ export default create(
         }
       },
 
+      aboutPage: () => {
+        set((state) => {
+          if (state.phase === "playing" || state.phase === "pause") {
+            return { phase: "about" };
+          }
+          return {};
+        });
+      },
+
       // Load level from localStorage
       loadSavedLevel: () => {
         try {

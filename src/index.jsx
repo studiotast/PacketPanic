@@ -18,6 +18,7 @@ import PauseButton from "./PauseButton.tsx";
 import { useModels } from "./stores/useModels.ts";
 import TutorialScreen from "./Level/components/TutorialScreen.tsx";
 import LevelPicker from "./Level/components/LevelPicker.tsx";
+import AboutPacketPanic from "./Level/components/AboutPacketPanic.tsx";
 
 function App() {
   const phase = useGame((state) => state.phase);
@@ -59,6 +60,7 @@ function App() {
           {phase === "explanation" && <Explanation />}
           {phase === "tutorial" && <TutorialScreen />}
           {phase === "levelPicker" && <LevelPicker />}
+          {phase === "about" && <AboutPacketPanic />}
           {isPaused && <PauseScreen />}
           <Canvas
             shadows

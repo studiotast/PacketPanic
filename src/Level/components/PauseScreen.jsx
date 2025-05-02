@@ -19,7 +19,7 @@ export default function PauseScreen() {
     {
       title: "Over PacketPanic",
       icon: faCircleInfo,
-      action: "/info",
+      action: "about",
     },
     {
       title: "Terug naar home",
