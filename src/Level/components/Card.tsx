@@ -23,6 +23,7 @@ export default function Card({
   const startFromIntro = useGame((state) => state.startFromIntro);
   const levelPicker = useGame((state) => state.levelPicker);
   const levelSelect = useGame((state) => state.levelSelect);
+  const aboutPage = useGame((state) => state.aboutPage);
 
   const handleCardClick = () => {
     if (action === "startFromIntro") {
@@ -34,6 +35,8 @@ export default function Card({
       } else {
         levelPicker();
       }
+    } else if (action === "about") {
+      aboutPage();
     } else {
       // For level selection cards
       // Store the level ID in localStorage for reference after transition
