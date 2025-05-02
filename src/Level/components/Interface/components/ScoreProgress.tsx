@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useGame from "../../../../stores/useGame";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBox } from "@fortawesome/pro-solid-svg-icons";
@@ -11,10 +11,18 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
   const score = useGame((state) => state.score);
   const currentLevel = useGame((state) => state.currentLevel);
   const scoreToAdvance = currentLevel.scoreToAdvance;
-  const maxScore = currentLevel.maxScore;
+  const phase = useGame((state) => state.phase);
 
   // Calculate the progress percentage (capped at 100%)
-  const progressPercentage = Math.min((score / scoreToAdvance) * 100, 100);
+  const progressPercentage = Math.round(
+    Math.min((score / scoreToAdvance) * 100, 100)
+  );
+
+  useEffect(() => {
+    console.log(
+      `Score: ${score}, Score to Advance: ${scoreToAdvance}, Progress Percentage: ${progressPercentage}`
+    );
+  }, [score, scoreToAdvance, progressPercentage]);
 
   return (
     <div
@@ -24,11 +32,18 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
         <div className="score-info-container">
           <div className="score-label">
             <div className="score-icon-container">
-              <FontAwesomeIcon icon={faBox} className="score-icon" />{" "}
+              <FontAwesomeIcon
+                icon={faBox}
+                color={progressPercentage >= 100 ? "#26ffba" : "#ffc83c"}
+                className="score-icon"
+              />{" "}
             </div>
-            <p className="score-text">
-              {score}/{scoreToAdvance}
-            </p>
+            <p
+              className="score-text"
+              style={{
+                color: progressPercentage >= 100 ? "#26ffba" : "#ffc83c",
+              }}
+            >{`${progressPercentage}%`}</p>
           </div>
         </div>
       )}
@@ -36,7 +51,15 @@ export default function ScoreProgress({ type }: ScoreProgressProps) {
       <div className="score-progress-bar">
         <div
           className="score-progress-fill"
-          style={{ width: `${progressPercentage}%` }}
+          style={{
+            width: `${progressPercentage}%`,
+            backgroundColor:
+              progressPercentage >= 100
+                ? "#26ffba"
+                : progressPercentage < 100 && phase !== "playing"
+                ? "#ffc83c"
+                : "#26ffba",
+          }}
         />
       </div>
     </div>
