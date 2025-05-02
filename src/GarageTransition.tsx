@@ -25,9 +25,13 @@ export default function GarageTransition() {
 
   // Function to initiate phase transition with garage animation
   const initiateTransition = (targetPhase: string) => {
-    // Allow transitions from both intro and explanation phases
+    // Allow transitions from these phases
     if (
-      (phase === "intro" || phase === "explanation" || phase === "tutorial") &&
+      (phase === "intro" ||
+        phase === "explanation" ||
+        phase === "tutorial" ||
+        phase === "ended" ||
+        phase === "levelPicker") &&
       !isTransitioning
     ) {
       sourcePhaseRef.current = phase; // Store source phase
@@ -35,6 +39,8 @@ export default function GarageTransition() {
       window.isTransitioning = true;
       setShowGarage(true);
       pendingPhaseRef.current = targetPhase;
+    } else {
+      console.warn(`Transition not allowed from ${phase} to ${targetPhase}`);
     }
   };
 
@@ -50,53 +56,106 @@ export default function GarageTransition() {
   // Handle the transition when models are loaded
   useEffect(() => {
     if (showGarage && isTransitioning && pendingPhaseRef.current) {
+      // Play garage closing sound
       playSound("garageClose");
 
+      // Wait for door to close before changing state
       setTimeout(() => {
-        // Handle different target phases
-        if (
-          pendingPhaseRef.current === "explanation" &&
-          sourcePhaseRef.current === "intro"
-        ) {
-          startFromIntro();
-        } else if (
-          pendingPhaseRef.current === "tutorial" &&
-          sourcePhaseRef.current === "explanation"
-        ) {
-          // Transition to tutorial
-          if (typeof startTutorial === "function") {
-            startTutorial();
-          } else {
-            console.warn("startTutorial function not found in useGame");
-          }
-        } else if (
-          pendingPhaseRef.current === "ready" &&
-          sourcePhaseRef.current === "tutorial"
-        ) {
-          useGame.setState({ phase: "ready" });
+        // Handle different transition scenarios based on source and target phases
+        switch (pendingPhaseRef.current) {
+          case "explanation":
+            if (sourcePhaseRef.current === "intro") {
+              // From intro to explanation (first level)
+              startFromIntro();
+            } else if (
+              sourcePhaseRef.current === "levelPicker" ||
+              sourcePhaseRef.current === "ended"
+            ) {
+              // From level picker or end screen to explanation
+              const pendingLevelId = localStorage.getItem(
+                "pendingLevelSelection"
+              );
+              if (pendingLevelId) {
+                const levelId = parseInt(pendingLevelId, 10);
+                useGame.getState().levelSelect(levelId);
+                localStorage.removeItem("pendingLevelSelection");
+              } else {
+                // Just transition without changing level
+                useGame.setState({ phase: "explanation" });
+              }
+            }
+            break;
+
+          case "tutorial":
+            if (sourcePhaseRef.current === "explanation") {
+              // From explanation to tutorial
+              if (typeof startTutorial === "function") {
+                startTutorial();
+              } else {
+                console.warn("startTutorial function not found in useGame");
+                useGame.setState({ phase: "tutorial" });
+              }
+            }
+            break;
+
+          case "ready":
+            if (sourcePhaseRef.current === "tutorial") {
+              // From tutorial to ready (game starts)
+              useGame.setState({ phase: "ready" });
+            }
+            break;
+
+          case "ended":
+            if (sourcePhaseRef.current === "playing") {
+              // From playing to ended (game over)
+              useGame.setState({ phase: "ended" });
+            }
+            break;
+
+          case "levelPicker":
+            // To level picker
+            useGame.setState({ phase: "levelPicker" });
+            break;
+
+          default:
+            console.warn(
+              `Unhandled transition: ${sourcePhaseRef.current} → ${pendingPhaseRef.current}`
+            );
         }
 
+        // Only handle animation exit if models are loaded
         if (loaded) {
-          // Then wait before starting the exit animation
+          // Wait before opening garage door
           const timer = setTimeout(() => {
+            // Play sound for door opening
             playSound("garageOpen");
+
+            // Hide the garage door
             setShowGarage(false);
 
-            // Reset states after animation completes
+            // Reset transition states after animation is complete
             const cleanupTimer = setTimeout(() => {
               setIsTransitioning(false);
               window.isTransitioning = false;
               pendingPhaseRef.current = null;
               sourcePhaseRef.current = null;
-            }, 200);
+            }, 1200); // Match this to the exit animation duration
 
             return () => clearTimeout(cleanupTimer);
-          }, 500);
+          }, 500); // Delay before opening door
+
           return () => clearTimeout(timer);
         }
-      }, 1000);
+      }, 1000); // Time for door to close and fully cover screen
     }
-  }, [loaded, showGarage, isTransitioning, startFromIntro, startTutorial]);
+  }, [
+    loaded,
+    showGarage,
+    isTransitioning,
+    startFromIntro,
+    startTutorial,
+    playSound,
+  ]);
 
   // Animation variants
   const garageVariants = {
