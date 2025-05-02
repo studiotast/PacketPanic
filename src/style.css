@@ -673,9 +673,9 @@ body,
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: clamp(10px, 1vmin, 15px);
+  gap: clamp(1px, 1.5vmin, 15px);
   align-items: flex-end;
-  padding: clamp(0.5rem, 2%, 2rem);
+  padding: clamp(0.5rem, 1.5vmin, 2rem) clamp(0.5rem, 2.5vmin, 4rem);
   z-index: 10;
 }
 
