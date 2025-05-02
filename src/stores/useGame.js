@@ -276,6 +276,15 @@ export default create(
         });
       },
 
+      startTutorial: () => {
+        set((state) => {
+          if (state.phase === "explanation") {
+            return { phase: "tutorial" };
+          }
+          return {};
+        });
+      },
+
       start: () => {
         set((state) => {
           if (state.phase === "ready") {
