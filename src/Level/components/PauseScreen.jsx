@@ -6,10 +6,11 @@ import {
 } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import Button from "../../../Button";
-import Layout from "../../../Layout";
-import useGame from "../../../stores/useGame";
-import Card from "./components/Card";
+import Button from "../../Button";
+import Layout from "../../Layout";
+import useGame from "../../stores/useGame";
+import Card from "./Card";
+import "../../style.css";
 
 export default function PauseScreen() {
   const togglePause = useGame((state) => state.togglePause);
@@ -28,7 +29,7 @@ export default function PauseScreen() {
     {
       title: "Level kiezen",
       icon: faRectangleList,
-      action: "/level-select",
+      action: "levelSelect",
     },
   ];
 
