@@ -16,6 +16,7 @@ import GarageTransition from "./GarageTransition.tsx";
 import { useEffect, useState } from "react";
 import PauseButton from "./PauseButton.tsx";
 import { useModels } from "./stores/useModels.ts";
+import TutorialScreen from "./Level/components/TutorialScreen.tsx";
 
 function App() {
   const phase = useGame((state) => state.phase);
@@ -55,6 +56,7 @@ function App() {
           {phase === "levelComplete" && <LevelTransition />}
           {phase === "ended" && <GameOverScreen />}
           {phase === "explanation" && <Explanation />}
+          {phase === "tutorial" && <TutorialScreen />}
           {isPaused && <PauseScreen />}
           <Canvas
             shadows
