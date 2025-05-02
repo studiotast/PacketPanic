@@ -62,8 +62,12 @@ export default function IntroScreen() {
     // Load the saved level
     loadSavedLevel();
 
-    // Start from intro with the loaded level
-    startFromIntro();
+    if (typeof window.initiatePhaseTransition === "function") {
+      window.initiatePhaseTransition("explanation");
+    } else {
+      // Fallback if transition isn't available
+      startFromIntro();
+    }
   };
 
   useEffect(() => {
