@@ -648,13 +648,11 @@ body,
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: center;
-  gap: 2vmin;
+  justify-content: space-between;
   flex-direction: column;
   z-index: 100;
   margin-top: 6%;
   padding: 2rem;
-  border-radius: 20px;
 }
 
 .tutorial-bg {
@@ -674,8 +672,9 @@ body,
   width: 100%;
   display: flex;
   justify-content: space-between;
+  gap: clamp(10px, 1vmin, 15px);
   align-items: flex-end;
-  padding: 0 5%;
+  padding: clamp(0.5rem, 2%, 2rem);
   z-index: 10;
 }
 
@@ -685,8 +684,8 @@ body,
   font-size: clamp(0.5rem, 2vmin, 2rem);
   font-weight: 500;
   background-color: var(--white);
-  padding: var(--spacing20);
-  border-radius: var(--border-radius20);
+  padding: clamp(0.5rem, 2%, 2rem) clamp(1rem, 2%, 4rem);
+  border-radius: clamp(10px, 1.5vmin, 20px);
   max-width: 400px;
   text-align: left;
   margin: 0;
@@ -698,7 +697,7 @@ body,
 }
 
 .tutorial-button {
-  padding: clamp(1rem, 2%, 2rem) clamp(2rem, 2%, 4rem);
+  padding: clamp(0.5rem, 2%, 2rem) clamp(1rem, 2%, 4rem);
   gap: clamp(1px, 1vmin, 15px);
   display: flex;
   align-items: center;
@@ -706,7 +705,7 @@ body,
   background-color: var(--yellow);
   color: var(--white);
   border: none;
-  border-radius: 11px;
+  border-radius: clamp(4px, 1.5vmin, 10px);
   cursor: pointer;
   font-family: "Karla", sans-serif;
   font-weight: 600;
@@ -1087,11 +1086,11 @@ Button styling
 
 .button-shadow {
   position: absolute;
-  top: 9px;
+  top: clamp(2px, 1vmin, 9px);
   left: 0;
   z-index: -1;
   opacity: 0.9;
-  border-radius: var(--border-radius10);
+  border-radius: clamp(4px, 1.5vmin, 10px);
 }
 
 .top-right-buttons {
