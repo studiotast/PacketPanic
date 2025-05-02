@@ -1,14 +1,24 @@
-import { faArrowRight, faPlay } from "@fortawesome/pro-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../../Button";
 import useGame from "../../../stores/useGame";
 
 export default function Explanation() {
-  const [explanationIndex, setExplanationIndex] = React.useState(1);
-  const numberOfImages = 2;
-  const readyToStart = explanationIndex === numberOfImages;
   const playSound = useGame((state) => state.playSound);
+  const currentLevel = useGame((state) => state.currentLevel);
+
+  const [explanationIndex, setExplanationIndex] = useState(
+    currentLevel.storyLine.length - currentLevel.storyLine.length
+  );
+
+  const [readyToStart, setReadyToStart] = useState(false);
+
+  useEffect(() => {
+    if (explanationIndex === currentLevel.storyLine.length - 1) {
+      setReadyToStart(true);
+    } else {
+      setReadyToStart(false);
+    }
+  }, [explanationIndex]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -18,10 +28,14 @@ export default function Explanation() {
 
   return (
     <div className="explanation-overlay">
-      <img
-        className="robot-image"
-        src={`/assets/images/robot${explanationIndex}.png`}
-      />
+      <img className="robot-image" src="/assets/images/robot.png" />
+      <div className="speech-bubble">
+        <div className="speech-bubble-content">
+          <p className="speech-bubble-text">
+            {currentLevel.storyLine[explanationIndex].text}
+          </p>
+        </div>
+      </div>
       <div className="explanation-button-wrapper">
         <Button
           className="explanation-button"
@@ -35,8 +49,7 @@ export default function Explanation() {
           }}
           shadowColor="#dc9329"
         >
-          {readyToStart ? "Starten" : "Volgende"}
-          <FontAwesomeIcon icon={readyToStart ? faPlay : faArrowRight} />
+          {currentLevel.storyLine[explanationIndex].button}
         </Button>
       </div>
     </div>
