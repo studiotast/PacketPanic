@@ -36,7 +36,6 @@ export default function IntroScreen() {
   const hasSavedLevel = useGame((state) => state.hasSavedLevel);
   const getSavedLevelId = useGame((state) => state.getSavedLevelId);
   const [page, setPage] = useState(0);
-  const [delayedTextShow, setDelayedTextShow] = useState(false);
   const playSound = useGame((state) => state.playSound);
   const isMuted = useGame((state) => state.isMuted);
   // Check if there's a saved game on mount
