@@ -85,12 +85,13 @@ body,
 }
 .score-progress-container.end {
   /* Stijlen voor de end-modus */
+  justify-content: center;
   background-color: transparent;
   border: none;
-  gap: clamp(1px, 1vmin, 15px);
+  gap: clamp(1px, 1.5vmin, 20px);
   p,
   svg {
-    font-size: clamp(0.8rem, 3vmin, 1.2rem);
+    font-size: clamp(0.8rem, 4vmin, 3.2rem);
   }
   .score-progress-bar {
     height: clamp(10px, 5vmin, 35px);
@@ -107,6 +108,9 @@ body,
 }
 
 .score-icon-container {
+  padding: var(--spacing5);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius10);
 }
 
 .score-info-container {
@@ -117,15 +121,15 @@ body,
 }
 
 .score-icon {
-  color: var(--yellow);
-  font-size: 2.2rem;
+  svg {
+    font-size: clamp(0.8rem, 3vmin, 1.5rem);
+  }
 }
 
 .score-text {
-  font-size: 1.5rem;
+  font-size: clamp(0.8rem, 3vmin, 1.2rem);
   font-family: "Karla", sans-serif;
-  color: #000;
-  font-weight: 300;
+  font-weight: 900;
 }
 
 .score-progress-bar {
@@ -143,7 +147,6 @@ body,
   top: 0;
   left: 0;
   height: 100%;
-  background-color: var(--green);
   transition: width 0.5s ease-in-out;
 }
 
@@ -474,7 +477,7 @@ body,
   flex-direction: column;
   justify-content: center;
   background-color: var(--white);
-  border-radius: 25px;
+  border-radius: var(--border-radius20);
   padding: 2.35rem 1.75rem;
   color: #000000;
   text-decoration: none;
@@ -615,7 +618,7 @@ body,
 }
 
 .speech-bubble-text {
-  font-size: 1.8rem;
+  font-size: clamp(1rem, 3vmin, 2rem);
   color: var(--black);
   font-weight: 700;
   font-family: "Karla", sans-serif;
@@ -667,7 +670,7 @@ body,
 .tutorial-text {
   color: var(--black);
   font-family: "Karla", sans-serif;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 3vmin, 2rem);
   font-weight: 500;
   background-color: var(--white);
   padding: var(--spacing20);
@@ -742,7 +745,6 @@ body,
       width: 85%;
       aspect-ratio: 10 / 6.8;
       overflow: hidden;
-      background-color: var(--purple);
       display: flex;
       position: relative;
       align-items: center;
@@ -820,7 +822,6 @@ body,
         }
         .game-over-header {
           font-size: clamp(1rem, 4vmin, 2rem);
-          color: var(--blue);
           font-family: "FatFrank", sans-serif;
         }
       }
@@ -831,6 +832,8 @@ body,
       }
 
       .game-over-button-container {
+        display: flex;
+        gap: clamp(1px, 1vmin, 15px);
         .game-over-button {
           padding: 1vmin 2vmin;
           font-size: clamp(0.4rem, 2vmin, 1.2rem);
