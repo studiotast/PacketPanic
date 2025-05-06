@@ -12,11 +12,13 @@
   --background: #f0f0f0;
   --black: #333;
   --white: #fff;
+  --grey: #e8eaf1;
   --border: #e5e7ea;
   --color-shadow: rgba(0, 0, 0, 0.1);
   --overlay: #00000088;
 
   --box-shadow: 0 8px 0 0 var(--color-shadow);
+  --mobile-box-shadow: 0 5px 0 0 var(--color-shadow);
 
   /* Spacings */
   --spacing2: 2px;
@@ -99,18 +101,22 @@ body,
 }
 
 .score-label {
-  font-size: 1rem;
   font-weight: bold;
   color: var(--white);
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.5rem, 2%, 1rem);
 }
 
 .score-icon-container {
-  padding: var(--spacing5);
+  padding: clamp(0.2rem, 1.5%, 1rem) clamp(0.3rem, 2%, 2rem);
   box-shadow: var(--box-shadow);
   border-radius: var(--border-radius10);
+
+  @media screen and (max-width: 768px) {
+    box-shadow: var(--mobile-box-shadow);
+    border-radius: var(--spacing8);
+  }
 }
 
 .score-info-container {
@@ -122,7 +128,7 @@ body,
 
 .score-icon {
   svg {
-    font-size: clamp(0.8rem, 3vmin, 1.5rem);
+    font-size: clamp(0.2rem, 1vmin, 1.5rem);
   }
 }
 
@@ -138,8 +144,12 @@ body,
   background-color: #e8eaf1;
   overflow: hidden;
   border-radius: 30px;
-  box-shadow: 0 9px 0 0 rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   border: 5px solid var(--white);
+
+  @media screen and (max-width: 768px) {
+    box-shadow: var(--mobile-box-shadow);
+  }
 }
 
 .score-progress-fill {
@@ -658,7 +668,6 @@ body,
   z-index: 100;
   margin-top: 6%;
   padding: 2rem;
-  border-radius: 20px;
 }
 
 .tutorial-bg {
@@ -687,7 +696,7 @@ body,
 .tutorial-text {
   color: var(--black);
   font-family: "Karla", sans-serif;
-  font-size: clamp(0.5rem, 2vmin, 2rem);
+  font-size: clamp(0.65rem, 2vmin, 2rem);
   font-weight: 500;
   background-color: var(--white);
   padding: clamp(0.5rem, 2%, 2rem) clamp(1rem, 2%, 4rem);
@@ -794,11 +803,11 @@ body,
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
         gap: 1vmin;
+        max-width: clamp(200px, 90%, 1000px);
       }
       .game-over-news-header {
-        font-size: clamp(1rem, 3vmin, 2.2rem);
+        font-size: clamp(0.75rem, 3vmin, 2.2rem);
         text-align: center;
         color: var(--white);
         font-family: "FatFrank", sans-serif;
@@ -809,7 +818,7 @@ body,
         display: flex;
         flex-direction: column;
         justify-content: end;
-        padding: clamp(2px, 2%, 12px);
+        padding: clamp(5px, 2.5%, 12px);
         border-radius: clamp(10px, 2vmin, 20px);
 
         width: clamp(100px, 70%, 360px);
@@ -817,33 +826,74 @@ body,
         gap: 1vmin;
         box-shadow: var(--box-shadow);
 
+        .game-over-header {
+          font-size: clamp(1rem, 4vmin, 2rem);
+          font-family: "FatFrank", sans-serif;
+        }
+
+        @media screen and (max-width: 768px) {
+          box-shadow: var(--mobile-box-shadow);
+        }
+      }
+
+      .game-over-news-content-wrapper {
+        background-color: var(--white);
+        display: flex;
+        justify-content: end;
+        padding: clamp(5px, 2.5%, 12px);
+        border-radius: clamp(10px, 2vmin, 20px);
+        max-height: clamp(300px, 80%, 800px);
+
+        min-width: clamp(100px, 70%, 360px);
+        z-index: 2;
+        gap: 1vmin;
+        box-shadow: var(--box-shadow);
+
+        @media screen and (max-width: 768px) {
+          box-shadow: var(--mobile-box-shadow);
+        }
+
         .game-over-news-image {
           width: 100%;
-          aspect-ratio: 3/1;
+          aspect-ratio: 11/16;
           object-fit: cover;
           border-radius: clamp(8px, 1.5vmin, 15px);
+          flex: 0.2;
+          max-width: clamp(50px, 15vmin, 120px);
         }
         .game-over-news-text {
           display: flex;
           flex-direction: column;
-          gap: 0.6vmin;
+          gap: clamp(2px, 0.75vmin, 10px);
+          flex: 0.8;
 
           .game-over-news-title {
-            font-size: clamp(0.8rem, 2vmin, 1.5rem);
+            font-size: clamp(0.75rem, 2.5vmin, 2.5rem);
             color: var(--blue);
             font-family: "FatFrank", sans-serif;
+            text-overflow: ellipsis;
+            height: auto;
           }
 
           .game-over-news-description {
-            font-size: clamp(0.6rem, 1.5vmin, 1.2rem);
             color: var(--black);
             font-family: "Karla", sans-serif;
+            font-weight: 400;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
             height: auto;
+            font-size: clamp(0.5rem, 1.8vmin, 1.2rem);
+
+            @media screen and (max-width: 450px) {
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              height: auto;
+            }
           }
         }
         .game-over-header {
@@ -852,9 +902,50 @@ body,
         }
       }
 
+      .game-over-news-header-container {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(2px, 0.75vmin, 10px);
+      }
+
+      .game-over-news-description-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(2px, 0.75vmin, 10px);
+      }
+
       .game-over-details {
         font-family: "Karla", sans-serif;
         font-size: clamp(0.6rem, 1.5vmin, 1.2rem);
+      }
+
+      .game-over-news-button {
+        display: inline-flex;
+        cursor: pointer;
+        background-color: var(--grey);
+        padding: clamp(0.25rem, 1vmin, 2rem) clamp(0.8rem, 2vmin, 4rem);
+        color: var(--black);
+        border-radius: clamp(2px, 1vmin, 10px);
+        font-size: clamp(0.4rem, 1.5vmin, 1.2rem);
+      }
+
+      .game-over-news-button-shadow {
+        position: absolute;
+        top: clamp(2px, 1vmin, 9px);
+        left: 0;
+        z-index: -1;
+        opacity: 0.9;
+        border-radius: clamp(1px, 1.5vmin, 10px);
+        max-width: none;
+        height: 100%;
+      }
+
+      .game-over-news-date {
+        font-size: clamp(0.4rem, 1.5vmin, 1.2rem);
+        color: var(--purple);
+        font-family: "Karla", sans-serif;
+        font-weight: 800;
       }
 
       .game-over-button-container {

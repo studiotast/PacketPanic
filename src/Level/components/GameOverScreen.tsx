@@ -73,7 +73,7 @@ export default function GameOverScreen() {
           {page === 0 ? (
             <motion.div
               key="results-page"
-              className="game-over-content-wrapper end"
+              className="game-over-content-wrapper"
               initial="initial"
               animate="animate"
               exit="exit"
@@ -108,19 +108,34 @@ export default function GameOverScreen() {
               variants={pageVariants}
             >
               <p className="game-over-news-header">Nieuws van vandaag</p>
-              <div className="game-over-content-wrapper">
+              <div className="game-over-news-content-wrapper">
                 <img
                   src={currentLevel?.newsArticle?.imageUrl}
                   alt="news"
                   className="game-over-news-image"
                 />
                 <div className="game-over-news-text">
-                  <p className="game-over-news-title">
-                    {currentLevel?.newsArticle?.title}
-                  </p>
-                  <p className="game-over-news-description">
-                    {currentLevel?.newsArticle?.content}
-                  </p>
+                  <div className="game-over-news-header-container">
+                    <p className="game-over-news-title">
+                      {currentLevel?.newsArticle?.title}
+                    </p>
+                    <p className="game-over-news-date">
+                      {currentLevel?.newsArticle?.date}
+                    </p>
+                  </div>
+                  <div className="game-over-news-description-container">
+                    <p className="game-over-news-description">
+                      {currentLevel?.newsArticle?.content}
+                    </p>
+                    <Button
+                      onClick={() => {}}
+                      className="game-over-news-button"
+                      shadowColor="#DEE0E6"
+                      shadowStyle="game-over-news-button-shadow"
+                    >
+                      Volledig artikel lezen
+                    </Button>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -132,6 +147,7 @@ export default function GameOverScreen() {
               className="game-over-button"
               onClick={handleClick}
               shadowColor="#dc9329"
+              shadowStyle="game-over-news-button-shadow"
             >
               Verder
               <FontAwesomeIcon icon={faCircleCheck} />
@@ -142,6 +158,7 @@ export default function GameOverScreen() {
                 className="game-over-button"
                 onClick={handleRepeatLevel}
                 shadowColor="#5B6FE0"
+                shadowStyle="game-over-news-button-shadow"
                 style={{
                   backgroundColor: "#677eff",
                 }}
@@ -153,6 +170,7 @@ export default function GameOverScreen() {
                 className="game-over-button"
                 onClick={handleClick}
                 shadowColor="#dc9329"
+                shadowStyle="game-over-news-button-shadow"
               >
                 {`Naar level ${currentLevel.id + 1} `}
                 <FontAwesomeIcon icon={faArrowRight} />
