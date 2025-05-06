@@ -468,6 +468,11 @@ body,
   max-width: 900px;
   position: relative;
   z-index: 3;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 /* Update card styling for Button component compatibility */
@@ -523,7 +528,7 @@ body,
 }
 
 .pause-content h2 {
-  font-size: 5rem;
+  font-size: clamp(2.5rem, 3vmin, 5rem);
   margin-bottom: 1rem;
   color: var(--white);
   font-family: "FatFrank", sans-serif;
