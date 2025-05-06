@@ -627,9 +627,9 @@ body,
 
 .speech-bubble-content {
   background-color: var(--white);
-  padding: var(--spacing40) var(--spacing20);
+  padding: clamp(1rem, 2%, 2rem) clamp(1rem, 2%, 4rem);
   border-radius: var(--border-radius20);
-  max-width: 600px;
+  max-width: clamp(100px, 70%, 600px);
   position: relative;
   z-index: 100;
 }
