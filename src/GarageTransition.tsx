@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useModels } from "./stores/useModels";
 import { motion, AnimatePresence } from "framer-motion";
 import useGame from "./stores/useGame";
@@ -14,7 +14,7 @@ export default function GarageTransition() {
   const loaded = useModels((state) => state.loaded);
   const phase = useGame((state) => state.phase);
   const startFromIntro = useGame((state) => state.startFromIntro);
-  const startTutorial = useGame((state) => state.startTutorial); // Add this if it doesn't exist
+  const startTutorial = useGame((state) => state.startTutorial);
   const playSound = useGame((state) => state.playSound);
 
   // Track states

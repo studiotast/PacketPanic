@@ -5,12 +5,11 @@ import {
   faRectangleList,
 } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 import Button from "../../Button";
 import Layout from "../../Layout";
 import useGame from "../../stores/useGame";
-import Card from "./Card";
 import "../../style.css";
+import Card from "./Card";
 
 export default function PauseScreen() {
   const togglePause = useGame((state) => state.togglePause);

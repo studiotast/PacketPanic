@@ -25,8 +25,6 @@ function App() {
   const isPaused = useGame((state) => state.isPaused);
   // begin alvast met het laden van de modellen
 
-  const models = useModels((state) => state.getModels());
-
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Monitor transition state
