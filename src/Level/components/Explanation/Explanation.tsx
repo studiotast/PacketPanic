@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../../Button";
 import useGame from "../../../stores/useGame";
+import { useModels } from "../../../stores/useModels";
 
 export default function Explanation() {
   const playSound = useGame((state) => state.playSound);
   const currentLevel = useGame((state) => state.currentLevel);
   const startTutorial = useGame((state) => state.startTutorial);
+
+  const loaded = useModels((state) => state.loaded);
 
   const [explanationIndex, setExplanationIndex] = useState(
     currentLevel.storyLine.length - currentLevel.storyLine.length
@@ -22,12 +25,14 @@ export default function Explanation() {
   }, [explanationIndex]);
 
   useEffect(() => {
-    setTimeout(() => {
-      // Generate a random integer between 1 and 3 (inclusive)
-      const random = Math.floor(Math.random() * 3) + 1;
-      playSound(`robotTalking${random}`);
-    }, 1000);
-  }, [explanationIndex]);
+    if (loaded) {
+      setTimeout(() => {
+        // Generate a random integer between 1 and 3 (inclusive)
+        const random = Math.floor(Math.random() * 3) + 1;
+        playSound(`robotTalking${random}`);
+      }, 1000);
+    }
+  }, [explanationIndex, loaded]);
 
   return (
     <div className="explanation-overlay">
