@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import "./style.css";
 import useGame from "./stores/useGame";
@@ -26,10 +26,17 @@ export default function Button({
 }: ButtonProps) {
   // Create ref for the top button
   const buttonRef = useRef<HTMLDivElement>(null);
+  const shadowRef = useRef<HTMLDivElement>(null);
   // Track button styles
   const [buttonStyle, setButtonStyle] = useState({});
 
   const playSound = useGame((state) => state.playSound);
+
+  const updateShadowWidth = useCallback(() => {
+    if (buttonRef.current && shadowRef.current) {
+      shadowRef.current.style.width = `${buttonRef.current.offsetWidth}px`;
+    }
+  }, []);
 
   // Get computed styles from the button to apply to shadow
   useEffect(() => {
@@ -40,6 +47,10 @@ export default function Button({
       });
     }
   }, []);
+
+  useEffect(() => {
+    updateShadowWidth();
+  }, [children, updateShadowWidth]);
 
   const buttonVariants = {
     initial: {
@@ -56,6 +67,16 @@ export default function Button({
     playSound("button");
     onClick();
   };
+
+  useEffect(() => {
+    // Handle window resize
+    window.addEventListener("resize", updateShadowWidth);
+
+    // Clean up the event listener when component unmounts
+    return () => {
+      window.removeEventListener("resize", updateShadowWidth);
+    };
+  }, [updateShadowWidth]);
 
   return (
     <div className="button-container" onClick={handleClick}>
@@ -77,11 +98,12 @@ export default function Button({
       {/* Shadow underneath that stays static */}
       {type === "button" && (
         <div
+          ref={shadowRef}
           className={shadowStyle ? shadowStyle : "button-shadow"}
           style={{
             backgroundColor: shadowColor || "#dc9329",
             height: "100%",
-            width: "100%",
+            width: "auto%",
             borderRadius: isCard ? "20px" : "",
           }}
         />
