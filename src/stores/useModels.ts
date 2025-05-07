@@ -44,22 +44,22 @@ export const useModels = create<ModelsState>((set, get) => {
 
       // Load all models
       const models = {
-        straightModel: useGLTF("assets/models/track_straight_long_a02.glb")
+        straightModel: useGLTF("assets/models/track_straight_long_a03.glb")
           .scene,
         straightShortModel: useGLTF(
-          "assets/models/track_straight_short_a04.glb"
+          "assets/models/track_straight_short_a05.glb"
         ).scene,
-        cornerModel: useGLTF("assets/models/track_corner_a02.glb").scene,
-        curveModel: useGLTF("assets/models/track_curve_a02.glb").scene,
-        junctionModel: useGLTF("assets/models/track_junction_a02.glb").scene,
-        signModel: useGLTF("assets/models/signpost_sign_a02.glb").scene,
-        signPostModel: useGLTF("assets/models/signpost_pole_a02.glb").scene,
+        cornerModel: useGLTF("assets/models/track_corner_a03.glb").scene,
+        curveModel: useGLTF("assets/models/track_curve_a03.glb").scene,
+        junctionModel: useGLTF("assets/models/track_junction_a06.glb").scene,
+        signModel: useGLTF("assets/models/signpost_sign_a03.glb").scene,
+        signPostModel: useGLTF("assets/models/signpost_pole_a03.glb").scene,
         buildingsPlatformModel: useGLTF("assets/models/gebouwen_a01.glb").scene,
-        houseModel: useGLTF("assets/models/house_a01.glb").scene,
-        flagModel: useGLTF("assets/models/house_flag_a01.glb").scene,
-        platformLevel1Model: useGLTF("assets/models/platform_level1_a01.glb")
+        houseModel: useGLTF("assets/models/house_a02.glb").scene,
+        flagModel: useGLTF("assets/models/house_flag_a02.glb").scene,
+        platformLevel1Model: useGLTF("assets/models/platform_level1_a02.glb")
           .scene,
-        platformLevel2Model: useGLTF("assets/models/platform_level2_a01.glb")
+        platformLevel2Model: useGLTF("assets/models/platform_level2_a02.glb")
           .scene,
       };
 
