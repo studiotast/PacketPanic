@@ -36,12 +36,14 @@ export default function Explanation() {
 
   return (
     <div className="explanation-overlay">
-      <img className="robot-image" src="/assets/images/robot.png" />
-      <div className="speech-bubble">
-        <div className="speech-bubble-content">
-          <p className="speech-bubble-text">
-            {currentLevel.storyLine[explanationIndex].text}
-          </p>
+      <div className="robot-wrapper">
+        <img className="robot-image" src="/assets/images/robot.png" />
+        <div className="speech-bubble">
+          <div className="speech-bubble-content">
+            <p className="speech-bubble-text">
+              {currentLevel.storyLine[explanationIndex].text}
+            </p>
+          </div>
         </div>
       </div>
       <div className="explanation-button-wrapper">
