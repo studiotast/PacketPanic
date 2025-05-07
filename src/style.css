@@ -581,14 +581,25 @@ body,
   margin-bottom: -5px;
   display: grid;
   grid-template-columns: auto 1fr;
+  grid-template-areas: "robot speech";
+  @media screen and (max-width: 768px) {
+    padding-right: 5vmin;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "speech"
+      "robot";
+  }
 }
 .robot-image {
   max-width: 40vmin;
   width: 1200px;
   object-fit: contain;
   object-position: left;
+  grid-area: robot;
 }
 .speech-bubble {
+  grid-area: speech;
 }
 
 .speech-bubble-content {
@@ -600,6 +611,10 @@ body,
   z-index: 100;
   width: fit-content;
   margin-left: -6vmin;
+  @media screen and (max-width: 768px) {
+    margin-left: auto;
+    max-width: 75%;
+  }
 }
 .speech-bubble-content::before {
   content: "";
