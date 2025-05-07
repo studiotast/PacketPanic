@@ -10,6 +10,8 @@ import Layout from "../../Layout";
 import useGame from "../../stores/useGame";
 import "../../style.css";
 import Card from "./Card";
+import LeftCornerPiece from "./IntroScreen/components/LeftCornerPiece";
+import RightCornerPiece from "./IntroScreen/components/RightCornerPiece";
 
 export default function PauseScreen() {
   const togglePause = useGame((state) => state.togglePause);
@@ -54,6 +56,10 @@ export default function PauseScreen() {
           Verder spelen
           <FontAwesomeIcon icon={faPlay} />
         </Button>
+      </div>
+      <div className="corner-pieces">
+        <LeftCornerPiece />
+        <RightCornerPiece />
       </div>
     </Layout>
   );
