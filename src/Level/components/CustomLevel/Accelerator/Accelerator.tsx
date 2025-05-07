@@ -34,7 +34,7 @@ export default function Accelerator({
         material={magentaMaterial}
       /> */}
       {/* Toon de collider met een Box-mesh */}
-      <group rotation={[0, Math.PI * 0.25, 0]} position={[0, 0, 0.8]}>
+      <group rotation={[0, Math.PI * 0.25, 0]} position={[0, 0, 0.7]}>
         {/* <mesh>
           <boxGeometry args={[1.5, 1.5, 1.5]} />
           <meshBasicMaterial color="red" wireframe />
@@ -54,8 +54,8 @@ export default function Accelerator({
                 const colorIndex = colors.indexOf(ballColor);
                 if (colorIndex !== -1) {
                   const direction = directions[colorIndex]
-                    ? { x: 8, y: 0, z: -2 }
-                    : { x: -8, y: 0, z: -2 };
+                    ? { x: 7.8, y: 0, z: -2.2 }
+                    : { x: -7.8, y: 0, z: -2.2 };
 
                   if (ball.ref.current) {
                     ball.ref.current.applyImpulse(direction);

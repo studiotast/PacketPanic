@@ -10,7 +10,7 @@ import useGame from "../stores/useGame";
 
 // reusable geometries
 export const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
-export const sphereGeometry = new THREE.SphereGeometry(0.7, 16, 16);
+export const sphereGeometry = new THREE.SphereGeometry(0.66, 16, 16);
 export const triangleGeometry = new THREE.BufferGeometry();
 
 // Define the vertices of the 3D triangle

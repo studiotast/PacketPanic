@@ -99,7 +99,7 @@ export default function Experience() {
         // target={[0, 0, -13]}
         makeDefault
       />
-      <color args={["#bdedfc"]} attach="background" />
+      <color args={["#A2BDFC"]} attach="background" />
       <Physics
         gravity={[0, -5, -0.2]}
         debug={false}
