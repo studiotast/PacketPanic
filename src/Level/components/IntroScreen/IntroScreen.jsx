@@ -318,10 +318,7 @@ export default function IntroScreen() {
                 onClick={handleContinue}
               >
                 Doorgaan (Level {savedLevel?.id || "?"})
-                <FontAwesomeIcon
-                  icon={faForward}
-                  style={{ marginLeft: "10px" }}
-                />
+                <FontAwesomeIcon icon={faForward} />
               </Button>
             </div>
           </div>
@@ -333,10 +330,7 @@ export default function IntroScreen() {
               onClick={handleClick}
             >
               {page === 0 ? "Volgende" : "Beginnen"}
-              <FontAwesomeIcon
-                icon={page === 0 ? faArrowRight : faPlay}
-                style={{ marginLeft: "10px" }}
-              />
+              <FontAwesomeIcon icon={page === 0 ? faArrowRight : faPlay} />
             </Button>
           </div>
         )}

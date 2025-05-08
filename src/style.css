@@ -73,7 +73,7 @@ body,
   &.responsive {
     border-radius: clamp(6px, 1.5vmin, 10px);
     .button {
-      padding: clamp(0.6rem, 1.2vmin, 2rem) clamp(0.8rem, 2.2vmin, 4rem);
+      padding: clamp(0.6rem, 1.2vmin, 1rem) clamp(0.8rem, 2.2vmin, 2rem);
       gap: clamp(1px, 1vmin, 15px);
       font-size: clamp(0.8rem, 2vmin, 1.2rem);
     }
