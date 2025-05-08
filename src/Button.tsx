@@ -38,6 +38,9 @@ export default function Button({
     <div
       className={`button-wrapper ${color} ${responsive ? "responsive" : ""}`}
       onClick={handleClick}
+      style={{
+        ...style,
+      }}
     >
       <motion.div
         className="button"
