@@ -492,6 +492,7 @@ body,
   z-index: 100;
   flex-wrap: wrap;
   justify-content: center;
+  padding-bottom: 4vmin;
 }
 
 /**
