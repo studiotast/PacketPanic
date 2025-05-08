@@ -128,10 +128,10 @@ export default function GameOverScreen() {
                       {currentLevel?.newsArticle?.content}
                     </p>
                     <Button
+                      style={{ width: "fit-content" }}
                       onClick={() => {}}
-                      className="game-over-news-button"
-                      shadowColor="#DEE0E6"
-                      shadowStyle="game-over-news-button-shadow"
+                      color="grey"
+                      responsive
                     >
                       Volledig artikel lezen
                     </Button>
@@ -143,35 +143,17 @@ export default function GameOverScreen() {
         </AnimatePresence>
         <div className="game-over-button-container">
           {page === 0 ? (
-            <Button
-              className="game-over-button"
-              onClick={handleClick}
-              shadowColor="#dc9329"
-              shadowStyle="game-over-news-button-shadow"
-            >
+            <Button responsive onClick={handleClick}>
               Verder
               <FontAwesomeIcon icon={faCircleCheck} />
             </Button>
           ) : (
             <>
-              <Button
-                className="game-over-button"
-                onClick={handleRepeatLevel}
-                shadowColor="#5B6FE0"
-                shadowStyle="game-over-news-button-shadow"
-                style={{
-                  backgroundColor: "#677eff",
-                }}
-              >
+              <Button responsive color="blue" onClick={handleRepeatLevel}>
                 {`Level ${currentLevel.id} `}
                 <FontAwesomeIcon icon={faRotate} />
               </Button>
-              <Button
-                className="game-over-button"
-                onClick={handleClick}
-                shadowColor="#dc9329"
-                shadowStyle="game-over-news-button-shadow"
-              >
+              <Button responsive onClick={handleClick}>
                 {`Naar level ${currentLevel.id + 1} `}
                 <FontAwesomeIcon icon={faArrowRight} />
               </Button>

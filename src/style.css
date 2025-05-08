@@ -38,6 +38,14 @@
   --border-radius10: 10px;
   --border-radius20: 20px;
   --border-radius-circle: 999px;
+
+  --font-karla: "Karla", sans-serif;
+  --font-fatfrank: "FatFrank", sans-serif;
+
+  --font-bold: 700;
+  --font-semibold: 600;
+  --font-medium: 500;
+  --font-regular: 400;
 }
 
 * {
@@ -55,7 +63,89 @@ body,
   height: 100%;
   width: 100%;
   background: var(--white);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-karla);
+}
+
+.button-wrapper {
+  margin-top: 8px;
+  position: relative;
+  border-radius: var(--border-radius10);
+  &.responsive {
+    border-radius: clamp(6px, 1.5vmin, 10px);
+    .button {
+      padding: clamp(0.6rem, 1.2vmin, 2rem) clamp(0.8rem, 2.2vmin, 4rem);
+      gap: clamp(1px, 1vmin, 15px);
+      font-size: clamp(0.8rem, 2vmin, 1.2rem);
+    }
+  }
+  &.yellow {
+    .button {
+      background-color: var(--yellow);
+      color: var(--white);
+    }
+    .button-shadow {
+      background-color: color-mix(in srgb, var(--yellow) 80%, black 20%);
+    }
+  }
+  &.blue {
+    .button {
+      background-color: var(--blue);
+      color: var(--white);
+    }
+    .button-shadow {
+      background-color: color-mix(in srgb, var(--blue) 80%, black 20%);
+    }
+  }
+  &.purple {
+    .button {
+      background-color: var(--purple);
+      color: var(--white);
+    }
+    .button-shadow {
+      background-color: color-mix(in srgb, var(--purple) 80%, black 20%);
+    }
+  }
+  &.red {
+    .button {
+      background-color: var(--red);
+      color: var(--white);
+    }
+    .button-shadow {
+      background-color: color-mix(in srgb, var(--red) 80%, black 20%);
+    }
+  }
+  &.grey {
+    .button {
+      background-color: var(--grey);
+      color: var(--black);
+    }
+    .button-shadow {
+      background-color: color-mix(in srgb, var(--grey) 80%, black 20%);
+    }
+  }
+  .button {
+    cursor: pointer;
+    padding: var(--spacing15) var(--spacing30);
+    font-size: 20px;
+    border-radius: inherit;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing15);
+    position: relative;
+    font-family: var(--font-karla);
+    font-weight: var(--font-semibold);
+  }
+  .button-shadow {
+    border-radius: inherit;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: color-mix(in srgb, var(--yellow) 80%, black 20%);
+    left: 0;
+    top: 0;
+  }
 }
 
 /*
@@ -101,7 +191,7 @@ body,
 }
 
 .score-label {
-  font-weight: bold;
+  font-weight: var(--font-bold);
   color: var(--white);
   display: flex;
   align-items: center;
@@ -404,22 +494,6 @@ body,
   justify-content: center;
 }
 
-/* And modify the start-button to remove positioning */
-.start-button {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  background-color: var(--yellow);
-  color: var(--white);
-  border: none;
-  border-radius: 11px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  display: flex;
-  gap: 0.1rem;
-  font-family: "Karla", sans-serif;
-  font-weight: 600;
-}
-
 /**
  * Timer
  */
@@ -580,6 +654,7 @@ body,
 .robot-wrapper {
   margin-bottom: -5px;
   display: grid;
+
   grid-template-columns: auto 1fr;
   grid-template-areas: "robot speech";
   @media screen and (max-width: 768px) {
@@ -637,26 +712,6 @@ body,
   text-wrap: balance;
 }
 
-.explanation-button {
-  margin: 0;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  background-color: var(--yellow);
-  color: var(--white);
-  border: none;
-  border-radius: 11px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.65rem;
-  z-index: 100;
-  font-family: "Karla", sans-serif;
-  font-weight: 600;
-  width: 180px; /* Set a fixed width */
-  min-width: 180px;
-}
-
 /* Add wrapper for positioning */
 .explanation-button-wrapper {
   position: absolute;
@@ -678,11 +733,11 @@ body,
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-direction: column;
   z-index: 100;
   margin-top: 6%;
-  padding: 2rem;
+  padding: clamp(10px, 3vmin, 3rem);
 }
 
 .tutorial-bg {
@@ -696,38 +751,35 @@ body,
 }
 
 .tutorial-bottom-container {
-  position: absolute;
-  bottom: 5%;
-  left: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: clamp(1px, 1.5vmin, 15px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(1px, 3vmin, 40px);
   align-items: flex-end;
-  padding: clamp(0.5rem, 1.5vmin, 2rem) clamp(0.5rem, 2.5vmin, 4rem);
+  /* padding: clamp(0.5rem, 1.5vmin, 2rem) clamp(0.5rem, 2.5vmin, 4rem); */
   z-index: 10;
 }
 
 .tutorial-text {
   color: var(--black);
   font-family: "Karla", sans-serif;
-  font-size: clamp(0.65rem, 2vmin, 2rem);
   font-weight: 500;
   background-color: var(--white);
-  padding: clamp(0.5rem, 2%, 2rem) clamp(1rem, 2%, 4rem);
+
   border-radius: clamp(10px, 1.5vmin, 20px);
-  max-width: 400px;
+  /* max-width: 400px; */
   text-align: left;
   margin: 0;
-  width: auto;
+  width: fit-content;
+  padding: clamp(0.6rem, 1.4vmin, 2rem) clamp(0.8rem, 2.2vmin, 4rem);
+  font-size: clamp(0.8rem, 2vmin, 1.2rem);
 }
 
 .tutorial-button-wrapper {
-  margin-left: auto;
 }
 
 .tutorial-button {
-  padding: clamp(0.5rem, 2%, 2rem) clamp(1rem, 2%, 4rem);
+  padding: clamp(0.6rem, 10%, 2rem) clamp(1rem, 22%, 4rem);
   gap: clamp(1px, 1vmin, 15px);
   display: flex;
   align-items: center;
@@ -740,16 +792,6 @@ body,
   font-family: "Karla", sans-serif;
   font-weight: 600;
   z-index: 2;
-  position: relative;
-}
-
-.tutorial-button-shadow {
-  position: absolute;
-  top: clamp(2px, 1vmin, 9px);
-  left: 0;
-  z-index: -1;
-  opacity: 0.9;
-  border-radius: clamp(1px, 1.5vmin, 10px);
 }
 
 /**
@@ -935,27 +977,6 @@ body,
         font-size: clamp(0.6rem, 1.5vmin, 1.2rem);
       }
 
-      .game-over-news-button {
-        display: inline-flex;
-        cursor: pointer;
-        background-color: var(--grey);
-        padding: clamp(0.25rem, 1vmin, 2rem) clamp(0.8rem, 2vmin, 4rem);
-        color: var(--black);
-        border-radius: clamp(2px, 1vmin, 10px);
-        font-size: clamp(0.4rem, 1.5vmin, 1.2rem);
-      }
-
-      .game-over-news-button-shadow {
-        position: absolute;
-        top: clamp(2px, 1vmin, 9px);
-        left: 0;
-        z-index: -1;
-        opacity: 0.9;
-        border-radius: clamp(1px, 1.5vmin, 10px);
-        max-width: none;
-        height: 100%;
-      }
-
       .game-over-news-date {
         font-size: clamp(0.4rem, 1.5vmin, 1.2rem);
         color: var(--purple);
@@ -966,28 +987,6 @@ body,
       .game-over-button-container {
         display: flex;
         gap: clamp(1px, 1vmin, 15px);
-        .game-over-button {
-          padding: 1vmin 2vmin;
-          font-size: clamp(0.4rem, 2vmin, 1.2rem);
-          background-color: var(--yellow);
-          color: var(--white);
-          border: none;
-          border-radius: 11px;
-          cursor: pointer;
-          display: flex;
-          gap: 0.5rem;
-          justify-content: center;
-          align-items: center;
-          font-family: "Karla", sans-serif;
-          font-weight: 600;
-          z-index: 2;
-          position: relative;
-          z-index: 10;
-          border-radius: clamp(4px, 1.5vmin, 10px);
-        }
-        .button-shadow {
-          border-radius: clamp(4px, 1.5vmin, 10px);
-        }
       }
     }
   }
@@ -1097,22 +1096,6 @@ body,
   color: #2196f3;
 }
 
-.level-transition button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: background-color 0.3s;
-}
-
-.level-transition button:hover {
-  background-color: #3e8e41;
-}
-
 /**
  * Layout
  */
@@ -1198,22 +1181,6 @@ body,
 /**
 Button styling
 */
-.button-container {
-  position: relative;
-  display: inline-block;
-  z-index: 10;
-  border-radius: var(--border-radius10);
-}
-
-.button-shadow {
-  position: absolute;
-  top: 9px;
-  left: 0;
-  z-index: -1;
-  opacity: 0.9;
-  border-radius: var(--border-radius10);
-}
-
 .top-right-buttons {
   position: absolute;
   top: var(--spacing20);

@@ -42,7 +42,7 @@ export default function TutorialScreen() {
           {/* Button in bottom right */}
           <div className="tutorial-button-wrapper">
             <Button
-              className="tutorial-button"
+              responsive
               onClick={() => {
                 if (readyToStart) {
                   if (typeof window.initiatePhaseTransition === "function") {

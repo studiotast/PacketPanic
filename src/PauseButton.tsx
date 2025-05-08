@@ -1,22 +1,23 @@
 import { faPause, faPlay } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 import React from "react";
 import useGame from "./stores/useGame";
-import Button from "./Button";
 
 export default function PauseButton() {
   const togglePause = useGame((state) => state.togglePause);
   const isPaused = useGame((state) => state.isPaused);
 
   return (
-    <Button
+    <motion.div
       className="pause-icon"
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
       onClick={togglePause}
-      shadowColor="transparent"
     >
       <div className="icon-wrapper">
         <FontAwesomeIcon color={"#fff"} icon={!isPaused ? faPause : faPlay} />
       </div>
-    </Button>
+    </motion.div>
   );
 }
