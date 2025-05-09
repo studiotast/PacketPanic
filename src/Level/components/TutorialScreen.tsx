@@ -28,7 +28,9 @@ export default function TutorialScreen() {
         {/* Background image */}
         <img
           alt="Tutorial background"
-          src="/assets/images/tutorial.png"
+          src={`/assets/images/tutorial/${currentLevel.id}-${
+            tutorialIndex + 1
+          }.png`}
           className="tutorial-bg"
         />
 
