@@ -79,23 +79,25 @@ export default function GameOverScreen() {
               exit="exit"
               variants={pageVariants}
             >
-              <p
-                className="game-over-header"
-                style={{
-                  color: progressPercentage >= 100 ? "#677eff" : "#ff588d",
-                }}
-              >{`${
-                progressPercentage >= 100
-                  ? currentLevel.scoreScreen[0].title
-                  : currentLevel.scoreScreen[1].title
-              }`}</p>
-              <p className="game-over-details">
-                {`${
+              <div className="game-over-text-container">
+                <p
+                  className="game-over-header"
+                  style={{
+                    color: progressPercentage >= 100 ? "#677eff" : "#ff588d",
+                  }}
+                >{`${
                   progressPercentage >= 100
-                    ? currentLevel.scoreScreen[0].description
-                    : currentLevel.scoreScreen[1].description
-                }`}
-              </p>
+                    ? currentLevel.scoreScreen[0].title
+                    : currentLevel.scoreScreen[1].title
+                }`}</p>
+                <p className="game-over-details">
+                  {`${
+                    progressPercentage >= 100
+                      ? currentLevel.scoreScreen[0].description
+                      : currentLevel.scoreScreen[1].description
+                  }`}
+                </p>
+              </div>
               <ScoreProgress type="end" />
             </motion.div>
           ) : (
@@ -133,7 +135,10 @@ export default function GameOverScreen() {
                       color="grey"
                       responsive
                     >
-                      Volledig artikel lezen
+                      <span>
+                        <span className="news-button-text">Volledig</span>{" "}
+                        artikel lezen
+                      </span>
                     </Button>
                   </div>
                 </div>
