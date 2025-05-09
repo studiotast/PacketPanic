@@ -484,7 +484,6 @@ body,
   z-index: 100;
   flex-wrap: wrap;
   justify-content: center;
-  padding-bottom: 4vmin;
 }
 
 /**
@@ -1233,8 +1232,7 @@ Button styling
   position: fixed;
   left: 0;
   bottom: 0;
-  height: 9vh;
-  height: 9dvh;
+  height: clamp(40px, 8vmin, 150px);
   aspect-ratio: 3.8/1;
 }
 
@@ -1242,8 +1240,7 @@ Button styling
   position: fixed;
   right: 0;
   bottom: 0;
-  height: 9vh;
-  height: 9dvh;
+  height: clamp(40px, 8vmin, 150px);
   aspect-ratio: 3.8/1;
 }
 .corner-piece-inner {
@@ -1292,8 +1289,8 @@ Button styling
 .left-corner-piece-content p {
   z-index: 1;
   text-align: center;
-  font-size: 1.6vh;
-  font-size: 1.6dvh;
+
+  font-size: clamp(10px, 1.4vmin, 30px);
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   font-weight: 600;
@@ -1301,7 +1298,6 @@ Button styling
 }
 .left-corner-piece svg {
   color: var(--black);
-  font-size: 1.6vh;
-  font-size: 1.6dvh;
+  font-size: clamp(10px, 1.4vmin, 30px);
   z-index: 1;
 }
