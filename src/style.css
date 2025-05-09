@@ -195,18 +195,10 @@ body,
   color: var(--white);
   display: flex;
   align-items: center;
-  gap: clamp(0.5rem, 2%, 1rem);
+  gap: clamp(0.5rem, 15%, 2rem);
 }
 
 .score-icon-container {
-  padding: clamp(0.2rem, 1.5%, 1rem) clamp(0.3rem, 2%, 2rem);
-  box-shadow: var(--box-shadow);
-  border-radius: var(--border-radius10);
-
-  @media screen and (max-width: 768px) {
-    box-shadow: var(--mobile-box-shadow);
-    border-radius: var(--spacing8);
-  }
 }
 
 .score-info-container {
@@ -811,7 +803,7 @@ body,
   z-index: 1000;
   .game-over-wrapper {
     width: 98vh;
-    margin: var(--spacing40);
+    margin: 2.5vmin;
     width: 98dvh;
     max-height: 90vh;
     max-width: 1200px;

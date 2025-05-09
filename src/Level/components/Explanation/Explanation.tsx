@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../../../Button";
 import useGame from "../../../stores/useGame";
 import { useModels } from "../../../stores/useModels";
+import SpeechBubble from "./components/SpeechBubble";
 
 export default function Explanation() {
   const playSound = useGame((state) => state.playSound);
@@ -38,13 +39,10 @@ export default function Explanation() {
     <div className="explanation-overlay">
       <div className="robot-wrapper">
         <img className="robot-image" src="/assets/images/robot.png" />
-        <div className="speech-bubble">
-          <div className="speech-bubble-content">
-            <p className="speech-bubble-text">
-              {currentLevel.storyLine[explanationIndex].text}
-            </p>
-          </div>
-        </div>
+        <SpeechBubble
+          key={explanationIndex}
+          text={currentLevel.storyLine[explanationIndex].text}
+        />
       </div>
       <div className="explanation-button-wrapper">
         <Button
