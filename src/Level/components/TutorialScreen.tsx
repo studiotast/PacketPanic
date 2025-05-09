@@ -4,6 +4,7 @@ import Button from "../../Button";
 import useGame from "../../stores/useGame";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/pro-solid-svg-icons";
+import { motion } from "framer-motion";
 
 export default function TutorialScreen() {
   const playSound = useGame((state) => state.playSound);
@@ -22,6 +23,15 @@ export default function TutorialScreen() {
     }
   }, [tutorialIndex]);
 
+  // Framer Motion Variants voor animaties
+  const textVariants = {
+    hidden: { scale: 1.05 }, // Startpositie (onzichtbaar en kleiner)
+    visible: {
+      scale: 1, // Eindpositie (volledig zichtbaar en normale grootte)
+    },
+    exit: { scale: 0.8 }, // Exit-animatie
+  };
+
   return (
     <TvWrapper>
       <div className="tutorial-content">
@@ -37,9 +47,17 @@ export default function TutorialScreen() {
         {/* Bottom container for positioning elements */}
         <div className="tutorial-bottom-container">
           {/* Text in bottom left */}
-          <div className="tutorial-text">
+          <motion.div
+            // style={{ transformOrigin: "left bottom" }} // Zet de origin linksonder
+            variants={textVariants} // Gebruik de animatie-varianten
+            initial="hidden" // Start met de "hidden"-variant
+            animate="visible" // Animeer naar de "visible"-variant
+            exit="exit" // Optionele exit-animatie
+            className="tutorial-text"
+            key={tutorialIndex}
+          >
             <p>{currentLevel.tutorial[tutorialIndex].text}</p>
-          </div>
+          </motion.div>
 
           {/* Button in bottom right */}
           <div className="tutorial-button-wrapper">
@@ -57,8 +75,6 @@ export default function TutorialScreen() {
                 }
                 setTutorialIndex((prev) => prev + 1);
               }}
-              shadowColor="#dc9329"
-              shadowStyle="tutorial-button-shadow"
             >
               Verder
               <FontAwesomeIcon icon={faCircleCheck} />

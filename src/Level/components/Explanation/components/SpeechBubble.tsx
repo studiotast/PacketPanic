@@ -11,7 +11,7 @@ export default function SpeechBubble({ text }: { text: string }) {
   };
 
   return (
-    <motion.div className="speech-bubble">
+    <div className="speech-bubble">
       <motion.div
         // style={{ transformOrigin: "left bottom" }} // Zet de origin linksonder
         variants={bubbleVariants} // Gebruik de animatie-varianten
@@ -22,6 +22,6 @@ export default function SpeechBubble({ text }: { text: string }) {
       >
         <p className="speech-bubble-text">{text}</p>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
