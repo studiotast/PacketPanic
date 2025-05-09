@@ -21,6 +21,9 @@ export default function Button({
   const playSound = useGame((state) => state.playSound);
 
   const buttonVariants = {
+    hover: {
+      y: "-24%",
+    },
     initial: {
       y: "-18%",
     },
@@ -47,6 +50,7 @@ export default function Button({
         variants={buttonVariants}
         initial="initial"
         whileTap="tap"
+        whileHover="hover"
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
         style={{
           ...style,

@@ -1272,6 +1272,7 @@ Button styling
 }
 .logo {
   position: relative;
+  cursor: pointer;
 }
 .logo img {
   width: 100%;
