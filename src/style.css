@@ -412,7 +412,7 @@ body,
  */
 
 .intro-logo {
-  width: clamp(100px, 60vmin, 400px);
+  width: clamp(100px, 60vmin, 550px);
   max-width: 100%;
   align-self: center;
 }
