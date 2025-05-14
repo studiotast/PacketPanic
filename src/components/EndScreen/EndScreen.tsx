@@ -1,21 +1,32 @@
+import React from "react";
 import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
-import Layout from "../../../Layout";
-import "../../../style.css";
-import LeftCornerPiece from "../LeftCornerPiece";
-import RightCornerPiece from "../RightCornerPiece";
-import Button from "../Button";
-import { getAllNewsArticles } from "../../../utils/levelsData";
-import ClickableCard from "../ClickableCard";
+import Layout from "../../Layout";
+import LeftCornerPiece from "../../Level/components/LeftCornerPiece";
+import RightCornerPiece from "../../Level/components/RightCornerPiece";
+import Button from "../Button/Button";
+import { getAllNewsArticles } from "../../utils/levelsData";
+import ClickableCard from "../ClickableCard/ClickableCard";
+import styles from "./EndScreen.module.scss";
 
-export default function EndScreen() {
+// Define interfaces for the news article
+type NewsArticle = {
+  title: string;
+  content: string;
+  imageUrl: string;
+  readMoreLink: string;
+  date: string;
+};
+
+export default function EndScreen(): React.ReactElement {
   const newsArticles = getAllNewsArticles();
+
   return (
     <Layout>
-      <div className="end-screen">
+      <div className={styles.endScreen}>
         <h1>Gefeliciteerd je hebt Packet Panic voltooid!</h1>
-        <div className="row">
-          <div className="card">
+        <div className={styles.row}>
+          <div className={styles.card}>
             <p>
               Hopelijk heb je het gevoel gehad steeds achter de feiten aan te
               lopen. Wat als je meldingen krijgt dat een website niet
@@ -34,24 +45,24 @@ export default function EndScreen() {
             </p>
             <p>Bedankt voor het spelen van Packet Panic.</p>
           </div>
-          <div className="blue-card">
+          <div className={styles.blueCard}>
             <h2>Wat kun je nu verder doen</h2>
             <span>
-              <p className="subtitle">Check RPKI-adoptie </p>
+              <p className={styles.subtitle}>Check RPKI-adoptie </p>
               <p>
                 ga naar www.internet.nl en controleer hoe het zit met RPKI
                 adoptie van je werkgever, je gemeente of je voetbalclub.
               </p>
             </span>
             <span>
-              <p className="subtitle">Deel je kennis</p>
+              <p className={styles.subtitle}>Deel je kennis</p>
               <p>
                 Vertel anderen over de risico's van BGP-hijacking. Duw
                 bijvoorbeeld Packet Panic onder hun neus.
               </p>
             </span>
             <span>
-              <p className="subtitle">Verdiep je kennis </p>
+              <p className={styles.subtitle}>Verdiep je kennis </p>
               <p>
                 Bekijk de zusterprojecten van Packet Panic, die inzicht bieden
                 in andere onderdelen van de infrastructuur van het internet.
@@ -59,16 +70,15 @@ export default function EndScreen() {
             </span>
           </div>
         </div>
-        <div className="row">
+        <div className={styles.row}>
           <h2>Terugblik krantenknipsels</h2>
-          <div className="news">
-            {newsArticles.map((article, idx) => (
+          <div className={styles.news}>
+            {newsArticles.map((article: NewsArticle, idx: number) => (
               <ClickableCard
                 onClick={() => window.open(article.readMoreLink, "_blank")}
-                className="news-article"
                 key={idx}
               >
-                <div className="image">
+                <div className={styles.image}>
                   <img src={article.imageUrl} alt={article.title} />
                 </div>
                 <h3>{article.title}</h3>
@@ -76,7 +86,7 @@ export default function EndScreen() {
             ))}
           </div>
         </div>
-        <div className="buttons">
+        <div className={styles.buttons}>
           <Button onClick={() => window.location.reload()}>
             Opnieuw spelen
           </Button>
@@ -85,7 +95,14 @@ export default function EndScreen() {
           </Button>
         </div>
       </div>
-      <div className="corner-pieces">
+      <div
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          pointerEvents: "none",
+        }}
+      >
         <LeftCornerPiece />
         <RightCornerPiece />
       </div>
