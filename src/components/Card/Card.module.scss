@@ -1,0 +1,32 @@
+// Card.module.scss
+.card {
+  padding: clamp(4vmin, var(--spacing30), 6vmin);
+  color: var(--black);
+  text-decoration: none;
+  font-family: "FatFrank", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.cardIcon {
+  font-size: 48px;
+  color: var(--blue);
+}
+
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
