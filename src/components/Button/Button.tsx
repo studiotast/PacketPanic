@@ -1,22 +1,22 @@
-import { motion } from "framer-motion";
 import React from "react";
+import styles from "./Button.module.scss";
+import { motion } from "framer-motion";
 import useGame from "../../stores/useGame";
-import "../../style.css";
 
 type ButtonProps = {
-  children: React.ReactNode;
   onClick: () => void;
-  style?: React.CSSProperties;
+  color?: string;
+  children: React.ReactNode;
   responsive?: boolean;
-  color?: "yellow" | "blue" | "red" | "purple" | "grey";
+  [key: string]: any;
 };
 
 export default function Button({
-  children,
   onClick,
-  style,
-  responsive,
   color = "yellow",
+  children,
+  responsive = false,
+  ...props
 }: ButtonProps) {
   const playSound = useGame((state) => state.playSound);
 
@@ -36,29 +36,25 @@ export default function Button({
     playSound("button");
     onClick();
   };
-
   return (
     <div
-      className={`button-wrapper ${color} ${responsive ? "responsive" : ""}`}
+      className={`${styles.buttonWrapper} ${styles[color]} ${
+        responsive ? styles.responsive : ""
+      }`}
       onClick={handleClick}
-      style={{
-        ...style,
-      }}
+      {...props}
     >
       <motion.div
-        className="button"
+        className={styles.button}
         variants={buttonVariants}
         initial="initial"
         whileTap="tap"
         whileHover="hover"
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
-        style={{
-          ...style,
-        }}
       >
         {children}
       </motion.div>
-      <div className="button-shadow" />
+      <div className={styles.buttonShadow} />
     </div>
   );
 }
