@@ -1,3 +1,4 @@
+import React from "react";
 import {
   faCircleInfo,
   faHome,
@@ -5,15 +6,15 @@ import {
   faRectangleList,
 } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "./Button";
+import Button from "../Button/Button";
 import Layout from "../../Layout";
 import useGame from "../../stores/useGame";
-import "../../style.css";
-import Card from "./Card";
-import LeftCornerPiece from "./LeftCornerPiece";
-import RightCornerPiece from "./RightCornerPiece";
+import Card from "../Card/Card";
+import styles from "./PauseScreen.module.scss";
+import LeftCornerPiece from "../CornerPiece/LeftCornerPiece";
+import RightCornerPiece from "../CornerPiece/RightCornerPiece";
 
-export default function PauseScreen() {
+const PauseScreen: React.FC = () => {
   const togglePause = useGame((state) => state.togglePause);
 
   const pauseScreenData = [
@@ -36,9 +37,9 @@ export default function PauseScreen() {
 
   return (
     <Layout>
-      <div className="pause-content">
-        <h2>Gepauzeerd</h2>
-        <div className="card-wrapper">
+      <div className={styles.content}>
+        <h2 className={styles.heading}>Gepauzeerd</h2>
+        <div className={styles.cardWrapper}>
           {pauseScreenData.map((item, index) => (
             <Card
               key={index}
@@ -48,19 +49,17 @@ export default function PauseScreen() {
             />
           ))}
         </div>
-        <Button
-          className="pause-button"
-          onClick={togglePause}
-          shadowColor="#dc9329"
-        >
+        <Button onClick={togglePause}>
           Verder spelen
           <FontAwesomeIcon icon={faPlay} />
         </Button>
       </div>
-      <div className="corner-pieces">
+      <div className={styles.cornerPieces}>
         <LeftCornerPiece />
         <RightCornerPiece />
       </div>
     </Layout>
   );
-}
+};
+
+export default PauseScreen;

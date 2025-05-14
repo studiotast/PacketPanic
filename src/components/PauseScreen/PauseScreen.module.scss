@@ -1,0 +1,82 @@
+/* PauseScreen.module.scss */
+.content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing40);
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: var(--spacing40);
+}
+
+.aboutTextParagraph {
+  color: var(--white);
+  font-size: clamp(1rem, 3vmin, 2rem);
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.card {
+  padding: clamp(4vmin, var(--spacing30), 6vmin);
+  color: var(--black);
+  text-decoration: none;
+  font-family: "FatFrank", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.cardIcon {
+  font-size: 48px;
+  color: var(--blue);
+}
+
+.heading {
+  font-size: clamp(2.5rem, 3vmin, 5rem);
+  margin-bottom: 1rem;
+  color: var(--white);
+  font-family: "FatFrank", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.button {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  background-color: var(--yellow);
+  color: var(--white);
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  gap: 0.6rem;
+  font-family: "Karla", sans-serif;
+  font-weight: 600;
+  align-items: center;
+}
