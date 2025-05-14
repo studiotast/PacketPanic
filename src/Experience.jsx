@@ -101,7 +101,7 @@ export default function Experience() {
       />
       <color args={["#A2BDFC"]} attach="background" />
       <Physics
-        gravity={[0, -5, -0.2]}
+        gravity={[0, -10, -0.2]}
         debug={false}
         paused={
           isPaused ||
