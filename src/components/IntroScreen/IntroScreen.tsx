@@ -12,10 +12,10 @@ import "tippy.js/dist/tippy.css";
 import Button from "../Button/Button.tsx";
 import Layout from "../../Layout.tsx";
 import useGame from "../../stores/useGame.ts";
-import LeftCornerPiece from "../../Level/components/LeftCornerPiece.tsx";
-import RightCornerPiece from "../../Level/components/RightCornerPiece.tsx";
 import levelsData from "../../utils/levelsData.ts";
 import styles from "./IntroScreen.module.scss";
+import LeftCornerPiece from "../CornerPiece/LeftCornerPiece.tsx";
+import RightCornerPiece from "../CornerPiece/RightCornerPiece.tsx";
 
 // Tooltip component for interactive terms
 interface InteractiveTermProps {

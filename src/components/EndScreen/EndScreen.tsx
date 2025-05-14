@@ -2,12 +2,12 @@ import React from "react";
 import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
 import Layout from "../../Layout";
-import LeftCornerPiece from "../../Level/components/LeftCornerPiece";
-import RightCornerPiece from "../../Level/components/RightCornerPiece";
 import Button from "../Button/Button";
 import { getAllNewsArticles } from "../../utils/levelsData";
 import ClickableCard from "../ClickableCard/ClickableCard";
 import styles from "./EndScreen.module.scss";
+import LeftCornerPiece from "../CornerPiece/LeftCornerPiece";
+import RightCornerPiece from "../CornerPiece/RightCornerPiece";
 
 // Define interfaces for the news article
 type NewsArticle = {
