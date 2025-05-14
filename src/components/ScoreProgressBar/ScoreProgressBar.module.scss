@@ -1,0 +1,108 @@
+/* ScoreProgressBar.module.scss */
+.container {
+  width: 100%;
+  text-align: center;
+  border-radius: var(--border-radius20);
+  color: var(--black);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing15);
+  padding-bottom: var(--spacing10);
+  max-width: 460px;
+
+  &.game {
+    /* Styles for game mode */
+    position: fixed;
+    top: 3.5vh;
+    top: 3.5dvh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 95%;
+    max-width: 350px;
+
+    @media screen and (max-width: 768px) {
+      bottom: 3.5vh;
+      bottom: 3.5dvh;
+      top: auto;
+    }
+  }
+
+  &.end {
+    /* Styles for end mode */
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    gap: clamp(5px, 0.5vmin, 10px);
+
+    p,
+    svg {
+      font-size: clamp(0.8rem, 4vmin, 3.2rem);
+    }
+
+    .progressBar {
+      height: clamp(10px, 5vmin, 35px);
+    }
+  }
+  .label {
+    font-weight: var(--font-bold);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 15%, 2rem);
+  }
+
+  .iconContainer {
+    /* Empty for now, can be styled as needed */
+  }
+
+  .infoContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  .icon {
+    svg {
+      font-size: clamp(0.2rem, 1vmin, 1.5rem);
+    }
+  }
+
+  .text {
+    font-size: clamp(0.8rem, 3vmin, 1.2rem);
+    font-family: "Karla", sans-serif;
+    font-weight: 900;
+  }
+
+  .progressBar {
+    position: relative;
+    height: 35px;
+    background-color: #e8eaf1;
+    overflow: hidden;
+    border-radius: 30px;
+    box-shadow: var(--box-shadow);
+    border: 5px solid var(--white);
+
+    @media screen and (max-width: 768px) {
+      box-shadow: var(--mobile-box-shadow);
+    }
+  }
+
+  .progressFill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+  }
+
+  .targetIndicator {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 5px;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  }
+}
