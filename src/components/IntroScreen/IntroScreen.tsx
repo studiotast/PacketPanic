@@ -5,20 +5,28 @@ import {
 } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Tippy from "@tippyjs/react";
-import { AnimatePresence, delay, motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
-import Button from "../Button.tsx";
-import Layout from "../../../Layout";
-import useGame from "../../../stores/useGame.js";
-import "../../../style.css";
-import LeftCornerPiece from "../LeftCornerPiece.tsx";
-import RightCornerPiece from "../RightCornerPiece.tsx";
-import levelsData from "../../../utils/levelsData.ts";
+import Button from "../Button/Button.tsx";
+import Layout from "../../Layout.tsx";
+import useGame from "../../stores/useGame.ts";
+import LeftCornerPiece from "../../Level/components/LeftCornerPiece.tsx";
+import RightCornerPiece from "../../Level/components/RightCornerPiece.tsx";
+import levelsData from "../../utils/levelsData.ts";
+import styles from "./IntroScreen.module.scss";
 
 // Tooltip component for interactive terms
-const InteractiveTerm = ({ term, explanation }) => (
+interface InteractiveTermProps {
+  term: string;
+  explanation: string;
+}
+
+const InteractiveTerm: React.FC<InteractiveTermProps> = ({
+  term,
+  explanation,
+}) => (
   <Tippy
     content={explanation}
     animation="scale"
@@ -26,7 +34,7 @@ const InteractiveTerm = ({ term, explanation }) => (
     placement="top"
     theme="custom"
   >
-    <span className="interactive-term">{term}</span>
+    <span className={styles.interactiveTerm}>{term}</span>
   </Tippy>
 );
 
@@ -40,7 +48,10 @@ export default function IntroScreen() {
   const isMuted = useGame((state) => state.isMuted);
   // Check if there's a saved game on mount
   const [savedGame, setSavedGame] = useState(false);
-  const [savedLevel, setSavedLevel] = useState(null);
+  const [savedLevel, setSavedLevel] = useState<{
+    id: number;
+    name: string;
+  } | null>(null);
 
   useEffect(() => {
     // Check for saved level
@@ -50,7 +61,12 @@ export default function IntroScreen() {
     if (hasLevel) {
       const levelId = getSavedLevelId();
       const level = levelsData.find((l) => l.id === levelId);
-      setSavedLevel(level);
+      if (level) {
+        setSavedLevel({
+          id: level.id,
+          name: level.name,
+        });
+      }
     }
   }, [hasSavedLevel, getSavedLevelId]);
 
@@ -168,7 +184,7 @@ export default function IntroScreen() {
     },
   };
 
-  const renderParagraphWithTerms = (text, index) => {
+  const renderParagraphWithTerms = (text: string, index: number) => {
     // For each term, create a React component replacement
     const parts = [];
     let remainingText = text;
@@ -239,7 +255,7 @@ export default function IntroScreen() {
     }
 
     return (
-      <p key={index} className="intro-text-paragraph">
+      <p key={index} className={styles.textParagraph}>
         {parts}
       </p>
     );
@@ -247,14 +263,14 @@ export default function IntroScreen() {
 
   return (
     <Layout>
-      <div className="intro-content">
+      <div className={styles.content}>
         <AnimatePresence>
           {page === 0 && (
             <motion.img
               key="logo"
               alt="PacketPanic"
               src="./images/packet-panic.svg"
-              className="intro-logo"
+              className={styles.logo}
               initial="initial"
               animate="animate"
               exit="exit"
@@ -270,12 +286,12 @@ export default function IntroScreen() {
               initial="initial"
               animate="animate"
               exit="exit"
-              className="intro-track-container"
+              className={styles.trackContainer}
             >
               <motion.img
                 alt="track"
                 src="./images/intro.png"
-                className="intro-track"
+                className={styles.track}
               />
             </motion.div>
           )}
@@ -285,7 +301,7 @@ export default function IntroScreen() {
         {page === 1 && (
           <AnimatePresence>
             <motion.div
-              className="intro-text-container"
+              className={styles.textContainer}
               initial="initial"
               animate="animate"
               exit="exit"
@@ -299,43 +315,48 @@ export default function IntroScreen() {
         )}
 
         {page === 0 && savedGame ? (
-          <div className="button-container-row">
-            <div className="button-position-wrapper">
-              <Button
-                className="start-button"
-                shadowColor="#dc9329"
-                onClick={handleClick}
-              >
+          <div className={styles.buttonContainerRow}>
+            <div className={styles.buttonPositionWrapper}>
+              <Button color="yellow" onClick={handleClick}>
                 Nieuw spel
                 <FontAwesomeIcon icon={faPlay} style={{ marginLeft: "10px" }} />
               </Button>
             </div>
 
-            <div className="button-position-wrapper">
+            <div className={styles.buttonPositionWrapper}>
               <Button
-                className="start-button"
-                shadowColor="#dc9329"
+                color="yellow"
                 onClick={handleContinue}
+                className={styles.button}
               >
-                Doorgaan (Level {savedLevel?.id || "?"})
-                <FontAwesomeIcon icon={faForward} />
+                Doorgaan (Level {savedLevel ? savedLevel.id : "?"})
+                <FontAwesomeIcon
+                  icon={faForward}
+                  style={{ marginLeft: "10px" }}
+                />
               </Button>
             </div>
           </div>
         ) : (
-          <div className="button-position-wrapper">
-            <Button
-              className="start-button"
-              shadowColor="#dc9329"
-              onClick={handleClick}
-            >
+          <div className={styles.buttonPositionWrapper}>
+            <Button color="yellow" onClick={handleClick}>
               {page === 0 ? "Volgende" : "Beginnen"}
-              <FontAwesomeIcon icon={page === 0 ? faArrowRight : faPlay} />
+              <FontAwesomeIcon
+                icon={page === 0 ? faArrowRight : faPlay}
+                style={{ marginLeft: "10px" }}
+              />
             </Button>
           </div>
         )}
       </div>
-      <div className="corner-pieces">
+      <div
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          pointerEvents: "none",
+        }}
+      >
         <LeftCornerPiece />
         <RightCornerPiece />
       </div>

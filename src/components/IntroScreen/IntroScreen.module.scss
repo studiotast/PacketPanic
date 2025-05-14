@@ -1,0 +1,97 @@
+/* Intro.module.scss */
+.logo {
+  width: clamp(100px, 60vmin, 550px);
+  max-width: 100%;
+  align-self: center;
+}
+
+.content {
+  height: 100%;
+  padding: 5vmin;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  gap: 2vmin;
+  width: 100%;
+
+  @media screen and (max-width: 768px) {
+    padding: var(--spacing40);
+    gap: var(--spacing20);
+  }
+}
+
+.textContainer {
+  font-family: "Karla", sans-serif;
+  font-weight: 100;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing20);
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.textLine {
+  opacity: 0; /* Start invisible */
+}
+
+.interactiveTerm {
+  text-decoration: underline;
+  cursor: help;
+  color: var(--white);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.infoIcon {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.textParagraph {
+  color: var(--white);
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+.trackContainer {
+  margin: 0 calc(-5vw - 32px);
+  margin: 0 calc(-5dvw - 32px);
+
+  @media screen and (max-width: 768px) {
+    margin: 0 calc(-80px - 40px);
+  }
+}
+
+.track {
+  width: 100vw;
+  width: 100dvw;
+  height: auto;
+  z-index: 5;
+  transition: all 0.8s ease-in-out;
+  pointer-events: none;
+}
+
+.instructions {
+  text-align: left;
+  margin: 2rem 0;
+}
+
+.buttonPositionWrapper {
+  /* Add styling as needed */
+}
+
+.buttonContainerRow {
+  display: flex;
+  gap: var(--spacing20);
+  z-index: 100;
+  flex-wrap: wrap;
+  justify-content: center;
+}
