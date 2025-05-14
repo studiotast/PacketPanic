@@ -5,6 +5,9 @@
   bottom: 0;
   height: clamp(40px, 8vmin, 150px);
   aspect-ratio: 3.8/1;
+   @media screen and (max-width: 1000px) {
+    display: none;
+  }
 }
 
 .rightCornerPiece {
@@ -13,6 +16,9 @@
   bottom: 0;
   height: clamp(40px, 8vmin, 150px);
   aspect-ratio: 3.8/1;
+   @media screen and (max-width: 1000px) {
+    display: none;
+  }
 }
 
 .cornerPieceInner {

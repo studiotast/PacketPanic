@@ -319,21 +319,14 @@ export default function IntroScreen() {
             <div className={styles.buttonPositionWrapper}>
               <Button color="yellow" onClick={handleClick}>
                 Nieuw spel
-                <FontAwesomeIcon icon={faPlay} style={{ marginLeft: "10px" }} />
+                <FontAwesomeIcon icon={faPlay} />
               </Button>
             </div>
 
             <div className={styles.buttonPositionWrapper}>
-              <Button
-                color="yellow"
-                onClick={handleContinue}
-                className={styles.button}
-              >
+              <Button color="yellow" onClick={handleContinue}>
                 Doorgaan (Level {savedLevel ? savedLevel.id : "?"})
-                <FontAwesomeIcon
-                  icon={faForward}
-                  style={{ marginLeft: "10px" }}
-                />
+                <FontAwesomeIcon icon={faForward} />
               </Button>
             </div>
           </div>
@@ -341,25 +334,13 @@ export default function IntroScreen() {
           <div className={styles.buttonPositionWrapper}>
             <Button color="yellow" onClick={handleClick}>
               {page === 0 ? "Volgende" : "Beginnen"}
-              <FontAwesomeIcon
-                icon={page === 0 ? faArrowRight : faPlay}
-                style={{ marginLeft: "10px" }}
-              />
+              <FontAwesomeIcon icon={page === 0 ? faArrowRight : faPlay} />
             </Button>
           </div>
         )}
       </div>
-      <div
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          pointerEvents: "none",
-        }}
-      >
-        <LeftCornerPiece />
-        <RightCornerPiece />
-      </div>
+      <LeftCornerPiece />
+      <RightCornerPiece />
     </Layout>
   );
 }

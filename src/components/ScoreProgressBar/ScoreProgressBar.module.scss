@@ -43,6 +43,13 @@
       height: clamp(10px, 5vmin, 35px);
     }
   }
+
+  .scoreIcon {
+    svg {
+      font-size: clamp(0.2rem, 1vmin, 1.5rem);
+    }
+  }
+
   .label {
     font-weight: var(--font-bold);
     color: var(--white);
@@ -68,10 +75,10 @@
     }
   }
 
-  .text {
-    font-size: clamp(0.8rem, 3vmin, 1.2rem);
-    font-family: "Karla", sans-serif;
-    font-weight: 900;
+  .scoreText {
+  font-size: clamp(0.8rem, 3vmin, 1.2rem);
+  font-family: var(--font-karla);
+  font-weight: 900;
   }
 
   .progressBar {

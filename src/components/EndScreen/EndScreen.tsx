@@ -95,17 +95,8 @@ export default function EndScreen(): React.ReactElement {
           </Button>
         </div>
       </div>
-      <div
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          pointerEvents: "none",
-        }}
-      >
-        <LeftCornerPiece />
-        <RightCornerPiece />
-      </div>
+      <LeftCornerPiece />
+      <RightCornerPiece />
     </Layout>
   );
 }

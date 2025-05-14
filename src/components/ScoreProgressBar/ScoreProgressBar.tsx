@@ -17,21 +17,27 @@ export default function ScoreProgressBar({ type }: ScoreProgressBarProps) {
   );
 
   return (
-    <div className={`${styles.container} ${type === "game" ? "game" : "end"} `}>
+    <div
+      className={`${styles.container} ${
+        type === "game" ? styles.game : styles.end
+      } `}
+    >
       {type === "end" && (
         <div className={styles.infoContainer}>
           <div className={styles.label}>
             <div className={styles.iconContainer}>
-              <div className={styles.icon}>
-                {" "}
-                <FontAwesomeIcon
-                  icon={faBox}
-                  color={progressPercentage >= 100 ? "#26ffba" : "#ffc83c"}
-                  className="score-icon"
-                />{" "}
-              </div>
+              <FontAwesomeIcon
+                className={styles.scoreIcon}
+                icon={faBox}
+                color={progressPercentage >= 100 ? "#26ffba" : "#ffc83c"}
+              />
             </div>
-            <span className={styles.text}>{score}</span>
+            <p
+              className={styles.scoreText}
+              style={{
+                color: progressPercentage >= 100 ? "#26ffba" : "#ffc83c",
+              }}
+            >{`${progressPercentage}%`}</p>
           </div>
         </div>
       )}

@@ -54,10 +54,8 @@ const PauseScreen: React.FC = () => {
           <FontAwesomeIcon icon={faPlay} />
         </Button>
       </div>
-      <div className={styles.cornerPieces}>
-        <LeftCornerPiece />
-        <RightCornerPiece />
-      </div>
+      <LeftCornerPiece />
+      <RightCornerPiece />
     </Layout>
   );
 };

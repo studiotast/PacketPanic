@@ -9,9 +9,9 @@ import { useState } from "react";
 import useGame from "../../stores/useGame";
 import levelsData from "../../utils/levelsData";
 import Button from "../Button/Button";
-import ScoreProgress from "../Interface/components/ScoreProgress";
 import TvWrapper from "../TutorialScreen/components/TvWrapper";
 import styles from "./GameOverScreen.module.scss";
+import ScoreProgressBar from "../ScoreProgressBar/ScoreProgressBar";
 
 export default function GameOverScreen() {
   const [page, setPage] = useState(0);
@@ -114,7 +114,7 @@ export default function GameOverScreen() {
                   }`}
                 </p>
               </div>
-              <ScoreProgress type="end" />
+              <ScoreProgressBar type="end" />
             </motion.div>
           ) : (
             <motion.div
