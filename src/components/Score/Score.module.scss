@@ -1,0 +1,12 @@
+/* Score.module.scss */
+.score {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  color: var(--white);
+  font-size: 6vh;
+  background-color: var(--overlay);
+  padding-top: 5px;
+  text-align: center;
+}
