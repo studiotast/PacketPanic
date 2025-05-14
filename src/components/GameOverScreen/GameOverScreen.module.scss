@@ -1,0 +1,164 @@
+// GameOverScreen.module.scss
+.gameOverContent {
+  width: 85%;
+  aspect-ratio: 10 / 6.8;
+  overflow: hidden;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vmin, 40px);
+  flex-direction: column;
+  z-index: 100;
+  margin-top: 6%;
+}
+
+.gameOverBg {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  mix-blend-mode: soft-light;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.gameOverContentWrapper {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: clamp(5px, 2.5%, 25px);
+  border-radius: clamp(10px, 2vmin, 20px);
+  width: clamp(100px, 65%, 360px);
+  z-index: 2;
+  gap: clamp(10px, 1.5vmin, 20px);
+  box-shadow: var(--box-shadow);
+
+  @media screen and (max-width: 768px) {
+    box-shadow: var(--mobile-box-shadow);
+  }
+}
+
+.gameOverTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5px, 1vmin, 15px);
+}
+
+.gameOverHeader {
+  font-size: clamp(1rem, 4vmin, 2rem);
+  font-family: "FatFrank", sans-serif;
+}
+
+.gameOverDetails {
+  font-family: "Karla", sans-serif;
+  font-size: clamp(0.6rem, 1.5vmin, 1.2rem);
+}
+
+.gameOverNewsWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 2vmin, 40px);
+  max-width: clamp(200px, 90%, 1000px);
+}
+
+.gameOverNewsHeader {
+  font-size: clamp(0.75rem, 3vmin, 2.2rem);
+  text-align: center;
+  color: var(--white);
+  font-family: "FatFrank", sans-serif;
+}
+
+.gameOverNewsContentWrapper {
+  background-color: var(--white);
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  padding: clamp(5px, 2.5%, 14px);
+  border-radius: clamp(10px, 2vmin, 20px);
+  width: clamp(100px, 85%, 1000px);
+  z-index: 2;
+  gap: clamp(10px, 1.5vmin, 20px);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 4px;
+
+  @media screen and (max-width: 768px) {
+    box-shadow: var(--mobile-box-shadow);
+  }
+}
+
+.gameOverNewsImage {
+  width: 100%;
+  object-fit: cover;
+  border-radius: clamp(8px, 1.5vmin, 15px);
+  flex: 0.2;
+  height: 100%;
+}
+
+.gameOverNewsText {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2px, 1.5vmin, 15px);
+  flex: 0.8;
+}
+
+.gameOverNewsHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2px, 0.75vmin, 10px);
+}
+
+.gameOverNewsTitle {
+  font-size: clamp(0.75rem, 2.5vmin, 2.5rem);
+  color: var(--blue);
+  font-family: "FatFrank", sans-serif;
+  text-overflow: ellipsis;
+  height: auto;
+}
+
+.gameOverNewsDate {
+  font-size: clamp(0.4rem, 1.5vmin, 1.2rem);
+  color: var(--purple);
+  font-family: "Karla", sans-serif;
+  font-weight: 800;
+}
+
+.gameOverNewsDescriptionContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2px, 1.2vmin, 15px);
+}
+
+.gameOverNewsDescription {
+  color: var(--black);
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: auto;
+  font-size: clamp(0.5rem, 1.8vmin, 1.2rem);
+
+  @media screen and (max-width: 450px) {
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: auto;
+  }
+}
+
+.newsButtonText {
+  @media screen and (max-width: 450px) {
+    display: none;
+  }
+}
+
+.gameOverButtonContainer {
+  display: flex;
+  gap: clamp(5px, 2vmin, 30px);
+}

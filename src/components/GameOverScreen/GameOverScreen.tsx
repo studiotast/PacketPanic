@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import "../../style.css";
-import ScoreProgress from "./Interface/components/ScoreProgress";
-import Button from "./Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRight,
   faCircleCheck,
   faRotate,
 } from "@fortawesome/pro-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import useGame from "../../stores/useGame";
-import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
-import TvWrapper from "./TvWrapper";
 import levelsData from "../../utils/levelsData";
+import Button from "../Button/Button";
+import ScoreProgress from "../Interface/components/ScoreProgress";
+import TvWrapper from "../TutorialScreen/components/TvWrapper";
+import styles from "./GameOverScreen.module.scss";
 
 export default function GameOverScreen() {
   const [page, setPage] = useState(0);
@@ -74,7 +74,7 @@ export default function GameOverScreen() {
   return (
     <TvWrapper>
       <div
-        className="game-over-content"
+        className={styles.gameOverContent}
         style={{
           backgroundColor:
             progressPercentage >= 100
@@ -84,20 +84,20 @@ export default function GameOverScreen() {
               : "#9f85ff",
         }}
       >
-        <img alt="bg" src="/images/bg.jpg" className="game-over-bg" />
+        <img alt="bg" src="/images/bg.jpg" className={styles.gameOverBg} />
         <AnimatePresence mode="wait">
           {page === 0 ? (
             <motion.div
               key="results-page"
-              className="game-over-content-wrapper"
+              className={styles.gameOverContentWrapper}
               initial="initial"
               animate="animate"
               exit="exit"
               variants={pageVariants}
             >
-              <div className="game-over-text-container">
+              <div className={styles.gameOverTextContainer}>
                 <p
-                  className="game-over-header"
+                  className={styles.gameOverHeader}
                   style={{
                     color: progressPercentage >= 100 ? "#677eff" : "#ff588d",
                   }}
@@ -106,7 +106,7 @@ export default function GameOverScreen() {
                     ? currentLevel.scoreScreen[0].title
                     : currentLevel.scoreScreen[1].title
                 }`}</p>
-                <p className="game-over-details">
+                <p className={styles.gameOverDetails}>
                   {`${
                     progressPercentage >= 100
                       ? currentLevel.scoreScreen[0].description
@@ -119,30 +119,30 @@ export default function GameOverScreen() {
           ) : (
             <motion.div
               key="news-page"
-              className="game-over-news-wrapper"
+              className={styles.gameOverNewsWrapper}
               initial="initial"
               animate="animate"
               exit="exit"
               variants={pageVariants}
             >
-              <p className="game-over-news-header">Nieuws van vandaag</p>
-              <div className="game-over-news-content-wrapper">
+              <p className={styles.gameOverNewsHeader}>Nieuws van vandaag</p>
+              <div className={styles.gameOverNewsContentWrapper}>
                 <img
                   src={currentLevel?.newsArticle?.imageUrl}
                   alt="news"
-                  className="game-over-news-image"
+                  className={styles.gameOverNewsImage}
                 />
-                <div className="game-over-news-text">
-                  <div className="game-over-news-header-container">
-                    <p className="game-over-news-title">
+                <div className={styles.gameOverNewsText}>
+                  <div className={styles.gameOverNewsHeaderContainer}>
+                    <p className={styles.gameOverNewsTitle}>
                       {currentLevel?.newsArticle?.title}
                     </p>
-                    <p className="game-over-news-date">
+                    <p className={styles.gameOverNewsDate}>
                       {currentLevel?.newsArticle?.date}
                     </p>
                   </div>
-                  <div className="game-over-news-description-container">
-                    <p className="game-over-news-description">
+                  <div className={styles.gameOverNewsDescriptionContainer}>
+                    <p className={styles.gameOverNewsDescription}>
                       {currentLevel?.newsArticle?.content}
                     </p>
                     <Button
@@ -157,7 +157,7 @@ export default function GameOverScreen() {
                       responsive
                     >
                       <span>
-                        <span className="news-button-text">Volledig</span>{" "}
+                        <span className={styles.newsButtonText}>Volledig</span>{" "}
                         artikel lezen
                       </span>
                     </Button>
@@ -167,7 +167,7 @@ export default function GameOverScreen() {
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="game-over-button-container">
+        <div className={styles.gameOverButtonContainer}>
           {page === 0 ? (
             <Button responsive onClick={handleClick}>
               Verder
