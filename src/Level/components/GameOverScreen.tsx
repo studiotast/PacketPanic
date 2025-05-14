@@ -131,7 +131,12 @@ export default function GameOverScreen() {
                     </p>
                     <Button
                       style={{ width: "fit-content" }}
-                      onClick={() => {}}
+                      onClick={() =>
+                        window.open(
+                          currentLevel?.newsArticle?.readMoreLink,
+                          "_blank"
+                        )
+                      }
                       color="grey"
                       responsive
                     >

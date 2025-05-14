@@ -42,7 +42,11 @@ function App() {
 
   return (
     <>
-      <div className={`top-right-buttons ${phase === "intro" ? "intro" : ""}`}>
+      <div
+        className={`top-right-buttons ${isPaused ? "pause" : ""} ${
+          phase === "intro" ? "intro" : ""
+        }`}
+      >
         {phase === "playing" && !isTransitioning && <PauseButton />}
         <MuteButton />
       </div>

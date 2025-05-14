@@ -148,6 +148,35 @@ body,
   }
 }
 
+.clickable-card-wrapper {
+  margin-top: 8px;
+  position: relative;
+  border-radius: var(--border-radius20);
+  flex: 1;
+
+  .clickable-card {
+    background-color: var(--white);
+    cursor: pointer;
+    padding: clamp(4vmin, var(--spacing30), 6vmin);
+    border-radius: inherit;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .clickable-card-shadow {
+    border-radius: inherit;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: color-mix(in srgb, var(--white) 85%, black 15%);
+    left: 0;
+    top: 0;
+  }
+}
+
 /*
 ** Interface
 */
@@ -541,52 +570,6 @@ body,
   padding: var(--spacing40);
 }
 
-/* 3. Make card components properly interactive */
-.card-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  max-width: 900px;
-  position: relative;
-  z-index: 3;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-/* Update card styling for Button component compatibility */
-.card {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: var(--white);
-  border-radius: var(--border-radius20);
-  padding: 2.35rem 1.75rem;
-  color: #000000;
-  text-decoration: none;
-  font-family: "FatFrank", sans-serif;
-  font-size: 20px;
-  font-weight: 900;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  width: 200px;
-  min-height: 200px;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  /* Remove box-shadow as it's handled by Button component now */
-}
-
-.card-icon {
-  font-size: 48px;
-  color: var(--blue);
-}
-
 .about-text-paragraph {
   color: var(--white);
   font-size: clamp(1rem, 3vmin, 2rem);
@@ -598,15 +581,35 @@ body,
   }
 }
 
-/* Remove card-container as we no longer need it */
 .card-wrapper {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
   max-width: 900px;
+  width: 100%;
   position: relative;
   z-index: 3;
+}
+
+.card {
+  color: var(--black);
+  text-decoration: none;
+  font-family: "FatFrank", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.card-icon {
+  font-size: 48px;
+  color: var(--blue);
 }
 
 .pause-content h2 {
@@ -1209,6 +1212,15 @@ Button styling
   }
 }
 
+.top-right-buttons.pause {
+  top: var(--spacing40);
+  right: var(--spacing40);
+
+  @media screen and (max-width: 768px) {
+    top: var(--spacing20);
+    right: var(--spacing20);
+  }
+}
 /**
   Mute Button
   */
