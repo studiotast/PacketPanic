@@ -1,0 +1,107 @@
+/* Reset.module.scss - Global styles */
+:root {
+  /* Colors */
+  --blue: #677eff;
+  --green: #26ffba;
+  --red: #ff588d;
+  --yellow: #ffc83c;
+  --pink: #ffb5ed;
+  --purple: #9f85ff;
+  --magenta: #f373ff;
+  --beige: #ebd8bd;
+  --background: #f0f0f0;
+  --black: #333;
+  --white: #fff;
+  --grey: #e8eaf1;
+  --border: #e5e7ea;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --overlay: #00000088;
+
+  --box-shadow: 0 8px 0 0 var(--color-shadow);
+  --mobile-box-shadow: 0 5px 0 0 var(--color-shadow);
+
+  /* Spacings */
+  --spacing2: 2px;
+  --spacing5: 5px;
+  --spacing8: 8px;
+  --spacing10: 10px;
+  --spacing15: 15px;
+  --spacing20: 20px;
+  --spacing25: 20px;
+  --spacing30: 30px;
+  --spacing40: 40px;
+  --spacing50: 50px;
+  --spacing64: 64px;
+
+  /* Border radiuses */
+  --border-radius5: 5px;
+  --border-radius10: 10px;
+  --border-radius20: 20px;
+  --border-radius-circle: 999px;
+
+  --font-karla: "Karla", sans-serif;
+  --font-fatfrank: "FatFrank", sans-serif;
+
+  --font-bold: 700;
+  --font-semibold: 600;
+  --font-medium: 500;
+  --font-regular: 400;
+}
+
+/* Global reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Root elements */
+html,
+body,
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--white);
+  font-family: var(--font-karla);
+}
+
+/* Google Fonts Import */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Export variables as a module */
+:export {
+  blue: var(--blue);
+  green: var(--green);
+  red: var(--red);
+  yellow: var(--yellow);
+  pink: var(--pink);
+  purple: var(--purple);
+  magenta: var(--magenta);
+  beige: var(--beige);
+  background: var(--background);
+  black: var(--black);
+  white: var(--white);
+  grey: var(--grey);
+  border: var(--border);
+  colorShadow: var(--color-shadow);
+  overlay: var(--overlay);
+
+  boxShadow: var(--box-shadow);
+  mobileBoxShadow: var(--mobile-box-shadow);
+
+  borderRadius5: var(--border-radius5);
+  borderRadius10: var(--border-radius10);
+  borderRadius20: var(--border-radius20);
+  borderRadiusCircle: var(--border-radius-circle);
+
+  fontKarla: var(--font-karla);
+  fontFatfrank: var(--font-fatfrank);
+
+  fontBold: var(--font-bold);
+  fontSemibold: var(--font-semibold);
+  fontMedium: var(--font-medium);
+  fontRegular: var(--font-regular);
+}
