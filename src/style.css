@@ -1333,6 +1333,7 @@ Button styling
   gap: var(--spacing40);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   h1 {
     font-family: var(--font-fatfrank);
     color: var(--white);
