@@ -1,0 +1,13 @@
+// Timer.module.scss
+.time {
+  position: absolute;
+  top: var(--spacing20);
+  left: var(--spacing20);
+  width: fit-content;
+  color: var(--white);
+  font-size: 6vh;
+  padding-top: 5px;
+  text-align: left;
+  filter: drop-shadow(0px 6px 0px rgba(0, 0, 0, 0.1));
+  font-family: "FatFrank", sans-serif;
+}
