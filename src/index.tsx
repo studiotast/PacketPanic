@@ -1,25 +1,23 @@
 import "./style.css";
 import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
-import Experience from "./Experience.jsx";
-import Interface from "./Level/components/Interface/Interface.tsx";
+import Experience from "./Experience.js";
 import { Leva } from "leva";
 import useGame from "./stores/useGame.js";
-import IntroScreen from "./Level/components/IntroScreen/IntroScreen.jsx";
-import ReadyScreen from "./Level/components/ReadyScreen.jsx";
-import PauseScreen from "./Level/components/PauseScreen.jsx";
-import GameOverScreen from "./Level/components/GameOverScreen.tsx";
-import LevelTransition from "./Level/components/LevelTransition.jsx"; // Import the level transition component
-import Explanation from "./Level/components/Explanation/Explanation.tsx";
-import MuteButton from "./Level/components/MuteButton.tsx";
+import Explanation from "./components/Explanation/Explanation.tsx";
 import GarageTransition from "./GarageTransition.tsx";
 import { useEffect, useState } from "react";
-import PauseButton from "./Level/components/PauseButton.tsx";
-import { useModels } from "./stores/useModels.ts";
-import TutorialScreen from "./Level/components/TutorialScreen.tsx";
-import LevelPicker from "./Level/components/LevelPicker.tsx";
-import AboutPacketPanic from "./Level/components/AboutPacketPanic.tsx";
-import EndScreen from "./Level/components/EndScreen/EndScreen.jsx";
+import IntroScreen from "./components/IntroScreen/IntroScreen.tsx";
+import EndScreen from "./components/EndScreen/EndScreen.tsx";
+import PauseButton from "./components/PauseButton/PauseButton.tsx";
+import MuteButton from "./components/MuteButton/MuteButton.tsx";
+import ReadyScreen from "./components/Ready/ReadyScreen.tsx";
+import GameOverScreen from "./components/GameOverScreen/GameOverScreen.tsx";
+import TutorialScreen from "./components/TutorialScreen/TutorialScreen.tsx";
+import LevelPicker from "./components/LevelPicker/LevelPicker.tsx";
+import AboutPacketPanic from "./components/AboutPacketPanic/AboutPacketPanic.tsx";
+import PauseScreen from "./components/PauseScreen/PauseScreen.tsx";
+import Interface from "./components/Interface/Interface.tsx";
 
 function App() {
   const phase = useGame((state) => state.phase);
@@ -60,7 +58,6 @@ function App() {
       ) : (
         <>
           {phase === "ready" && <ReadyScreen />}
-          {phase === "levelComplete" && <LevelTransition />}
           {phase === "ended" && <GameOverScreen />}
           {phase === "explanation" && <Explanation />}
           {phase === "tutorial" && <TutorialScreen />}
@@ -89,5 +86,9 @@ function App() {
   );
 }
 
-const root = ReactDOM.createRoot(document.querySelector("#root"));
+const container = document.querySelector("#root");
+if (!container) {
+  throw new Error('Root container "#root" not found');
+}
+const root = ReactDOM.createRoot(container);
 root.render(<App />);
