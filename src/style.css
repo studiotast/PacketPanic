@@ -941,7 +941,6 @@ body,
             font-family: "Karla", sans-serif;
             font-weight: 400;
             display: -webkit-box;
-            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -949,7 +948,6 @@ body,
             font-size: clamp(0.5rem, 1.8vmin, 1.2rem);
 
             @media screen and (max-width: 450px) {
-              -webkit-line-clamp: 2;
               -webkit-box-orient: vertical;
               overflow: hidden;
               text-overflow: ellipsis;
