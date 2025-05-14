@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import TvWrapper from "./TvWrapper";
-import Button from "./Button";
-import useGame from "../../stores/useGame";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/pro-solid-svg-icons";
 import { motion } from "framer-motion";
+import useGame from "../../stores/useGame";
+import Button from "../Button/Button";
+import TvWrapper from "./components/TvWrapper";
+import styles from "./TutorialScreen.module.scss";
 
 export default function TutorialScreen() {
-  const playSound = useGame((state) => state.playSound);
-  const isMuted = useGame((state) => state.isMuted);
   const currentLevel = useGame((state) => state.currentLevel);
 
   const [readyToStart, setReadyToStart] = useState(false);
-
   const [tutorialIndex, setTutorialIndex] = useState(0);
 
   useEffect(() => {
@@ -21,46 +19,45 @@ export default function TutorialScreen() {
     } else {
       setReadyToStart(false);
     }
-  }, [tutorialIndex]);
+  }, [tutorialIndex, currentLevel.tutorial.length]);
 
-  // Framer Motion Variants voor animaties
+  // Framer Motion Variants for animations
   const textVariants = {
-    hidden: { scale: 1.05 }, // Startpositie (onzichtbaar en kleiner)
+    hidden: { scale: 1.05 }, // Starting position (smaller)
     visible: {
-      scale: 1, // Eindpositie (volledig zichtbaar en normale grootte)
+      scale: 1, // End position (normal size)
     },
-    exit: { scale: 0.8 }, // Exit-animatie
+    exit: { scale: 0.8 }, // Exit animation
   };
 
   return (
     <TvWrapper>
-      <div className="tutorial-content">
+      <div className={styles.tutorialContent}>
         {/* Background image */}
         <img
           alt="Tutorial background"
           src={`/assets/images/tutorial/${currentLevel.id}-${
             tutorialIndex + 1
           }.png`}
-          className="tutorial-bg"
+          className={styles.tutorialBg}
         />
 
         {/* Bottom container for positioning elements */}
-        <div className="tutorial-bottom-container">
+        <div className={styles.tutorialBottomContainer}>
           {/* Text in bottom left */}
           <motion.div
-            // style={{ transformOrigin: "left bottom" }} // Zet de origin linksonder
-            variants={textVariants} // Gebruik de animatie-varianten
-            initial="hidden" // Start met de "hidden"-variant
-            animate="visible" // Animeer naar de "visible"-variant
-            exit="exit" // Optionele exit-animatie
-            className="tutorial-text"
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className={styles.tutorialText}
             key={tutorialIndex}
           >
             <p>{currentLevel.tutorial[tutorialIndex].text}</p>
           </motion.div>
 
           {/* Button in bottom right */}
-          <div className="tutorial-button-wrapper">
+          <div className={styles.tutorialButtonWrapper}>
             <Button
               responsive
               onClick={() => {
