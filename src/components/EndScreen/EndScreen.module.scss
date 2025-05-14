@@ -21,84 +21,90 @@
 
 .row {
   display: flex;
-  gap: var(--spacing20);
+  column-gap: var(--spacing40);
+  row-gap: var(--spacing20);
   flex-wrap: wrap;
-  margin-bottom: var(--spacing20);
 }
 
 .card {
+  flex: 3;
   background-color: var(--white);
-  padding: var(--spacing30);
+  flex-direction: column;
+  font-family: var(--font-karla);
+  font-weight: var(--font-regular);
+  padding: var(--spacing20);
   border-radius: var(--border-radius20);
-  flex: 1;
-  min-width: 300px;
-
-  p {
-    margin-bottom: var(--spacing15);
-    line-height: 1.6;
-    font-family: var(--font-karla);
+  color: var(--black);
+  font-size: 20px;
+  gap: var(--spacing15);
+  display: flex;
+  :nth-child(1) {
+    color: var(--blue);
+    font-family: var(--font-fatfrank);
+  }
+  :nth-child(4) {
+    font-weight: var(--font-bold);
   }
 }
 
 .blueCard {
+  flex: 2;
   background-color: var(--blue);
-  padding: var(--spacing30);
   border-radius: var(--border-radius20);
-  flex: 1;
-  min-width: 300px;
   color: var(--white);
-
-  span {
-    display: block;
-    margin-bottom: var(--spacing20);
-  }
-
-  .subtitle {
-    font-weight: bold;
-    margin-bottom: var(--spacing5);
-  }
-
+  padding: var(--spacing20);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing10);
+  font-size: 16px;
   p {
-    line-height: 1.6;
-    font-family: var(--font-karla);
+    opacity: 0.8;
+  }
+  .subtitle {
+    font-weight: var(--font-bold);
+    opacity: 1;
   }
 }
 
 .news {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: var(--spacing20);
   width: 100%;
-  margin-top: var(--spacing20);
+  gap: var(--spacing40);
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
 }
 
 .newsArticle {
   background-color: var(--white);
-  border-radius: var(--border-radius10);
-  overflow: hidden;
+  border-radius: var(--border-radius20);
+  gap: var(--spacing10);
 
   .image {
     width: 100%;
-    height: 150px;
+    aspect-ratio: 2/1;
+    background-color: var(--grey);
+    border-radius: var(--border-radius10);
     overflow: hidden;
+    position: relative;
 
     img {
+      object-fit: cover;
+      position: absolute;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
     }
   }
 
   h3 {
-    padding: var(--spacing15);
     font-size: 1rem;
     color: var(--black);
   }
 }
 
 .buttons {
+  flex-wrap: wrap;
   display: flex;
   gap: var(--spacing20);
-  margin-top: var(--spacing20);
-  flex-wrap: wrap;
+  justify-content: center;
 }

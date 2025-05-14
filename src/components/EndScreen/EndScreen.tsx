@@ -75,6 +75,7 @@ export default function EndScreen(): React.ReactElement {
           <div className={styles.news}>
             {newsArticles.map((article: NewsArticle, idx: number) => (
               <ClickableCard
+                className={styles.newsArticle}
                 onClick={() => window.open(article.readMoreLink, "_blank")}
                 key={idx}
               >
