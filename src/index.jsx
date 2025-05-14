@@ -54,6 +54,8 @@ function App() {
       <Leva collapsed hidden />
       <GarageTransition />
       {phase === "intro" ? (
+        <IntroScreen />
+      ) : phase === "ended" ? (
         <EndScreen />
       ) : (
         <>
