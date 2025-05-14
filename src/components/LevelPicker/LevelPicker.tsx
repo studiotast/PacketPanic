@@ -1,28 +1,26 @@
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "./Button";
 import Layout from "../../Layout";
 import useGame from "../../stores/useGame";
-import "../../style.css";
 import levelsData from "../../utils/levelsData";
-import Card from "./Card";
+import Button from "../Button/Button";
+import Card from "../Card/Card";
+import styles from "./LevelPicker.module.scss";
 
 export default function LevelPicker() {
   return (
     <Layout>
-      <div className="pause-content">
-        <h2>Level kiezen</h2>
-        <div className="card-wrapper">
+      <div className={styles.levelPickerContent}>
+        <h2 className={styles.title}>Level kiezen</h2>
+        <div className={styles.cardWrapper}>
           {levelsData.map((item, index) => (
-            <Card key={index} title={`Level ${item.id}`} levelId={item.id} />
+            <Card key={index} title={`Level ${item.id}`} />
           ))}
         </div>
         <Button
-          className="pause-button"
           onClick={() => {
             useGame.setState({ phase: "pause" });
           }}
-          shadowColor="#dc9329"
         >
           <FontAwesomeIcon icon={faArrowLeft} />
           Terug
