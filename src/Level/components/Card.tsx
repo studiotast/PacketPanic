@@ -2,9 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "../../style.css";
 import { IconDefinition } from "@fortawesome/pro-solid-svg-icons";
-import Button from "../../Button";
+import Button from "./Button";
 import useGame from "../../stores/useGame";
-import ClickableCard from "../../ClickableCard";
+import ClickableCard from "./ClickableCard";
 
 type CardProps = {
   title: string;

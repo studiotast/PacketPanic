@@ -11,14 +11,15 @@ import PauseScreen from "./Level/components/PauseScreen.jsx";
 import GameOverScreen from "./Level/components/GameOverScreen.tsx";
 import LevelTransition from "./Level/components/LevelTransition.jsx"; // Import the level transition component
 import Explanation from "./Level/components/Explanation/Explanation.tsx";
-import MuteButton from "./MuteButton.tsx";
+import MuteButton from "./Level/components/MuteButton.tsx";
 import GarageTransition from "./GarageTransition.tsx";
 import { useEffect, useState } from "react";
-import PauseButton from "./PauseButton.tsx";
+import PauseButton from "./Level/components/PauseButton.tsx";
 import { useModels } from "./stores/useModels.ts";
 import TutorialScreen from "./Level/components/TutorialScreen.tsx";
 import LevelPicker from "./Level/components/LevelPicker.tsx";
 import AboutPacketPanic from "./Level/components/AboutPacketPanic.tsx";
+import EndScreen from "./Level/components/EndScreen/EndScreen.jsx";
 
 function App() {
   const phase = useGame((state) => state.phase);
@@ -53,7 +54,7 @@ function App() {
       <Leva collapsed hidden />
       <GarageTransition />
       {phase === "intro" ? (
-        <IntroScreen />
+        <EndScreen />
       ) : (
         <>
           {phase === "ready" && <ReadyScreen />}

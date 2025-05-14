@@ -157,7 +157,7 @@ body,
   .clickable-card {
     background-color: var(--white);
     cursor: pointer;
-    padding: clamp(4vmin, var(--spacing30), 6vmin);
+    padding: clamp(10px, 1vmin, 15px);
     border-radius: inherit;
     align-items: center;
     display: flex;
@@ -594,6 +594,7 @@ body,
 }
 
 .card {
+  padding: clamp(4vmin, var(--spacing30), 6vmin);
   color: var(--black);
   text-decoration: none;
   font-family: "FatFrank", sans-serif;
@@ -1329,4 +1330,100 @@ Button styling
   color: var(--black);
   font-size: clamp(10px, 1.4vmin, 30px);
   z-index: 1;
+}
+
+/**
+ * End Screen
+ */
+.end-screen {
+  width: 100%;
+  max-width: 1400px;
+  padding: 5vmin;
+  gap: 3vmin;
+  display: flex;
+  flex-direction: column;
+  h1 {
+    font-family: var(--font-fatfrank);
+    color: var(--white);
+    font-size: clamp(2rem, 4vmin, 5rem);
+  }
+  h2 {
+    font-family: var(--font-fatfrank);
+    color: var(--white);
+    font-weight: var(--font-regular);
+    font-size: clamp(1rem, 2vmin, 2.5rem);
+  }
+  .row {
+    display: flex;
+    column-gap: var(--spacing40);
+    row-gap: var(--spacing20);
+    flex-wrap: wrap;
+    .card {
+      flex: 3;
+      background-color: var(--white);
+      flex-direction: column;
+      font-family: var(--font-karla);
+      font-weight: var(--font-regular);
+      padding: var(--spacing20);
+      border-radius: var(--border-radius20);
+      color: var(--black);
+      font-size: 20px;
+      :nth-child(1) {
+        color: var(--blue);
+        font-family: var(--font-fatfrank);
+      }
+      :nth-child(4) {
+        font-weight: var(--font-bold);
+      }
+    }
+    .blue-card {
+      flex: 2;
+      background-color: var(--blue);
+      border-radius: var(--border-radius20);
+      color: var(--white);
+      padding: var(--spacing20);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing10);
+      p {
+        opacity: 0.8;
+      }
+      .subtitle {
+        font-weight: var(--font-bold);
+        opacity: 1;
+      }
+    }
+    .news {
+      display: grid;
+      width: 100%;
+      gap: var(--spacing40);
+      grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+      .news-article {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing10);
+        .image {
+          width: 100%;
+          aspect-ratio: 2/1;
+          background-color: var(--grey);
+          border-radius: var(--border-radius10);
+          overflow: hidden;
+          position: relative;
+          img {
+            object-fit: cover;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  .buttons {
+    display: flex;
+    gap: var(--spacing20);
+    justify-content: center;
+  }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../style.css";
 import ScoreProgress from "./Interface/components/ScoreProgress";
-import Button from "../../Button";
+import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRight,

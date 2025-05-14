@@ -1,31 +1,31 @@
 import { motion } from "framer-motion";
 import React from "react";
-import useGame from "./stores/useGame";
-import "./style.css";
+import useGame from "../../stores/useGame";
+import "../../style.css";
 
-type ButtonProps = {
+type ClickableCardProps = {
   children: React.ReactNode;
   onClick: () => void;
   style?: React.CSSProperties;
-  responsive?: boolean;
-  color?: "yellow" | "blue" | "red" | "purple" | "grey";
+  wrapperClassName?: string;
+  className?: string;
 };
 
-export default function Button({
+export default function ClickableCard({
   children,
   onClick,
   style,
-  responsive,
-  color = "yellow",
-}: ButtonProps) {
+  className,
+  wrapperClassName,
+}: ClickableCardProps) {
   const playSound = useGame((state) => state.playSound);
 
   const buttonVariants = {
     hover: {
-      y: "-24%",
+      y: "-8%",
     },
     initial: {
-      y: "-18%",
+      y: "-6%",
     },
     tap: {
       y: 0,
@@ -39,14 +39,14 @@ export default function Button({
 
   return (
     <div
-      className={`button-wrapper ${color} ${responsive ? "responsive" : ""}`}
+      className={`clickable-card-wrapper ${wrapperClassName || ""}`}
       onClick={handleClick}
       style={{
         ...style,
       }}
     >
       <motion.div
-        className="button"
+        className={`clickable-card ${className || ""}`}
         variants={buttonVariants}
         initial="initial"
         whileTap="tap"
@@ -58,7 +58,7 @@ export default function Button({
       >
         {children}
       </motion.div>
-      <div className="button-shadow" />
+      <div className="clickable-card-shadow" />
     </div>
   );
 }

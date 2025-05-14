@@ -1,5 +1,10 @@
 import * as THREE from "three";
 
+export function getAllNewsArticles() {
+  return levelsData
+    .map((level) => level.newsArticle)
+    .filter((article) => article !== undefined);
+}
 export interface LevelData {
   id: number;
   name: string;

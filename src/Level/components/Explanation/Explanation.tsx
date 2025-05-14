@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Button from "../../../Button";
+import Button from "../Button";
 import useGame from "../../../stores/useGame";
 import { useModels } from "../../../stores/useModels";
 import SpeechBubble from "./components/SpeechBubble";

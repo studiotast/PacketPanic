@@ -13,8 +13,8 @@ import Button from "../Button.tsx";
 import Layout from "../../../Layout";
 import useGame from "../../../stores/useGame.js";
 import "../../../style.css";
-import LeftCornerPiece from "../LeftCornerPiece.tsx";
-import RightCornerPiece from "../RightCornerPiece.tsx";
+import LeftCornerPiece from "./components/LeftCornerPiece.tsx";
+import RightCornerPiece from "./components/RightCornerPiece.tsx";
 import levelsData from "../../../utils/levelsData.ts";
 
 // Tooltip component for interactive terms
