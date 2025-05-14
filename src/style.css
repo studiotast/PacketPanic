@@ -73,7 +73,7 @@ body,
   &.responsive {
     border-radius: clamp(6px, 1.5vmin, 10px);
     .button {
-      padding: clamp(0.6rem, 1.2vmin, 1rem) clamp(0.8rem, 2.2vmin, 2rem);
+      padding: clamp(0.4rem, 1.2vmin, 1rem) clamp(0.65rem, 2.2vmin, 2rem);
       gap: clamp(1px, 1vmin, 15px);
       font-size: clamp(0.8rem, 2vmin, 1.2rem);
     }
@@ -148,6 +148,35 @@ body,
   }
 }
 
+.clickable-card-wrapper {
+  margin-top: 8px;
+  position: relative;
+  border-radius: var(--border-radius20);
+  flex: 1;
+
+  .clickable-card {
+    background-color: var(--white);
+    cursor: pointer;
+    padding: clamp(10px, 1vmin, 15px);
+    border-radius: inherit;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .clickable-card-shadow {
+    border-radius: inherit;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: color-mix(in srgb, var(--white) 85%, black 15%);
+    left: 0;
+    top: 0;
+  }
+}
+
 /*
 ** Interface
 */
@@ -186,7 +215,7 @@ body,
   justify-content: center;
   background-color: transparent;
   border: none;
-  gap: clamp(1px, 1.5vmin, 20px);
+  gap: clamp(5px, 0.5vmin, 10px);
   p,
   svg {
     font-size: clamp(0.8rem, 4vmin, 3.2rem);
@@ -383,18 +412,18 @@ body,
  */
 
 .intro-logo {
-  width: 50vh;
+  width: clamp(100px, 60vmin, 550px);
   max-width: 100%;
   align-self: center;
 }
 
 .intro-content {
   height: 100%;
-  padding: 5dvw;
+  padding: 5vmin;
   display: grid;
   grid-template-rows: 1fr auto;
   justify-items: center;
-  gap: var(--spacing40);
+  gap: 2vmin;
   width: 100%;
 
   @media screen and (max-width: 768px) {
@@ -541,52 +570,6 @@ body,
   padding: var(--spacing40);
 }
 
-/* 3. Make card components properly interactive */
-.card-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  max-width: 900px;
-  position: relative;
-  z-index: 3;
-
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-/* Update card styling for Button component compatibility */
-.card {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: var(--white);
-  border-radius: var(--border-radius20);
-  padding: 2.35rem 1.75rem;
-  color: #000000;
-  text-decoration: none;
-  font-family: "FatFrank", sans-serif;
-  font-size: 20px;
-  font-weight: 900;
-  display: flex;
-  gap: 20px;
-  flex-direction: column;
-  width: 200px;
-  min-height: 200px;
-  position: relative;
-  z-index: 1;
-  cursor: pointer;
-  /* Remove box-shadow as it's handled by Button component now */
-}
-
-.card-icon {
-  font-size: 48px;
-  color: var(--blue);
-}
-
 .about-text-paragraph {
   color: var(--white);
   font-size: clamp(1rem, 3vmin, 2rem);
@@ -598,15 +581,36 @@ body,
   }
 }
 
-/* Remove card-container as we no longer need it */
 .card-wrapper {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   gap: 20px;
   max-width: 900px;
+  width: 100%;
   position: relative;
   z-index: 3;
+}
+
+.card {
+  padding: clamp(4vmin, var(--spacing30), 6vmin);
+  color: var(--black);
+  text-decoration: none;
+  font-family: "FatFrank", sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  display: flex;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.card-icon {
+  font-size: 48px;
+  color: var(--blue);
 }
 
 .pause-content h2 {
@@ -839,7 +843,7 @@ body,
       position: relative;
       align-items: center;
       justify-content: center;
-      gap: 2vmin;
+      gap: clamp(10px, 2vmin, 40px);
       flex-direction: column;
       z-index: 100;
       margin-top: 6%; /* Move content down to align with TV screen area */
@@ -858,7 +862,7 @@ body,
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 1vmin;
+        gap: clamp(10px, 2vmin, 40px);
         max-width: clamp(200px, 90%, 1000px);
       }
       .game-over-news-header {
@@ -873,12 +877,12 @@ body,
         display: flex;
         flex-direction: column;
         justify-content: end;
-        padding: clamp(5px, 2.5%, 12px);
+        padding: clamp(5px, 2.5%, 25px);
         border-radius: clamp(10px, 2vmin, 20px);
 
-        width: clamp(100px, 70%, 360px);
+        width: clamp(100px, 65%, 360px);
         z-index: 2;
-        gap: 1vmin;
+        gap: clamp(10px, 1.5vmin, 20px);
         box-shadow: var(--box-shadow);
 
         .game-over-header {
@@ -890,17 +894,23 @@ body,
           box-shadow: var(--mobile-box-shadow);
         }
       }
+      .game-over-text-container {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(5px, 1vmin, 15px);
+      }
 
       .game-over-news-content-wrapper {
         background-color: var(--white);
         display: grid;
         grid-template-columns: 2fr 4fr;
-        padding: clamp(5px, 2.5%, 12px);
+        padding: clamp(5px, 2.5%, 14px);
         border-radius: clamp(10px, 2vmin, 20px);
         width: clamp(100px, 85%, 1000px);
         z-index: 2;
-        gap: 1vmin;
+        gap: clamp(10px, 1.5vmin, 20px);
         box-shadow: var(--box-shadow);
+        margin-bottom: 4px;
 
         @media screen and (max-width: 768px) {
           box-shadow: var(--mobile-box-shadow);
@@ -916,7 +926,7 @@ body,
         .game-over-news-text {
           display: flex;
           flex-direction: column;
-          gap: clamp(2px, 0.75vmin, 10px);
+          gap: clamp(2px, 1.5vmin, 15px);
           flex: 0.8;
 
           .game-over-news-title {
@@ -932,7 +942,6 @@ body,
             font-family: "Karla", sans-serif;
             font-weight: 400;
             display: -webkit-box;
-            -webkit-line-clamp: 4;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -940,11 +949,16 @@ body,
             font-size: clamp(0.5rem, 1.8vmin, 1.2rem);
 
             @media screen and (max-width: 450px) {
-              -webkit-line-clamp: 2;
               -webkit-box-orient: vertical;
               overflow: hidden;
               text-overflow: ellipsis;
               height: auto;
+            }
+          }
+
+          .news-button-text {
+            @media screen and (max-width: 450px) {
+              display: none;
             }
           }
         }
@@ -964,7 +978,7 @@ body,
         position: relative;
         display: flex;
         flex-direction: column;
-        gap: clamp(2px, 0.75vmin, 10px);
+        gap: clamp(2px, 1.2vmin, 15px);
       }
 
       .game-over-details {
@@ -981,7 +995,7 @@ body,
 
       .game-over-button-container {
         display: flex;
-        gap: clamp(1px, 1vmin, 15px);
+        gap: clamp(5px, 2vmin, 30px);
       }
     }
   }
@@ -1187,7 +1201,7 @@ Button styling
   align-items: center;
 }
 
-.top-right-buttons.intro {
+.top-right-buttons.inset {
   top: var(--spacing40);
   right: var(--spacing40);
 
@@ -1307,4 +1321,102 @@ Button styling
   color: var(--black);
   font-size: clamp(10px, 1.4vmin, 30px);
   z-index: 1;
+}
+
+/**
+ * End Screen
+ */
+.end-screen {
+  width: 100%;
+  max-width: 1400px;
+  padding: 5vmin;
+  gap: var(--spacing40);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h1 {
+    font-family: var(--font-fatfrank);
+    color: var(--white);
+    font-size: clamp(2rem, 4vmin, 5rem);
+  }
+  h2 {
+    font-family: var(--font-fatfrank);
+    color: var(--white);
+    font-weight: var(--font-regular);
+    font-size: clamp(1rem, 2vmin, 2.5rem);
+  }
+  .row {
+    display: flex;
+    column-gap: var(--spacing40);
+    row-gap: var(--spacing20);
+    flex-wrap: wrap;
+    .card {
+      flex: 3;
+      background-color: var(--white);
+      flex-direction: column;
+      font-family: var(--font-karla);
+      font-weight: var(--font-regular);
+      padding: var(--spacing20);
+      border-radius: var(--border-radius20);
+      color: var(--black);
+      font-size: 20px;
+      :nth-child(1) {
+        color: var(--blue);
+        font-family: var(--font-fatfrank);
+      }
+      :nth-child(4) {
+        font-weight: var(--font-bold);
+      }
+    }
+    .blue-card {
+      flex: 2;
+      background-color: var(--blue);
+      border-radius: var(--border-radius20);
+      color: var(--white);
+      padding: var(--spacing20);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing10);
+      p {
+        opacity: 0.8;
+      }
+      .subtitle {
+        font-weight: var(--font-bold);
+        opacity: 1;
+      }
+    }
+    .news {
+      display: grid;
+      width: 100%;
+      gap: var(--spacing40);
+      grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+      .news-article {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing10);
+        .image {
+          width: 100%;
+          aspect-ratio: 2/1;
+          background-color: var(--grey);
+          border-radius: var(--border-radius10);
+          overflow: hidden;
+          position: relative;
+          img {
+            object-fit: cover;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  .buttons {
+    flex-wrap: wrap;
+    display: flex;
+    gap: var(--spacing20);
+    justify-content: center;
+  }
 }

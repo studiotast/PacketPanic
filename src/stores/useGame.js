@@ -337,7 +337,7 @@ export default create(
           get().saveCurrentLevel();
         } else {
           // No more levels, game is complete
-          set({ phase: "gameOver" });
+          set({ phase: "gameFinished" });
         }
       },
 
@@ -483,8 +483,8 @@ export default create(
       },
       end: () => {
         set((state) => {
-          if (state.phase === "playing") {
-            return { phase: "ended", endTime: Date.now() };
+          if (state.phase === "ended") {
+            return { phase: "gameFinished", endTime: Date.now() };
           }
           return {};
         });

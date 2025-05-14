@@ -2,8 +2,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "../../style.css";
 import { IconDefinition } from "@fortawesome/pro-solid-svg-icons";
-import Button from "../../Button";
+import Button from "./Button";
 import useGame from "../../stores/useGame";
+import ClickableCard from "./ClickableCard";
 
 type CardProps = {
   title: string;
@@ -54,12 +55,7 @@ export default function Card({
   };
 
   return (
-    <Button
-      className="card"
-      onClick={handleCardClick}
-      shadowColor="#e5e7ea"
-      isCard
-    >
+    <ClickableCard className="card" onClick={handleCardClick}>
       {isLevel && <div className="card-level" />}
       {icon && (
         <div className="card-icon">
@@ -67,6 +63,6 @@ export default function Card({
         </div>
       )}
       <div className="card-title">{title}</div>
-    </Button>
+    </ClickableCard>
   );
 }

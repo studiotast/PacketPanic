@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import TvWrapper from "./TvWrapper";
-import Button from "../../Button";
+import Button from "./Button";
 import useGame from "../../stores/useGame";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/pro-solid-svg-icons";

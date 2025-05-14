@@ -2,7 +2,7 @@ import { faVolume, faVolumeSlash } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import React from "react";
-import useGame from "./stores/useGame";
+import useGame from "../../stores/useGame";
 
 export default function MuteButton() {
   const toggleMute = useGame((state) => state.toggleMute);

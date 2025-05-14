@@ -9,6 +9,7 @@ import useBuildingFlags from "../hooks/useBuildingFlags";
 import PlusOneLabel from "./components/PlusOneLabel";
 import * as THREE from "three";
 import { ColorConfig } from "../../../../utils/levelsData";
+import MinusLabel from "./MinusLabel";
 
 interface BuildingProps {
   position?: Vector3;
@@ -37,21 +38,34 @@ export default function Building({
     name,
   });
 
-  const plusOneLabelsWrapperRef = useRef<any[]>([]);
+  const labelsWrapperRef = useRef<any[]>([]);
 
-  function addPlusOneLabel(isBad = false, amount = 1) {
+  function addPlusOneLabel() {
     const labelId = THREE.MathUtils.generateUUID();
-    plusOneLabelsWrapperRef.current.push(
+    labelsWrapperRef.current.push(
       <PlusOneLabel
         key={labelId}
         id={labelId}
-        // isBad={isBad}
-        // amount={amount}
         onRemove={(id) => {
-          plusOneLabelsWrapperRef.current =
-            plusOneLabelsWrapperRef.current.filter(
-              (label) => label.props.id !== id
-            );
+          labelsWrapperRef.current = labelsWrapperRef.current.filter(
+            (label) => label.props.id !== id
+          );
+        }}
+      />
+    );
+  }
+
+  function addMinusLabel(number: number) {
+    const labelId = THREE.MathUtils.generateUUID();
+    labelsWrapperRef.current.push(
+      <MinusLabel
+        key={labelId}
+        id={labelId}
+        number={number}
+        onRemove={(id) => {
+          labelsWrapperRef.current = labelsWrapperRef.current.filter(
+            (label) => label.props.id !== id
+          );
         }}
       />
     );
@@ -89,7 +103,7 @@ export default function Building({
         })}
 
       {phase === "playing" && (
-        <group>{plusOneLabelsWrapperRef.current.map((label) => label)}</group>
+        <group>{labelsWrapperRef.current.map((label) => label)}</group>
       )}
 
       <House position={[0, -1.9, 0]} rotation={[0, Math.PI * 1.5, 0]} />
@@ -127,13 +141,13 @@ export default function Building({
                   `Score decremented for ${ballColor} ball by ${colorInfo.minusScoreNumber}!`
                 );
                 playSound("failScore"); // Play negative sound
-                addPlusOneLabel(true, colorInfo.minusScoreNumber); // Pass true to indicate penalty, need to pass in the amount also
+                addMinusLabel(colorInfo.minusScoreNumber); // Pass true to indicate penalty, need to pass in the amount also
                 decrementScore(colorInfo.minusScoreNumber);
               } else {
                 // Normal flag - increment score
                 console.log(`Score incremented for ${ballColor} ball!`);
                 playSound("score");
-                addPlusOneLabel(false);
+                addPlusOneLabel();
                 incrementScore();
               }
             }

@@ -1,6 +1,6 @@
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Button from "../../Button";
+import Button from "./Button";
 import Layout from "../../Layout";
 import useGame from "../../stores/useGame";
 import "../../style.css";

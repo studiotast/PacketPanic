@@ -1,5 +1,10 @@
 import * as THREE from "three";
 
+export function getAllNewsArticles() {
+  return levelsData
+    .map((level) => level.newsArticle)
+    .filter((article) => article !== undefined);
+}
 export interface LevelData {
   id: number;
   name: string;
@@ -214,6 +219,8 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -222,6 +229,8 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -239,9 +248,13 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 transition: true,
+                badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "blue",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -251,9 +264,13 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 transition: true,
+                badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "red",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -270,6 +287,8 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -278,6 +297,8 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -295,6 +316,8 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 transition: true,
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -303,9 +326,13 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
+                badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "red",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -326,9 +353,13 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
+                badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "blue",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -344,9 +375,13 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
+                badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "blue",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -356,10 +391,14 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 transition: true,
+                badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "blue",
                 transition: true,
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
@@ -375,9 +414,13 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
+                badActor: true,
+                minusScoreNumber: 5,
               },
               {
                 color: "blue",
+                badActor: true,
+                minusScoreNumber: 5,
               },
             ],
           },
