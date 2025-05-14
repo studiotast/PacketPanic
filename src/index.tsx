@@ -11,7 +11,7 @@ import IntroScreen from "./components/IntroScreen/IntroScreen.tsx";
 import EndScreen from "./components/EndScreen/EndScreen.tsx";
 import PauseButton from "./components/PauseButton/PauseButton.tsx";
 import MuteButton from "./components/MuteButton/MuteButton.tsx";
-import ReadyScreen from "./components/Ready/ReadyScreen.tsx";
+import ReadyScreen from "./components/ReadyScreen/ReadyScreen.tsx";
 import GameOverScreen from "./components/GameOverScreen/GameOverScreen.tsx";
 import TutorialScreen from "./components/TutorialScreen/TutorialScreen.tsx";
 import LevelPicker from "./components/LevelPicker/LevelPicker.tsx";
