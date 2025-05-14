@@ -1201,7 +1201,7 @@ Button styling
   align-items: center;
 }
 
-.top-right-buttons.intro {
+.top-right-buttons.inset {
   top: var(--spacing40);
   right: var(--spacing40);
 
@@ -1211,15 +1211,6 @@ Button styling
   }
 }
 
-.top-right-buttons.pause {
-  top: var(--spacing40);
-  right: var(--spacing40);
-
-  @media screen and (max-width: 768px) {
-    top: var(--spacing20);
-    right: var(--spacing20);
-  }
-}
 /**
   Mute Button
   */
