@@ -1,71 +1,174 @@
 import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
+import { StateCreator } from "zustand";
 import levelsData from "../utils/levelsData";
+import { LevelData, ColorConfig } from "../utils/levelsData";
+import * as THREE from "three";
+
+// Define types for timeline scenes in a level
+interface TimeLineScene {
+  time: number;
+  spawnRate?: number;
+  ballColors?: string[];
+  buildingColors?: BuildingConfig[];
+}
+
+// Define the TimeLine type
+interface TimeLine {
+  [key: string]: TimeLineScene;
+}
+
+// Define building config for type safety
+interface BuildingConfig {
+  name: string;
+  position?: [number, number, number];
+  colors: ColorConfig[];
+}
+
+interface SpawnerConfig {
+  position: [number, number, number];
+  ballColors: string[];
+}
+
+interface AcceleratorConfig {
+  position: [number, number, number];
+  colors: string[];
+}
+
+// Use the LevelData interface from levelsData.ts
+// This ensures types match exactly
+
+// Define audio elements
+type GameSounds = {
+  level: HTMLAudioElement | null;
+  menu: HTMLAudioElement | null;
+  inHole: HTMLAudioElement | null;
+  boost: HTMLAudioElement | null;
+  score: HTMLAudioElement | null;
+  button: HTMLAudioElement | null;
+  woosh: HTMLAudioElement | null;
+  countDown: HTMLAudioElement | null;
+  garageOpen: HTMLAudioElement | null;
+  garageClose: HTMLAudioElement | null;
+  robotTalking1: HTMLAudioElement | null;
+  robotTalking2: HTMLAudioElement | null;
+  robotTalking3: HTMLAudioElement | null;
+  flagAppear: HTMLAudioElement | null;
+  flagDisappear: HTMLAudioElement | null;
+  failScore: HTMLAudioElement | null;
+};
+
+// Define game phases
+type GamePhase =
+  | "intro"
+  | "explanation"
+  | "tutorial"
+  | "ready"
+  | "playing"
+  | "pause"
+  | "ended"
+  | "gameFinished"
+  | "levelComplete"
+  | "levelPicker"
+  | "about";
+
+// Define the scene calculation return type
+interface SceneCalculation {
+  spawnRate: number;
+  colors: string[];
+}
+
+// Define the game state
+interface GameState {
+  blocksCount: number;
+  blocksSeed: number;
+
+  // Time
+  startTime: number;
+  endTime: number;
+  timer: number;
+  timerActive: boolean;
+
+  // Phases
+  phase: GamePhase;
+  isPaused: boolean;
+  canTogglePause: boolean;
+
+  // Mute
+  isMuted: boolean;
+
+  // Sounds
+  sounds: GameSounds;
+
+  // Score
+  score: number;
+
+  // Level data
+  currentLevelId: number;
+  currentLevel: LevelData;
+
+  // Methods
+  playSound: (soundName: keyof GameSounds) => HTMLAudioElement | false;
+  togglePause: () => void;
+  saveCurrentLevel: () => void;
+  aboutPage: () => void;
+  loadSavedLevel: () => boolean;
+  hasSavedLevel: () => boolean;
+  getSavedLevelId: () => number | null;
+  startFromIntro: () => void;
+  startTutorial: () => void;
+  start: () => void;
+  advanceToNextLevel: () => void;
+  updateTimer: (delta: number) => void;
+  completeRestart: () => void;
+  levelPicker: () => void;
+  levelSelect: (levelId: number) => boolean;
+  calculateScene: () => SceneCalculation;
+  restart: () => void;
+  end: () => void;
+  incrementScore: () => void;
+  decrementScore: (minusScoreNumber?: number) => void;
+  stopSound: (soundName: keyof GameSounds) => boolean;
+  toggleMute: () => void;
+}
 
 const TIME_LIMIT = 45; // 45 seconds game limit
 
-export default create(
+// Create the game store with TypeScript types
+// Define the state creator type with the subscribeWithSelector middleware
+type GameStateCreator = StateCreator<
+  GameState,
+  [["zustand/subscribeWithSelector", never]],
+  []
+>;
+
+const useGame = create<GameState>()(
   subscribeWithSelector((set, get) => {
-    const levelSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/level.wav") : null;
+    // Initialize audio elements with proper type checking
+    const createAudio = (path: string): HTMLAudioElement | null => {
+      return typeof Audio !== "undefined" ? new Audio(path) : null;
+    };
 
-    const menuSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/menu.wav") : null;
+    const levelSound = createAudio("/audio/level.wav");
+    const menuSound = createAudio("/audio/menu.wav");
+    const inHoleSound = createAudio("/audio/in-hole.wav");
+    const boostSound = createAudio("/audio/boost.wav");
+    const scoreSound = createAudio("/audio/score.wav");
+    const buttonSound = createAudio("/audio/button.wav");
+    const wooshSound = createAudio("/audio/quick-woosh.wav");
+    const countDownSound = createAudio("/audio/count-down.wav");
+    const garageOpenSound = createAudio("/audio/garage-open.wav");
+    const garageCloseSound = createAudio("/audio/garage-close.wav");
+    const robotTalkingSound1 = createAudio("/audio/robot-talking.wav");
+    const robotTalkingSound2 = createAudio("/audio/robot-talking2.wav");
+    const robotTalkingSound3 = createAudio("/audio/robot-talking3.wav");
+    const flagAppearSound = createAudio("/audio/flag-appear.wav");
+    const flagDisappearSound = createAudio("/audio/flag-disappear.wav");
+    const failScoreSound = createAudio("/audio/fail-score.wav");
 
-    const inHoleSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/in-hole.wav") : null;
-
-    const boostSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/boost.wav") : null;
-
-    const scoreSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/score.wav") : null;
-
-    const buttonSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/button.wav") : null;
-
-    const wooshSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/quick-woosh.wav") : null;
-
-    const countDownSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/count-down.wav") : null;
-
-    const garageOpenSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/garage-open.wav") : null;
-
-    const garageCloseSound =
-      typeof Audio !== "undefined"
-        ? new Audio("/audio/garage-close.wav")
-        : null;
-
-    const robotTalkingSound1 =
-      typeof Audio !== "undefined"
-        ? new Audio("/audio/robot-talking.wav")
-        : null;
-
-    const robotTalkingSound2 =
-      typeof Audio !== "undefined"
-        ? new Audio("/audio/robot-talking2.wav")
-        : null;
-
-    const robotTalkingSound3 =
-      typeof Audio !== "undefined"
-        ? new Audio("/audio/robot-talking3.wav")
-        : null;
-
-    const flagAppearSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/flag-appear.wav") : null;
-
-    const flagDisappearSound =
-      typeof Audio !== "undefined"
-        ? new Audio("/audio/flag-disappear.wav")
-        : null;
-
-    const failScoreSound =
-      typeof Audio !== "undefined" ? new Audio("/audio/fail-score.wav") : null;
     // Setup keyboard listeners
     const setupKeyboardListeners = () => {
-      const handleKeyDown = (e) => {
+      const handleKeyDown = (e: KeyboardEvent) => {
         // Use 'P' key for pause functionality instead of Space
         if (e.code === "KeyP") {
           e.preventDefault();
@@ -117,12 +220,12 @@ export default create(
 
       // Cleanup function (for hot module reloading)
       if (typeof window !== "undefined") {
-        const currentListeners = window.__gameKeyListeners || [];
-        currentListeners.forEach((listener) => {
+        const currentListeners = (window as any).__gameKeyListeners || [];
+        currentListeners.forEach((listener: EventListener) => {
           window.removeEventListener("keyup", listener);
           window.removeEventListener("keydown", listener);
         });
-        window.__gameKeyListeners = [handleKeyDown];
+        (window as any).__gameKeyListeners = [handleKeyDown];
       }
     };
 
@@ -177,7 +280,7 @@ export default create(
       currentLevel: levelsData[0],
 
       // Play a sound from the sounds object
-      playSound: (soundName) => {
+      playSound: (soundName: keyof GameSounds): HTMLAudioElement | false => {
         const { sounds, isMuted } = get();
         const sound = sounds[soundName];
 
@@ -240,7 +343,7 @@ export default create(
       },
 
       // Load level from localStorage
-      loadSavedLevel: () => {
+      loadSavedLevel: (): boolean => {
         try {
           const savedLevelId = localStorage.getItem("packetPanicSavedLevel");
           if (savedLevelId) {
@@ -249,7 +352,7 @@ export default create(
             if (level) {
               set({
                 currentLevelId: levelId,
-                currentLevel: level,
+                currentLevel: level as LevelData,
               });
               return true;
             }
@@ -262,7 +365,7 @@ export default create(
       },
 
       // Check if there's a saved level
-      hasSavedLevel: () => {
+      hasSavedLevel: (): boolean => {
         try {
           const savedLevel = localStorage.getItem("packetPanicSavedLevel");
           return !!savedLevel;
@@ -272,7 +375,7 @@ export default create(
       },
 
       // Get saved level ID
-      getSavedLevelId: () => {
+      getSavedLevelId: (): number | null => {
         try {
           const savedLevel = localStorage.getItem("packetPanicSavedLevel");
           return savedLevel ? parseInt(savedLevel, 10) : null;
@@ -318,7 +421,7 @@ export default create(
         });
       },
 
-      advanceToNextLevel: () => {
+      advanceToNextLevel: (): void => {
         const { currentLevelId } = get();
         const nextLevelId = currentLevelId + 1;
         const nextLevel = levelsData.find((level) => level.id === nextLevelId);
@@ -326,7 +429,7 @@ export default create(
         if (nextLevel) {
           set({
             currentLevelId: nextLevelId,
-            currentLevel: nextLevel,
+            currentLevel: nextLevel as LevelData,
             phase: "explanation",
             timer: 0,
             score: 0, // Reset score for the new level
@@ -339,7 +442,7 @@ export default create(
       },
 
       // Update timer value
-      updateTimer: (delta) => {
+      updateTimer: (delta: number): void => {
         set((state) => {
           const { phase, timer, isPaused, currentLevel } = state;
 
@@ -358,19 +461,6 @@ export default create(
         });
       },
 
-      // phase: "ready",
-
-      // Score
-      score: 0, // Voeg score toe
-
-      // start: () => {
-      //   set((state) => {
-      //     if (state.phase === "ready") {
-      //       return { phase: "playing", startTime: Date.now() };
-      //     }
-      //     return {};
-      //   });
-      // },
       completeRestart: () => {
         set({
           phase: "intro",
@@ -393,14 +483,14 @@ export default create(
         });
       },
 
-      levelSelect: (levelId) => {
+      levelSelect: (levelId: number): boolean => {
         // Find the level with the matching ID
         const level = levelsData.find((level) => level.id === levelId);
 
         if (level) {
           set({
             currentLevelId: levelId,
-            currentLevel: level,
+            currentLevel: level as LevelData,
             phase: "explanation", // Change to explanation phase
             timer: 0, // Reset timer for new level
             score: 0, // Reset score for new level
@@ -413,7 +503,7 @@ export default create(
         return false; // Return failure if level not found
       },
 
-      calculateScene: () => {
+      calculateScene: (): SceneCalculation => {
         const { timer, currentLevel } = get();
 
         // Safety check if timeLine doesn't exist
@@ -421,12 +511,17 @@ export default create(
           return {
             spawnRate: 2.5, // Default spawn rate
             colors: currentLevel.trackConfig.buildings
-              .map((b) => b.colors)
+              .map((b) => b.colors.map((c: ColorConfig) => c.color))
               .flat(),
           };
         }
 
-        const { timeLine } = currentLevel;
+        // We need to cast the timeLine to a more flexible type since the original type
+        // doesn't support dynamic string indexing
+        const timeLine = currentLevel.timeLine as unknown as Record<
+          string,
+          TimeLineScene
+        >;
 
         // Get all scene keys and sort them by time
         const sceneKeys = Object.keys(timeLine)
@@ -459,8 +554,8 @@ export default create(
 
         // Return data for the current scene
         return {
-          spawnRate: timeLine[currentSceneKey].spawnRate,
-          colors: timeLine[currentSceneKey].ballColors,
+          spawnRate: timeLine[currentSceneKey].spawnRate || 2.5,
+          colors: timeLine[currentSceneKey].ballColors || [],
         };
       },
 
@@ -478,14 +573,17 @@ export default create(
           return {};
         });
       },
+
       end: () => {
         set((state) => {
           if (state.phase === "ended") {
             return { phase: "gameFinished" };
           }
+          return {};
         });
       },
-      // Functie om de score te verhogen
+
+      // Function to increment the score
       incrementScore: () => {
         set((state) => {
           const { score, currentLevel, phase } = state;
@@ -500,7 +598,7 @@ export default create(
         });
       },
 
-      decrementScore: (minusScoreNumber = 5) => {
+      decrementScore: (minusScoreNumber: number = 5): void => {
         set((state) => {
           const { score } = state;
           // Ensure score doesn't go below 0
@@ -509,8 +607,8 @@ export default create(
         });
       },
 
-      stopSound: (soundName) => {
-        const { sounds, isMuted } = get();
+      stopSound: (soundName: keyof GameSounds): boolean => {
+        const { sounds } = get();
         const sound = sounds[soundName];
 
         if (sound) {
@@ -538,3 +636,5 @@ export default create(
     };
   })
 );
+
+export default useGame;
