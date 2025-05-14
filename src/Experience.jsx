@@ -41,21 +41,17 @@ export default function Experience() {
     stopSound("level");
 
     // Start appropriate sounds for the new phase
-    if (
-      phase === "playing" ||
-      phase === "explanation" ||
-      phase === "tutorial"
-    ) {
-      if (!isPaused && !isMuted) {
-        // Playing phase - start level music
-        const levelSound = playSound("level");
-        if (levelSound) levelSound.loop = true;
-      }
-    } else if (phase === "ended") {
+    if (phase === "explanation" || phase === "tutorial" || phase === "ended") {
+      // play menu music
       if (!isMuted) {
-        // Game over phase - play menu sound
         const menuSound = playSound("menu");
         if (menuSound) menuSound.loop = true;
+      }
+    } else if (phase === "playing") {
+      // Playing phase - start level music
+      if (!isPaused && !isMuted) {
+        const levelSound = playSound("level");
+        if (levelSound) levelSound.loop = true;
       }
     }
 
@@ -101,7 +97,7 @@ export default function Experience() {
       />
       <color args={["#A2BDFC"]} attach="background" />
       <Physics
-        gravity={[0, -5, -0.2]}
+        gravity={[0, -15, -0.2]}
         debug={false}
         paused={
           isPaused ||
