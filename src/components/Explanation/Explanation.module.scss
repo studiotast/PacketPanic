@@ -1,0 +1,86 @@
+/* ExplanationOverlay.module.scss */
+.overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: flex-end;
+  z-index: 100;
+}
+
+.robotWrapper {
+  margin-bottom: -5px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "robot speech";
+
+  @media screen and (max-width: 768px) {
+    padding-right: 5vmin;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "speech"
+      "robot";
+  }
+}
+
+.robotImage {
+  max-width: 40vmin;
+  width: 1200px;
+  object-fit: contain;
+  object-position: left;
+  grid-area: robot;
+}
+
+.speechBubble {
+  grid-area: speech;
+}
+
+.speechBubbleContent {
+  background-color: var(--white);
+  padding: clamp(1rem, 2%, 2rem) clamp(1rem, 2%, 4rem);
+  border-radius: var(--border-radius20);
+  max-width: clamp(100px, 100%, 600px);
+  position: relative;
+  z-index: 100;
+  width: fit-content;
+  margin-left: -6vmin;
+
+  @media screen and (max-width: 768px) {
+    margin-left: auto;
+    max-width: 75%;
+  }
+}
+
+.speechBubbleContent::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 2%;
+  bottom: 0;
+  transform: translate(0px, 50%);
+  z-index: -1;
+  border-width: clamp(10px, 3vmin, 30px);
+  border-style: solid;
+  border-color: transparent transparent transparent var(--white);
+}
+
+.speechBubbleText {
+  font-size: clamp(1.1rem, 3vmin, 2rem);
+  color: var(--black);
+  font-weight: 700;
+  font-family: "Karla", sans-serif;
+  text-wrap: balance;
+}
+
+.buttonWrapper {
+  position: absolute;
+  bottom: 4vw;
+  right: 4vw;
+  bottom: 4dvw;
+  right: 4dvw;
+  z-index: 100;
+}

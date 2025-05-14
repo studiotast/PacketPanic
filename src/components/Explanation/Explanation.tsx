@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import Button from "../Button";
-import useGame from "../../../stores/useGame";
-import { useModels } from "../../../stores/useModels";
+import React, { useEffect, useState } from "react";
+import Button from "../Button/Button";
+import useGame from "../../stores/useGame";
+import { useModels } from "../../stores/useModels";
 import SpeechBubble from "./components/SpeechBubble";
+import styles from "./Explanation.module.scss";
 
-export default function Explanation() {
+export default function Explanation(): React.ReactElement {
   const playSound = useGame((state) => state.playSound);
   const currentLevel = useGame((state) => state.currentLevel);
   const startTutorial = useGame((state) => state.startTutorial);
@@ -30,23 +31,32 @@ export default function Explanation() {
       setTimeout(() => {
         // Generate a random integer between 1 and 3 (inclusive)
         const random = Math.floor(Math.random() * 3) + 1;
-        playSound(`robotTalking${random}`);
+        if (random === 1) {
+          playSound("robotTalking1");
+        } else if (random === 2) {
+          playSound("robotTalking2");
+        } else {
+          playSound("robotTalking3");
+        }
       }, 1000);
     }
-  }, [explanationIndex, loaded]);
+  }, [explanationIndex, loaded, playSound]);
 
   return (
-    <div className="explanation-overlay">
-      <div className="robot-wrapper">
-        <img className="robot-image" src="/assets/images/robot.png" />
+    <div className={styles.overlay}>
+      <div className={styles.robotWrapper}>
+        <img
+          className={styles.robotImage}
+          src="/assets/images/robot.png"
+          alt="Robot"
+        />
         <SpeechBubble
           key={explanationIndex}
           text={currentLevel.storyLine[explanationIndex].text}
         />
       </div>
-      <div className="explanation-button-wrapper">
+      <div className={styles.buttonWrapper}>
         <Button
-          className="explanation-button"
           onClick={() => {
             if (readyToStart) {
               if (typeof window.initiatePhaseTransition === "function") {
@@ -57,10 +67,10 @@ export default function Explanation() {
                 return;
               }
             }
-            playSound("robotTalking");
+            playSound("robotTalking1");
             setExplanationIndex((prev) => prev + 1);
           }}
-          shadowColor="#dc9329"
+          color="yellow"
         >
           {currentLevel.storyLine[explanationIndex].button}
         </Button>
