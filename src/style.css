@@ -412,18 +412,18 @@ body,
  */
 
 .intro-logo {
-  width: 50vh;
+  width: clamp(100px, 60vmin, 400px);
   max-width: 100%;
   align-self: center;
 }
 
 .intro-content {
   height: 100%;
-  padding: 5dvw;
+  padding: 5vmin;
   display: grid;
   grid-template-rows: 1fr auto;
   justify-items: center;
-  gap: var(--spacing40);
+  gap: 2vmin;
   width: 100%;
 
   @media screen and (max-width: 768px) {
