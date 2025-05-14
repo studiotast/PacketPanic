@@ -335,9 +335,6 @@ export default create(
 
           // Save progress to localStorage
           get().saveCurrentLevel();
-        } else {
-          // No more levels, game is complete
-          set({ phase: "gameFinished" });
         }
       },
 
@@ -484,9 +481,8 @@ export default create(
       end: () => {
         set((state) => {
           if (state.phase === "ended") {
-            return { phase: "gameFinished", endTime: Date.now() };
+            return { phase: "gameFinished" };
           }
-          return {};
         });
       },
       // Functie om de score te verhogen

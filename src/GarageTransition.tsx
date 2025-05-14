@@ -31,7 +31,8 @@ export default function GarageTransition() {
         phase === "explanation" ||
         phase === "tutorial" ||
         phase === "ended" ||
-        phase === "levelPicker") &&
+        phase === "levelPicker" ||
+        phase === "gameFinished") &&
       !isTransitioning
     ) {
       sourcePhaseRef.current = phase; // Store source phase
@@ -109,6 +110,13 @@ export default function GarageTransition() {
             if (sourcePhaseRef.current === "playing") {
               // From playing to ended (game over)
               useGame.setState({ phase: "ended" });
+            }
+            break;
+
+          case "gameFinished":
+            if (sourcePhaseRef.current === "ended") {
+              // From playing to gameFinished (game over)
+              useGame.setState({ phase: "gameFinished" });
             }
             break;
 

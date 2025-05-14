@@ -11,6 +11,7 @@ import {
 import useGame from "../../stores/useGame";
 import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 import TvWrapper from "./TvWrapper";
+import levelsData from "../../utils/levelsData";
 
 export default function GameOverScreen() {
   const [page, setPage] = useState(0);
@@ -20,6 +21,10 @@ export default function GameOverScreen() {
   const currentLevel = useGame((state) => state.currentLevel);
   const scoreToAdvance = currentLevel.scoreToAdvance;
   const restart = useGame((state) => state.restart);
+  const lastLevelId = levelsData.length - 1;
+  const currentLevelId = currentLevel.id;
+  const isLastLevel = currentLevelId === lastLevelId;
+  const end = useGame((state) => state.end);
 
   // Calculate the progress percentage (capped at 100%)
   const progressPercentage = Math.min((score / scoreToAdvance) * 100, 100);
@@ -36,17 +41,28 @@ export default function GameOverScreen() {
       setPage(1);
     }
     if (page === 1) {
-      if (currentLevel.id === 2) {
-        completeRestart();
-        return;
-      }
-      if (typeof window.initiatePhaseTransition === "function") {
-        window.initiatePhaseTransition("explanation");
-        setTimeout(() => {
-          advanceToNextLevel();
-        }, 1000);
+      if (isLastLevel) {
+        if (typeof window.initiatePhaseTransition === "function") {
+          window.initiatePhaseTransition("gameFinished");
+          setTimeout(() => {
+            end();
+          }, 1000);
+        } else {
+          end();
+        }
       } else {
-        advanceToNextLevel();
+        if (currentLevel.id === 2) {
+          completeRestart();
+          return;
+        }
+        if (typeof window.initiatePhaseTransition === "function") {
+          window.initiatePhaseTransition("explanation");
+          setTimeout(() => {
+            advanceToNextLevel();
+          }, 1000);
+        } else {
+          advanceToNextLevel();
+        }
       }
     }
   };
