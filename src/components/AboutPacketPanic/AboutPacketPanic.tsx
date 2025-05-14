@@ -1,11 +1,10 @@
 import { faArrowLeft } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
-import React from "react";
-import Button from "./Button";
+import Button from "../../components/Button/Button";
 import Layout from "../../Layout";
+import styles from "./AboutPacketPanic.module.scss";
 import useGame from "../../stores/useGame";
-import "../../style.css";
 
 export default function AboutPacketPanic() {
   const paragraphs = [
@@ -20,9 +19,8 @@ export default function AboutPacketPanic() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1, // Duur van de animatie
+        duration: 1,
         ease: "easeInOut",
-        // delay: 0.2, // Vertraging van 1 seconde
       },
     },
     exit: {
@@ -37,27 +35,25 @@ export default function AboutPacketPanic() {
 
   return (
     <Layout>
-      <div className="pause-content">
-        <h2>Over Packet Panic</h2>
+      <div className={styles.pauseContent}>
+        <h2 className={styles.title}>Over Packet Panic</h2>
         <motion.div
-          className="intro-text-container"
+          className={styles.textContainer}
           initial="initial"
           animate="animate"
           exit="exit"
           variants={textContainer}
         >
           {paragraphs.map((paragraph, index) => (
-            <p key={index} className="about-text-paragraph">
+            <p key={index} className={styles.textParagraph}>
               {paragraph}
             </p>
           ))}
         </motion.div>
         <Button
-          className="pause-button"
           onClick={() => {
             useGame.setState({ phase: "pause" });
           }}
-          shadowColor="#dc9329"
         >
           <FontAwesomeIcon icon={faArrowLeft} />
           Terug
