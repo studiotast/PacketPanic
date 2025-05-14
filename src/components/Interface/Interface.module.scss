@@ -1,0 +1,15 @@
+/* Interface.module.scss */
+.interface {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+
+  .scoreWrapper {
+    position: relative;
+  }
+}
