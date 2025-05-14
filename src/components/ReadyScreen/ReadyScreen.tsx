@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import useGame from "../../stores/useGame.js";
+import useGame from "../../stores/useGame";
+import styles from "./ReadyScreen.module.scss";
 
-export default function ReadyScreen() {
+const ReadyScreen: React.FC = () => {
   const start = useGame((state) => state.start);
   const [countdown, setCountdown] = useState(3);
   const playSound = useGame((state) => state.playSound);
@@ -37,13 +38,13 @@ export default function ReadyScreen() {
     return () => {
       clearTimeout(delayStartInterval);
     };
-  }, [start]);
+  }, [start, playSound]);
 
   return (
-    <div className="ready-screen">
-      <div className="ready-content">
+    <div className={styles.readyScreen}>
+      <div className={styles.readyContent}>
         {/* Use external SVG file for heading */}
-        <div className="ready-heading">
+        <div className={styles.readyHeading}>
           <img
             src="/images/We-gaan-beginnen.svg"
             alt="We gaan beginnen!"
@@ -53,16 +54,18 @@ export default function ReadyScreen() {
         </div>
 
         {/* Use dynamic external SVG file for countdown */}
-        <div className="countdown">
+        <div className={styles.countdown}>
           <img
             src={`/images/${countdown}.svg`}
             alt={`Countdown: ${countdown}`}
             width="300"
             height="300"
-            className="countdown-svg-text"
+            className={styles.countdownSvgText}
           />
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default ReadyScreen;
