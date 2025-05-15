@@ -6,7 +6,15 @@ interface BuildingFlagsState {
   currentColors: ColorConfig[];
 }
 
-export default function useBuildingFlags({ initialColors, name }) {
+type UseBuildingFlagsProps = {
+  initialColors?: ColorConfig[];
+  name: string;
+};
+
+export default function useBuildingFlags({
+  initialColors,
+  name,
+}: UseBuildingFlagsProps) {
   const [flagState, setFlagState] = useState<BuildingFlagsState>({
     currentColors: initialColors || [],
   });
