@@ -220,7 +220,6 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -230,7 +229,6 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -255,12 +253,10 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 transition: true,
-                badActor: true,
                 minusScoreNumber: 5,
               },
               {
                 color: "blue",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -271,12 +267,10 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 transition: true,
-                badActor: true,
                 minusScoreNumber: 5,
               },
               {
                 color: "red",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -300,7 +294,6 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -310,7 +303,6 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -335,7 +327,6 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 transition: true,
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -345,12 +336,10 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                badActor: true,
                 minusScoreNumber: 5,
               },
               {
                 color: "red",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -378,12 +367,10 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
-                badActor: true,
                 minusScoreNumber: 5,
               },
               {
                 color: "blue",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -406,12 +393,10 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
-                badActor: true,
                 minusScoreNumber: 5,
               },
               {
                 color: "blue",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -422,13 +407,11 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 transition: true,
-                badActor: true,
                 minusScoreNumber: 5,
               },
               {
                 color: "blue",
                 transition: true,
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -451,12 +434,10 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
-                badActor: true,
                 minusScoreNumber: 5,
               },
               {
                 color: "blue",
-                badActor: true,
                 minusScoreNumber: 5,
               },
             ],

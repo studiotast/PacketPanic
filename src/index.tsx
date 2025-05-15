@@ -43,7 +43,9 @@ function App() {
     <>
       <div
         className={`top-right-buttons ${
-          isPaused || phase === "intro" || phase === "ended" ? "inset" : ""
+          isPaused || phase === "intro" || phase === "gameFinished"
+            ? "inset"
+            : ""
         }`}
       >
         {phase === "playing" && !isTransitioning && <PauseButton />}

@@ -1,6 +1,7 @@
-import useGame from "../../stores/useGame";
 import { faBox } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
+import useGame from "../../stores/useGame";
 import styles from "./ScoreProgressBar.module.scss";
 
 type ScoreProgressBarProps = {
@@ -20,7 +21,7 @@ export default function ScoreProgressBar({ type }: ScoreProgressBarProps) {
     <div
       className={`${styles.container} ${
         type === "game" ? styles.game : styles.end
-      } `}
+      }`}
     >
       {type === "end" && (
         <div className={styles.infoContainer}>
@@ -43,10 +44,16 @@ export default function ScoreProgressBar({ type }: ScoreProgressBarProps) {
       )}
 
       <div className={styles.progressBar}>
-        <div
+        <motion.div
           className={styles.progressFill}
+          initial={{ width: type === "end" ? 0 : `${progressPercentage}%` }}
+          animate={{ width: `${progressPercentage}%` }}
+          transition={
+            type === "end"
+              ? { duration: 0.8, ease: "easeOut", type: "spring" }
+              : { duration: 0.25, ease: "easeOut", type: "spring" }
+          }
           style={{
-            width: `${progressPercentage}%`,
             backgroundColor:
               progressPercentage >= 100
                 ? "#26ffba"
@@ -54,7 +61,7 @@ export default function ScoreProgressBar({ type }: ScoreProgressBarProps) {
                 ? "#ffc83c"
                 : "#26ffba",
           }}
-        ></div>
+        />
         <div
           className={styles.targetIndicator}
           style={{ left: `${100}%` }}
