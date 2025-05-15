@@ -11,8 +11,6 @@ import Player from "./Player.jsx";
 import useGame from "./stores/useGame.js";
 
 export default function Experience() {
-  const blocksCount = useGame((state) => state.blocksCount);
-  const blocksSeed = useGame((state) => state.blocksSeed);
   const updateTimer = useGame((state) => state.updateTimer);
   const phase = useGame((state) => state.phase);
   const isPaused = useGame((state) => state.isPaused);
@@ -86,11 +84,8 @@ export default function Experience() {
 
   return (
     <>
-      <ambientLight intensity={1.6} />{" "}
-      {/* Omgevingslicht voor algemene 
-      helderheid */}
-      <directionalLight intensity={1.5} position={[10, 10, 10]} castShadow />
-      <pointLight intensity={1} position={[0, 5, 0]} />
+      <ambientLight intensity={1.6} />
+      <directionalLight intensity={1.5} position={[10, 10, 10]} />
       <Perf position="bottom-left" />
       <OrbitControls
         // target={[0, 0, -13]}
@@ -109,7 +104,7 @@ export default function Experience() {
         }
       >
         <Lights />
-        <Level count={blocksCount} seed={blocksSeed} />
+        <Level />
         {player && <Player />}
         <Balls ref={ballRef} />
       </Physics>
