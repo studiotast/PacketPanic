@@ -44,7 +44,10 @@ const Sign = forwardRef<any, SignProps>(
     return (
       <group
         ref={groupRef} // Attach the ref to the group
-        onClick={onClick}
+        onClick={(e) => {
+          e.stopPropagation(); // voorkomt doorklikken naar achterliggende signs
+          onClick();
+        }}
         position={position}
         scale={[1, 1, 1]}
       >
