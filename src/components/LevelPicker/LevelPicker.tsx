@@ -14,7 +14,12 @@ export default function LevelPicker() {
         <h2 className={styles.title}>Level kiezen</h2>
         <div className={styles.cardWrapper}>
           {levelsData.map((item, index) => (
-            <Card key={index} title={`Level ${item.id}`} />
+            <Card
+              key={index}
+              title={`Level ${item.id}`}
+              action="go-to-level"
+              cardLevelId={item.id}
+            />
           ))}
         </div>
         <Button
