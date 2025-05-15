@@ -4,6 +4,7 @@
   position: relative;
   border-radius: var(--border-radius20);
   flex: 1;
+  display: flex;
 }
 
 .card {
@@ -14,8 +15,8 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   position: relative;
+  flex: 1;
 }
 
 .shadow {
