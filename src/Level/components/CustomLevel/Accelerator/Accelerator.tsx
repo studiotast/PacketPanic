@@ -86,7 +86,7 @@ export default function Accelerator({
 
               const ball = balls.find((ball) => ball.id === ballId);
               if (ball) {
-                const colorIndex = colors.indexOf(ballColor);
+                const colorIndex = currentColors.indexOf(ballColor);
                 if (colorIndex !== -1) {
                   const direction = directions[colorIndex]
                     ? { x: 7.8, y: 0, z: -1.4 }
