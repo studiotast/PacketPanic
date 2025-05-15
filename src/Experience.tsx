@@ -2,13 +2,13 @@ import { OrbitControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { Physics } from "@react-three/rapier";
 import { useControls } from "leva";
-import React, { useEffect, useRef } from "react";
+import { Perf } from "r3f-perf";
+import { useEffect, useRef } from "react";
 import Balls from "./Level/components/CustomLevel/Balls";
 import Level from "./Level/Level.jsx";
 import Lights from "./Lights.jsx";
 import Player from "./Player.jsx";
 import useGame from "./stores/useGame.js";
-import { Perf } from "r3f-perf";
 
 export default function Experience() {
   const blocksCount = useGame((state) => state.blocksCount);
@@ -19,7 +19,7 @@ export default function Experience() {
   const playSound = useGame((state) => state.playSound);
   const stopSound = useGame((state) => state.stopSound);
   const isMuted = useGame((state) => state.isMuted);
-  const ballRef = useRef();
+  const ballRef = useRef(null);
 
   // Keep track of previous phase to detect changes
   const prevPhaseRef = useRef(phase);
@@ -86,8 +86,9 @@ export default function Experience() {
 
   return (
     <>
-      <ambientLight intensity={1.6} /> // Omgevingslicht voor algemene
-      helderheid
+      <ambientLight intensity={1.6} />{" "}
+      {/* Omgevingslicht voor algemene 
+      helderheid */}
       <directionalLight intensity={1.5} position={[10, 10, 10]} castShadow />
       <pointLight intensity={1} position={[0, 5, 0]} />
       <Perf position="bottom-left" />
