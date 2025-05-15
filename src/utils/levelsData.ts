@@ -52,6 +52,7 @@ interface SceneData {
   spawnRate: number;
   buildingColors: BuildingConfig[];
   ballColors: string[];
+  accelerators?: AcceleratorConfig[];
 }
 
 interface Tutorial {
@@ -236,6 +237,12 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red"], // Colors for the spawner
+        accelerators: [
+          {
+            position: [0, 1, -14],
+            colors: ["blue", "red"],
+          },
+        ],
       },
       // ------------- transition scene -----------
       scene2: {
@@ -276,6 +283,12 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red"],
+        accelerators: [
+          {
+            position: [0, 1, -14],
+            colors: ["blue", "red"],
+          },
+        ],
       },
       // --------------------------------
       scene3: {
@@ -304,6 +317,12 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red"],
+        accelerators: [
+          {
+            position: [0, 1, -14],
+            colors: ["blue", "red"],
+          },
+        ],
       },
       // ------------- transition scene -----------
       scene4: {
@@ -338,6 +357,12 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red"],
+        accelerators: [
+          {
+            position: [0, 1, -14],
+            colors: ["blue", "red"],
+          },
+        ],
       },
       // --------------------------------
       scene5: {
@@ -365,6 +390,12 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red"],
+        accelerators: [
+          {
+            position: [0, 1, -14],
+            colors: ["blue", "red"],
+          },
+        ],
       },
       scene6: {
         time: 45,
@@ -404,6 +435,12 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red"],
+        accelerators: [
+          {
+            position: [0, 1, -14],
+            colors: ["blue", "red"],
+          },
+        ],
       },
       scene7: {
         time: 50,
@@ -430,6 +467,12 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red"],
+        accelerators: [
+          {
+            position: [0, 1, -14],
+            colors: ["blue", "red"],
+          },
+        ],
       },
     },
   },
@@ -490,15 +533,15 @@ const levelsData: LevelData[] = [
       accelerators: [
         {
           position: [0, 1, -16],
-          colors: ["blue", "red", "green", "yellow"],
+          colors: ["blue", "red", "green"],
         },
         {
           position: [-8, 1, -24],
-          colors: ["blue", "red", "green", "yellow"],
+          colors: ["blue", "red", "green"],
         },
         {
           position: [10, 1, -22],
-          colors: ["blue", "red", "green", "yellow"],
+          colors: ["blue", "red", "green"],
         },
       ],
       buildings: [
@@ -575,6 +618,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green"], // Colors for the spawner
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
       },
       // ------------- transition scene -----------
       scene2: {
@@ -616,6 +673,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
       },
       // --------------------------------
       scene3: {
@@ -652,6 +723,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
       },
       // ------------- transition scene -----------
       scene4: {
@@ -704,6 +789,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
       },
       // --------------------------------
       scene5: {
@@ -741,6 +840,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
       },
       // ------------- transition scene -----------
       scene6: {
@@ -786,6 +899,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
       },
       // --------------------------------
       scene7: {
@@ -827,6 +954,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
       },
       // ------------- transition scene -----------
       scene8: {
@@ -879,6 +1020,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
       },
       // --------------------------------
       scene9: {
@@ -923,6 +1078,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
       },
       // ------------- transition scene -----------
       scene10: {
@@ -978,6 +1147,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
       },
       // --------------------------------
       scene11: {
@@ -1020,6 +1203,20 @@ const levelsData: LevelData[] = [
           },
         ],
         ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
       },
     },
   },
