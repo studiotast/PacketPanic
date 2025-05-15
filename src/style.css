@@ -66,6 +66,24 @@ body,
   font-family: var(--font-karla);
 }
 
+:root {
+  timeline-scope: --scroll;
+  animation: --scroll forwards;
+  animation-timeline: --scroll;
+  container-name: --scroll;
+}
+.box {
+  /* the concerned element */
+  overflow: auto; /* or hidden */
+  scroll-timeline: --scroll;
+}
+@keyframes --scroll {
+  0%,
+  to {
+    --scroll: 1;
+  }
+}
+
 .button-wrapper {
   margin-top: 8px;
   position: relative;
@@ -1202,12 +1220,12 @@ Button styling
 }
 
 .top-right-buttons.inset {
-  top: var(--spacing40);
-  right: var(--spacing40);
+  top: var(--spacing50);
+  right: var(--spacing50);
 
   @media screen and (max-width: 768px) {
-    top: var(--spacing20);
-    right: var(--spacing20);
+    top: var(--spacing30);
+    right: var(--spacing30);
   }
 }
 
