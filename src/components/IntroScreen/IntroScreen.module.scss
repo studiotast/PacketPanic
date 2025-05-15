@@ -98,6 +98,7 @@
 
 .tooltipContent {
   display: flex;
+  flex-direction: column;
   gap: var(--spacing20);
   align-items: center;
   max-width: 500px;

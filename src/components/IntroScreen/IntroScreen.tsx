@@ -32,10 +32,10 @@ const InteractiveTerm: React.FC<InteractiveTermProps> = ({
   <Tippy
     content={
       <div className={styles.tooltipContent}>
-        <div className={styles.tooltipText}>{explanation}</div>
         {image && (
           <img src={image} alt={term} className={styles.tooltipImage} />
         )}
+        <div className={styles.tooltipText}>{explanation}</div>
       </div>
     }
     animation="scale"
