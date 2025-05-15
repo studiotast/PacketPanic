@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "tippy.js/animations/scale.css";
 import "tippy.js/dist/tippy.css";
 import Layout from "../../Layout";
@@ -8,6 +8,7 @@ import ClickableCard from "../ClickableCard/ClickableCard";
 import styles from "./EndScreen.module.scss";
 import LeftCornerPiece from "../CornerPiece/LeftCornerPiece";
 import RightCornerPiece from "../CornerPiece/RightCornerPiece";
+import useGame from "../../stores/useGame";
 
 // Define interfaces for the news article
 type NewsArticle = {
@@ -20,6 +21,22 @@ type NewsArticle = {
 
 export default function EndScreen(): React.ReactElement {
   const newsArticles = getAllNewsArticles();
+
+  const playSound = useGame((state) => state.playSound);
+  const isMuted = useGame((state) => state.isMuted);
+
+  useEffect(() => {
+    // Play sound when the component mounts
+    const sound = playSound("menu");
+
+    // Return cleanup function to stop sound on unmount
+    return () => {
+      if (sound) {
+        sound.pause();
+        sound.currentTime = 0;
+      }
+    };
+  }, [playSound, isMuted]);
 
   return (
     <Layout>
