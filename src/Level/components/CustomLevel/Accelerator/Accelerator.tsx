@@ -1,10 +1,10 @@
-import { BallCollider, CuboidCollider, Debug } from "@react-three/rapier";
-import React, { useState } from "react";
+import { CuboidCollider } from "@react-three/rapier";
+import { useEffect, useRef, useState } from "react";
 import useBalls from "../../../../stores/useBalls";
+import useGame from "../../../../stores/useGame";
 import Sign from "./Sign";
 import SignPost from "./SignPost";
-import useGame from "../../../../stores/useGame";
-import { boxGeometry, magentaMaterial } from "../../../Level";
+import useAcceleratorColors from "../hooks/useAcceleratorColors";
 
 export default function Accelerator({
   position = [0, 0.5, -1.2],
@@ -16,13 +16,48 @@ export default function Accelerator({
   const balls = useBalls((state) => state.balls);
   const playSound = useGame((state) => state.playSound);
 
-  const [directions, setDirections] = useState<boolean[]>(() =>
-    colors.map((_, index) => index % 2 === 0)
-  );
+  // Get dynamic colors from the timeline
+  const { currentColors } = useAcceleratorColors({
+    initialColors: colors,
+  });
+
+  // State to store the current directions
+  const [directions, setDirections] = useState<boolean[]>([]);
+
+  // Ref to keep track of user-modified directions
+  const userDirectionsRef = useRef<Record<string, boolean>>({});
+
+  // Update directions when colors change, but keep user modifications
+  useEffect(() => {
+    console.log("Accelerator colors updated:", currentColors);
+
+    setDirections(
+      currentColors.map((color, index) => {
+        // If user has modified this color's direction, use that value
+        if (color in userDirectionsRef.current) {
+          return userDirectionsRef.current[color];
+        }
+        // Otherwise, use default (alternating directions)
+        return index % 2 === 0;
+      })
+    );
+  }, [currentColors]);
 
   function onClickSign(index: number) {
     playSound("woosh");
-    setDirections((prev) => prev.map((dir, i) => (i === index ? !dir : dir)));
+
+    // Update directions state
+    setDirections((prev) => {
+      const newDirections = [...prev];
+      newDirections[index] = !newDirections[index];
+
+      // Store this user modification in the ref
+      if (index < currentColors.length) {
+        userDirectionsRef.current[currentColors[index]] = newDirections[index];
+      }
+
+      return newDirections;
+    });
   }
 
   return (
@@ -67,7 +102,7 @@ export default function Accelerator({
         />
       </group>
       <SignPost position={[0, -1, 0]} />
-      {colors.map((color, index) => (
+      {currentColors.map((color, index) => (
         <Sign
           key={index}
           color={color}
