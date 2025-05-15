@@ -21,7 +21,7 @@ export default function GameOverScreen() {
   const currentLevel = useGame((state) => state.currentLevel);
   const scoreToAdvance = currentLevel.scoreToAdvance;
   const restart = useGame((state) => state.restart);
-  const lastLevelId = levelsData.length - 1;
+  const lastLevelId = levelsData.length;
   const currentLevelId = currentLevel.id;
   const isLastLevel = currentLevelId === lastLevelId;
   const end = useGame((state) => state.end);
