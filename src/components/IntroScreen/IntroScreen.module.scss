@@ -96,3 +96,26 @@
   justify-content: center;
 }
 
+.tooltipContent {
+  display: flex;
+  gap: var(--spacing20);
+  align-items: center;
+  max-width: 500px;
+}
+
+.tooltipText {
+  flex: 1;
+}
+
+.tooltipImage {
+  width: 100px;
+  height: 100px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 5px;
+
+  @media screen and (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+}

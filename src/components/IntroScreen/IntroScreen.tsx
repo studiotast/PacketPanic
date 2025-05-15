@@ -21,14 +21,23 @@ import RightCornerPiece from "../CornerPiece/RightCornerPiece.tsx";
 interface InteractiveTermProps {
   term: string;
   explanation: string;
+  image: string;
 }
 
 const InteractiveTerm: React.FC<InteractiveTermProps> = ({
   term,
   explanation,
+  image,
 }) => (
   <Tippy
-    content={explanation}
+    content={
+      <div className={styles.tooltipContent}>
+        <div className={styles.tooltipText}>{explanation}</div>
+        {image && (
+          <img src={image} alt={term} className={styles.tooltipImage} />
+        )}
+      </div>
+    }
     animation="scale"
     arrow={true}
     placement="top"
@@ -195,21 +204,25 @@ export default function IntroScreen() {
         term: "pakketjes",
         explanation:
           "Een stukje data dat over het internet reist, zoals een e-mail, een videostream een website of een verzoek om een website te bezoeken.",
+        image: "./assets/images/placeholder.png",
       },
       {
         term: "router naar router",
         explanation:
           "Routers zijn apparaten die pakketjes doorsturen binnen en tussen netwerken.",
+        image: "./assets/images/placeholder.png",
       },
       {
         term: "autonome systemen",
         explanation:
           "Een autonoom systeem (AS) is een netwerk of verzameling netwerken onder het beheer van één organisatie, zoals een internetprovider of een groot bedrijf.",
+        image: "./assets/images/placeholder.png",
       },
       {
         term: "Border Gateway Protocol",
         explanation:
           "Het BGP is het routeringsprotocol dat gebruikt wordt om de beste route te bepalen naar een bestemming die buiten het huidige autonome systeem ligt.",
+        image: "./assets/images/placeholder.png",
       },
     ];
 
@@ -237,9 +250,10 @@ export default function IntroScreen() {
         // Add the interactive term
         parts.push(
           <InteractiveTerm
-            key={`term-${index}-${foundTerm.term}`}
+            key={`term-${index}`}
             term={foundTerm.term}
             explanation={foundTerm.explanation}
+            image={foundTerm.image}
           />
         );
 
