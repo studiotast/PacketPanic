@@ -103,6 +103,9 @@ interface GameState {
   // Score
   score: number;
 
+  // BadActor count
+  badActorCount: number;
+
   // Level data
   currentLevelId: number;
   currentLevel: LevelData;
@@ -130,6 +133,7 @@ interface GameState {
   decrementScore: (minusScoreNumber?: number) => void;
   stopSound: (soundName: keyof GameSounds) => boolean;
   toggleMute: () => void;
+  incrementBadActorCount: () => void;
 }
 
 const TIME_LIMIT = 45; // 45 seconds game limit
@@ -274,6 +278,9 @@ const useGame = create<GameState>()(
 
       // Score
       score: 0,
+
+      // BadActor count
+      badActorCount: 0,
 
       // New level properties
       currentLevelId: 1,
@@ -433,6 +440,7 @@ const useGame = create<GameState>()(
             phase: "explanation",
             timer: 0,
             score: 0, // Reset score for the new level
+            badActorCount: 0, // Reset bad actor count
             // Keep the score between levels
           });
 
@@ -466,6 +474,7 @@ const useGame = create<GameState>()(
           phase: "intro",
           blocksSeed: Math.random(),
           score: 0,
+          badActorCount: 0,
           timer: 0,
           startTime: 0,
           endTime: 0,
@@ -494,6 +503,7 @@ const useGame = create<GameState>()(
             phase: "explanation", // Change to explanation phase
             timer: 0, // Reset timer for new level
             score: 0, // Reset score for new level
+            badActorCount: 0, // Reset bad actor count
             isPaused: false, // Ensure the game isn't paused
           });
 
@@ -567,6 +577,7 @@ const useGame = create<GameState>()(
               phase: "ready",
               timer: 0,
               score: 0,
+              badActorCount: 0,
               isPaused: false,
             };
           }
@@ -604,6 +615,13 @@ const useGame = create<GameState>()(
           // Ensure score doesn't go below 0
           const newScore = Math.max(0, score - minusScoreNumber);
           return { score: newScore };
+        });
+      },
+
+      incrementBadActorCount: () => {
+        set((state) => {
+          const { badActorCount } = state;
+          return { badActorCount: badActorCount + 1 };
         });
       },
 

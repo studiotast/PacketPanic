@@ -1,14 +1,14 @@
 import { Euler, Vector3 } from "@react-three/fiber";
 import { CuboidCollider } from "@react-three/rapier";
-import React, { useEffect, useRef } from "react";
+import { useRef } from "react";
+import * as THREE from "three";
 import useBalls from "../../../../stores/useBalls";
 import useGame from "../../../../stores/useGame";
-import House from "./components/House";
-import Flag from "./components/Flag";
-import useBuildingFlags from "../hooks/useBuildingFlags";
-import PlusOneLabel from "./components/PlusOneLabel";
-import * as THREE from "three";
 import { ColorConfig } from "../../../../utils/levelsData";
+import useBuildingFlags from "../hooks/useBuildingFlags";
+import Flag from "./components/Flag";
+import House from "./components/House";
+import PlusOneLabel from "./components/PlusOneLabel";
 import MinusLabel from "./MinusLabel";
 
 interface BuildingProps {
@@ -31,6 +31,10 @@ export default function Building({
   const phase = useGame((state) => state.phase);
   const removeBall = useBalls((state) => state.removeBall);
   const playSound = useGame((state) => state.playSound);
+  const currentLevelId = useGame((state) => state.currentLevelId);
+  const incrementBadActorCount = useGame(
+    (state) => state.incrementBadActorCount
+  );
 
   // Get flag state with new ColorConfig format
   const { currentColors } = useBuildingFlags({
@@ -76,10 +80,11 @@ export default function Building({
     currentColors?.reduce((map, colorConfig) => {
       map[colorConfig.color] = {
         isMistakeBadActor: colorConfig.mistakenBadActor || false,
+        isMaliciousBadActor: colorConfig.maliciousBadActor || false,
         minusScoreNumber: colorConfig.minusScoreNumber || 5,
       };
       return map;
-    }, {} as Record<string, { isMistakeBadActor: boolean; minusScoreNumber: number }>) ||
+    }, {} as Record<string, { isMistakeBadActor: boolean; isMaliciousBadActor: boolean; minusScoreNumber: number }>) ||
     {};
 
   // Get just the color names for quick lookup
@@ -135,7 +140,10 @@ export default function Building({
             if (acceptedColors.includes(ballColor)) {
               const colorInfo = acceptedColorsMap[ballColor];
 
-              if (colorInfo.isMistakeBadActor) {
+              if (
+                colorInfo.isMistakeBadActor ||
+                colorInfo.isMaliciousBadActor
+              ) {
                 // This is a bad actor flag - decrement score
                 console.log(
                   `Score decremented for ${ballColor} ball by ${colorInfo.minusScoreNumber}!`
@@ -143,6 +151,10 @@ export default function Building({
                 playSound("failScore"); // Play negative sound
                 addMinusLabel(colorInfo.minusScoreNumber); // Pass true to indicate penalty, need to pass in the amount also
                 decrementScore(colorInfo.minusScoreNumber);
+                if (currentLevelId >= 3) {
+                  // Only increment bad actor count for levels 3 and above
+                  incrementBadActorCount();
+                }
               } else {
                 // Normal flag - increment score
                 console.log(`Score incremented for ${ballColor} ball!`);
