@@ -1,9 +1,9 @@
 import { Euler, Vector3 } from "@react-three/fiber";
-import React, { forwardRef, useEffect, useMemo } from "react";
+import { forwardRef, useEffect, useMemo } from "react";
 import * as THREE from "three";
+import useGame from "../../../../../stores/useGame";
 import { useModels } from "../../../../../stores/useModels";
 import { getColorMaterial } from "../../../../../utils/getColorMaterial";
-import useGame from "../../../../../stores/useGame";
 
 interface SignProps {
   position?: Vector3;
