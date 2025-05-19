@@ -8,7 +8,7 @@ interface CardProps {
   title: string;
   icon?: IconDefinition;
   action?: string;
-  cardLevelId: number;
+  cardLevelId?: number;
 }
 
 export default function Card({ title, icon, action, cardLevelId }: CardProps) {
@@ -44,8 +44,7 @@ export default function Card({ title, icon, action, cardLevelId }: CardProps) {
       // Just initiate the transition, the level selection will happen in GarageTransition
       if (typeof window.initiatePhaseTransition === "function") {
         window.initiatePhaseTransition("explanation");
-      } else {
-        console.log("levleId", cardLevelId);
+      } else if (cardLevelId) {
         levelSelect(cardLevelId);
       }
     }
