@@ -9,7 +9,7 @@ import { useControls } from "leva";
 import { blueMaterial, sphereGeometry } from "./Level/Level";
 
 export default function Player() {
-  const body = useRef();
+  const body = useRef(null);
   const [subscribeKeys, getKeys] = useKeyboardControls();
   const { rapier, world } = useRapier();
   const setPlayerRef = usePlayer((state) => state.setPlayerRef);
