@@ -16,14 +16,11 @@ export default function Card({ title, icon, action, cardLevelId }: CardProps) {
   const levelPicker = useGame((state) => state.levelPicker);
   const levelSelect = useGame((state) => state.levelSelect);
   const aboutPage = useGame((state) => state.aboutPage);
-  const levelId = useGame((state) => state.currentLevelId);
 
   const handleCardClick = () => {
-    console.log("Card clicked:", title, action);
     if (action === "startFromIntro") {
       startFromIntro();
     } else if (action === "levelSelect") {
-      console.log("levelSelect clicked");
       if (typeof window.initiatePhaseTransition === "function") {
         window.initiatePhaseTransition("levelPicker");
         levelPicker();
@@ -31,10 +28,8 @@ export default function Card({ title, icon, action, cardLevelId }: CardProps) {
         levelPicker();
       }
     } else if (action === "about") {
-      console.log("about clicked");
       aboutPage();
     } else {
-      console.log("levleId-above", cardLevelId);
       // For level selection cards
       // Store the level ID in localStorage for reference after transition
       if (cardLevelId) {
