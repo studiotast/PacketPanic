@@ -16,6 +16,7 @@ export interface LevelData {
   tutorial: Tutorial[];
   newsArticle?: NewsArticle;
   scoreScreen: ScoreScreen[];
+  notifications?: NotificationsData[];
   trackConfig: {
     accelerators: AcceleratorConfig[];
     buildings: BuildingConfig[];
@@ -45,6 +46,10 @@ export interface LevelData {
     scene19?: SceneData;
     scene20?: SceneData;
   };
+}
+
+interface NotificationsData {
+  text: string;
 }
 
 interface SceneData {
@@ -465,6 +470,20 @@ const levelsData: LevelData[] = [
     maxScore: 240,
     timeLimit: 90, // 1min 30secs
     description: "Direct the colored packets to their matching buildings!",
+    notifications: [
+      {
+        text: "YouTube is niet bereikbaar.",
+      },
+      {
+        text: "Krijg foutmelding bij YouTube.",
+      },
+      {
+        text: "Kan YouTube niet laden.",
+      },
+      {
+        text: "Website niet bereikbaar.",
+      },
+    ],
     tutorial: [
       {
         text: "Pakketje gaan nu langs meerdere wegwijzers, zet ze allemaal goed als een route wijzigt.",
