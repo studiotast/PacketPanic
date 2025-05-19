@@ -66,7 +66,8 @@ interface ScoreScreen {
 
 export interface ColorConfig {
   color: string;
-  badActor?: boolean;
+  mistakenBadActor?: boolean;
+  maliciousBadActor?: boolean;
   transition?: boolean;
   minusScoreNumber?: number;
 }
@@ -745,7 +746,7 @@ const levelsData: LevelData[] = [
               },
               {
                 color: "blue",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -806,7 +807,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -858,7 +859,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
               {
@@ -913,7 +914,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
               {
@@ -968,7 +969,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
               {
@@ -985,7 +986,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "green",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -1034,7 +1035,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
 
@@ -1048,7 +1049,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "green",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -1093,7 +1094,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
                 transition: true,
               },
@@ -1103,7 +1104,7 @@ const levelsData: LevelData[] = [
               },
               {
                 color: "red",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -1113,7 +1114,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "green",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
                 transition: true,
               },
@@ -1160,7 +1161,7 @@ const levelsData: LevelData[] = [
               },
               {
                 color: "red",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
             ],
@@ -1170,7 +1171,7 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "green",
-                badActor: true,
+                mistakenBadActor: true,
                 minusScoreNumber: 5,
               },
               {

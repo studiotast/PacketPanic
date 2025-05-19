@@ -75,11 +75,11 @@ export default function Building({
   const acceptedColorsMap =
     currentColors?.reduce((map, colorConfig) => {
       map[colorConfig.color] = {
-        isBadActor: colorConfig.badActor || false,
+        isMistakeBadActor: colorConfig.mistakenBadActor || false,
         minusScoreNumber: colorConfig.minusScoreNumber || 5,
       };
       return map;
-    }, {} as Record<string, { isBadActor: boolean; minusScoreNumber: number }>) ||
+    }, {} as Record<string, { isMistakeBadActor: boolean; minusScoreNumber: number }>) ||
     {};
 
   // Get just the color names for quick lookup
@@ -135,7 +135,7 @@ export default function Building({
             if (acceptedColors.includes(ballColor)) {
               const colorInfo = acceptedColorsMap[ballColor];
 
-              if (colorInfo.isBadActor) {
+              if (colorInfo.isMistakeBadActor) {
                 // This is a bad actor flag - decrement score
                 console.log(
                   `Score decremented for ${ballColor} ball by ${colorInfo.minusScoreNumber}!`
