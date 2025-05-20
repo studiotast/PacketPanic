@@ -14,7 +14,7 @@
     /* Styles for game mode */
     position: fixed;
     top: 3.5vh;
-    top: 3.5dvh;
+    top: var(--spacing40);
     left: 50%;
     transform: translate(-50%, 0);
     width: 95%;
@@ -76,9 +76,9 @@
   }
 
   .scoreText {
-  font-size: clamp(0.8rem, 3vmin, 1.2rem);
-  font-family: var(--font-karla);
-  font-weight: 900;
+    font-size: clamp(0.8rem, 3vmin, 1.2rem);
+    font-family: var(--font-karla);
+    font-weight: 900;
   }
 
   .progressBar {

@@ -1180,8 +1180,8 @@ body,
 .building-label > div {
   font-family: "FatFrank", sans-serif;
   position: absolute;
-  background: #00000088;
-  color: white;
+  background: rgba(255, 255, 255, 0.65);
+  color: black;
   padding: 15px;
   white-space: nowrap;
   overflow: hidden;
