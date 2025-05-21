@@ -25,7 +25,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@stores*": ["src/stores/*"]
+      "@stores/*": ["src/stores/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },

@@ -1,8 +1,10 @@
 import react from "@vitejs/plugin-react";
 import { transformWithEsbuild } from "vite";
 import restart from "vite-plugin-restart";
+import { defineConfig } from "vite";
+import path from "path";
 
-export default {
+export default defineConfig({
   root: "src/",
   publicDir: "../public/",
   plugins: [
@@ -32,6 +34,14 @@ export default {
       localsConvention: "camelCase",
     },
   },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@components": path.resolve(__dirname, "./src/components"),
+      "@stores": path.resolve(__dirname, "./src/stores"),
+      "@utils": path.resolve(__dirname, "./src/utils"),
+    },
+  },
   server: {
     host: true, // Open to local network and display URL
     open: !("SANDBOX_URL" in process.env || "CODESANDBOX_HOST" in process.env), // Open if it's not a CodeSandbox
@@ -41,4 +51,4 @@ export default {
     emptyOutDir: true, // Empty the folder first
     sourcemap: true, // Add sourcemap
   },
-};
+});
