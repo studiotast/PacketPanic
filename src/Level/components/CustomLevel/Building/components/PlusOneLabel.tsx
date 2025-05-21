@@ -21,7 +21,7 @@ export default function PlusOneLabel({ id, onRemove }: PlusOneLabelProps) {
     // Verwijder het label na 1 seconde
     const timeout = setTimeout(() => {
       onRemove(id);
-    }, 1000);
+    }, 2200);
 
     return () => clearTimeout(timeout); // Opruimen bij unmount
   }, [id, onRemove]);

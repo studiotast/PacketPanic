@@ -9,7 +9,7 @@ import useBuildingFlags from "../hooks/useBuildingFlags";
 import Flag from "./components/Flag";
 import House from "./components/House";
 import PlusOneLabel from "./components/PlusOneLabel";
-import MinusLabel from "./MinusLabel";
+import MinusLabel, { MinusLabelInfo } from "./MinusLabel";
 
 interface BuildingProps {
   position?: Vector3;
@@ -59,13 +59,13 @@ export default function Building({
     );
   }
 
-  function addMinusLabel(number: number) {
+  function addMinusLabel(info: MinusLabelInfo) {
     const labelId = THREE.MathUtils.generateUUID();
     labelsWrapperRef.current.push(
       <MinusLabel
         key={labelId}
         id={labelId}
-        number={number}
+        info={info}
         onRemove={(id) => {
           labelsWrapperRef.current = labelsWrapperRef.current.filter(
             (label) => label.props.id !== id
@@ -149,7 +149,7 @@ export default function Building({
                   `Score decremented for ${ballColor} ball by ${colorInfo.minusScoreNumber}!`
                 );
                 playSound("failScore"); // Play negative sound
-                addMinusLabel(colorInfo.minusScoreNumber); // Pass true to indicate penalty, need to pass in the amount also
+                addMinusLabel(colorInfo); // Pass true to indicate penalty, need to pass in the amount also
                 decrementScore(colorInfo.minusScoreNumber);
                 if (currentLevelId >= 3) {
                   // Only increment bad actor count for levels 3 and above
