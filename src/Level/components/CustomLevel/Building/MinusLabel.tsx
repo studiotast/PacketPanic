@@ -1,7 +1,10 @@
+import useGame from "@stores/useGame";
 import { Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
+import { NotificationsData } from "@utils/levelsData";
+import { userNamesList } from "@utils/userNamesList";
 
 export type MinusLabelInfo = {
   isMistakeBadActor: boolean;
@@ -17,6 +20,22 @@ interface MinusLabelProps {
 
 export default function MinusLabel({ id, onRemove, info }: MinusLabelProps) {
   const groupRef = useRef<THREE.Group>(null); // Ref for the group
+  const currentLevel = useGame((state) => state.currentLevel); // Get the current level from the store
+  const notifications = currentLevel?.notifications; // Get notifications from the current level
+  const [notification, setNotification] = useState<NotificationsData | null>(
+    null
+  ); // State for the notification
+  const [userName, setUserName] = useState<string | null>(null); // State for the username
+
+  useEffect(() => {
+    if (notifications)
+      setNotification(
+        notifications[Math.floor(Math.random() * notifications.length)]
+      );
+    setUserName(
+      userNamesList[Math.floor(Math.random() * userNamesList.length)]
+    ); // Set a random username from the list
+  }, [notifications]); // Set a random notification from the list
 
   useFrame((state, delta) => {
     if (groupRef.current) {
@@ -41,10 +60,8 @@ export default function MinusLabel({ id, onRemove, info }: MinusLabelProps) {
             <b>- {info?.minusScoreNumber}</b>
           </div>
           <div className="comment">
-            <p>@Boxing_bubbles</p>
-            <p>
-              Ik kom helemaal niet bij youtube uit maar een of andere vage clone
-            </p>
+            <p>{userName}</p>
+            <p>{notification?.text}</p>
           </div>
         </div>
       </Html>
