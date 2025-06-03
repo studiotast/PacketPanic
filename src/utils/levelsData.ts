@@ -202,12 +202,12 @@ const levelsData: LevelData[] = [
       buildings: [
         {
           name: "Building1",
-          position: [-7, 2, -24],
+          position: [-7, 1.8, -24],
           colors: [{ color: "red" }],
         },
         {
           name: "Building2",
-          position: [7, 2, -20],
+          position: [7, 1.8, -20],
           colors: [{ color: "blue" }],
         },
       ],
@@ -444,8 +444,1590 @@ const levelsData: LevelData[] = [
       },
     },
   },
+  // LEVEL 2 _________________________________________________
   {
     id: 2,
+    name: "Packet Basics",
+    scoreToAdvance: 200,
+    maxScore: 240,
+    timeLimit: 90, // 1min 30secs
+    description: "Direct the colored packets to their matching buildings!",
+    notifications: [
+      {
+        text: "YouTube is niet bereikbaar.",
+      },
+      {
+        text: "Krijg foutmelding bij YouTube.",
+      },
+      {
+        text: "Kan YouTube niet laden.",
+      },
+      {
+        text: "Website niet bereikbaar.",
+      },
+    ],
+    tutorial: [
+      {
+        text: "Pakketje gaan nu langs meerdere wegwijzers, zet ze allemaal goed als een route wijzigt.",
+      },
+    ],
+    storyLine: [
+      {
+        text: "Dus je hebt gister helemaal geen problemen met het BGP ervaren?",
+        button: "Nee",
+      },
+      {
+        text: "Alles wat mis ging was je eigen fout?",
+        button: "Ja?",
+      },
+      {
+        text: "De wonderen zijn de wereld nog niet uit...",
+        button: "...",
+      },
+      {
+        text: "Laten we hopen dat dat vandaag zo blijft!",
+        button: "Verder",
+      },
+    ],
+    scoreScreen: [
+      {
+        title: "Routerend goed!",
+        description:
+          "Zo! Dat was precies zoals ik het niet had voorspeld. Maar hé, werkt ook.",
+      },
+      {
+        title: "Verkeerde afslag genomen",
+        description:
+          "Tja, Pakistan is óók een bestemming. Niet mijn eerste keuze, maar goed.",
+      },
+    ],
+    newsArticle: {
+      title: "BGP-foutje Pakistan legt Youtube plat",
+      content:
+        "In maart 2008 lag YouTube voor miljoenen gebruikers urenlang plat. De Pakistaanse overheid probeerde YouTube in hun land te blokkeren. Maar door een fout in de BGP-configuratie stuurden ze juist verkeer uit andere landen naar Pakistaanse netwerken.",
+      imageUrl: "/images/news/level1.jpg",
+      readMoreLink:
+        "https://arstechnica.com/uncategorized/2008/02/insecure-routing-redirects-youtube-to-pakistan/",
+      date: "2008-03-24",
+    },
+    trackConfig: {
+      cameraStartLookAt: new THREE.Vector3(0, 0, -13),
+      cameraStartPosition: [35, 25, 15],
+      accelerators: [
+        {
+          position: [0, 1, -12],
+          colors: ["blue", "red", "green"],
+        },
+        {
+          position: [6, 1, -18],
+          colors: ["blue", "red", "green"],
+        },
+      ],
+      buildings: [
+        {
+          name: "Building1",
+          position: [-13, 1.8, -24],
+          colors: [
+            {
+              color: "red",
+              mistakenBadActor: true,
+              minusScoreNumber: 5,
+            },
+          ],
+        },
+        {
+          name: "Building2",
+          position: [-5, 1.8, -28],
+          colors: [
+            {
+              color: "green",
+              mistakenBadActor: true,
+              minusScoreNumber: 5,
+            },
+          ],
+        },
+        {
+          name: "Building3",
+          position: [7, 1.8, -26],
+          colors: [
+            {
+              color: "blue",
+              mistakenBadActor: true,
+              minusScoreNumber: 5,
+            },
+          ],
+        },
+      ],
+      spawner: {
+        position: [0, 0.75, 10],
+        ballColors: ["blue", "red", "green", "yellow"],
+      },
+    },
+    timeLine: {
+      scene1: {
+        time: 0,
+        spawnRate: 2.2,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green"], // Colors for the spawner
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene2: {
+        time: 10,
+        spawnRate: 2.2,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene3: {
+        time: 15,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene4: {
+        time: 25,
+        spawnRate: 2.2,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "green",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "blue",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "red",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene5: {
+        time: 30,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+              {
+                color: "green",
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene6: {
+        time: 40,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+              {
+                color: "green",
+                transition: true,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "green",
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "yellow",
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene7: {
+        time: 45,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "green",
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "yellow",
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene8: {
+        time: 55,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "green",
+                transition: true,
+              },
+              {
+                color: "yellow",
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "yellow",
+                transition: true,
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene9: {
+        time: 60,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+
+              {
+                color: "yellow",
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene10: {
+        time: 70,
+        spawnRate: 2.0,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+                transition: true,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+                transition: true,
+              },
+
+              {
+                color: "yellow",
+              },
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+                transition: true,
+              },
+              {
+                color: "blue",
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene11: {
+        time: 75,
+        spawnRate: 2.0,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "yellow",
+              },
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "blue",
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+    },
+  },
+  // LEVEL 3 _________________________________________________
+  {
+    id: 3,
+    name: "Packet Basics",
+    scoreToAdvance: 200,
+    maxScore: 240,
+    timeLimit: 90, // 1min 30secs
+    description: "Direct the colored packets to their matching buildings!",
+    notifications: [
+      {
+        text: "YouTube is niet bereikbaar.",
+      },
+      {
+        text: "Krijg foutmelding bij YouTube.",
+      },
+      {
+        text: "Kan YouTube niet laden.",
+      },
+      {
+        text: "Website niet bereikbaar.",
+      },
+    ],
+    tutorial: [
+      {
+        text: "Pakketje gaan nu langs meerdere wegwijzers, zet ze allemaal goed als een route wijzigt.",
+      },
+    ],
+    storyLine: [
+      {
+        text: "Dus je hebt gister helemaal geen problemen met het BGP ervaren?",
+        button: "Nee",
+      },
+      {
+        text: "Alles wat mis ging was je eigen fout?",
+        button: "Ja?",
+      },
+      {
+        text: "De wonderen zijn de wereld nog niet uit...",
+        button: "...",
+      },
+      {
+        text: "Laten we hopen dat dat vandaag zo blijft!",
+        button: "Verder",
+      },
+    ],
+    scoreScreen: [
+      {
+        title: "Routerend goed!",
+        description:
+          "Zo! Dat was precies zoals ik het niet had voorspeld. Maar hé, werkt ook.",
+      },
+      {
+        title: "Verkeerde afslag genomen",
+        description:
+          "Tja, Pakistan is óók een bestemming. Niet mijn eerste keuze, maar goed.",
+      },
+    ],
+    newsArticle: {
+      title: "BGP-foutje Pakistan legt Youtube plat",
+      content:
+        "In maart 2008 lag YouTube voor miljoenen gebruikers urenlang plat. De Pakistaanse overheid probeerde YouTube in hun land te blokkeren. Maar door een fout in de BGP-configuratie stuurden ze juist verkeer uit andere landen naar Pakistaanse netwerken.",
+      imageUrl: "/images/news/level1.jpg",
+      readMoreLink:
+        "https://arstechnica.com/uncategorized/2008/02/insecure-routing-redirects-youtube-to-pakistan/",
+      date: "2008-03-24",
+    },
+    trackConfig: {
+      cameraStartLookAt: new THREE.Vector3(0, 0, -13),
+      cameraStartPosition: [35, 25, 15],
+      accelerators: [
+        {
+          position: [0, 1, -16],
+          colors: ["blue", "red", "green"],
+        },
+        {
+          position: [-8, 1, -24],
+          colors: ["blue", "red", "green"],
+        },
+        {
+          position: [10, 1, -22],
+          colors: ["blue", "red", "green"],
+        },
+      ],
+      buildings: [
+        {
+          name: "Building1",
+          position: [-17, 2, -26],
+          colors: [
+            {
+              color: "red",
+              mistakenBadActor: true,
+              minusScoreNumber: 5,
+            },
+          ],
+        },
+        {
+          name: "Building2",
+          position: [-7, 2, -32],
+          colors: [
+            {
+              color: "green",
+              mistakenBadActor: true,
+              minusScoreNumber: 5,
+            },
+          ],
+        },
+        {
+          name: "Building3",
+          position: [3, 2, -32],
+          colors: [
+            {
+              color: "blue",
+              mistakenBadActor: true,
+              minusScoreNumber: 5,
+            },
+          ],
+        },
+        {
+          name: "Building4",
+          position: [13, 2, -24],
+          colors: [],
+        },
+      ],
+      spawner: {
+        position: [0, 0.75, 2.5],
+        ballColors: ["blue", "red", "green", "yellow"],
+      },
+    },
+    timeLine: {
+      scene1: {
+        time: 0,
+        spawnRate: 2.2,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green"], // Colors for the spawner
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene2: {
+        time: 10,
+        spawnRate: 2.2,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene3: {
+        time: 15,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene4: {
+        time: 25,
+        spawnRate: 2.2,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "green",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "blue",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "red",
+                transition: true,
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene5: {
+        time: 30,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+              {
+                color: "green",
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene6: {
+        time: 40,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+              {
+                color: "green",
+                transition: true,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "green",
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "yellow",
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene7: {
+        time: 45,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "green",
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "yellow",
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene8: {
+        time: 55,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "green",
+                transition: true,
+              },
+              {
+                color: "yellow",
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "yellow",
+                transition: true,
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene9: {
+        time: 60,
+        spawnRate: 2.1,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+
+              {
+                color: "yellow",
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene10: {
+        time: 70,
+        spawnRate: 2.0,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
+              {
+                color: "red",
+                transition: true,
+              },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+                transition: true,
+              },
+
+              {
+                color: "yellow",
+              },
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+                transition: true,
+              },
+              {
+                color: "blue",
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // --------------------------------
+      scene11: {
+        time: 75,
+        spawnRate: 2.0,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "yellow",
+              },
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [
+              {
+                color: "green",
+                mistakenBadActor: true,
+                minusScoreNumber: 5,
+              },
+              {
+                color: "blue",
+              },
+            ],
+          },
+          {
+            name: "Building4",
+            colors: [],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"],
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+    },
+  },
+  // LEVEL 4 _________________________________________________
+  {
+    id: 4,
     name: "Packet Basics",
     scoreToAdvance: 200,
     maxScore: 240,

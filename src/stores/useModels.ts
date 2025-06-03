@@ -14,8 +14,10 @@ interface ModelsState {
   buildingsPlatformModel: THREE.Object3D | null;
   houseModel: THREE.Object3D | null;
   flagModel: THREE.Object3D | null;
+  flagAttentionModel: THREE.Object3D | null;
   platformLevel1Model: THREE.Object3D | null;
   platformLevel2Model: THREE.Object3D | null;
+  platformLevel34Model: THREE.Object3D | null;
   getModels: () => ModelsState;
 }
 
@@ -33,8 +35,10 @@ export const useModels = create<ModelsState>((set, get) => {
     buildingsPlatformModel: null,
     houseModel: null,
     flagModel: null,
+    flagAttentionModel: null,
     platformLevel1Model: null,
     platformLevel2Model: null,
+    platformLevel34Model: null,
   };
 
   return {
@@ -57,9 +61,14 @@ export const useModels = create<ModelsState>((set, get) => {
         buildingsPlatformModel: useGLTF("assets/models/gebouwen_a01.glb").scene,
         houseModel: useGLTF("assets/models/house_a02.glb").scene,
         flagModel: useGLTF("assets/models/house_flag_a02.glb").scene,
+        flagAttentionModel: useGLTF(
+          "assets/models/house_flag_attention_a01.glb"
+        ).scene,
         platformLevel1Model: useGLTF("assets/models/platform_level1_a02.glb")
           .scene,
-        platformLevel2Model: useGLTF("assets/models/platform_level2_a02.glb")
+        platformLevel2Model: useGLTF("assets/models/platform_level2_a03.glb")
+          .scene,
+        platformLevel34Model: useGLTF("assets/models/platform_level3&4_a01.glb")
           .scene,
       };
 
