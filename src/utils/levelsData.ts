@@ -515,18 +515,18 @@ const levelsData: LevelData[] = [
       cameraStartPosition: [35, 25, 15],
       accelerators: [
         {
-          position: [0, 1, -12],
+          position: [0, 1, -7],
           colors: ["blue", "red", "green"],
         },
         {
-          position: [6, 1, -18],
+          position: [6, 1, -13],
           colors: ["blue", "red", "green"],
         },
       ],
       buildings: [
         {
           name: "Building1",
-          position: [-13, 1.8, -24],
+          position: [-13, 1.8, -19],
           colors: [
             {
               color: "red",
@@ -537,7 +537,7 @@ const levelsData: LevelData[] = [
         },
         {
           name: "Building2",
-          position: [-5, 1.8, -28],
+          position: [-5, 1.8, -23],
           colors: [
             {
               color: "green",
@@ -548,7 +548,7 @@ const levelsData: LevelData[] = [
         },
         {
           name: "Building3",
-          position: [7, 1.8, -26],
+          position: [7, 1.8, -21],
           colors: [
             {
               color: "blue",

@@ -22,42 +22,42 @@ export default function TrackLevel2() {
         restitution={0.2}
         friction={0}
       >
-        <StraightShort position={[0, 0, -3]} />
-        <Straight position={[0, 0, -6]} />
-        <Junction position={[0, 0, -10]} />
+        <StraightShort position={[0, 0, 2]} />
+        <Straight position={[0, 0, -1]} />
+        <Junction position={[0, 0, -5]} />
         {/* Left */}
         <StraightShort
           rotation={[0, Math.PI * 0.5, 0]}
-          position={[-4, 0, -11]}
+          position={[-4, 0, -6]}
         />
-        <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-7, 0, -12]} />
+        <Corner rotation={[0, Math.PI * 0.5, 0]} position={[-7, 0, -7]} />
         <Curve
           scale={[-1, 1, 1]}
           rotation={[0, Math.PI, 0]}
-          position={[-9, 0, -16]}
+          position={[-9, 0, -11]}
         />
-        <Straight position={[-10, 0, -20]} />
-        <Straight position={[-10, 0, -24]} />
+        <Straight position={[-10, 0, -15]} />
+        <Straight position={[-10, 0, -19]} />
         {/* Right */}
-        <Corner rotation={[0, Math.PI * 1, 0]} position={[5, 0, -12]} />
-        <Junction position={[6, 0, -16]} />
+        <Corner rotation={[0, Math.PI * 1, 0]} position={[5, 0, -7]} />
+        <Junction position={[6, 0, -11]} />
         {/* Left */}
-        <Corner rotation={[0, Math.PI * 0.5, 0]} position={[1, 0, -18]} />
+        <Corner rotation={[0, Math.PI * 0.5, 0]} position={[1, 0, -13]} />
         <Curve
           scale={[-1, 1, 1]}
           rotation={[0, Math.PI, 0]}
-          position={[-1, 0, -22]}
+          position={[-1, 0, -17]}
         />
-        <StraightShort rotation={[0, 0, 0]} position={[-2, 0, -25]} />
-        <Straight position={[-2, 0, -28]} />
+        <StraightShort rotation={[0, 0, 0]} position={[-2, 0, -20]} />
+        <Straight position={[-2, 0, -23]} />
         {/* Right */}
-        <Corner rotation={[0, Math.PI * 1, 0]} position={[11, 0, -18]} />{" "}
+        <Corner rotation={[0, Math.PI * 1, 0]} position={[11, 0, -13]} />{" "}
         <Curve
           rotation={[0, Math.PI, 0]}
-          position={[11, 0, -22]}
+          position={[11, 0, -17]}
           scale={[-1, 1, 1]}
         />
-        <Straight position={[10, 0, -26]} />
+        <Straight position={[10, 0, -21]} />
       </RigidBody>
 
       {/* Dynamic elements based on level config */}
@@ -78,7 +78,7 @@ export default function TrackLevel2() {
         />
       ))}
 
-      <PlatformLevel2 rotation={[0, Math.PI * 1.5, 0]} position={[0, 0, -17]} />
+      <PlatformLevel2 rotation={[0, Math.PI * 1.5, 0]} position={[0, 0, -12]} />
       {/* <BuildingsPlatform
         rotation={[0, Math.PI * 1.5, 0]}
         position={[0.6, 0, -12]}
