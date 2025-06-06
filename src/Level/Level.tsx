@@ -2,6 +2,7 @@ import * as THREE from "three";
 import useGame from "../stores/useGame";
 import TrackLevel1 from "./components/CustomLevel/Tracks/TrackLevel1/TrackLevel1";
 import TrackLevel2 from "./components/CustomLevel/Tracks/TrackLevel2/TrackLevel2";
+import TrackLevel34 from "./components/CustomLevel/Tracks/TrackLevel34/TrackLevel34";
 
 // reusable geometries
 export const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -101,6 +102,8 @@ export default function Level() {
     <>
       {currentLevelId == 1 && <TrackLevel1 />}
       {currentLevelId == 2 && <TrackLevel2 />}
+      {currentLevelId == 3 && <TrackLevel34 />}
+      {currentLevelId == 4 && <TrackLevel34 />}
     </>
   );
 }

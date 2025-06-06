@@ -51,7 +51,7 @@ export default function GameOverScreen() {
           end();
         }
       } else {
-        if (currentLevel.id === 2) {
+        if (currentLevel.id === 4) {
           completeRestart();
           return;
         }
