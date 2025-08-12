@@ -24,7 +24,7 @@
 
 .row {
   display: flex;
-  column-gap: var(--spacing40);
+  column-gap: var(--spacing30);
   row-gap: var(--spacing20);
   flex-wrap: wrap;
 }
@@ -39,7 +39,7 @@
   border-radius: var(--border-radius20);
   color: var(--black);
   font-size: 20px;
-  gap: var(--spacing15);
+  gap: var(--spacing25);
   display: flex;
   :nth-child(1) {
     color: var(--blue);
@@ -63,7 +63,7 @@
   padding: var(--spacing20);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing10);
+  gap: var(--spacing15);
   font-size: 16px;
   p {
     opacity: 0.8;
@@ -77,10 +77,13 @@
 .news {
   display: grid;
   width: 100%;
-  gap: var(--spacing40);
+  gap: var(--spacing30);
   grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
 }
 
+.newsArticleWrapper {
+  border-radius: var(--border-radius15);
+}
 .newsArticle {
   background-color: var(--white);
   border-radius: var(--border-radius15);
@@ -111,6 +114,7 @@
     font-family: var(--font-fatfrank);
     font-weight: 100;
     letter-spacing: 0.5px;
+    padding: 0 3px 3px 3px;
   }
 }
 

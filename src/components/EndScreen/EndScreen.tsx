@@ -99,6 +99,7 @@ export default function EndScreen(): React.ReactElement {
                 className={styles.newsArticle}
                 onClick={() => window.open(article.readMoreLink, "_blank")}
                 key={idx}
+                wrapperClassName="newsArticleWrapper"
               >
                 <div className={styles.image}>
                   <img src={article.imageUrl} alt={article.title} />
