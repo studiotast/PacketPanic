@@ -64,7 +64,7 @@ export const useModels = create<ModelsState>((set, get) => {
         flagAttentionModel: useGLTF(
           "assets/models/house_flag_attention_a01.glb"
         ).scene,
-        platformLevel1Model: useGLTF("assets/models/platform_level1_a02.glb")
+        platformLevel1Model: useGLTF("assets/models/platform_level1_a03.glb")
           .scene,
         platformLevel2Model: useGLTF("assets/models/platform_level2_a03.glb")
           .scene,

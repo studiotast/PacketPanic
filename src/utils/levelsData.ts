@@ -128,7 +128,10 @@ const levelsData: LevelData[] = [
         text: "Wat de beste route is kan tijdens het level veranderen.",
       },
       {
-        text: "Klik op de wegwijzer op de pakketjes een andere kant op te sturen",
+        text: "Beweeg de muis met de linkermuisknop ingedrukt om de camera te draaien.",
+      },
+      {
+        text: "Scroll om in en uit te zoomen.",
       },
     ],
     storyLine: [
@@ -161,11 +164,7 @@ const levelsData: LevelData[] = [
         button: "Eh...",
       },
       {
-        text: "Nee, daar hoef je je geen zorgen over te maken. Dat gebeurt niet. Vast niet...",
-        button: "...",
-      },
-      {
-        text: "In ieder geval niet op je eerste dag... Oké. Dan kom je er wel uit hé. Succes!",
+        text: "Oké. Dan kom je er wel uit hé. Succes!",
         button: "Bedankt...",
       },
     ],
