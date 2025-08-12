@@ -193,7 +193,7 @@ export default function GarageTransition() {
           }}
         >
           <img
-            src="/images/garagedeur_a02.png"
+            src="/images/garagedeur_a03.png"
             alt="Loading transition"
             style={{
               width: "100vw",

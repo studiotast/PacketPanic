@@ -110,8 +110,7 @@ export default function IntroScreen() {
 
   // Split text into paragraphs
   const paragraphs = [
-    "Het internet bestaat uit pakketjes die op weg zijn naar hun eindbestemming. De weg van de pakketjes gaan van router naar router. Vaak gaat de reis over de grenzen van meerdere autonome systemen.",
-    "Pakketjes vertrouwen op het Border Gateway Protocol (BGP) om de beste route te kiezen. Maar het BGP werkt op basis van informatie die het krijgt van andere netwerken, en die informatie is niet altijd correct...",
+    "Iedere seconde zijn miljarden pakketjes op weg naar hun eindbestemming op het internet. Deze stukjes data reizen van router naar router, vaak over de grenzen van meerdere autonome systemen. Ze vertrouwen blind op het Border Gateway Protocol (BGP) om de beste route te kiezen. Maar het BGP werkt op basis van informatie die het krijgt van andere netwerken, en die informatie is niet altijd correct…",
   ];
 
   // Handle button click
@@ -203,26 +202,26 @@ export default function IntroScreen() {
       {
         term: "pakketjes",
         explanation:
-          "Een stukje data dat over het internet reist, zoals een e-mail, een videostream een website of een verzoek om een website te bezoeken.",
-        image: "./assets/images/placeholder.png",
+          "Een pakketje is een stukje data, bijvoorbeeld: een e-mail, een videostream of een verzoek om een website te bezoeken.",
+        image: "./assets/images/tooltips/tooltippakketjes_a02.png",
       },
       {
         term: "router naar router",
         explanation:
-          "Routers zijn apparaten die pakketjes doorsturen binnen en tussen netwerken.",
-        image: "./assets/images/placeholder.png",
+          "Een router stuurt pakketjes door naar de volgende halte op basis van instructies van protocollen zoals het BGP.",
+        image: "./assets/images/tooltips/tooltiprouter_a04.png",
       },
       {
         term: "autonome systemen",
         explanation:
-          "Een autonoom systeem (AS) is een netwerk of verzameling netwerken onder het beheer van één organisatie, zoals een internetprovider of een groot bedrijf.",
-        image: "./assets/images/placeholder.png",
+          "Een autonoom systeem is een verzameling netwerken onder het beheer van één organisatie, zoals een internetprovider of een groot bedrijf.",
+        image: "./assets/images/tooltips/tooltipAS_a02.png",
       },
       {
         term: "Border Gateway Protocol",
         explanation:
-          "Het BGP is het routeringsprotocol dat gebruikt wordt om de beste route te bepalen naar een bestemming die buiten het huidige autonome systeem ligt.",
-        image: "./assets/images/placeholder.png",
+          "Het BGP is het protocol dat gebruikt wordt om de beste route te bepalen naar een bestemming die buiten het huidige autonome systeem ligt",
+        image: "./assets/images/tooltips/tooltipBGP_a02.png",
       },
     ];
 
