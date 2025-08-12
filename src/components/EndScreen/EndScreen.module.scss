@@ -11,11 +11,14 @@
     font-family: var(--font-fatfrank);
     color: var(--white);
     font-size: clamp(2rem, 4vmin, 5rem);
+    font-weight: 100;
   }
 
   h2 {
     font-family: var(--font-fatfrank);
     color: var(--white);
+    font-weight: 100;
+    letter-spacing: 0.5px;
   }
 }
 
@@ -27,7 +30,7 @@
 }
 
 .card {
-  flex: 3;
+  flex: 4;
   background-color: var(--white);
   flex-direction: column;
   font-family: var(--font-karla);
@@ -41,9 +44,14 @@
   :nth-child(1) {
     color: var(--blue);
     font-family: var(--font-fatfrank);
+    font-weight: 100;
+    letter-spacing: 0.5px;
   }
   :nth-child(4) {
     font-weight: var(--font-bold);
+  }
+  p {
+    color: var(--black);
   }
 }
 
@@ -75,8 +83,9 @@
 
 .newsArticle {
   background-color: var(--white);
-  border-radius: var(--border-radius20);
+  border-radius: var(--border-radius15);
   gap: var(--spacing10);
+  padding: var(--spacing10);
 
   .image {
     width: 100%;
@@ -98,7 +107,10 @@
 
   h3 {
     font-size: 1rem;
-    color: var(--black);
+    color: var(--blue);
+    font-family: var(--font-fatfrank);
+    font-weight: 100;
+    letter-spacing: 0.5px;
   }
 }
 

@@ -36,6 +36,7 @@
   /* Border radiuses */
   --border-radius5: 5px;
   --border-radius10: 10px;
+  --border-radius15: 15px;
   --border-radius20: 20px;
   --border-radius-circle: 999px;
 
@@ -94,6 +95,7 @@ body,
 
   borderRadius5: var(--border-radius5);
   borderRadius10: var(--border-radius10);
+  borderRadius15: var(--border-radius15);
   borderRadius20: var(--border-radius20);
   borderRadiusCircle: var(--border-radius-circle);
 

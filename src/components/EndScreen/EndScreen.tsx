@@ -60,7 +60,11 @@ export default function EndScreen(): React.ReactElement {
               Nu weet jij dat ook. Dus help mee om RKPI adoptie naar 100% te
               krijgen.
             </p>
-            <p>Bedankt voor het spelen van Packet Panic.</p>
+            <p>
+              Bedankt voor het spelen van Packet Panic.
+              <br />
+              Packet Panic B.V.
+            </p>
           </div>
           <div className={styles.blueCard}>
             <h2>Wat kun je nu verder doen</h2>
