@@ -10,7 +10,10 @@ interface ModelsState {
   curveModel: THREE.Object3D | null;
   junctionModel: THREE.Object3D | null;
   signModel: THREE.Object3D | null;
-  signPostModel: THREE.Object3D | null;
+  signPostModel2Signs: THREE.Object3D | null;
+  signPostModel3Signs: THREE.Object3D | null;
+  signPostModel4Signs: THREE.Object3D | null;
+  signPostModel5Signs: THREE.Object3D | null;
   buildingsPlatformModel: THREE.Object3D | null;
   houseModel: THREE.Object3D | null;
   flagModel: THREE.Object3D | null;
@@ -31,7 +34,10 @@ export const useModels = create<ModelsState>((set, get) => {
     curveModel: null,
     junctionModel: null,
     signModel: null,
-    signPostModel: null,
+    signPostModel2Signs: null,
+    signPostModel3Signs: null,
+    signPostModel4Signs: null,
+    signPostModel5Signs: null,
     buildingsPlatformModel: null,
     houseModel: null,
     flagModel: null,
@@ -57,7 +63,18 @@ export const useModels = create<ModelsState>((set, get) => {
         curveModel: useGLTF("assets/models/track_curve_a03.glb").scene,
         junctionModel: useGLTF("assets/models/track_junction_a06.glb").scene,
         signModel: useGLTF("assets/models/signpost_sign_a03.glb").scene,
-        signPostModel: useGLTF("assets/models/signpost_pole_a03.glb").scene,
+        signPostModel2Signs: useGLTF(
+          "assets/models/signpost_pole_2signs_a01.glb"
+        ).scene,
+        signPostModel3Signs: useGLTF(
+          "assets/models/signpost_pole_3signs_a01.glb"
+        ).scene,
+        signPostModel4Signs: useGLTF(
+          "assets/models/signpost_pole_4signs_a01.glb"
+        ).scene,
+        signPostModel5Signs: useGLTF(
+          "assets/models/signpost_pole_5signs_a01.glb"
+        ).scene,
         buildingsPlatformModel: useGLTF("assets/models/gebouwen_a01.glb").scene,
         houseModel: useGLTF("assets/models/house_a02.glb").scene,
         flagModel: useGLTF("assets/models/house_flag_a02.glb").scene,

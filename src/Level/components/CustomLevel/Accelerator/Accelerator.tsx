@@ -101,12 +101,12 @@ export default function Accelerator({
           }}
         />
       </group>
-      <SignPost position={[0, -1, 0]} />
+      <SignPost numberOfSigns={currentColors.length} position={[0, -1, 0]} />
       {currentColors.map((color, index) => (
         <Sign
           key={index}
           color={color}
-          position={[0, 4.4 + 1.3 * (index - (colors.length - 1) / 2), 0]}
+          position={[0, 3.8 + 1.3 * index, 0]}
           direction={directions[index]}
           onClick={() => onClickSign(index)}
         />
