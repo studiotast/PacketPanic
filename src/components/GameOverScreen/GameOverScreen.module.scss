@@ -71,6 +71,9 @@
   text-align: center;
   color: var(--white);
   font-family: "FatFrank", sans-serif;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .gameOverNewsContentWrapper {
@@ -112,7 +115,7 @@
 }
 
 .gameOverNewsTitle {
-  font-size: clamp(0.75rem, 2.5vmin, 2.5rem);
+  font-size: clamp(0.75rem, 2.5vmin, 2rem);
   color: var(--blue);
   font-family: "FatFrank", sans-serif;
   text-overflow: ellipsis;
@@ -124,6 +127,9 @@
   color: var(--purple);
   font-family: "Karla", sans-serif;
   font-weight: 800;
+  @media screen and (max-width: 450px) {
+    display: none;
+  }
 }
 
 .gameOverNewsDescriptionContainer {
