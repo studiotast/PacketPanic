@@ -486,6 +486,12 @@ const useGame = create<GameState>()(
           timerActive: false,
           isPaused: false,
         });
+        // clear saved level in localStorage
+        try {
+          localStorage.removeItem("packetPanicSavedLevel");
+        } catch (e) {
+          console.error("Failed to clear saved level from localStorage:", e);
+        }
       },
 
       levelPicker: () => {
