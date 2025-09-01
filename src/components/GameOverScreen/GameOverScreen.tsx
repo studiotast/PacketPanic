@@ -180,7 +180,7 @@ export default function GameOverScreen() {
                 <FontAwesomeIcon icon={faRotate} />
               </Button>
               <Button responsive onClick={handleClick}>
-                {`Naar level ${currentLevel.id + 1} `}
+                {isLastLevel ? "Einde spel" : `Level ${currentLevel.id + 1} `}
                 <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </>
