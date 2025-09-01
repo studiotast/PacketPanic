@@ -7,6 +7,7 @@ import useGame from "../../../../stores/useGame";
 import { ColorConfig } from "../../../../utils/levelsData";
 import useBuildingFlags from "../hooks/useBuildingFlags";
 import Flag from "./components/Flag";
+import FlagAttention from "./components/FlagAttention";
 import House from "./components/House";
 import PlusOneLabel from "./components/PlusOneLabel";
 import MinusLabel, { MinusLabelInfo } from "./MinusLabel";
@@ -27,11 +28,11 @@ export default function Building({
   name,
 }: BuildingProps) {
   const incrementScore = useGame((state) => state.incrementScore);
-  const decrementScore = useGame((state) => state.decrementScore); // Add this line
+  const decrementScore = useGame((state) => state.decrementScore);
   const phase = useGame((state) => state.phase);
+  const currentLevelId = useGame((state) => state.currentLevelId);
   const removeBall = useBalls((state) => state.removeBall);
   const playSound = useGame((state) => state.playSound);
-  const currentLevelId = useGame((state) => state.currentLevelId);
   const incrementBadActorCount = useGame(
     (state) => state.incrementBadActorCount
   );
@@ -96,14 +97,28 @@ export default function Building({
       {currentColors &&
         currentColors.map((colorConfig, i) => {
           const positionFromLeft = 0.8 - i * 0.75;
+          const flagPosition: Vector3 = [0.9, 2, positionFromLeft];
+          const isBadActor =
+            colorConfig.mistakenBadActor || colorConfig.maliciousBadActor;
+
           return (
-            <Flag
-              rotation={[0, Math.PI * 1.5, 0]}
-              key={i}
-              position={[0.9, 2, positionFromLeft]}
-              color={colorConfig.color}
-              isFading={colorConfig.transition || false}
-            />
+            <group key={i}>
+              {/* Conditionally render either FlagAttention (on level 4 for bad actors) or regular Flag */}
+              {currentLevelId === 4 && isBadActor ? (
+                <FlagAttention
+                  rotation={[0, Math.PI * 1.5, 0]}
+                  position={flagPosition}
+                  color={colorConfig.color}
+                />
+              ) : (
+                <Flag
+                  rotation={[0, Math.PI * 1.5, 0]}
+                  position={flagPosition}
+                  color={colorConfig.color}
+                  isFading={colorConfig.transition || false}
+                />
+              )}
+            </group>
           );
         })}
 
