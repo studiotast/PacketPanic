@@ -25,6 +25,8 @@ export default function EndScreen(): React.ReactElement {
   const playSound = useGame((state) => state.playSound);
   const isMuted = useGame((state) => state.isMuted);
 
+  const completeRestart = useGame((state) => state.completeRestart);
+
   useEffect(() => {
     // Play sound when the component mounts
     const sound = playSound("menu");
@@ -110,9 +112,7 @@ export default function EndScreen(): React.ReactElement {
           </div>
         </div>
         <div className={styles.buttons}>
-          <Button onClick={() => window.location.reload()}>
-            Opnieuw spelen
-          </Button>
+          <Button onClick={() => completeRestart()}>Opnieuw spelen</Button>
           <Button color="blue" onClick={() => {}}>
             Interactieve ervaringen
           </Button>
