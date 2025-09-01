@@ -457,6 +457,11 @@ const useGame = create<GameState>()(
           if (phase === "playing" && !isPaused) {
             const newTimer = timer + delta;
 
+            // Check if points limit reached
+            if (state.score >= currentLevel.scoreToAdvance) {
+              return { phase: "ended", timer: newTimer };
+            }
+
             // Check if time limit reached
             if (newTimer >= currentLevel.timeLimit) {
               return { phase: "ended", timer: newTimer };
