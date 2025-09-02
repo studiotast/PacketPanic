@@ -1,6 +1,6 @@
 import { Euler, Vector3 } from "@react-three/fiber";
 import { CuboidCollider } from "@react-three/rapier";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import useBalls from "../../../../stores/useBalls";
 import useGame from "../../../../stores/useGame";
@@ -37,6 +37,18 @@ export default function Building({
     (state) => state.incrementBadActorCount
   );
 
+  // State to track warnings per color
+  const [warningsCount, setWarningsCount] = useState<Record<string, number>>(
+    {}
+  );
+
+  useEffect(() => {
+    // Reset warnings count when the phase changes to anything besides "playing" or "paused"
+    if (phase !== "playing" && phase !== "pause") {
+      setWarningsCount({});
+    }
+  }, [phase, currentLevelId]); // Watch for phase changes
+
   // Get flag state with new ColorConfig format
   const { currentColors } = useBuildingFlags({
     initialColors,
@@ -45,12 +57,13 @@ export default function Building({
 
   const labelsWrapperRef = useRef<any[]>([]);
 
-  function addPlusOneLabel() {
+  function addPlusOneLabel(color: string) {
     const labelId = THREE.MathUtils.generateUUID();
     labelsWrapperRef.current.push(
       <PlusOneLabel
         key={labelId}
         id={labelId}
+        color={color}
         onRemove={(id) => {
           labelsWrapperRef.current = labelsWrapperRef.current.filter(
             (label) => label.props.id !== id
@@ -60,13 +73,21 @@ export default function Building({
     );
   }
 
-  function addMinusLabel(info: MinusLabelInfo) {
+  function addMinusLabel(
+    info: MinusLabelInfo,
+    isWarning = false,
+    warningsExceeded = false
+    color?: string
+  ) {
     const labelId = THREE.MathUtils.generateUUID();
     labelsWrapperRef.current.push(
       <MinusLabel
         key={labelId}
         id={labelId}
         info={info}
+        color={color}
+        isWarning={isWarning} // Pass the warning flag to MinusLabel
+        warningsExceeded={warningsExceeded} // Pass the warningsExceeded flag to MinusLabel
         onRemove={(id) => {
           labelsWrapperRef.current = labelsWrapperRef.current.filter(
             (label) => label.props.id !== id
@@ -159,22 +180,42 @@ export default function Building({
                 colorInfo.isMistakeBadActor ||
                 colorInfo.isMaliciousBadActor
               ) {
-                // This is a bad actor flag - decrement score
-                console.log(
-                  `Score decremented for ${ballColor} ball by ${colorInfo.minusScoreNumber}!`
-                );
-                playSound("failScore"); // Play negative sound
-                addMinusLabel(colorInfo); // Pass true to indicate penalty, need to pass in the amount also
-                decrementScore(colorInfo.minusScoreNumber);
-                if (currentLevelId >= 3) {
-                  // Only increment bad actor count for levels 3 and above
-                  incrementBadActorCount();
+                // This is a bad actor flag - check for warnings
+                const minusAmount = colorInfo.minusScoreNumber;
+                const currentWarnings = warningsCount[ballColor] || 0;
+
+                if (minusAmount > 5 && currentWarnings < 3) {
+                  // Show warning instead of deducting points
+                  console.log(
+                    `Warning ${currentWarnings + 1}/3 for ${ballColor} ball!`
+                  );
+                  playSound("failScore"); // Play warning sound
+                  addMinusLabel(colorInfo, true); // Pass true for isWarning
+
+                  // Increment warning count for this color
+                  setWarningsCount((prev) => ({
+                    ...prev,
+                    [ballColor]: currentWarnings + 1,
+                  }));
+                } else {
+                  // Either minusAmount <= 5 or warnings exceeded, deduct points
+                  console.log(
+                    `Score decremented for ${ballColor} ball by ${minusAmount}!`
+                  );
+                  playSound("failScore"); // Play negative sound
+                  addMinusLabel(colorInfo, false, true, ballColor); // Not a warning, show minus points
+                  decrementScore(minusAmount);
+
+                  if (currentLevelId >= 3) {
+                    // Only increment bad actor count for levels 3 and above
+                    incrementBadActorCount();
+                  }
                 }
               } else {
                 // Normal flag - increment score
                 console.log(`Score incremented for ${ballColor} ball!`);
                 playSound("score");
-                addPlusOneLabel();
+                addPlusOneLabel(ballColor);
                 incrementScore();
               }
             }
