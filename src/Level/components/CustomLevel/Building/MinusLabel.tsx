@@ -18,6 +18,7 @@ interface MinusLabelProps {
   info: MinusLabelInfo; // Optional info prop
   isWarning?: boolean; // Optional warning prop
   warningsExceeded?: boolean; // Optional warningsExceeded prop
+  color?: string; // Optional color prop
 }
 
 export default function MinusLabel({
@@ -26,6 +27,7 @@ export default function MinusLabel({
   info,
   isWarning,
   warningsExceeded,
+  color,
 }: MinusLabelProps) {
   const groupRef = useRef<THREE.Group>(null); // Ref for the group
   const currentLevel = useGame((state) => state.currentLevel); // Get the current level from the store
