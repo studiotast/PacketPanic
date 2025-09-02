@@ -16,22 +16,45 @@ interface MinusLabelProps {
   onRemove: (id: string) => void; // Callback om het label te verwijderen
   number?: number; // Optional number prop
   info: MinusLabelInfo; // Optional info prop
+  isWarning?: boolean; // Optional warning prop
+  warningsExceeded?: boolean; // Optional warningsExceeded prop
 }
 
-export default function MinusLabel({ id, onRemove, info }: MinusLabelProps) {
+export default function MinusLabel({
+  id,
+  onRemove,
+  info,
+  isWarning,
+  warningsExceeded,
+}: MinusLabelProps) {
   const groupRef = useRef<THREE.Group>(null); // Ref for the group
   const currentLevel = useGame((state) => state.currentLevel); // Get the current level from the store
   const notifications = currentLevel?.notifications; // Get notifications from the current level
+  const warnings = currentLevel?.warnings; // Get warnings from the current level
+  const seriousNotifications = currentLevel?.seriousNotifications; // Get serious warnings from the current level
   const [notification, setNotification] = useState<NotificationsData | null>(
     null
   ); // State for the notification
   const [userName, setUserName] = useState<string | null>(null); // State for the username
 
   useEffect(() => {
-    if (notifications)
+    if (notifications && isWarning === false && info.minusScoreNumber <= 5) {
       setNotification(
         notifications[Math.floor(Math.random() * notifications.length)]
       );
+    } else if (warnings && isWarning === true && warningsExceeded === false) {
+      setNotification(warnings[Math.floor(Math.random() * warnings.length)]);
+    } else if (
+      seriousNotifications &&
+      warningsExceeded === true &&
+      info.minusScoreNumber > 5
+    ) {
+      setNotification(
+        seriousNotifications[
+          Math.floor(Math.random() * seriousNotifications.length)
+        ]
+      );
+    }
     setUserName(
       userNamesList[Math.floor(Math.random() * userNamesList.length)]
     ); // Set a random username from the list
@@ -57,7 +80,7 @@ export default function MinusLabel({ id, onRemove, info }: MinusLabelProps) {
       <Html name={id} center wrapperClass="building-label-minus">
         <div className="wrapper">
           <div className="label">
-            <b>- {info?.minusScoreNumber}</b>
+            {isWarning ? <b>!</b> : <b>- {info?.minusScoreNumber}</b>}
           </div>
           <div className="comment">
             <p>{userName}</p>
