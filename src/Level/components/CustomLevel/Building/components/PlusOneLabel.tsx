@@ -6,9 +6,14 @@ import * as THREE from "three";
 interface PlusOneLabelProps {
   id: string;
   onRemove: (id: string) => void; // Callback om het label te verwijderen
+  color?: string; // Optional color prop
 }
 
-export default function PlusOneLabel({ id, onRemove }: PlusOneLabelProps) {
+export default function PlusOneLabel({
+  id,
+  onRemove,
+  color,
+}: PlusOneLabelProps) {
   const groupRef = useRef<THREE.Group>(null); // Ref for the group
 
   useFrame((state, delta) => {
