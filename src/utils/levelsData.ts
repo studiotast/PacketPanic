@@ -218,7 +218,7 @@ const levelsData: LevelData[] = [
     timeLine: {
       scene1: {
         time: 0,
-        spawnRate: 2.5,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -248,7 +248,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene2: {
         time: 15,
-        spawnRate: 2.4,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -286,7 +286,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene3: {
         time: 20,
-        spawnRate: 2.3,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -316,7 +316,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene4: {
         time: 30,
-        spawnRate: 2.2,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -350,7 +350,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene5: {
         time: 35,
-        spawnRate: 2.2,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -378,7 +378,7 @@ const levelsData: LevelData[] = [
       },
       scene6: {
         time: 45,
-        spawnRate: 2.1,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -415,7 +415,7 @@ const levelsData: LevelData[] = [
       },
       scene7: {
         time: 50,
-        spawnRate: 2.1,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -565,7 +565,7 @@ const levelsData: LevelData[] = [
     timeLine: {
       scene1: {
         time: 0,
-        spawnRate: 2.2,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -611,7 +611,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene2: {
         time: 15,
-        spawnRate: 2.1,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -762,7 +762,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene5: {
         time: 35,
-        spawnRate: 1.9,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -813,7 +813,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene6: {
         time: 45,
-        spawnRate: 1.9,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -872,7 +872,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene7: {
         time: 50,
-        spawnRate: 1.9,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -922,7 +922,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene8: {
         time: 60,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -981,7 +981,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene9: {
         time: 65,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1032,7 +1032,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene10: {
         time: 75,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1091,7 +1091,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene11: {
         time: 80,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1342,7 +1342,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene2: {
         time: 15,
-        spawnRate: 1.9,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1415,7 +1415,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene3: {
         time: 20,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1473,7 +1473,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene4: {
         time: 30,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1546,7 +1546,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene5: {
         time: 35,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1607,7 +1607,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene6: {
         time: 45,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1675,7 +1675,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene7: {
         time: 50,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1734,7 +1734,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene8: {
         time: 60,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1799,7 +1799,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene9: {
         time: 65,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1872,7 +1872,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene10: {
         time: 75,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -1932,7 +1932,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene11: {
         time: 80,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2004,7 +2004,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene12: {
         time: 90,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2065,7 +2065,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene13: {
         time: 95,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2136,7 +2136,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene14: {
         time: 105,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2205,7 +2205,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene15: {
         time: 110,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2486,7 +2486,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene2: {
         time: 15,
-        spawnRate: 1.9,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2559,7 +2559,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene3: {
         time: 20,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2617,7 +2617,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene4: {
         time: 30,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2690,7 +2690,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene5: {
         time: 35,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2751,7 +2751,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene6: {
         time: 45,
-        spawnRate: 1.8,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2819,7 +2819,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene7: {
         time: 50,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2878,7 +2878,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene8: {
         time: 60,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -2943,7 +2943,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene9: {
         time: 65,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -3016,7 +3016,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene10: {
         time: 75,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -3076,7 +3076,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene11: {
         time: 80,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -3148,7 +3148,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene12: {
         time: 90,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -3209,7 +3209,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene13: {
         time: 95,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -3280,7 +3280,7 @@ const levelsData: LevelData[] = [
       // ------------- transition scene -----------
       scene14: {
         time: 105,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
@@ -3349,7 +3349,7 @@ const levelsData: LevelData[] = [
       // --------------------------------
       scene15: {
         time: 110,
-        spawnRate: 1.7,
+        spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
