@@ -17,6 +17,8 @@ export interface LevelData {
   newsArticle?: NewsArticle;
   scoreScreen: ScoreScreen[];
   notifications?: NotificationsData[];
+  warnings?: NotificationsData[];
+  seriousNotifications?: NotificationsData[];
   trackConfig: {
     accelerators: AcceleratorConfig[];
     buildings: BuildingConfig[];
@@ -1149,16 +1151,38 @@ const levelsData: LevelData[] = [
     description: "Direct the colored packets to their matching buildings!",
     notifications: [
       {
-        text: "YouTube is niet bereikbaar.",
-      },
-      {
-        text: "Krijg foutmelding bij YouTube.",
-      },
-      {
-        text: "Kan YouTube niet laden.",
+        text: "Kan de website niet laden.",
       },
       {
         text: "Website niet bereikbaar.",
+      },
+    ],
+    seriousNotifications: [
+      {
+        text: "Mijn crypto is verdwenen door deze nepwebsite!",
+      },
+      {
+        text: "Mijn digitale munten zijn weg! Dit was een scam!",
+      },
+      {
+        text: "Ik ben opgelicht! Al mijn crypto is verdwenen!",
+      },
+      {
+        text: "Mijn crypto is weg! Dit was een nepwebsite!",
+      },
+    ],
+    warnings: [
+      {
+        text: "Let op, deze site lijkt onveilig!",
+      },
+      {
+        text: "Waarschuwing: Website niet helemaal oké.",
+      },
+      {
+        text: "De website komt niet helemaal betrouwbaar over.",
+      },
+      {
+        text: "Deze website lijkt verdacht.",
       },
     ],
     tutorial: [
@@ -2273,16 +2297,38 @@ const levelsData: LevelData[] = [
     description: "Direct the colored packets to their matching buildings!",
     notifications: [
       {
-        text: "YouTube is niet bereikbaar.",
-      },
-      {
-        text: "Krijg foutmelding bij YouTube.",
-      },
-      {
-        text: "Kan YouTube niet laden.",
+        text: "Kan de website niet laden.",
       },
       {
         text: "Website niet bereikbaar.",
+      },
+    ],
+    seriousNotifications: [
+      {
+        text: "Mijn crypto is verdwenen door deze nepwebsite!",
+      },
+      {
+        text: "Mijn digitale munten zijn weg! Dit was een scam!",
+      },
+      {
+        text: "Ik ben opgelicht! Al mijn crypto is verdwenen!",
+      },
+      {
+        text: "Mijn crypto is weg! Dit was een nepwebsite!",
+      },
+    ],
+    warnings: [
+      {
+        text: "Let op, deze site lijkt onveilig!",
+      },
+      {
+        text: "Waarschuwing: Website niet helemaal oké.",
+      },
+      {
+        text: "De website komt niet helemaal betrouwbaar over.",
+      },
+      {
+        text: "Deze website lijkt verdacht.",
       },
     ],
     tutorial: [
