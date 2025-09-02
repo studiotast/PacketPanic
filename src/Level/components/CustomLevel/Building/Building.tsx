@@ -76,7 +76,7 @@ export default function Building({
   function addMinusLabel(
     info: MinusLabelInfo,
     isWarning = false,
-    warningsExceeded = false
+    warningsExceeded = false,
     color?: string
   ) {
     const labelId = THREE.MathUtils.generateUUID();
