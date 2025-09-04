@@ -174,12 +174,12 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Lekker gewerkt zeg! Maar zonder mijn hulp was het natuurlijk niet gelukt. Toch?”",
+          "Lekker gewerkt zeg! Maar zonder mijn hulp was het natuurlijk niet gelukt. Toch?",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Dat is ook een manier om het te doen. Maar niet de goede. Blijkbaar was het toch niet zo simpel...”",
+          "Dat is ook een manier om het te doen. Maar niet de goede. Blijkbaar was het toch niet zo simpel...",
       },
     ],
     newsArticle: {
@@ -494,12 +494,12 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Yes! Gelukt. Wat zijn we toch een fantastisch team! Vind je ook niet?”",
+          "Yes! Gelukt. Wat zijn we toch een fantastisch team! Vind je ook niet?",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Helaas pindakaas... Maar we geven de moed niet op en proberen het gewoon nog een keer. Toch? Toch?”",
+          "Helaas pindakaas... Maar we geven de moed niet op en proberen het gewoon nog een keer. Toch? Toch?",
       },
     ],
     newsArticle: {
@@ -1224,12 +1224,12 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Wauw, je bent hier goed in. Daar zou je iets mee moeten doen. Verkeersleider. Of pakketjesbezorger!”",
+          "Wauw, je bent hier goed in. Daar zou je iets mee moeten doen. Verkeersleider. Of pakketjesbezorger!",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Oh jee... Volgens mij heb je het internet kapotgemaakt. Wil je misschien even een momentje voor jezelf?”",
+          "Oh jee... Volgens mij heb je het internet kapotgemaakt. Wil je misschien even een momentje voor jezelf?",
       },
     ],
     newsArticle: {
@@ -2390,12 +2390,12 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.”",
+          "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.”",
+          "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
       },
     ],
     newsArticle: {
