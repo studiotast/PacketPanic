@@ -9,8 +9,8 @@ import useBuildingFlags from "../hooks/useBuildingFlags";
 import Flag from "./components/Flag";
 import FlagAttention from "./components/FlagAttention";
 import House from "./components/House";
-import PlusOneLabel from "./components/PlusOneLabel";
-import MinusLabel, { MinusLabelInfo } from "./MinusLabel";
+import PlusOneLabel from "./components/PlusOneLabel/PlusOneLabel";
+import MinusLabel, { MinusLabelInfo } from "./components/MinusLabel/MinusLabel";
 
 interface BuildingProps {
   position?: Vector3;

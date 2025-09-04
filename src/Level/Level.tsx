@@ -61,6 +61,14 @@ triangleGeometry.setAttribute(
 triangleGeometry.setIndex(indices);
 triangleGeometry.computeVertexNormals(); // Compute normals for shading
 
+export const yellow = "#FFB03D";
+export const pink = "#FFB5ED";
+export const blue = "#7385E7";
+export const green = "#81F561";
+export const red = "#EE6383";
+export const magenta = "#FF61D7";
+export const purple = "#B19BFF";
+
 // reusable materials
 export const beigeMaterial = new THREE.MeshStandardMaterial({
   color: "#EBD8BD",

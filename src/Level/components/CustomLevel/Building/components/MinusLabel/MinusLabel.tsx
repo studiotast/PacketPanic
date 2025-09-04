@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { NotificationsData } from "@utils/levelsData";
 import { userNamesList } from "@utils/userNamesList";
+import styles from "./MinusLabel.module.scss";
 import { getColor } from "@/utils/getColor";
 
 export type MinusLabelInfo = {
