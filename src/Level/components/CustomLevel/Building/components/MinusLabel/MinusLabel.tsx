@@ -81,17 +81,18 @@ export default function MinusLabel({
 
   return (
     <group ref={groupRef} position={[0, 3, 0]}>
-      <Html
-        name={id}
-        style={{ color: getColor(color ? color : "blue") }}
-        center
-        wrapperClass={styles.buildingLabelMinus}
-      >
+      <Html name={id} center wrapperClass={styles.buildingLabelMinus}>
         <div className={styles.wrapper}>
-          <div className={styles.label}>
+          <div
+            style={{ color: getColor(color ? color : "blue") }}
+            className={styles.label}
+          >
             {isWarning ? <b>!</b> : <b>- {info?.minusScoreNumber}</b>}
           </div>
-          <div className={styles.comment}>
+          <div
+            className={styles.comment}
+            style={{ color: getColor(color ? color : "blue") }}
+          >
             <p>{userName}</p>
             <p>{notification?.text}</p>
           </div>
