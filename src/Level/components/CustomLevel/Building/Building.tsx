@@ -190,7 +190,7 @@ export default function Building({
                     `Warning ${currentWarnings + 1}/3 for ${ballColor} ball!`
                   );
                   playSound("failScore"); // Play warning sound
-                  addMinusLabel(colorInfo, true); // Pass true for isWarning
+                  addMinusLabel(colorInfo, true, false, ballColor); // Pass true for isWarning
 
                   // Increment warning count for this color
                   setWarningsCount((prev) => ({
