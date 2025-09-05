@@ -127,7 +127,7 @@ const levelsData: LevelData[] = [
         text: "De vlaggetjes geven aan wat de beste route is volgens het BGP.",
       },
       {
-        text: "Wat de beste route is kan tijdens het level veranderen.",
+        text: "Wat de beste route is kan tijdens het level veranderen. Nieuwe vlaggetjes geven de nieuwe route aan, de oude worden doorzichtig en verdwijnen vervolgens.",
       },
       {
         text: "Beweeg de muis met de linkermuisknop ingedrukt om de camera te draaien.",
