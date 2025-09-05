@@ -192,8 +192,8 @@ const levelsData: LevelData[] = [
       date: "22-8-2015",
     },
     trackConfig: {
-      cameraStartLookAt: new THREE.Vector3(0, 0, -13),
-      cameraStartPosition: [35, 25, 15],
+      cameraStartLookAt: new THREE.Vector3(0, 0, -12),
+      cameraStartPosition: [34, 27, 15],
       accelerators: [
         {
           position: [0, 1, -14],
@@ -512,8 +512,8 @@ const levelsData: LevelData[] = [
       date: "24-3-2008",
     },
     trackConfig: {
-      cameraStartLookAt: new THREE.Vector3(0, 0, -13),
-      cameraStartPosition: [35, 25, 15],
+      cameraStartLookAt: new THREE.Vector3(0, 0, -10),
+      cameraStartPosition: [35, 30, 15],
       accelerators: [
         {
           position: [0, 1, -7],

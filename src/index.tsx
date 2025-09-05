@@ -59,7 +59,7 @@ function App() {
 
   return (
     <>
-      <div
+      {/* <div
         className={`top-right-buttons ${
           isPaused || phase === "intro" || phase === "gameFinished"
             ? "inset"
@@ -68,7 +68,7 @@ function App() {
       >
         {phase === "playing" && !isTransitioning && <PauseButton />}
         <MuteButton />
-      </div>
+      </div> */}
       <Leva collapsed hidden />
       <GarageTransition />
       {phase === "intro" ? (
@@ -95,11 +95,11 @@ function App() {
           >
             <Experience />
           </Canvas>
-          {!isPaused && (
+          {/* {!isPaused && (
             <>
               <Interface />
             </>
-          )}
+          )} */}
         </>
       )}
     </>
