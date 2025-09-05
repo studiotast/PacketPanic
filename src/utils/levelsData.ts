@@ -127,13 +127,13 @@ const levelsData: LevelData[] = [
         text: "De vlaggetjes geven aan wat de beste route is volgens het BGP.",
       },
       {
-        text: "Wat de beste route is kan tijdens het level veranderen.",
+        text: "Wat de beste route is kan tijdens het level veranderen. Nieuwe vlaggetjes geven de nieuwe route aan, de oude worden doorzichtig en verdwijnen vervolgens.",
       },
       {
         text: "Beweeg de muis met de linkermuisknop ingedrukt om de camera te draaien.",
       },
       {
-        text: "Scroll om in en uit te zoomen.",
+        text: "Scroll met je muiswiel om in en uit te zoomen.",
       },
     ],
     storyLine: [
@@ -174,12 +174,12 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Lekker gewerkt zeg! Maar zonder mijn hulp was het natuurlijk niet gelukt. Toch?”",
+          "Lekker gewerkt zeg! Maar zonder mijn hulp was het natuurlijk niet gelukt. Toch?",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Dat is ook een manier om het te doen. Maar niet de goede. Blijkbaar was het toch niet zo simpel...”",
+          "Dat is ook een manier om het te doen. Maar niet de goede. Blijkbaar was het toch niet zo simpel...",
       },
     ],
     newsArticle: {
@@ -192,8 +192,8 @@ const levelsData: LevelData[] = [
       date: "22-8-2015",
     },
     trackConfig: {
-      cameraStartLookAt: new THREE.Vector3(0, 0, -13),
-      cameraStartPosition: [35, 25, 15],
+      cameraStartLookAt: new THREE.Vector3(0, 0, -12),
+      cameraStartPosition: [34, 27, 15],
       accelerators: [
         {
           position: [0, 1, -14],
@@ -494,12 +494,12 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Yes! Gelukt. Wat zijn we toch een fantastisch team! Vind je ook niet?”",
+          "Yes! Gelukt. Wat zijn we toch een fantastisch team! Vind je ook niet?",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Helaas pindakaas... Maar we geven de moed niet op en proberen het gewoon nog een keer. Toch? Toch?”",
+          "Helaas pindakaas... Maar we geven de moed niet op en proberen het gewoon nog een keer. Toch? Toch?",
       },
     ],
     newsArticle: {
@@ -512,8 +512,8 @@ const levelsData: LevelData[] = [
       date: "24-3-2008",
     },
     trackConfig: {
-      cameraStartLookAt: new THREE.Vector3(0, 0, -13),
-      cameraStartPosition: [35, 25, 15],
+      cameraStartLookAt: new THREE.Vector3(0, 0, -10),
+      cameraStartPosition: [35, 30, 15],
       accelerators: [
         {
           position: [0, 1, -7],
@@ -1224,12 +1224,12 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Wauw, je bent hier goed in. Daar zou je iets mee moeten doen. Verkeersleider. Of pakketjesbezorger!”",
+          "Wauw, je bent hier goed in. Daar zou je iets mee moeten doen. Verkeersleider. Of pakketjesbezorger!",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Oh jee... Volgens mij heb je het internet kapotgemaakt. Wil je misschien even een momentje voor jezelf?”",
+          "Oh jee... Volgens mij heb je het internet kapotgemaakt. Wil je misschien even een momentje voor jezelf?",
       },
     ],
     newsArticle: {
@@ -2390,12 +2390,12 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.”",
+          "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.”",
+          "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
       },
     ],
     newsArticle: {

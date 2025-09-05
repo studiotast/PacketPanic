@@ -5,6 +5,8 @@ import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { NotificationsData } from "@utils/levelsData";
 import { userNamesList } from "@utils/userNamesList";
+import styles from "./MinusLabel.module.scss";
+import { getColor } from "@/utils/getColor";
 
 export type MinusLabelInfo = {
   isMistakeBadActor: boolean;
@@ -79,13 +81,18 @@ export default function MinusLabel({
 
   return (
     <group ref={groupRef} position={[0, 3, 0]}>
-      <Html name={id} center wrapperClass="building-label-minus">
-        <div className="wrapper">
-          <div className="label">
+      <Html name={id} center wrapperClass={styles.buildingLabelMinus}>
+        <div className={styles.wrapper}>
+          <div
+            style={{ color: getColor(color ? color : "blue") }}
+            className={styles.label}
+          >
             {isWarning ? <b>!</b> : <b>- {info?.minusScoreNumber}</b>}
           </div>
-          <div className="comment">
-            <p>{userName}</p>
+          <div className={styles.comment}>
+            <p style={{ color: getColor(color ? color : "blue") }}>
+              {userName}
+            </p>
             <p>{notification?.text}</p>
           </div>
         </div>

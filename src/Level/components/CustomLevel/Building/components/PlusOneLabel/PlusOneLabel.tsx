@@ -2,6 +2,8 @@ import { Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
+import styles from "./PlusOneLabel.module.scss";
+import { getColor } from "@/utils/getColor";
 
 interface PlusOneLabelProps {
   id: string;
@@ -31,9 +33,15 @@ export default function PlusOneLabel({
     return () => clearTimeout(timeout); // Opruimen bij unmount
   }, [id, onRemove]);
 
+  console.log(color);
   return (
     <group ref={groupRef} position={[0, 3, 0]}>
-      <Html name={id} center wrapperClass="building-label">
+      <Html
+        name={id}
+        style={{ color: getColor(color ? color : "blue") }}
+        center
+        wrapperClass={styles.buildingLabel}
+      >
         <b>+ 1</b>
       </Html>
     </group>
