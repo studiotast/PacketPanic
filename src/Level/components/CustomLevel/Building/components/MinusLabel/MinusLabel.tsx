@@ -89,11 +89,10 @@ export default function MinusLabel({
           >
             {isWarning ? <b>!</b> : <b>- {info?.minusScoreNumber}</b>}
           </div>
-          <div
-            className={styles.comment}
-            style={{ color: getColor(color ? color : "blue") }}
-          >
-            <p>{userName}</p>
+          <div className={styles.comment}>
+            <p style={{ color: getColor(color ? color : "blue") }}>
+              {userName}
+            </p>
             <p>{notification?.text}</p>
           </div>
         </div>
