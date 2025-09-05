@@ -133,7 +133,7 @@ const levelsData: LevelData[] = [
         text: "Beweeg de muis met de linkermuisknop ingedrukt om de camera te draaien.",
       },
       {
-        text: "Scroll om in en uit te zoomen.",
+        text: "Scroll met je muiswiel om in en uit te zoomen.",
       },
     ],
     storyLine: [
