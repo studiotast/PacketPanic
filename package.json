@@ -33,6 +33,7 @@
     "r3f-perf": "^7.2.3",
     "react": "18.3",
     "react-dom": "18.3",
+    "react-router-dom": "^6.30.1",
     "three": "^0.166.1",
     "tippy.js": "^6.3.7",
     "vercel": "^41.2.2",
