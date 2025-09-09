@@ -256,11 +256,11 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "red",
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "red",
+                transition: true,
               },
             ],
           },
@@ -268,11 +268,11 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "blue",
-                transition: true,
+                color: "red",
               },
               {
-                color: "red",
+                color: "blue",
+                transition: true,
               },
             ],
           },
@@ -721,11 +721,11 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "green",
-                transition: true,
+                color: "yellow",
               },
               {
-                color: "yellow",
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -827,11 +827,11 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "yellow",
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "yellow",
+                transition: true,
               },
             ],
           },
@@ -945,6 +945,12 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
+                color: "yellow",
+              },
+              {
+                color: "blue",
+              },
+              {
                 color: "red",
                 mistakenBadActor: true,
                 minusScoreNumber: 3,
@@ -952,12 +958,6 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
                 transition: true,
-              },
-              {
-                color: "yellow",
-              },
-              {
-                color: "blue",
               },
             ],
           },
@@ -1058,13 +1058,12 @@ const levelsData: LevelData[] = [
                 mistakenBadActor: true,
                 minusScoreNumber: 3,
               },
-
+              {
+                color: "blue",
+              },
               {
                 color: "yellow",
                 transition: true,
-              },
-              {
-                color: "blue",
               },
             ],
           },
@@ -1615,11 +1614,11 @@ const levelsData: LevelData[] = [
                 color: "green",
               },
               {
-                color: "blue",
-                transition: true,
+                color: "yellow",
               },
               {
-                color: "yellow",
+                color: "blue",
+                transition: true,
               },
             ],
           },
@@ -1743,13 +1742,13 @@ const levelsData: LevelData[] = [
             name: "Building4",
             colors: [
               {
+                color: "blue",
+              },
+              {
                 color: "red",
                 mistakenBadActor: true,
                 minusScoreNumber: 10,
                 transition: true,
-              },
-              {
-                color: "blue",
               },
             ],
           },
@@ -1843,13 +1842,13 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "green",
-                transition: true,
-              },
-              {
                 color: "yellow",
                 mistakenBadActor: true,
                 minusScoreNumber: 10,
+              },
+              {
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -1974,11 +1973,11 @@ const levelsData: LevelData[] = [
             name: "Building3",
             colors: [
               {
-                color: "red",
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "red",
+                transition: true,
               },
               {
                 color: "green",
@@ -2078,11 +2077,11 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "green",
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -2090,13 +2089,13 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
+                color: "green",
+              },
+              {
                 color: "yellow",
                 mistakenBadActor: true,
                 minusScoreNumber: 10,
                 transition: true,
-              },
-              {
-                color: "green",
               },
             ],
           },
@@ -2663,11 +2662,11 @@ const levelsData: LevelData[] = [
                 color: "green",
               },
               {
-                color: "blue",
-                transition: true,
+                color: "yellow",
               },
               {
-                color: "yellow",
+                color: "blue",
+                transition: true,
               },
             ],
           },
@@ -2791,13 +2790,13 @@ const levelsData: LevelData[] = [
             name: "Building4",
             colors: [
               {
+                color: "blue",
+              },
+              {
                 color: "red",
                 mistakenBadActor: true,
                 minusScoreNumber: 10,
                 transition: true,
-              },
-              {
-                color: "blue",
               },
             ],
           },
@@ -2891,13 +2890,13 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "green",
-                transition: true,
-              },
-              {
                 color: "yellow",
                 mistakenBadActor: true,
                 minusScoreNumber: 10,
+              },
+              {
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -3022,11 +3021,11 @@ const levelsData: LevelData[] = [
             name: "Building3",
             colors: [
               {
-                color: "red",
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "red",
+                transition: true,
               },
               {
                 color: "green",
@@ -3126,11 +3125,11 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "green",
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -3138,13 +3137,13 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
+                color: "green",
+              },
+              {
                 color: "yellow",
                 mistakenBadActor: true,
                 minusScoreNumber: 10,
                 transition: true,
-              },
-              {
-                color: "green",
               },
             ],
           },
@@ -3152,13 +3151,13 @@ const levelsData: LevelData[] = [
             name: "Building3",
             colors: [
               {
+                color: "yellow",
+              },
+              {
                 color: "blue",
                 mistakenBadActor: true,
                 minusScoreNumber: 3,
                 transition: true,
-              },
-              {
-                color: "yellow",
               },
             ],
           },
