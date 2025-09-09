@@ -40,16 +40,14 @@ export default function Experience() {
 
     // Start appropriate sounds for the new phase
     if (phase === "explanation" || phase === "tutorial" || phase === "ended") {
-      // play menu music
+      // Play menu music (Howler.js handles looping automatically based on sound config)
       if (!isMuted) {
-        const menuSound = playSound("menu");
-        if (menuSound) menuSound.loop = true;
+        playSound("menu");
       }
     } else if (phase === "playing") {
       // Playing phase - start level music
       if (!isPaused && !isMuted) {
-        const levelSound = playSound("level");
-        if (levelSound) levelSound.loop = true;
+        playSound("level");
       }
     }
 
@@ -58,26 +56,26 @@ export default function Experience() {
   }, [phase, isPaused, playSound, stopSound, isMuted]);
 
   // set camera position and look at
-  const currentLevel = useGame((state) => state.currentLevel); // Haal de huidige levelconfig op
-  const controls = useThree((state) => state.controls); // Haal de OrbitControls op
-  const { camera } = useThree(); // Haal de camera op
+  const currentLevel = useGame((state) => state.currentLevel);
+  const controls = useThree((state) => state.controls);
+  const { camera } = useThree();
 
   useEffect(() => {
     if (currentLevel?.trackConfig) {
       const { cameraStartPosition, cameraStartLookAt } =
         currentLevel.trackConfig;
 
-      // Stel de camera-positie in
+      // Set camera position
       camera.position.set(
         cameraStartPosition[0],
         cameraStartPosition[1],
         cameraStartPosition[2]
       );
 
-      // Stel de target van OrbitControls in
+      // Set OrbitControls target
       if (controls) {
         controls.target.set(...cameraStartLookAt);
-        controls.update(); // Update de controls
+        controls.update();
       }
     }
   }, [camera, controls, currentLevel]);
@@ -87,10 +85,7 @@ export default function Experience() {
       <ambientLight intensity={1.6} />
       <directionalLight intensity={1.5} position={[10, 10, 10]} />
       {/* <Perf position="bottom-left" /> */}
-      <OrbitControls
-        // target={[0, 0, -13]}
-        makeDefault
-      />
+      <OrbitControls makeDefault />
       <color args={["#A2BDFC"]} attach="background" />
       <Physics
         gravity={[0, -10, -0.2]}

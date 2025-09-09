@@ -16,7 +16,6 @@ import levelsData from "../../utils/levelsData.ts";
 import styles from "./IntroScreen.module.scss";
 import LeftCornerPiece from "../CornerPiece/LeftCornerPiece.tsx";
 import RightCornerPiece from "../CornerPiece/RightCornerPiece.tsx";
-import { useModels } from "@/stores/useModels.ts";
 import { useGLTF } from "@react-three/drei";
 
 // Tooltip component for interactive terms
@@ -34,10 +33,10 @@ const InteractiveTerm: React.FC<InteractiveTermProps> = ({
   <Tippy
     content={
       <div className={styles.tooltipContent}>
+        <div className={styles.tooltipText}>{explanation}</div>
         {image && (
           <img src={image} alt={term} className={styles.tooltipImage} />
         )}
-        <div className={styles.tooltipText}>{explanation}</div>
       </div>
     }
     animation="scale"
@@ -76,7 +75,9 @@ export default function IntroScreen() {
   const getSavedLevelId = useGame((state) => state.getSavedLevelId);
   const [page, setPage] = useState(0);
   const playSound = useGame((state) => state.playSound);
+  const stopSound = useGame((state) => state.stopSound);
   const isMuted = useGame((state) => state.isMuted);
+
   // Check if there's a saved game on mount
   const [savedGame, setSavedGame] = useState(false);
   const [savedLevel, setSavedLevel] = useState<{
@@ -118,17 +119,16 @@ export default function IntroScreen() {
   };
 
   useEffect(() => {
-    // Play sound when the component mounts
-    const sound = playSound("menu");
+    // Play menu sound when the component mounts
+    if (!isMuted) {
+      playSound("menu");
+    }
 
     // Return cleanup function to stop sound on unmount
     return () => {
-      if (sound) {
-        sound.pause();
-        sound.currentTime = 0;
-      }
+      stopSound("menu");
     };
-  }, [playSound, isMuted, page]);
+  }, [playSound, stopSound, isMuted]);
 
   // Split text into paragraphs
   const paragraphs = [
@@ -157,9 +157,8 @@ export default function IntroScreen() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8, // Duur van de animatie
+        duration: 0.8,
         ease: "easeInOut",
-        // delay: 0.2, // Vertraging van 1 seconde
       },
     },
     exit: {
@@ -199,9 +198,8 @@ export default function IntroScreen() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1, // Duur van de animatie
+        duration: 1,
         ease: "easeInOut",
-        // delay: 0.2, // Vertraging van 1 seconde
       },
     },
     exit: {
@@ -271,7 +269,7 @@ export default function IntroScreen() {
         // Add the interactive term
         parts.push(
           <InteractiveTerm
-            key={`term-${index}`}
+            key={`term-${index}-${foundPos}`}
             term={foundTerm.term}
             explanation={foundTerm.explanation}
             image={foundTerm.image}
