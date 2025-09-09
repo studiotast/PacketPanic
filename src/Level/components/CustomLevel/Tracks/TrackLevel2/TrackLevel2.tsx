@@ -79,10 +79,6 @@ export default function TrackLevel2() {
       ))}
 
       <PlatformLevel2 rotation={[0, Math.PI * 1.5, 0]} position={[0, 0, -12]} />
-      {/* <BuildingsPlatform
-        rotation={[0, Math.PI * 1.5, 0]}
-        position={[0.6, 0, -12]}
-      /> */}
     </group>
   );
 }

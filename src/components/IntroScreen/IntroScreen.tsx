@@ -62,7 +62,6 @@ export default function IntroScreen() {
     useGLTF.preload("assets/models/signpost_pole_3signs_a01.glb");
     useGLTF.preload("assets/models/signpost_pole_4signs_a01.glb");
     useGLTF.preload("assets/models/signpost_pole_5signs_a01.glb");
-    useGLTF.preload("assets/models/gebouwen_a01.glb");
     useGLTF.preload("assets/models/house_a02.glb");
     useGLTF.preload("assets/models/house_flag_a02.glb");
     useGLTF.preload("assets/models/house_flag_attention_a01.glb");
