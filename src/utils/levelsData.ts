@@ -2235,59 +2235,79 @@ const levelsData: LevelData[] = [
     ],
     tutorial: [
       {
-        text: "Vermijd strafpunten! Leidt het verkeer om zodra je ziet dat verkeer niet aankomt bij een nieuwe route.",
+        text: "Een uitroepteken geeft aan dat de route niet betrouwbaar is, vermijdt deze routes.",
       },
     ],
     storyLine: [
       {
-        text: "Eén klein foutje...",
+        text: "Ik heb een nieuwshamburger voor je: slecht nieuws, goed nieuws en slecht nieuws.",
         button: "...",
       },
       {
-        text: "YouTube urenlang onbereikbaar.",
+        text: "Welke wil je eerst?",
+        button: "Goed nieuws",
+      },
+      {
+        text: "Ik begin toch met het slechte nieuws.",
         button: "...",
       },
       {
-        text: "Nouja, gelukkig was het niet onze schuld! Go team Packet Panic!",
-        button: "YEAH!",
+        text: "Het is zeer waarschijnlijk dat er veel minder crypto was gestolen als wij wat sneller hadden gereageerd.",
+        button: "Oh, balen...",
       },
       {
-        text: "Maar ontevreden klanten zijn wel een probleem.",
+        text: "Het goede nieuws is dat ik gelijk actie heb ondernomen: vanaf nu hebben we veel betere beveiliging in ons autonome systeem",
+        button: "En het laatste slechte nieuws?",
+      },
+      {
+        text: "Oh ja, het belangrijkste nieuws...",
         button: "...",
       },
       {
-        text: "Dus als je merkt dat BGP het bij het verkeerde eind heeft.",
+        text: "Je werk wordt een stuk minder interessant. Saai, zou ik wel durven zeggen.",
         button: "...",
       },
       {
-        text: "Negeer de vlaggetjes en stuur het verkeer via een andere route.",
-        button: "Oké!",
+        text: "Ze zitten er zelfs aan te denken het bedrijf een nieuwe naam te geven: CalmConnect",
+        button: "...",
       },
       {
-        text: "Go get 'm tiger!",
-        button: "RAAAWR!",
+        text: "Dus ik heb m'n ontslag ingediend. ",
+        button: "Oh, nee!",
+      },
+      {
+        text: "Als ik geen paniek meer kan zaaien, zet ik mijn diensten liever ergens anders in.",
+        button: "Ik ga je missen, baas!",
+      },
+      {
+        text: "Zeg maar D.I.R.K., ik ben je baas niet meer...",
+        button: ":(",
+      },
+      {
+        text: "See you later, alligator!",
+        button: "In a while, crocodile!",
       },
     ],
     scoreScreen: [
       {
         title: "Level gehaald!",
         description:
-          "Wauw, je bent hier goed in. Daar zou je iets mee moeten doen. Verkeersleider. Of pakketjesbezorger!",
+          "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "Oh jee... Volgens mij heb je het internet kapotgemaakt. Wil je misschien even een momentje voor jezelf?",
+          "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
       },
     ],
     newsArticle: {
-      title: "$235,000 aan cryptocurrency gestolen door BGP-hijack",
+      title: "RKPI: een veiliger BGP binnen handbereik",
       content:
-        "In september 2022 leidde een fout bij Amazon tot de diefstal van 235.000 dollar aan cryptocurrency. Verkeer werd omgeleid naar een nepwebsite die eruitzag als een legitieme cryptocurrency-dienst, waar hackers de bezoekers hun crypto afhandig maakten.",
-      imageUrl: "/images/news/4.jpg",
+        "RPKI gebruikt digitale handtekeningen om BGP-routes te verifiëren. Routers controleren of de handtekeningen kloppen; zo niet, wordt de route verworpen, wat aanvallen en vergissingen voorkomt.",
+      imageUrl: "/images/news/4.png",
       readMoreLink:
-        "https://arstechnica.com/information-technology/2022/09/how-3-hours-of-inaction-from-amazon-cost-cryptocurrency-holders-235000/",
-      date: "23-9-2022",
+        "https://www.sidn.nl/nieuws-en-blogs/rpki-beveiligt-internet-routeringssysteem-bgp",
+      date: "24-10-2022",
     },
     trackConfig: {
       cameraStartLookAt: new THREE.Vector3(0, 0, -13),
