@@ -166,11 +166,11 @@ export default function Building({
 
             const ballColor = ballParts[1];
 
-            console.log(
-              `Ball collision detected: ${ballColor}. Building accepts: ${acceptedColors.join(
-                ","
-              )}`
-            );
+            // console.log(
+            //   `Ball collision detected: ${ballColor}. Building accepts: ${acceptedColors.join(
+            //     ","
+            //   )}`
+            // );
 
             // Check if this building accepts this ball color
             if (acceptedColors.includes(ballColor)) {
@@ -186,9 +186,9 @@ export default function Building({
 
                 if (minusAmount > 5 && currentWarnings < 3) {
                   // Show warning instead of deducting points
-                  console.log(
-                    `Warning ${currentWarnings + 1}/3 for ${ballColor} ball!`
-                  );
+                  // console.log(
+                  //   `Warning ${currentWarnings + 1}/3 for ${ballColor} ball!`
+                  // );
                   playSound("failScore"); // Play warning sound
                   addMinusLabel(colorInfo, true, false, ballColor); // Pass true for isWarning
 
@@ -199,9 +199,9 @@ export default function Building({
                   }));
                 } else {
                   // Either minusAmount <= 5 or warnings exceeded, deduct points
-                  console.log(
-                    `Score decremented for ${ballColor} ball by ${minusAmount}!`
-                  );
+                  // console.log(
+                  //   `Score decremented for ${ballColor} ball by ${minusAmount}!`
+                  // );
                   playSound("failScore"); // Play negative sound
                   addMinusLabel(colorInfo, false, true, ballColor); // Not a warning, show minus points
                   decrementScore(minusAmount);
@@ -213,7 +213,7 @@ export default function Building({
                 }
               } else {
                 // Normal flag - increment score
-                console.log(`Score incremented for ${ballColor} ball!`);
+                // console.log(`Score incremented for ${ballColor} ball!`);
                 playSound("score");
                 addPlusOneLabel(ballColor);
                 incrementScore();

@@ -33,7 +33,7 @@ export default function PlusOneLabel({
     return () => clearTimeout(timeout); // Opruimen bij unmount
   }, [id, onRemove]);
 
-  console.log(color);
+  // console.log(color);
   return (
     <group ref={groupRef} position={[0, 3, 0]}>
       <Html

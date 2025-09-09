@@ -348,7 +348,7 @@ const useGame = create<GameState>()(
             "packetPanicSavedLevel",
             currentLevelId.toString()
           );
-          console.log("Saved level:", currentLevelId);
+          // console.log("Saved level:", currentLevelId);
         } catch (e) {
           console.error("Failed to save level to localStorage:", e);
         }
