@@ -24,21 +24,21 @@ export default function EndScreen(): React.ReactElement {
 
   const playSound = useGame((state) => state.playSound);
   const isMuted = useGame((state) => state.isMuted);
+  const stopSound = useGame((state) => state.stopSound);
 
   const completeRestart = useGame((state) => state.completeRestart);
 
   useEffect(() => {
-    // Play sound when the component mounts
-    const sound = playSound("menu");
+    // Play menu sound when the component mounts
+    if (!isMuted) {
+      playSound("menu");
+    }
 
     // Return cleanup function to stop sound on unmount
     return () => {
-      if (sound) {
-        sound.pause();
-        sound.currentTime = 0;
-      }
+      stopSound("menu");
     };
-  }, [playSound, isMuted]);
+  }, [playSound, stopSound, isMuted]);
 
   return (
     <Layout>
