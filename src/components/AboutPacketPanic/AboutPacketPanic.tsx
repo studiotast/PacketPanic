@@ -8,7 +8,7 @@ import useGame from "../../stores/useGame";
 
 export default function AboutPacketPanic() {
   const paragraphs = [
-    "Packet Panic is een educatief spel dat is ontwikkeld door Studio Tast SIDN-call 'Internet in beeld' om de onderliggende infrastructuur van het internet begrijpelijk uit te leggen.",
+    "Packet Panic is een educatief spel dat is ontwikkeld door Studio Tast voor de SIDN-call 'Internet in beeld' om de onderliggende infrastructuur van het internet begrijpelijk uit te leggen.",
     "Packet Panic focust op de gevaren van BGP-hijacking: het manipuleren en onderscheppen van internetverkeer door cybercriminelen. Het BGP is een essentieel, maar kwetsbaar onderdeel van het internet. Het internet is ontwikkeld door een groep onderzoekers die op basis van vertrouwen met elkaar samenwerkten. Het BGP gaat nog steeds uit van datzelfde onderlinge vertrouwen. Er zijn manieren om het BGP minder kwetsbaar te maken. Maar die zijn alleen effectief als die breed geimplementeerd worden. ",
     "Het doel van Packet Panic is om meer mensen bewust te maken van de kwetsbaarheden van het Border Gateway Protocol (BGP). Via het spel krijgen spelers een inzicht in hoe BGP-hijacking werkt, wat de gevaren zijn en welke oplossingen er beschikbaar zijn.",
   ];
