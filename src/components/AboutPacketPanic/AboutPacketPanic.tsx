@@ -7,6 +7,9 @@ import styles from "./AboutPacketPanic.module.scss";
 import useGame from "../../stores/useGame";
 
 export default function AboutPacketPanic() {
+  const playSound = useGame((state) => state.playSound);
+  const prevPhase = useGame((state) => state.prevPhase);
+
   const paragraphs = [
     "Packet Panic is een educatief spel dat is ontwikkeld door Studio Tast voor de SIDN-call 'Internet in beeld' om de onderliggende infrastructuur van het internet begrijpelijk uit te leggen.",
     "Packet Panic focust op de gevaren van BGP-hijacking: het manipuleren en onderscheppen van internetverkeer door cybercriminelen. Het BGP is een essentieel, maar kwetsbaar onderdeel van het internet. Het internet is ontwikkeld door een groep onderzoekers die op basis van vertrouwen met elkaar samenwerkten. Het BGP gaat nog steeds uit van datzelfde onderlinge vertrouwen. Er zijn manieren om het BGP minder kwetsbaar te maken. Maar die zijn alleen effectief als die breed geimplementeerd worden. ",
@@ -33,6 +36,17 @@ export default function AboutPacketPanic() {
     },
   };
 
+  const handleBackClick = () => {
+    playSound("button");
+
+    // Go back to the previous phase, or default to intro if no prevPhase is set
+    const targetPhase = prevPhase || "playing";
+    useGame.setState({
+      phase: targetPhase,
+      prevPhase: null, // Clear the prevPhase
+    });
+  };
+
   return (
     <Layout>
       <div className={styles.pauseContent}>
@@ -50,11 +64,7 @@ export default function AboutPacketPanic() {
             </p>
           ))}
         </motion.div>
-        <Button
-          onClick={() => {
-            useGame.setState({ phase: "playing" });
-          }}
-        >
+        <Button onClick={handleBackClick}>
           <FontAwesomeIcon icon={faArrowLeft} />
           Terug
         </Button>
