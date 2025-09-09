@@ -38,7 +38,7 @@ export default function Explanation(): React.ReactElement {
         } else {
           playSound("robotTalking3");
         }
-      }, 1000);
+      }, 2000);
     }
   }, [explanationIndex, loaded, playSound]);
 
