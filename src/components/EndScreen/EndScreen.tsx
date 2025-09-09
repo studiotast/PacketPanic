@@ -40,6 +40,12 @@ export default function EndScreen(): React.ReactElement {
     };
   }, [playSound, stopSound, isMuted]);
 
+  const handleRestart = () => {
+    playSound("button");
+    completeRestart();
+    window.location.pathname = "/";
+  };
+
   return (
     <Layout>
       <div className={styles.endScreen}>
@@ -112,7 +118,7 @@ export default function EndScreen(): React.ReactElement {
           </div>
         </div>
         <div className={styles.buttons}>
-          <Button onClick={() => completeRestart()}>Opnieuw spelen</Button>
+          <Button onClick={handleRestart}>Opnieuw spelen</Button>
           <Button color="blue" onClick={() => {}}>
             Interactieve ervaringen
           </Button>

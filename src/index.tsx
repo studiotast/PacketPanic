@@ -1,6 +1,12 @@
 import "./style.css";
 import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Experience from "./Experience.js";
 import { Leva } from "leva";
 import useGame from "./stores/useGame.js";
@@ -19,11 +25,9 @@ import AboutPacketPanic from "./components/AboutPacketPanic/AboutPacketPanic.tsx
 import PauseScreen from "./components/PauseScreen/PauseScreen.tsx";
 import Interface from "./components/Interface/Interface.tsx";
 
-function App() {
+function GameApp() {
   const phase = useGame((state) => state.phase);
   const isPaused = useGame((state) => state.isPaused);
-  // begin alvast met het laden van de modellen
-
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   // Monitor transition state
@@ -32,10 +36,8 @@ function App() {
       setIsTransitioning(!!window.isTransitioning);
     };
 
-    // Check initially and set up interval
     checkTransition();
     const interval = setInterval(checkTransition, 100);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -103,6 +105,28 @@ function App() {
         </>
       )}
     </>
+  );
+}
+
+// Standalone EndScreen component for the route
+function StandaloneEndScreen() {
+  return <EndScreen />;
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* Main game route */}
+        <Route path="/" element={<GameApp />} />
+
+        {/* Standalone endscreen route */}
+        <Route path="/endscreen" element={<StandaloneEndScreen />} />
+
+        {/* Redirect any unknown routes to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
 
