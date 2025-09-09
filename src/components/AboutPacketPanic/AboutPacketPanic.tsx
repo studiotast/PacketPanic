@@ -52,7 +52,7 @@ export default function AboutPacketPanic() {
         </motion.div>
         <Button
           onClick={() => {
-            useGame.setState({ phase: "pause" });
+            useGame.setState({ phase: "playing" });
           }}
         >
           <FontAwesomeIcon icon={faArrowLeft} />

@@ -2191,7 +2191,7 @@ const levelsData: LevelData[] = [
   },
   // LEVEL 4 _________________________________________________
   {
-    id: 3,
+    id: 4,
     name: "Packet Basics",
     scoreToAdvance: 200,
     maxScore: 240,
