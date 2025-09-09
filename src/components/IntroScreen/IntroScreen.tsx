@@ -16,6 +16,8 @@ import levelsData from "../../utils/levelsData.ts";
 import styles from "./IntroScreen.module.scss";
 import LeftCornerPiece from "../CornerPiece/LeftCornerPiece.tsx";
 import RightCornerPiece from "../CornerPiece/RightCornerPiece.tsx";
+import { useModels } from "@/stores/useModels.ts";
+import { useGLTF } from "@react-three/drei";
 
 // Tooltip component for interactive terms
 interface InteractiveTermProps {
@@ -48,6 +50,27 @@ const InteractiveTerm: React.FC<InteractiveTermProps> = ({
 );
 
 export default function IntroScreen() {
+  useEffect(() => {
+    // Start met preloaden van alle modellen zodra het scherm zichtbaar is
+    useGLTF.preload("assets/models/track_straight_long_a03.glb");
+    useGLTF.preload("assets/models/track_straight_short_a05.glb");
+    useGLTF.preload("assets/models/track_corner_a03.glb");
+    useGLTF.preload("assets/models/track_curve_a03.glb");
+    useGLTF.preload("assets/models/track_junction_a06.glb");
+    useGLTF.preload("assets/models/signpost_sign_a03.glb");
+    useGLTF.preload("assets/models/signpost_pole_2signs_a01.glb");
+    useGLTF.preload("assets/models/signpost_pole_3signs_a01.glb");
+    useGLTF.preload("assets/models/signpost_pole_4signs_a01.glb");
+    useGLTF.preload("assets/models/signpost_pole_5signs_a01.glb");
+    useGLTF.preload("assets/models/gebouwen_a01.glb");
+    useGLTF.preload("assets/models/house_a02.glb");
+    useGLTF.preload("assets/models/house_flag_a02.glb");
+    useGLTF.preload("assets/models/house_flag_attention_a01.glb");
+    useGLTF.preload("assets/models/platform_level1_a03.glb");
+    useGLTF.preload("assets/models/platform_level2_a03.glb");
+    useGLTF.preload("assets/models/platform_level3&4_a01.glb");
+  }, []);
+
   const startFromIntro = useGame((state) => state.startFromIntro);
   const loadSavedLevel = useGame((state) => state.loadSavedLevel);
   const hasSavedLevel = useGame((state) => state.hasSavedLevel);
