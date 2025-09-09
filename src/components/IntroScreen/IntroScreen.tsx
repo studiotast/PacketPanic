@@ -1,5 +1,6 @@
 import {
   faArrowRight,
+  faCircleInfo,
   faForward,
   faPlay,
 } from "@fortawesome/pro-solid-svg-icons";
@@ -76,6 +77,7 @@ export default function IntroScreen() {
   const [page, setPage] = useState(0);
   const playSound = useGame((state) => state.playSound);
   const stopSound = useGame((state) => state.stopSound);
+  const aboutPage = useGame((state) => state.aboutPage);
   const isMuted = useGame((state) => state.isMuted);
 
   // Check if there's a saved game on mount
@@ -347,30 +349,38 @@ export default function IntroScreen() {
           </AnimatePresence>
         )}
 
-        {page === 0 && savedGame ? (
-          <div className={styles.buttonContainerRow}>
+        <div className={styles.buttonContainerRow}>
+          {page === 0 && savedGame ? (
+            <>
+              <div className={styles.buttonPositionWrapper}>
+                <Button color="yellow" onClick={handleClick}>
+                  Nieuw spel
+                  <FontAwesomeIcon icon={faPlay} />
+                </Button>
+              </div>
+
+              <div className={styles.buttonPositionWrapper}>
+                <Button color="yellow" onClick={handleContinue}>
+                  Doorgaan (Level {savedLevel ? savedLevel.id : "?"})
+                  <FontAwesomeIcon icon={faForward} />
+                </Button>
+              </div>
+            </>
+          ) : (
             <div className={styles.buttonPositionWrapper}>
               <Button color="yellow" onClick={handleClick}>
-                Nieuw spel
-                <FontAwesomeIcon icon={faPlay} />
+                Beginnen
+                <FontAwesomeIcon icon={page === 0 ? faArrowRight : faPlay} />
               </Button>
             </div>
-
-            <div className={styles.buttonPositionWrapper}>
-              <Button color="yellow" onClick={handleContinue}>
-                Doorgaan (Level {savedLevel ? savedLevel.id : "?"})
-                <FontAwesomeIcon icon={faForward} />
-              </Button>
-            </div>
-          </div>
-        ) : (
+          )}
           <div className={styles.buttonPositionWrapper}>
-            <Button color="yellow" onClick={handleClick}>
-              {page === 0 ? "Volgende" : "Beginnen"}
-              <FontAwesomeIcon icon={page === 0 ? faArrowRight : faPlay} />
+            <Button color="grey" onClick={() => aboutPage("intro")}>
+              Over Packet Panic
+              <FontAwesomeIcon icon={faCircleInfo} />
             </Button>
           </div>
-        )}
+        </div>
       </div>
       <LeftCornerPiece />
       <RightCornerPiece />

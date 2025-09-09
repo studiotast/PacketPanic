@@ -356,7 +356,11 @@ const useGame = create<GameState>()(
 
       aboutPage: () => {
         set((state) => {
-          if (state.phase === "playing" || state.phase === "pause") {
+          if (
+            state.phase === "playing" ||
+            state.phase === "pause" ||
+            state.phase === "intro"
+          ) {
             return { phase: "about" };
           }
           return {};
