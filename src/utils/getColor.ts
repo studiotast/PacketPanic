@@ -4,8 +4,6 @@ export function getColor(color: string) {
   switch (color) {
     case "yellow":
       return yellow;
-    case "purple":
-      return purple;
     case "red":
       return red;
     case "blue":

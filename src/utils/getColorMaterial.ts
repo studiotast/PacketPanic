@@ -1,6 +1,5 @@
 import {
   blueMaterial,
-  purpleMaterial,
   redMaterial,
   yellowMaterial,
   greenMaterial,
@@ -10,8 +9,6 @@ export function getColorMaterial(color: string) {
   switch (color) {
     case "yellow":
       return yellowMaterial;
-    case "purple":
-      return purpleMaterial;
     case "red":
       return redMaterial;
     case "blue":
