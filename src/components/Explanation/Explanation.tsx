@@ -7,6 +7,7 @@ import styles from "./Explanation.module.scss";
 
 export default function Explanation(): React.ReactElement {
   const playSound = useGame((state) => state.playSound);
+  const stopSound = useGame((state) => state.stopSound);
   const currentLevel = useGame((state) => state.currentLevel);
   const startTutorial = useGame((state) => state.startTutorial);
 
@@ -26,21 +27,38 @@ export default function Explanation(): React.ReactElement {
     }
   }, [explanationIndex]);
 
+  // Function to stop all robot sounds before playing a new one
+  const playRandomRobotSound = () => {
+    // Stop all robot talking sounds first
+    stopSound("robotTalking1");
+    stopSound("robotTalking2");
+    stopSound("robotTalking3");
+
+    // Generate a random integer between 1 and 3 (inclusive)
+    const random = Math.floor(Math.random() * 3) + 1;
+    if (random === 1) {
+      playSound("robotTalking1");
+    } else if (random === 2) {
+      playSound("robotTalking2");
+    } else {
+      playSound("robotTalking3");
+    }
+  };
+
   useEffect(() => {
     if (loaded) {
       setTimeout(() => {
-        // Generate a random integer between 1 and 3 (inclusive)
-        const random = Math.floor(Math.random() * 3) + 1;
-        if (random === 1) {
-          playSound("robotTalking1");
-        } else if (random === 2) {
-          playSound("robotTalking2");
-        } else {
-          playSound("robotTalking3");
-        }
+        playRandomRobotSound();
       }, 2000);
     }
-  }, [explanationIndex, loaded, playSound]);
+  }, [loaded]);
+
+  useEffect(() => {
+    // Play robot sound on explanation index change
+    if (explanationIndex > 0) {
+      playRandomRobotSound();
+    }
+  }, [explanationIndex, playSound, stopSound]);
 
   return (
     <div className={styles.overlay}>
@@ -67,7 +85,6 @@ export default function Explanation(): React.ReactElement {
                 return;
               }
             }
-            playSound("robotTalking1");
             setExplanationIndex((prev) => prev + 1);
           }}
           color="yellow"
