@@ -186,7 +186,7 @@ const levelsData: LevelData[] = [
       title: "BGP: de achilleshiel van het internet",
       content:
         "Het BGP werkt vaak prima. Maar wat de bedenkers niet hebben voorzien, is dat het internet een plek zou worden waar niet iedereen altijd eerlijk is. Door het gebrek aan authenticatie, kun je niet checken of een via BGP aangekondigde route klopt.",
-      imageUrl: "/images/news/1.png",
+      imageUrl: "/images/news/1.jpg",
       readMoreLink:
         "https://tweakers.net/reviews/4155/all/border-gateway-protocol-de-achilleshiel-van-internet.html",
       date: "22-8-2015",
@@ -506,7 +506,7 @@ const levelsData: LevelData[] = [
       title: "BGP-foutje Pakistan legt Youtube plat",
       content:
         "In maart 2008 lag YouTube voor miljoenen gebruikers urenlang plat. De Pakistaanse overheid probeerde YouTube in hun land te blokkeren. Maar door een fout in de BGP-configuratie stuurden ze juist verkeer uit andere landen naar Pakistaanse netwerken.",
-      imageUrl: "/images/news/2.png",
+      imageUrl: "/images/news/2.jpg",
       readMoreLink:
         "https://arstechnica.com/uncategorized/2008/02/insecure-routing-redirects-youtube-to-pakistan/",
       date: "24-3-2008",
@@ -1236,7 +1236,7 @@ const levelsData: LevelData[] = [
       title: "$235,000 aan cryptocurrency gestolen door BGP-hijack",
       content:
         "In september 2022 leidde een fout bij Amazon tot de diefstal van 235.000 dollar aan cryptocurrency. Verkeer werd omgeleid naar een nepwebsite die eruitzag als een legitieme cryptocurrency-dienst, waar hackers de bezoekers hun crypto afhandig maakten.",
-      imageUrl: "/images/news/3.png",
+      imageUrl: "/images/news/3.jpg",
       readMoreLink:
         "https://arstechnica.com/information-technology/2022/09/how-3-hours-of-inaction-from-amazon-cost-cryptocurrency-holders-235000/",
       date: "23-9-2022",
@@ -2284,7 +2284,7 @@ const levelsData: LevelData[] = [
       title: "$235,000 aan cryptocurrency gestolen door BGP-hijack",
       content:
         "In september 2022 leidde een fout bij Amazon tot de diefstal van 235.000 dollar aan cryptocurrency. Verkeer werd omgeleid naar een nepwebsite die eruitzag als een legitieme cryptocurrency-dienst, waar hackers de bezoekers hun crypto afhandig maakten.",
-      imageUrl: "/images/news/3.png",
+      imageUrl: "/images/news/4.jpg",
       readMoreLink:
         "https://arstechnica.com/information-technology/2022/09/how-3-hours-of-inaction-from-amazon-cost-cryptocurrency-holders-235000/",
       date: "23-9-2022",
