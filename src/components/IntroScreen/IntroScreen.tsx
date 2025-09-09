@@ -349,37 +349,49 @@ export default function IntroScreen() {
           </AnimatePresence>
         )}
 
-        <div className={styles.buttonContainerRow}>
+        <div className={styles.buttonsColumn}>
           {page === 0 && savedGame ? (
             <>
-              <div className={styles.buttonPositionWrapper}>
-                <Button color="yellow" onClick={handleClick}>
-                  Nieuw spel
-                  <FontAwesomeIcon icon={faPlay} />
-                </Button>
-              </div>
+              <div className={styles.buttonContainerRow}>
+                <div className={styles.buttonPositionWrapper}>
+                  <Button color="yellow" onClick={handleClick}>
+                    Nieuw spel
+                    <FontAwesomeIcon icon={faPlay} />
+                  </Button>
+                </div>
 
+                <div className={styles.buttonPositionWrapper}>
+                  <Button color="yellow" onClick={handleContinue}>
+                    Doorgaan (Level {savedLevel ? savedLevel.id : "?"})
+                    <FontAwesomeIcon icon={faForward} />
+                  </Button>
+                </div>
+              </div>
               <div className={styles.buttonPositionWrapper}>
-                <Button color="yellow" onClick={handleContinue}>
-                  Doorgaan (Level {savedLevel ? savedLevel.id : "?"})
-                  <FontAwesomeIcon icon={faForward} />
+                <Button color="grey" onClick={() => aboutPage("intro")}>
+                  Over Packet Panic
+                  <FontAwesomeIcon icon={faCircleInfo} />
                 </Button>
               </div>
             </>
           ) : (
-            <div className={styles.buttonPositionWrapper}>
-              <Button color="yellow" onClick={handleClick}>
-                Beginnen
-                <FontAwesomeIcon icon={page === 0 ? faArrowRight : faPlay} />
-              </Button>
+            <div className={styles.buttonContainerRow}>
+              {page === 0 && (
+                <div className={styles.buttonPositionWrapper}>
+                  <Button color="grey" onClick={() => aboutPage("intro")}>
+                    Over Packet Panic
+                    <FontAwesomeIcon icon={faCircleInfo} />
+                  </Button>
+                </div>
+              )}
+              <div className={styles.buttonPositionWrapper}>
+                <Button color="yellow" onClick={handleClick}>
+                  Beginnen
+                  <FontAwesomeIcon icon={faPlay} />
+                </Button>
+              </div>
             </div>
           )}
-          <div className={styles.buttonPositionWrapper}>
-            <Button color="grey" onClick={() => aboutPage("intro")}>
-              Over Packet Panic
-              <FontAwesomeIcon icon={faCircleInfo} />
-            </Button>
-          </div>
         </div>
       </div>
       <LeftCornerPiece />
