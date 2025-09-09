@@ -9,6 +9,7 @@
     "deploy": "vercel --prod"
   },
   "devDependencies": {
+    "@types/howler": "^2.2.12",
     "@types/node": "^22.15.18",
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "4.3",
@@ -26,6 +27,7 @@
     "@tippyjs/react": "^4.2.6",
     "framer-motion": "^12.6.3",
     "gsap": "^3.12.7",
+    "howler": "^2.2.4",
     "leva": "^0.9.34",
     "r3f-perf": "^7.2.3",
     "react": "18.3",
