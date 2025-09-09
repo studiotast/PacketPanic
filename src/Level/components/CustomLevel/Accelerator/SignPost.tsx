@@ -24,7 +24,7 @@ export default function SignPost({
 
   // Kies het juiste model op basis van numberOfSigns
   const model = useMemo(() => {
-    console.log("nummmer bordjes", numberOfSigns);
+    // console.log("nummmer bordjes", numberOfSigns);
     switch (numberOfSigns) {
       case 3:
         return signPostModel3Signs;
