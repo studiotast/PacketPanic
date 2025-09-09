@@ -81,6 +81,9 @@ interface GameState {
   blocksCount: number;
   blocksSeed: number;
 
+  // Prev phase for transitions
+  prevPhase: GamePhase | null;
+
   // Time
   startTime: number;
   endTime: number;
@@ -115,7 +118,6 @@ interface GameState {
   ) => boolean;
   togglePause: () => void;
   saveCurrentLevel: () => void;
-  aboutPage: () => void;
   loadSavedLevel: () => boolean;
   hasSavedLevel: () => boolean;
   getSavedLevelId: () => number | null;
@@ -135,6 +137,7 @@ interface GameState {
   stopSound: (soundName: keyof GameSounds) => boolean;
   toggleMute: () => void;
   incrementBadActorCount: () => void;
+  aboutPage: (prevPhase?: GamePhase) => void;
 }
 
 // Create the game store with TypeScript types
@@ -268,6 +271,9 @@ const useGame = create<GameState>()(
       // Mute
       isMuted: false,
 
+      // Prev phase for transitions
+      prevPhase: null,
+
       // Sounds
       sounds,
 
@@ -354,14 +360,17 @@ const useGame = create<GameState>()(
         }
       },
 
-      aboutPage: () => {
+      aboutPage: (prevPhase?: GamePhase) => {
         set((state) => {
           if (
             state.phase === "playing" ||
             state.phase === "pause" ||
             state.phase === "intro"
           ) {
-            return { phase: "about" };
+            return {
+              phase: "about",
+              prevPhase: prevPhase || state.phase, // Store the previous phase
+            };
           }
           return {};
         });
