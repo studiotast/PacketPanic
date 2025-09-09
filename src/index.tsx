@@ -30,7 +30,7 @@ function GameApp() {
   const isPaused = useGame((state) => state.isPaused);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Monitor transition state
+  // Monitor transition stat
   useEffect(() => {
     const checkTransition = () => {
       setIsTransitioning(!!window.isTransitioning);
