@@ -70,8 +70,6 @@ export default function EndScreen(): React.ReactElement {
             </p>
             <p>
               Bedankt voor het spelen van Packet Panic.
-              <br />
-              Packet Panic B.V.
             </p>
           </div>
           <div className={styles.blueCard}>
@@ -79,7 +77,7 @@ export default function EndScreen(): React.ReactElement {
             <span>
               <p className={styles.subtitle}>Check RPKI-adoptie </p>
               <p>
-                ga naar www.internet.nl en controleer hoe het zit met RPKI
+                Ga naar <a target="_blank" href="https://internet.nl">www.internet.nl</a> en controleer hoe het zit met RPKI
                 adoptie van je werkgever, je gemeente of je voetbalclub.
               </p>
             </span>
@@ -120,7 +118,7 @@ export default function EndScreen(): React.ReactElement {
         <div className={styles.buttons}>
           <Button onClick={handleRestart}>Opnieuw spelen</Button>
           <Button color="blue" onClick={() => {}}>
-            Interactieve ervaringen
+            Bekijk zusterprojecten
           </Button>
         </div>
       </div>
