@@ -49,7 +49,7 @@ export default function EndScreen(): React.ReactElement {
   return (
     <Layout>
       <div className={styles.endScreen}>
-        <h1>Gefeliciteerd je hebt Packet Panic voltooid!</h1>
+        <h1>Gefeliciteerd, je hebt Packet Panic voltooid!</h1>
         <div className={styles.row}>
           <div className={styles.card}>
             <p>
@@ -68,17 +68,19 @@ export default function EndScreen(): React.ReactElement {
               Nu weet jij dat ook. Dus help mee om RKPI adoptie naar 100% te
               krijgen.
             </p>
-            <p>
-              Bedankt voor het spelen van Packet Panic.
-            </p>
+            <p>Bedankt voor het spelen van Packet Panic.</p>
           </div>
           <div className={styles.blueCard}>
             <h2>Wat kun je nu verder doen</h2>
             <span>
               <p className={styles.subtitle}>Check RPKI-adoptie </p>
               <p>
-                Ga naar <a target="_blank" href="https://internet.nl">www.internet.nl</a> en controleer hoe het zit met RPKI
-                adoptie van je werkgever, je gemeente of je voetbalclub.
+                Ga naar{" "}
+                <a target="_blank" href="https://internet.nl">
+                  www.internet.nl
+                </a>{" "}
+                en controleer hoe het zit met RPKI adoptie van je werkgever, je
+                gemeente of je voetbalclub.
               </p>
             </span>
             <span>
