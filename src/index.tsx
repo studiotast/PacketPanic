@@ -12,7 +12,7 @@ import { Leva } from "leva";
 import useGame from "./stores/useGame.js";
 import Explanation from "./components/Explanation/Explanation.tsx";
 import GarageTransition from "./GarageTransition.tsx";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import IntroScreen from "./components/IntroScreen/IntroScreen.tsx";
 import EndScreen from "./components/EndScreen/EndScreen.tsx";
 import PauseButton from "./components/PauseButton/PauseButton.tsx";
@@ -117,6 +117,23 @@ function StandaloneEndScreen() {
 }
 
 function App() {
+  const initializeTabVisibility = useGame(
+    (state) => state.initializeTabVisibility
+  );
+  const cleanupRef = useRef<(() => void) | null>(null);
+
+  // Initialize tab visibility handling once for the entire app
+  useEffect(() => {
+    cleanupRef.current = initializeTabVisibility();
+
+    // Cleanup on unmount
+    return () => {
+      if (cleanupRef.current) {
+        cleanupRef.current();
+      }
+    };
+  }, [initializeTabVisibility]);
+
   return (
     <Router>
       <Routes>
