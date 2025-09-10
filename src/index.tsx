@@ -113,7 +113,22 @@ function GameApp() {
 
 // Standalone EndScreen component for the route
 function StandaloneEndScreen() {
-  return <EndScreen />;
+  const phase = useGame((state) => state.phase);
+
+  return (
+    <>
+      <div
+        className={`top-right-buttons ${
+          phase === "intro" || phase === "gameFinished" || phase === "about"
+            ? "inset"
+            : ""
+        }`}
+      >
+        <MuteButton />
+      </div>
+      <EndScreen />
+    </>
+  );
 }
 
 function App() {
