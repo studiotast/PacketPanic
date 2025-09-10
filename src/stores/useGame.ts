@@ -81,6 +81,11 @@ interface GameState {
   blocksCount: number;
   blocksSeed: number;
 
+  // Tab mute types
+  isTabVisible: boolean;
+  wasAutoMuted: boolean;
+  wasAutoPaused: boolean;
+
   // Prev phase for transitions
   prevPhase: GamePhase | null;
 
@@ -138,6 +143,8 @@ interface GameState {
   toggleMute: () => void;
   incrementBadActorCount: () => void;
   aboutPage: (prevPhase?: GamePhase) => void;
+  handleTabVisibilityChange: (isVisible: boolean) => void;
+  initializeTabVisibility: () => () => void; // Returns cleanup function
 }
 
 // Create the game store with TypeScript types
@@ -256,6 +263,11 @@ const useGame = create<GameState>()(
     return {
       blocksCount: 10,
       blocksSeed: 0,
+
+      // Tab mute types
+      isTabVisible: true,
+      wasAutoMuted: false,
+      wasAutoPaused: false,
 
       // Time
       startTime: 0,
@@ -673,6 +685,73 @@ const useGame = create<GameState>()(
 
           return { isMuted: newIsMuted };
         });
+      },
+
+      // Handle tab visibility changes
+      handleTabVisibilityChange: (isVisible: boolean) => {
+        set((state) => {
+          const updates: Partial<GameState> = { isTabVisible: isVisible };
+
+          if (!isVisible) {
+            // Tab became inactive
+
+            // Handle audio - only auto-mute if user hasn't manually muted
+            if (!state.isMuted) {
+              Howler.mute(true);
+              updates.wasAutoMuted = true;
+            } else {
+              updates.wasAutoMuted = false; // User had manually muted
+            }
+
+            // Handle game pause - only auto-pause if game is playing and not already paused
+            if (state.phase === "playing" && !state.isPaused) {
+              updates.isPaused = true;
+              updates.timerActive = false;
+              updates.wasAutoPaused = true;
+            } else {
+              updates.wasAutoPaused = false;
+            }
+          } else {
+            // Tab became active again
+
+            // Handle audio - only unmute if we auto-muted (not user-muted)
+            if (state.wasAutoMuted && !state.isMuted) {
+              Howler.mute(false);
+            }
+            updates.wasAutoMuted = false;
+
+            // Handle game pause - only unpause if we auto-paused
+            if (state.wasAutoPaused && state.phase === "playing") {
+              updates.isPaused = false;
+              updates.timerActive = true;
+            }
+            updates.wasAutoPaused = false;
+          }
+
+          return updates;
+        });
+      },
+
+      // Initialize tab visibility listener (call this once when app starts)
+      initializeTabVisibility: () => {
+        const handleVisibilityChange = () => {
+          const isVisible = !document.hidden;
+          get().handleTabVisibilityChange(isVisible);
+        };
+
+        // Set initial state
+        get().handleTabVisibilityChange(!document.hidden);
+
+        // Add event listener
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        // Return cleanup function
+        return () => {
+          document.removeEventListener(
+            "visibilitychange",
+            handleVisibilityChange
+          );
+        };
       },
     };
   })
