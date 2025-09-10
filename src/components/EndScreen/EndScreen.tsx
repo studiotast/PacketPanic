@@ -65,7 +65,7 @@ export default function EndScreen(): React.ReactElement {
               teller blijft vooralsnog steken op 50%
             </p>
             <p>
-              Nu weet jij dat ook. Dus help mee om RKPI adoptie naar 100% te
+              Nu weet jij dat ook. Dus help mee om RPKI adoptie naar 100% te
               krijgen.
             </p>
             <p>Bedankt voor het spelen van Packet Panic.</p>

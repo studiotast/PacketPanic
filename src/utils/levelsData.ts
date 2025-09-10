@@ -2306,7 +2306,7 @@ const levelsData: LevelData[] = [
       },
     ],
     newsArticle: {
-      title: "RKPI: een veiliger BGP binnen handbereik",
+      title: "RPKI: een veiliger BGP binnen handbereik",
       content:
         "RPKI gebruikt digitale handtekeningen om BGP-routes te verifiëren. Routers controleren of de handtekeningen kloppen; zo niet dan wordt de route verworpen, wat aanvallen en vergissingen voorkomt.",
       imageUrl: "/images/news/4.jpg",
