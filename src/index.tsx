@@ -63,7 +63,10 @@ function GameApp() {
     <>
       <div
         className={`top-right-buttons ${
-          isPaused || phase === "intro" || phase === "gameFinished"
+          isPaused ||
+          phase === "intro" ||
+          phase === "gameFinished" ||
+          phase === "about"
             ? "inset"
             : ""
         }`}
