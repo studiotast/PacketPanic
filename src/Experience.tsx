@@ -85,7 +85,15 @@ export default function Experience() {
       <ambientLight intensity={1.6} />
       <directionalLight intensity={1.5} position={[10, 10, 10]} />
       {/* <Perf position="bottom-left" /> */}
-      <OrbitControls makeDefault />
+      <OrbitControls
+        makeDefault
+        minPolarAngle={Math.PI / 6} // 30 graden omhoog
+        maxPolarAngle={Math.PI / 2.2}
+        // minAzimuthAngle={-Math.PI / 2} // links beperken
+        // maxAzimuthAngle={Math.PI / 2} // rechts beperken
+        minDistance={10}
+        maxDistance={100}
+      />
       <color args={["#A2BDFC"]} attach="background" />
       <Physics
         gravity={[0, -10, -0.2]}
