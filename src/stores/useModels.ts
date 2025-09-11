@@ -14,7 +14,6 @@ interface ModelsState {
   signPostModel3Signs: THREE.Object3D | null;
   signPostModel4Signs: THREE.Object3D | null;
   signPostModel5Signs: THREE.Object3D | null;
-  buildingsPlatformModel: THREE.Object3D | null;
   houseModel: THREE.Object3D | null;
   flagModel: THREE.Object3D | null;
   flagAttentionModel: THREE.Object3D | null;
@@ -38,7 +37,6 @@ export const useModels = create<ModelsState>((set, get) => {
     signPostModel3Signs: null,
     signPostModel4Signs: null,
     signPostModel5Signs: null,
-    buildingsPlatformModel: null,
     houseModel: null,
     flagModel: null,
     flagAttentionModel: null,
@@ -75,7 +73,6 @@ export const useModels = create<ModelsState>((set, get) => {
         signPostModel5Signs: useGLTF(
           "assets/models/signpost_pole_5signs_a01.glb"
         ).scene,
-        buildingsPlatformModel: useGLTF("assets/models/gebouwen_a01.glb").scene,
         houseModel: useGLTF("assets/models/house_a02.glb").scene,
         flagModel: useGLTF("assets/models/house_flag_a02.glb").scene,
         flagAttentionModel: useGLTF(

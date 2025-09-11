@@ -3,6 +3,7 @@
   margin-top: 8px;
   position: relative;
   border-radius: var(--border-radius10);
+  user-select: none;
 
   &.responsive {
     border-radius: clamp(6px, 1.5vmin, 10px);

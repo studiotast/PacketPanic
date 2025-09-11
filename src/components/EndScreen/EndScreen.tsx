@@ -24,26 +24,32 @@ export default function EndScreen(): React.ReactElement {
 
   const playSound = useGame((state) => state.playSound);
   const isMuted = useGame((state) => state.isMuted);
+  const stopSound = useGame((state) => state.stopSound);
 
   const completeRestart = useGame((state) => state.completeRestart);
 
   useEffect(() => {
-    // Play sound when the component mounts
-    const sound = playSound("menu");
+    // Play menu sound when the component mounts
+    if (!isMuted) {
+      playSound("menu");
+    }
 
     // Return cleanup function to stop sound on unmount
     return () => {
-      if (sound) {
-        sound.pause();
-        sound.currentTime = 0;
-      }
+      stopSound("menu");
     };
-  }, [playSound, isMuted]);
+  }, [playSound, stopSound, isMuted]);
+
+  const handleRestart = () => {
+    playSound("button");
+    completeRestart();
+    window.location.pathname = "/";
+  };
 
   return (
     <Layout>
       <div className={styles.endScreen}>
-        <h1>Gefeliciteerd je hebt Packet Panic voltooid!</h1>
+        <h1>Gefeliciteerd, je hebt Packet Panic voltooid!</h1>
         <div className={styles.row}>
           <div className={styles.card}>
             <p>
@@ -59,22 +65,22 @@ export default function EndScreen(): React.ReactElement {
               teller blijft vooralsnog steken op 50%
             </p>
             <p>
-              Nu weet jij dat ook. Dus help mee om RKPI adoptie naar 100% te
+              Nu weet jij dat ook. Dus help mee om RPKI adoptie naar 100% te
               krijgen.
             </p>
-            <p>
-              Bedankt voor het spelen van Packet Panic.
-              <br />
-              Packet Panic B.V.
-            </p>
+            <p>Bedankt voor het spelen van Packet Panic.</p>
           </div>
           <div className={styles.blueCard}>
             <h2>Wat kun je nu verder doen</h2>
             <span>
               <p className={styles.subtitle}>Check RPKI-adoptie </p>
               <p>
-                ga naar www.internet.nl en controleer hoe het zit met RPKI
-                adoptie van je werkgever, je gemeente of je voetbalclub.
+                Ga naar{" "}
+                <a target="_blank" href="https://internet.nl">
+                  www.internet.nl
+                </a>{" "}
+                en controleer hoe het zit met RPKI adoptie van je werkgever, je
+                gemeente of je voetbalclub.
               </p>
             </span>
             <span>
@@ -112,9 +118,9 @@ export default function EndScreen(): React.ReactElement {
           </div>
         </div>
         <div className={styles.buttons}>
-          <Button onClick={() => completeRestart()}>Opnieuw spelen</Button>
+          <Button onClick={handleRestart}>Opnieuw spelen</Button>
           <Button color="blue" onClick={() => {}}>
-            Interactieve ervaringen
+            Bekijk zusterprojecten
           </Button>
         </div>
       </div>

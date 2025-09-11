@@ -1,12 +1,18 @@
 import "./style.css";
 import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Experience from "./Experience.js";
 import { Leva } from "leva";
 import useGame from "./stores/useGame.js";
 import Explanation from "./components/Explanation/Explanation.tsx";
 import GarageTransition from "./GarageTransition.tsx";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import IntroScreen from "./components/IntroScreen/IntroScreen.tsx";
 import EndScreen from "./components/EndScreen/EndScreen.tsx";
 import PauseButton from "./components/PauseButton/PauseButton.tsx";
@@ -19,23 +25,19 @@ import AboutPacketPanic from "./components/AboutPacketPanic/AboutPacketPanic.tsx
 import PauseScreen from "./components/PauseScreen/PauseScreen.tsx";
 import Interface from "./components/Interface/Interface.tsx";
 
-function App() {
+function GameApp() {
   const phase = useGame((state) => state.phase);
   const isPaused = useGame((state) => state.isPaused);
-  // begin alvast met het laden van de modellen
-
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Monitor transition state
+  // Monitor transition stat
   useEffect(() => {
     const checkTransition = () => {
       setIsTransitioning(!!window.isTransitioning);
     };
 
-    // Check initially and set up interval
     checkTransition();
     const interval = setInterval(checkTransition, 100);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -61,7 +63,10 @@ function App() {
     <>
       <div
         className={`top-right-buttons ${
-          isPaused || phase === "intro" || phase === "gameFinished"
+          isPaused ||
+          phase === "intro" ||
+          phase === "gameFinished" ||
+          phase === "about"
             ? "inset"
             : ""
         }`}
@@ -103,6 +108,60 @@ function App() {
         </>
       )}
     </>
+  );
+}
+
+// Standalone EndScreen component for the route
+function StandaloneEndScreen() {
+  const phase = useGame((state) => state.phase);
+
+  return (
+    <>
+      <div
+        className={`top-right-buttons ${
+          phase === "intro" || phase === "gameFinished" || phase === "about"
+            ? "inset"
+            : ""
+        }`}
+      >
+        <MuteButton />
+      </div>
+      <EndScreen />
+    </>
+  );
+}
+
+function App() {
+  const initializeTabVisibility = useGame(
+    (state) => state.initializeTabVisibility
+  );
+  const cleanupRef = useRef<(() => void) | null>(null);
+
+  // Initialize tab visibility handling once for the entire app
+  useEffect(() => {
+    cleanupRef.current = initializeTabVisibility();
+
+    // Cleanup on unmount
+    return () => {
+      if (cleanupRef.current) {
+        cleanupRef.current();
+      }
+    };
+  }, [initializeTabVisibility]);
+
+  return (
+    <Router>
+      <Routes>
+        {/* Main game route */}
+        <Route path="/" element={<GameApp />} />
+
+        {/* Standalone endscreen route */}
+        <Route path="/endscreen" element={<StandaloneEndScreen />} />
+
+        {/* Redirect any unknown routes to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
 
