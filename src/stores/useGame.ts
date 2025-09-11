@@ -145,6 +145,7 @@ interface GameState {
   aboutPage: (prevPhase?: GamePhase) => void;
   handleTabVisibilityChange: (isVisible: boolean) => void;
   initializeTabVisibility: () => () => void; // Returns cleanup function
+  clearSavedLevel: () => void;
 }
 
 // Create the game store with TypeScript types
@@ -342,6 +343,21 @@ const useGame = create<GameState>()(
         }
 
         return false;
+      },
+
+      //Clear saved level
+      clearSavedLevel: () => {
+        try {
+          // Clear saved level in localStorage
+          localStorage.removeItem("packetPanicSavedLevel");
+          // set current level to 1
+          set({
+            currentLevelId: 1,
+            currentLevel: levelsData[0],
+          });
+        } catch (e) {
+          console.error("Failed to clear saved level from localStorage:", e);
+        }
       },
 
       // Toggle pause state
@@ -554,6 +570,9 @@ const useGame = create<GameState>()(
             badActorCount: 0,
             isPaused: false,
           });
+
+          // Save progress to localStorage
+          get().saveCurrentLevel();
 
           return true;
         }
