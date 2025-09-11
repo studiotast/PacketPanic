@@ -74,6 +74,8 @@ export default function IntroScreen() {
   const loadSavedLevel = useGame((state) => state.loadSavedLevel);
   const hasSavedLevel = useGame((state) => state.hasSavedLevel);
   const getSavedLevelId = useGame((state) => state.getSavedLevelId);
+  const clearSavedLevel = useGame((state) => state.clearSavedLevel);
+
   const [page, setPage] = useState(0);
   const playSound = useGame((state) => state.playSound);
   const stopSound = useGame((state) => state.stopSound);
@@ -82,10 +84,7 @@ export default function IntroScreen() {
 
   // Check if there's a saved game on mount
   const [savedGame, setSavedGame] = useState(false);
-  const [savedLevel, setSavedLevel] = useState<{
-    id: number;
-    name: string;
-  } | null>(null);
+  const [savedLevel, setSavedLevel] = useState<number | null>(null);
 
   useEffect(() => {
     // Check for saved level
@@ -96,13 +95,10 @@ export default function IntroScreen() {
       const levelId = getSavedLevelId();
       const level = levelsData.find((l) => l.id === levelId);
       if (level) {
-        setSavedLevel({
-          id: level.id,
-          name: level.name,
-        });
+        setSavedLevel(level.id);
       }
     }
-  }, [hasSavedLevel, getSavedLevelId]);
+  }, [hasSavedLevel, getSavedLevelId, page]);
 
   // Handle continue game click
   const handleContinue = () => {
@@ -140,6 +136,7 @@ export default function IntroScreen() {
   // Handle button click
   const handleClick = () => {
     if (page === 0) {
+      clearSavedLevel();
       setPage(1);
     } else {
       // Type-safe check and call
@@ -362,7 +359,7 @@ export default function IntroScreen() {
 
                 <div className={styles.buttonPositionWrapper}>
                   <Button color="yellow" onClick={handleContinue}>
-                    Doorgaan (Level {savedLevel ? savedLevel.id : "?"})
+                    Doorgaan (Level {savedLevel ? savedLevel : "?"})
                     <FontAwesomeIcon icon={faForward} />
                   </Button>
                 </div>
