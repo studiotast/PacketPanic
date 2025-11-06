@@ -25,6 +25,8 @@ import AboutPacketPanic from "./components/AboutPacketPanic/AboutPacketPanic.tsx
 import PauseScreen from "./components/PauseScreen/PauseScreen.tsx";
 import Interface from "./components/Interface/Interface.tsx";
 
+import { init } from "@plausible-analytics/tracker";
+
 function GameApp() {
   const phase = useGame((state) => state.phase);
   const isPaused = useGame((state) => state.isPaused);
@@ -132,6 +134,9 @@ function StandaloneEndScreen() {
 }
 
 function App() {
+  init({
+    domain: "packet-panic.nl",
+  });
   const initializeTabVisibility = useGame(
     (state) => state.initializeTabVisibility
   );
