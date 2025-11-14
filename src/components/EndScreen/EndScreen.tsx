@@ -119,8 +119,11 @@ export default function EndScreen(): React.ReactElement {
         </div>
         <div className={styles.buttons}>
           <Button onClick={handleRestart}>Opnieuw spelen</Button>
-          <Button color="blue" onClick={() => {}}>
-            Bekijk zusterprojecten
+          <Button
+            color="blue"
+            onClick={() => window.open("https://hoehetnetwerkt.nl", "_blank")}
+          >
+            Bekijk Hoe het Net Werkt
           </Button>
         </div>
       </div>

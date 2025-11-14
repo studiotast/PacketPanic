@@ -16,9 +16,9 @@ export default function LeftCornerPiece() {
           whileTap={{ scale: 0.9 }}
           whileHover={{ scale: 1.05 }}
           className={styles.leftCornerPieceContent}
-          onClick={() => window.open("https://www.sidn.nl/", "_blank")}
+          onClick={() => window.open("https://hoehetnetwerkt.nl", "_blank")}
         >
-          <p>Alle ervaringen bekijken</p>
+          <p>Bekijk Hoe het Net Werkt</p>
           <FontAwesomeIcon fill="#000" icon={faArrowRight} />
         </motion.div>
       </div>
