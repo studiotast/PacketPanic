@@ -1,5 +1,6 @@
 import {
   faArrowRight,
+  faCircleInfo,
   faForward,
   faPlay,
 } from "@fortawesome/pro-solid-svg-icons";
@@ -16,6 +17,7 @@ import levelsData from "../../utils/levelsData.ts";
 import styles from "./IntroScreen.module.scss";
 import LeftCornerPiece from "../CornerPiece/LeftCornerPiece.tsx";
 import RightCornerPiece from "../CornerPiece/RightCornerPiece.tsx";
+import { useGLTF } from "@react-three/drei";
 
 // Tooltip component for interactive terms
 interface InteractiveTermProps {
@@ -48,19 +50,41 @@ const InteractiveTerm: React.FC<InteractiveTermProps> = ({
 );
 
 export default function IntroScreen() {
+  useEffect(() => {
+    // Start met preloaden van alle modellen zodra het scherm zichtbaar is
+    useGLTF.preload("assets/models/track_straight_long_a03.glb");
+    useGLTF.preload("assets/models/track_straight_short_a05.glb");
+    useGLTF.preload("assets/models/track_corner_a03.glb");
+    useGLTF.preload("assets/models/track_curve_a03.glb");
+    useGLTF.preload("assets/models/track_junction_a06.glb");
+    useGLTF.preload("assets/models/signpost_sign_a03.glb");
+    useGLTF.preload("assets/models/signpost_pole_2signs_a01.glb");
+    useGLTF.preload("assets/models/signpost_pole_3signs_a01.glb");
+    useGLTF.preload("assets/models/signpost_pole_4signs_a01.glb");
+    useGLTF.preload("assets/models/signpost_pole_5signs_a01.glb");
+    useGLTF.preload("assets/models/house_a02.glb");
+    useGLTF.preload("assets/models/house_flag_a02.glb");
+    useGLTF.preload("assets/models/house_flag_attention_a01.glb");
+    useGLTF.preload("assets/models/platform_level1_a03.glb");
+    useGLTF.preload("assets/models/platform_level2_a03.glb");
+    useGLTF.preload("assets/models/platform_level3&4_a01.glb");
+  }, []);
+
   const startFromIntro = useGame((state) => state.startFromIntro);
   const loadSavedLevel = useGame((state) => state.loadSavedLevel);
   const hasSavedLevel = useGame((state) => state.hasSavedLevel);
   const getSavedLevelId = useGame((state) => state.getSavedLevelId);
+  const clearSavedLevel = useGame((state) => state.clearSavedLevel);
+
   const [page, setPage] = useState(0);
   const playSound = useGame((state) => state.playSound);
+  const stopSound = useGame((state) => state.stopSound);
+  const aboutPage = useGame((state) => state.aboutPage);
   const isMuted = useGame((state) => state.isMuted);
+
   // Check if there's a saved game on mount
   const [savedGame, setSavedGame] = useState(false);
-  const [savedLevel, setSavedLevel] = useState<{
-    id: number;
-    name: string;
-  } | null>(null);
+  const [savedLevel, setSavedLevel] = useState<number | null>(null);
 
   useEffect(() => {
     // Check for saved level
@@ -71,13 +95,10 @@ export default function IntroScreen() {
       const levelId = getSavedLevelId();
       const level = levelsData.find((l) => l.id === levelId);
       if (level) {
-        setSavedLevel({
-          id: level.id,
-          name: level.name,
-        });
+        setSavedLevel(level.id);
       }
     }
-  }, [hasSavedLevel, getSavedLevelId]);
+  }, [hasSavedLevel, getSavedLevelId, page]);
 
   // Handle continue game click
   const handleContinue = () => {
@@ -96,17 +117,16 @@ export default function IntroScreen() {
   };
 
   useEffect(() => {
-    // Play sound when the component mounts
-    const sound = playSound("menu");
+    // Play menu sound when the component mounts
+    if (!isMuted) {
+      playSound("menu");
+    }
 
     // Return cleanup function to stop sound on unmount
     return () => {
-      if (sound) {
-        sound.pause();
-        sound.currentTime = 0;
-      }
+      stopSound("menu");
     };
-  }, [playSound, isMuted, page]);
+  }, [playSound, stopSound, isMuted]);
 
   // Split text into paragraphs
   const paragraphs = [
@@ -116,6 +136,7 @@ export default function IntroScreen() {
   // Handle button click
   const handleClick = () => {
     if (page === 0) {
+      clearSavedLevel();
       setPage(1);
     } else {
       // Type-safe check and call
@@ -135,9 +156,8 @@ export default function IntroScreen() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8, // Duur van de animatie
+        duration: 0.8,
         ease: "easeInOut",
-        // delay: 0.2, // Vertraging van 1 seconde
       },
     },
     exit: {
@@ -177,9 +197,8 @@ export default function IntroScreen() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 1, // Duur van de animatie
+        duration: 1,
         ease: "easeInOut",
-        // delay: 0.2, // Vertraging van 1 seconde
       },
     },
     exit: {
@@ -249,7 +268,7 @@ export default function IntroScreen() {
         // Add the interactive term
         parts.push(
           <InteractiveTerm
-            key={`term-${index}`}
+            key={`term-${index}-${foundPos}`}
             term={foundTerm.term}
             explanation={foundTerm.explanation}
             image={foundTerm.image}
@@ -327,30 +346,50 @@ export default function IntroScreen() {
           </AnimatePresence>
         )}
 
-        {page === 0 && savedGame ? (
-          <div className={styles.buttonContainerRow}>
-            <div className={styles.buttonPositionWrapper}>
-              <Button color="yellow" onClick={handleClick}>
-                Nieuw spel
-                <FontAwesomeIcon icon={faPlay} />
-              </Button>
-            </div>
+        <div className={styles.buttonsColumn}>
+          {page === 0 && savedGame ? (
+            <>
+              <div className={styles.buttonContainerRow}>
+                <div className={styles.buttonPositionWrapper}>
+                  <Button color="yellow" onClick={handleClick}>
+                    Nieuw spel
+                    <FontAwesomeIcon icon={faPlay} />
+                  </Button>
+                </div>
 
-            <div className={styles.buttonPositionWrapper}>
-              <Button color="yellow" onClick={handleContinue}>
-                Doorgaan (Level {savedLevel ? savedLevel.id : "?"})
-                <FontAwesomeIcon icon={faForward} />
-              </Button>
+                <div className={styles.buttonPositionWrapper}>
+                  <Button color="yellow" onClick={handleContinue}>
+                    Doorgaan (Level {savedLevel ? savedLevel : "?"})
+                    <FontAwesomeIcon icon={faForward} />
+                  </Button>
+                </div>
+              </div>
+              <div className={styles.buttonPositionWrapper}>
+                <Button color="grey" onClick={() => aboutPage("intro")}>
+                  Over Packet Panic
+                  <FontAwesomeIcon icon={faCircleInfo} />
+                </Button>
+              </div>
+            </>
+          ) : (
+            <div className={styles.buttonContainerRow}>
+              {page === 0 && (
+                <div className={styles.buttonPositionWrapper}>
+                  <Button color="grey" onClick={() => aboutPage("intro")}>
+                    Over Packet Panic
+                    <FontAwesomeIcon icon={faCircleInfo} />
+                  </Button>
+                </div>
+              )}
+              <div className={styles.buttonPositionWrapper}>
+                <Button color="yellow" onClick={handleClick}>
+                  Beginnen
+                  <FontAwesomeIcon icon={faPlay} />
+                </Button>
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className={styles.buttonPositionWrapper}>
-            <Button color="yellow" onClick={handleClick}>
-              {page === 0 ? "Volgende" : "Beginnen"}
-              <FontAwesomeIcon icon={page === 0 ? faArrowRight : faPlay} />
-            </Button>
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <LeftCornerPiece />
       <RightCornerPiece />

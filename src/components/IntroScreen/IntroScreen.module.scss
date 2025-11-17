@@ -88,6 +88,13 @@
   /* Add styling as needed */
 }
 
+.buttonsColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing15);
+  align-items: center;
+}
+
 .buttonContainerRow {
   display: flex;
   gap: var(--spacing20);

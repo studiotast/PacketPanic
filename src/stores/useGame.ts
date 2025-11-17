@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { subscribeWithSelector } from "zustand/middleware";
 import { StateCreator } from "zustand";
+import { Howl, Howler } from "howler";
 import levelsData from "../utils/levelsData";
 import { LevelData, ColorConfig } from "../utils/levelsData";
 import * as THREE from "three";
@@ -35,27 +36,24 @@ interface AcceleratorConfig {
   colors: string[];
 }
 
-// Use the LevelData interface from levelsData.ts
-// This ensures types match exactly
-
-// Define audio elements
+// Define audio elements using Howler.js
 type GameSounds = {
-  level: HTMLAudioElement | null;
-  menu: HTMLAudioElement | null;
-  inHole: HTMLAudioElement | null;
-  boost: HTMLAudioElement | null;
-  score: HTMLAudioElement | null;
-  button: HTMLAudioElement | null;
-  woosh: HTMLAudioElement | null;
-  countDown: HTMLAudioElement | null;
-  garageOpen: HTMLAudioElement | null;
-  garageClose: HTMLAudioElement | null;
-  robotTalking1: HTMLAudioElement | null;
-  robotTalking2: HTMLAudioElement | null;
-  robotTalking3: HTMLAudioElement | null;
-  flagAppear: HTMLAudioElement | null;
-  flagDisappear: HTMLAudioElement | null;
-  failScore: HTMLAudioElement | null;
+  level: Howl | null;
+  menu: Howl | null;
+  inHole: Howl | null;
+  boost: Howl | null;
+  score: Howl | null;
+  button: Howl | null;
+  woosh: Howl | null;
+  countDown: Howl | null;
+  garageOpen: Howl | null;
+  garageClose: Howl | null;
+  robotTalking1: Howl | null;
+  robotTalking2: Howl | null;
+  robotTalking3: Howl | null;
+  flagAppear: Howl | null;
+  flagDisappear: Howl | null;
+  failScore: Howl | null;
 };
 
 // Define game phases
@@ -82,6 +80,14 @@ interface SceneCalculation {
 interface GameState {
   blocksCount: number;
   blocksSeed: number;
+
+  // Tab mute types
+  isTabVisible: boolean;
+  wasAutoMuted: boolean;
+  wasAutoPaused: boolean;
+
+  // Prev phase for transitions
+  prevPhase: GamePhase | null;
 
   // Time
   startTime: number;
@@ -111,10 +117,12 @@ interface GameState {
   currentLevel: LevelData;
 
   // Methods
-  playSound: (soundName: keyof GameSounds) => HTMLAudioElement | false;
+  playSound: (
+    soundName: keyof GameSounds,
+    options?: { volume?: number; rate?: number; interrupt?: boolean }
+  ) => boolean;
   togglePause: () => void;
   saveCurrentLevel: () => void;
-  aboutPage: () => void;
   loadSavedLevel: () => boolean;
   hasSavedLevel: () => boolean;
   getSavedLevelId: () => number | null;
@@ -134,12 +142,13 @@ interface GameState {
   stopSound: (soundName: keyof GameSounds) => boolean;
   toggleMute: () => void;
   incrementBadActorCount: () => void;
+  aboutPage: (prevPhase?: GamePhase) => void;
+  handleTabVisibilityChange: (isVisible: boolean) => void;
+  initializeTabVisibility: () => () => void; // Returns cleanup function
+  clearSavedLevel: () => void;
 }
 
-const TIME_LIMIT = 45; // 45 seconds game limit
-
 // Create the game store with TypeScript types
-// Define the state creator type with the subscribeWithSelector middleware
 type GameStateCreator = StateCreator<
   GameState,
   [["zustand/subscribeWithSelector", never]],
@@ -148,27 +157,41 @@ type GameStateCreator = StateCreator<
 
 const useGame = create<GameState>()(
   subscribeWithSelector((set, get) => {
-    // Initialize audio elements with proper type checking
-    const createAudio = (path: string): HTMLAudioElement | null => {
-      return typeof Audio !== "undefined" ? new Audio(path) : null;
+    // Initialize audio elements with Howler.js
+    const createHowl = (src: string, options: any = {}): Howl | null => {
+      if (typeof window === "undefined") return null;
+
+      return new Howl({
+        src: [src],
+        volume: options.volume || 0.5,
+        loop: options.loop || false,
+        sprite: options.sprite || undefined,
+        pool: options.pool || 5, // Create a pool of 5 instances for simultaneous playback
+        preload: true,
+        html5: false, // Use Web Audio API for better performance
+        ...options,
+      });
     };
 
-    const levelSound = createAudio("/audio/level.wav");
-    const menuSound = createAudio("/audio/menu.wav");
-    const inHoleSound = createAudio("/audio/in-hole.wav");
-    const boostSound = createAudio("/audio/boost.wav");
-    const scoreSound = createAudio("/audio/score.wav");
-    const buttonSound = createAudio("/audio/button.wav");
-    const wooshSound = createAudio("/audio/quick-woosh.wav");
-    const countDownSound = createAudio("/audio/count-down.wav");
-    const garageOpenSound = createAudio("/audio/garage-open.wav");
-    const garageCloseSound = createAudio("/audio/garage-close.wav");
-    const robotTalkingSound1 = createAudio("/audio/robot-talking.wav");
-    const robotTalkingSound2 = createAudio("/audio/robot-talking2.wav");
-    const robotTalkingSound3 = createAudio("/audio/robot-talking3.wav");
-    const flagAppearSound = createAudio("/audio/flag-appear.wav");
-    const flagDisappearSound = createAudio("/audio/flag-disappear.wav");
-    const failScoreSound = createAudio("/audio/fail-score.wav");
+    // Create sound instances with appropriate settings
+    const sounds: GameSounds = {
+      level: createHowl("/audio/level.wav", { loop: true, volume: 0.3 }),
+      menu: createHowl("/audio/menu.wav", { loop: true, volume: 0.3 }),
+      inHole: createHowl("/audio/in-hole.wav", { pool: 10 }),
+      boost: createHowl("/audio/boost.wav", { pool: 10 }),
+      score: createHowl("/audio/score.wav", { pool: 5 }),
+      button: createHowl("/audio/button.wav", { pool: 3 }),
+      woosh: createHowl("/audio/quick-woosh.wav", { pool: 5 }),
+      countDown: createHowl("/audio/count-down.wav", { pool: 1 }),
+      garageOpen: createHowl("/audio/garage-open.wav", { pool: 2 }),
+      garageClose: createHowl("/audio/garage-close.wav", { pool: 2 }),
+      robotTalking1: createHowl("/audio/robot-talking.wav", { pool: 1 }),
+      robotTalking2: createHowl("/audio/robot-talking2.wav", { pool: 1 }),
+      robotTalking3: createHowl("/audio/robot-talking3.wav", { pool: 1 }),
+      flagAppear: createHowl("/audio/flag-appear.wav", { pool: 8 }),
+      flagDisappear: createHowl("/audio/flag-disappear.wav", { pool: 8 }),
+      failScore: createHowl("/audio/fail-score.wav", { pool: 5 }),
+    };
 
     // Setup keyboard listeners
     const setupKeyboardListeners = () => {
@@ -182,12 +205,12 @@ const useGame = create<GameState>()(
             // Prevent rapid toggling
             set({ canTogglePause: false });
 
-            // Toggle pause state - FIXED LOGIC HERE
+            // Toggle pause state
             set((state) => {
               const newIsPaused = !state.isPaused;
               return {
                 isPaused: newIsPaused,
-                timerActive: !newIsPaused, // timerActive is opposite of the NEW isPaused value
+                timerActive: !newIsPaused,
               };
             });
 
@@ -204,12 +227,12 @@ const useGame = create<GameState>()(
             // Prevent rapid toggling
             set({ canTogglePause: false });
 
-            // Toggle pause state - FIXED LOGIC HERE
+            // Toggle pause state
             set((state) => {
               const newIsPaused = !state.isPaused;
               return {
                 isPaused: newIsPaused,
-                timerActive: !newIsPaused, // timerActive is opposite of the NEW isPaused value
+                timerActive: !newIsPaused,
               };
             });
 
@@ -242,6 +265,11 @@ const useGame = create<GameState>()(
       blocksCount: 10,
       blocksSeed: 0,
 
+      // Tab mute types
+      isTabVisible: true,
+      wasAutoMuted: false,
+      wasAutoPaused: false,
+
       // Time
       startTime: 0,
       endTime: 0,
@@ -251,30 +279,16 @@ const useGame = create<GameState>()(
       // Phases
       phase: "intro",
       isPaused: false,
-      canTogglePause: true, // Used for debouncing
+      canTogglePause: true,
 
       // Mute
       isMuted: false,
 
-      // Level sound
-      sounds: {
-        level: levelSound,
-        menu: menuSound,
-        inHole: inHoleSound,
-        boost: boostSound,
-        score: scoreSound,
-        button: buttonSound,
-        woosh: wooshSound,
-        countDown: countDownSound,
-        garageOpen: garageOpenSound,
-        garageClose: garageCloseSound,
-        robotTalking1: robotTalkingSound1,
-        robotTalking2: robotTalkingSound2,
-        robotTalking3: robotTalkingSound3,
-        flagAppear: flagAppearSound,
-        flagDisappear: flagDisappearSound,
-        failScore: failScoreSound,
-      },
+      // Prev phase for transitions
+      prevPhase: null,
+
+      // Sounds
+      sounds,
 
       // Score
       score: 0,
@@ -286,40 +300,74 @@ const useGame = create<GameState>()(
       currentLevelId: 1,
       currentLevel: levelsData[0],
 
-      // Play a sound from the sounds object
-      playSound: (soundName: keyof GameSounds): HTMLAudioElement | false => {
+      // Enhanced playSound function with Howler.js
+      playSound: (
+        soundName: keyof GameSounds,
+        options: { volume?: number; rate?: number; interrupt?: boolean } = {}
+      ): boolean => {
         const { sounds, isMuted } = get();
         const sound = sounds[soundName];
 
         if (sound && !isMuted) {
-          sound.currentTime = 0; // Reset to start
-
-          sound.volume = 0.5; // Set volume to 50%
-
-          // Only set loop for menu sound
-          sound.loop = soundName === "menu" || soundName === "level";
-
-          // Return the Promise from play()
           try {
-            sound.play();
-            return sound; // Return the sound object
+            // Stop current sound if interrupt is true
+            if (options.interrupt && sound.playing()) {
+              sound.stop();
+            }
+
+            // Set volume if provided
+            if (options.volume !== undefined) {
+              sound.volume(options.volume);
+            }
+
+            // Set playback rate if provided
+            if (options.rate !== undefined) {
+              sound.rate(options.rate);
+            }
+
+            // Play the sound
+            const soundId = sound.play();
+
+            // For non-looping sounds, reset volume after playing
+            if (!sound.loop && options.volume !== undefined) {
+              sound.once("end", () => {
+                sound.volume(0.5); // Reset to default volume
+              });
+            }
+
+            return true;
           } catch (err) {
             console.error("Error playing sound:", err);
             return false;
           }
         }
 
-        return false; // Return false if sound doesn't exist or is muted
+        return false;
+      },
+
+      //Clear saved level
+      clearSavedLevel: () => {
+        try {
+          // Clear saved level in localStorage
+          localStorage.removeItem("packetPanicSavedLevel");
+          // set current level to 1
+          set({
+            currentLevelId: 1,
+            currentLevel: levelsData[0],
+          });
+        } catch (e) {
+          console.error("Failed to clear saved level from localStorage:", e);
+        }
       },
 
       // Toggle pause state
       togglePause: () => {
         set((state) => {
-          if (state.phase === "playing") {
+          if (state.phase === "playing" || state.phase === "pause") {
             const newIsPaused = !state.isPaused;
             return {
               isPaused: newIsPaused,
-              timerActive: !newIsPaused, // timerActive is opposite of the NEW isPaused value
+              timerActive: !newIsPaused,
             };
           }
           return {};
@@ -334,16 +382,23 @@ const useGame = create<GameState>()(
             "packetPanicSavedLevel",
             currentLevelId.toString()
           );
-          console.log("Saved level:", currentLevelId);
+          // console.log("Saved level:", currentLevelId);
         } catch (e) {
           console.error("Failed to save level to localStorage:", e);
         }
       },
 
-      aboutPage: () => {
+      aboutPage: (prevPhase?: GamePhase) => {
         set((state) => {
-          if (state.phase === "playing" || state.phase === "pause") {
-            return { phase: "about" };
+          if (
+            state.phase === "playing" ||
+            state.phase === "pause" ||
+            state.phase === "intro"
+          ) {
+            return {
+              phase: "about",
+              prevPhase: prevPhase || state.phase, // Store the previous phase
+            };
           }
           return {};
         });
@@ -439,9 +494,8 @@ const useGame = create<GameState>()(
             currentLevel: nextLevel as LevelData,
             phase: "explanation",
             timer: 0,
-            score: 0, // Reset score for the new level
-            badActorCount: 0, // Reset bad actor count
-            // Keep the score between levels
+            score: 0,
+            badActorCount: 0,
           });
 
           // Save progress to localStorage
@@ -504,24 +558,26 @@ const useGame = create<GameState>()(
       },
 
       levelSelect: (levelId: number): boolean => {
-        // Find the level with the matching ID
         const level = levelsData.find((level) => level.id === levelId);
 
         if (level) {
           set({
             currentLevelId: levelId,
             currentLevel: level as LevelData,
-            phase: "explanation", // Change to explanation phase
-            timer: 0, // Reset timer for new level
-            score: 0, // Reset score for new level
-            badActorCount: 0, // Reset bad actor count
-            isPaused: false, // Ensure the game isn't paused
+            phase: "explanation",
+            timer: 0,
+            score: 0,
+            badActorCount: 0,
+            isPaused: false,
           });
 
-          return true; // Return success
+          // Save progress to localStorage
+          get().saveCurrentLevel();
+
+          return true;
         }
 
-        return false; // Return failure if level not found
+        return false;
       },
 
       calculateScene: (): SceneCalculation => {
@@ -530,15 +586,13 @@ const useGame = create<GameState>()(
         // Safety check if timeLine doesn't exist
         if (!currentLevel.timeLine) {
           return {
-            spawnRate: 2.5, // Default spawn rate
+            spawnRate: 2.5,
             colors: currentLevel.trackConfig.buildings
               .map((b) => b.colors.map((c: ColorConfig) => c.color))
               .flat(),
           };
         }
 
-        // We need to cast the timeLine to a more flexible type since the original type
-        // doesn't support dynamic string indexing
         const timeLine = currentLevel.timeLine as unknown as Record<
           string,
           TimeLineScene
@@ -566,21 +620,18 @@ const useGame = create<GameState>()(
           const sceneKey = sceneKeys[i];
           const nextSceneKey = sceneKeys[i + 1];
 
-          // If this is the last scene or we're before the next scene's time
           if (!nextSceneKey || timer < timeLine[nextSceneKey].time) {
             currentSceneKey = sceneKey;
             break;
           }
         }
 
-        // Return data for the current scene
         return {
           spawnRate: timeLine[currentSceneKey].spawnRate || 2.5,
           colors: timeLine[currentSceneKey].ballColors || [],
         };
       },
 
-      // Improve the existing restart function
       restart: () => {
         set((state) => {
           if (state.phase === "playing" || state.phase === "ended") {
@@ -605,17 +656,10 @@ const useGame = create<GameState>()(
         });
       },
 
-      // Function to increment the score
       incrementScore: () => {
         set((state) => {
           const { score, currentLevel, phase } = state;
           const newScore = score + 10;
-
-          // // Check if level is complete based on score
-          // if (phase === "playing" && newScore >= currentLevel.scoreToAdvance) {
-          //   return { phase: "levelComplete", score: newScore };
-          // }
-
           return { score: newScore };
         });
       },
@@ -623,7 +667,6 @@ const useGame = create<GameState>()(
       decrementScore: (minusScoreNumber: number = 5): void => {
         set((state) => {
           const { score } = state;
-          // Ensure score doesn't go below 0
           const newScore = Math.max(0, score - minusScoreNumber);
           return { score: newScore };
         });
@@ -641,8 +684,7 @@ const useGame = create<GameState>()(
         const sound = sounds[soundName];
 
         if (sound) {
-          sound.pause();
-          sound.currentTime = 0;
+          sound.stop();
           return true;
         }
         return false;
@@ -650,17 +692,85 @@ const useGame = create<GameState>()(
 
       toggleMute: () => {
         set((state) => {
-          // Stop all sounds when muting
-          if (!state.isMuted) {
-            Object.values(state.sounds).forEach((sound) => {
-              if (sound && !sound.paused) {
-                sound.pause();
-                sound.currentTime = 0;
-              }
-            });
+          const newIsMuted = !state.isMuted;
+
+          if (newIsMuted) {
+            // Mute all sounds
+            Howler.mute(true);
+          } else {
+            // Unmute all sounds
+            Howler.mute(false);
           }
-          return { isMuted: !state.isMuted };
+
+          return { isMuted: newIsMuted };
         });
+      },
+
+      // Handle tab visibility changes
+      handleTabVisibilityChange: (isVisible: boolean) => {
+        set((state) => {
+          const updates: Partial<GameState> = { isTabVisible: isVisible };
+
+          if (!isVisible) {
+            // Tab became inactive
+
+            // Handle audio - only auto-mute if user hasn't manually muted
+            if (!state.isMuted) {
+              Howler.mute(true);
+              updates.wasAutoMuted = true;
+            } else {
+              updates.wasAutoMuted = false; // User had manually muted
+            }
+
+            // Handle game pause - only auto-pause if game is playing and not already paused
+            if (state.phase === "playing" && !state.isPaused) {
+              updates.isPaused = true;
+              updates.timerActive = false;
+              updates.wasAutoPaused = true;
+            } else {
+              updates.wasAutoPaused = false;
+            }
+          } else {
+            // Tab became active again
+
+            // Handle audio - only unmute if we auto-muted (not user-muted)
+            if (state.wasAutoMuted && !state.isMuted) {
+              Howler.mute(false);
+            }
+            updates.wasAutoMuted = false;
+
+            // Handle game pause - only unpause if we auto-paused
+            if (state.wasAutoPaused && state.phase === "playing") {
+              updates.isPaused = false;
+              updates.timerActive = true;
+            }
+            updates.wasAutoPaused = false;
+          }
+
+          return updates;
+        });
+      },
+
+      // Initialize tab visibility listener (call this once when app starts)
+      initializeTabVisibility: () => {
+        const handleVisibilityChange = () => {
+          const isVisible = !document.hidden;
+          get().handleTabVisibilityChange(isVisible);
+        };
+
+        // Set initial state
+        get().handleTabVisibilityChange(!document.hidden);
+
+        // Add event listener
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        // Return cleanup function
+        return () => {
+          document.removeEventListener(
+            "visibilitychange",
+            handleVisibilityChange
+          );
+        };
       },
     };
   })

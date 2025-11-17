@@ -29,7 +29,7 @@ export default function Accelerator({
 
   // Update directions when colors change, but keep user modifications
   useEffect(() => {
-    console.log("Accelerator colors updated:", currentColors);
+    // console.log("Accelerator colors updated:", currentColors);
 
     setDirections(
       currentColors.map((color, index) => {

@@ -83,10 +83,6 @@ export default function TrackLevel34() {
         rotation={[0, Math.PI * 1.5, 0]}
         position={[0, 0, -17]}
       />
-      {/* <BuildingsPlatform
-        rotation={[0, Math.PI * 1.5, 0]}
-        position={[0.6, 0, -12]}
-      /> */}
     </group>
   );
 }

@@ -127,13 +127,13 @@ const levelsData: LevelData[] = [
         text: "De vlaggetjes geven aan wat de beste route is volgens het BGP.",
       },
       {
-        text: "Wat de beste route is kan tijdens het level veranderen.",
+        text: "Wat de beste route is kan tijdens het level veranderen. Nieuwe vlaggetjes geven de nieuwe route aan, de oude worden doorzichtig en verdwijnen vervolgens.",
       },
       {
         text: "Beweeg de muis met de linkermuisknop ingedrukt om de camera te draaien.",
       },
       {
-        text: "Scroll om in en uit te zoomen.",
+        text: "Scroll met je muiswiel om in en uit te zoomen.",
       },
     ],
     storyLine: [
@@ -174,26 +174,26 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Lekker gewerkt zeg! Maar zonder mijn hulp was het natuurlijk niet gelukt. Toch?”",
+          "Lekker gewerkt zeg! Maar zonder mijn hulp was het natuurlijk niet gelukt. Toch?",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Dat is ook een manier om het te doen. Maar niet de goede. Blijkbaar was het toch niet zo simpel...”",
+          "Dat is ook een manier om het te doen. Maar niet de goede. Blijkbaar was het toch niet zo simpel...",
       },
     ],
     newsArticle: {
       title: "BGP: de achilleshiel van het internet",
       content:
         "Het BGP werkt vaak prima. Maar wat de bedenkers niet hebben voorzien, is dat het internet een plek zou worden waar niet iedereen altijd eerlijk is. Door het gebrek aan authenticatie, kun je niet checken of een via BGP aangekondigde route klopt.",
-      imageUrl: "/images/news/1.png",
+      imageUrl: "/images/news/1.jpg",
       readMoreLink:
         "https://tweakers.net/reviews/4155/all/border-gateway-protocol-de-achilleshiel-van-internet.html",
       date: "22-8-2015",
     },
     trackConfig: {
-      cameraStartLookAt: new THREE.Vector3(0, 0, -13),
-      cameraStartPosition: [35, 25, 15],
+      cameraStartLookAt: new THREE.Vector3(0, 0, -12),
+      cameraStartPosition: [34, 27, 15],
       accelerators: [
         {
           position: [0, 1, -14],
@@ -256,11 +256,11 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "red",
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "red",
+                transition: true,
               },
             ],
           },
@@ -268,11 +268,11 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "blue",
-                transition: true,
+                color: "red",
               },
               {
-                color: "red",
+                color: "blue",
+                transition: true,
               },
             ],
           },
@@ -494,26 +494,26 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Yes! Gelukt. Wat zijn we toch een fantastisch team! Vind je ook niet?”",
+          "Yes! Gelukt. Wat zijn we toch een fantastisch team! Vind je ook niet?",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Helaas pindakaas... Maar we geven de moed niet op en proberen het gewoon nog een keer. Toch? Toch?”",
+          "Helaas pindakaas... Maar we geven de moed niet op en proberen het gewoon nog een keer. Toch? Toch?",
       },
     ],
     newsArticle: {
       title: "BGP-foutje Pakistan legt Youtube plat",
       content:
         "In maart 2008 lag YouTube voor miljoenen gebruikers urenlang plat. De Pakistaanse overheid probeerde YouTube in hun land te blokkeren. Maar door een fout in de BGP-configuratie stuurden ze juist verkeer uit andere landen naar Pakistaanse netwerken.",
-      imageUrl: "/images/news/2.png",
+      imageUrl: "/images/news/2.jpg",
       readMoreLink:
         "https://arstechnica.com/uncategorized/2008/02/insecure-routing-redirects-youtube-to-pakistan/",
       date: "24-3-2008",
     },
     trackConfig: {
-      cameraStartLookAt: new THREE.Vector3(0, 0, -13),
-      cameraStartPosition: [35, 25, 15],
+      cameraStartLookAt: new THREE.Vector3(0, 0, -10),
+      cameraStartPosition: [35, 30, 15],
       accelerators: [
         {
           position: [0, 1, -7],
@@ -532,7 +532,7 @@ const levelsData: LevelData[] = [
             {
               color: "red",
               mistakenBadActor: true,
-              minusScoreNumber: 5,
+              minusScoreNumber: 3,
             },
           ],
         },
@@ -543,7 +543,7 @@ const levelsData: LevelData[] = [
             {
               color: "green",
               mistakenBadActor: true,
-              minusScoreNumber: 5,
+              minusScoreNumber: 3,
             },
           ],
         },
@@ -554,7 +554,7 @@ const levelsData: LevelData[] = [
             {
               color: "blue",
               mistakenBadActor: true,
-              minusScoreNumber: 5,
+              minusScoreNumber: 3,
             },
           ],
         },
@@ -619,6 +619,9 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
+                color: "green",
+              },
+              {
                 color: "red",
                 transition: true,
               },
@@ -627,6 +630,9 @@ const levelsData: LevelData[] = [
           {
             name: "Building2",
             colors: [
+              {
+                color: "red",
+              },
               {
                 color: "green",
                 transition: true,
@@ -685,7 +691,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
               },
             ],
           },
@@ -715,11 +721,11 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "green",
-                transition: true,
+                color: "yellow",
               },
               {
-                color: "yellow",
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -740,7 +746,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
               },
             ],
           },
@@ -791,7 +797,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
               },
             ],
           },
@@ -821,11 +827,11 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "yellow",
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "yellow",
+                transition: true,
               },
             ],
           },
@@ -849,7 +855,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
                 transition: true,
               },
             ],
@@ -890,7 +896,7 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
               },
               {
                 color: "green",
@@ -939,19 +945,19 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "red",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-              {
-                color: "green",
-                transition: true,
-              },
-              {
                 color: "yellow",
               },
               {
                 color: "blue",
+              },
+              {
+                color: "red",
+                mistakenBadActor: true,
+                minusScoreNumber: 3,
+              },
+              {
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -995,7 +1001,7 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
               },
 
               {
@@ -1050,15 +1056,14 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-
-              {
-                color: "yellow",
-                transition: true,
+                minusScoreNumber: 3,
               },
               {
                 color: "blue",
+              },
+              {
+                color: "yellow",
+                transition: true,
               },
             ],
           },
@@ -1224,19 +1229,19 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Wauw, je bent hier goed in. Daar zou je iets mee moeten doen. Verkeersleider. Of pakketjesbezorger!”",
+          "Wauw, je bent hier goed in. Daar zou je iets mee moeten doen. Verkeersleider. Of pakketjesbezorger!",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Oh jee... Volgens mij heb je het internet kapotgemaakt. Wil je misschien even een momentje voor jezelf?”",
+          "Oh jee... Volgens mij heb je het internet kapotgemaakt. Wil je misschien even een momentje voor jezelf?",
       },
     ],
     newsArticle: {
       title: "$235,000 aan cryptocurrency gestolen door BGP-hijack",
       content:
         "In september 2022 leidde een fout bij Amazon tot de diefstal van 235.000 dollar aan cryptocurrency. Verkeer werd omgeleid naar een nepwebsite die eruitzag als een legitieme cryptocurrency-dienst, waar hackers de bezoekers hun crypto afhandig maakten.",
-      imageUrl: "/images/news/3.png",
+      imageUrl: "/images/news/3.jpg",
       readMoreLink:
         "https://arstechnica.com/information-technology/2022/09/how-3-hours-of-inaction-from-amazon-cost-cryptocurrency-holders-235000/",
       date: "23-9-2022",
@@ -1247,15 +1252,15 @@ const levelsData: LevelData[] = [
       accelerators: [
         {
           position: [0, 1, -16],
-          colors: ["blue", "red", "green", "purple", "yellow"],
+          colors: ["blue", "red", "green", "yellow"],
         },
         {
           position: [-8, 1, -24],
-          colors: ["blue", "red", "green", "purple", "yellow"],
+          colors: ["blue", "red", "green", "yellow"],
         },
         {
           position: [10, 1, -22],
-          colors: ["blue", "red", "green", "purple", "yellow"],
+          colors: ["blue", "red", "green", "yellow"],
         },
       ],
       buildings: [
@@ -1274,11 +1279,7 @@ const levelsData: LevelData[] = [
         {
           name: "Building2",
           position: [-7, 2, -32],
-          colors: [
-            {
-              color: "purple",
-            },
-          ],
+          colors: [],
         },
         {
           name: "Building3",
@@ -1290,7 +1291,7 @@ const levelsData: LevelData[] = [
             {
               color: "yellow",
               mistakenBadActor: true,
-              minusScoreNumber: 5,
+              minusScoreNumber: 3,
             },
           ],
         },
@@ -1302,7 +1303,7 @@ const levelsData: LevelData[] = [
       ],
       spawner: {
         position: [0, 0.75, 2.5],
-        ballColors: ["blue", "red", "green", "yellow", "purple"],
+        ballColors: ["blue", "red", "green", "yellow"],
       },
     },
     timeLine: {
@@ -1323,11 +1324,7 @@ const levelsData: LevelData[] = [
           },
           {
             name: "Building2",
-            colors: [
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building3",
@@ -1338,7 +1335,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
               },
             ],
           },
@@ -1347,19 +1344,19 @@ const levelsData: LevelData[] = [
             colors: [],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -1385,9 +1382,6 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "purple",
-              },
-              {
                 color: "green",
               },
               {
@@ -1404,7 +1398,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
                 transition: true,
               },
             ],
@@ -1415,24 +1409,24 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -1449,9 +1443,6 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "purple",
-              },
-              {
                 color: "green",
               },
               {
@@ -1473,24 +1464,24 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -1501,30 +1492,16 @@ const levelsData: LevelData[] = [
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
             colors: [
               {
-                color: "purple",
-                transition: true,
-              },
-              {
                 color: "green",
               },
               {
                 color: "yellow",
-                transition: true,
               },
               {
                 color: "blue",
@@ -1546,24 +1523,24 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -1574,16 +1551,7 @@ const levelsData: LevelData[] = [
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
@@ -1591,7 +1559,9 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
               },
-
+              {
+                color: "yellow",
+              },
               {
                 color: "blue",
               },
@@ -1607,24 +1577,24 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -1635,17 +1605,7 @@ const levelsData: LevelData[] = [
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-                transition: true,
-              },
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
@@ -1654,11 +1614,11 @@ const levelsData: LevelData[] = [
                 color: "green",
               },
               {
-                color: "blue",
-                transition: true,
+                color: "yellow",
               },
               {
-                color: "yellow",
+                color: "blue",
+                transition: true,
               },
             ],
           },
@@ -1672,7 +1632,7 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
               {
                 color: "blue",
@@ -1680,19 +1640,19 @@ const levelsData: LevelData[] = [
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -1703,11 +1663,7 @@ const levelsData: LevelData[] = [
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
@@ -1715,7 +1671,6 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
               },
-
               {
                 color: "yellow",
               },
@@ -1731,7 +1686,7 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
               {
                 color: "blue",
@@ -1739,19 +1694,19 @@ const levelsData: LevelData[] = [
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -1764,9 +1719,6 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "purple",
-              },
-              {
                 color: "red",
               },
             ],
@@ -1777,7 +1729,6 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
               },
-
               {
                 color: "yellow",
               },
@@ -1791,32 +1742,30 @@ const levelsData: LevelData[] = [
             name: "Building4",
             colors: [
               {
-                color: "red",
-                mistakenBadActor: true,
-                minusScoreNumber: 20,
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 10,
+                transition: true,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -1829,8 +1778,60 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "purple",
+                color: "red",
               },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+              },
+              {
+                color: "yellow",
+                mistakenBadActor: true,
+                minusScoreNumber: 10,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "blue",
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene10: {
+        time: 75,
+        spawnRate: 2.0,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
               {
                 color: "red",
                 transition: true,
@@ -1841,13 +1842,13 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "green",
-                transition: true,
-              },
-              {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
+              },
+              {
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -1870,43 +1871,35 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
                 transition: true,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
-      // ------------- transition scene -----------
-      scene10: {
-        time: 75,
+      // --------------------------------
+      scene11: {
+        time: 80,
         spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "purple",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
@@ -1914,7 +1907,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
@@ -1937,91 +1930,19 @@ const levelsData: LevelData[] = [
             colors: [],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
-          },
-        ],
-      },
-      // --------------------------------
-      scene11: {
-        time: 80,
-        spawnRate: 2.0,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [
-              {
-                color: "purple",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-              {
-                color: "green",
-              },
-            ],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 20,
-              },
-            ],
-          },
-          {
-            name: "Building3",
-            colors: [
-              {
-                color: "red",
-                transition: true,
-              },
-              {
-                color: "blue",
-              },
-              {
-                color: "green",
-                transition: true,
-              },
-            ],
-          },
-          {
-            name: "Building4",
-            colors: [
-              {
-                color: "red",
-              },
-              {
-                color: "purple",
-              },
-            ],
-          },
-        ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
-        accelerators: [
-          {
-            position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
-          },
-          {
-            position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
-          },
-          {
-            position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2044,7 +1965,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
@@ -2053,8 +1974,14 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
+              },
+              {
+                color: "red",
+                transition: true,
+              },
+              {
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -2064,25 +1991,22 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
               },
-              {
-                color: "purple",
-              },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2096,10 +2020,6 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "green",
-                transition: true,
-              },
-              {
-                color: "blue",
               },
             ],
           },
@@ -2109,10 +2029,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
-              },
-              {
-                color: "green",
+                minusScoreNumber: 10,
               },
             ],
           },
@@ -2122,10 +2039,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-              {
-                color: "yellow",
+                minusScoreNumber: 3,
               },
             ],
           },
@@ -2135,25 +2049,22 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
               },
-              {
-                color: "purple",
-              },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2168,19 +2079,23 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
               },
+              {
+                color: "green",
+                transition: true,
+              },
             ],
           },
           {
             name: "Building2",
             colors: [
               {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 20,
-                transition: true,
+                color: "green",
               },
               {
-                color: "green",
+                color: "yellow",
+                mistakenBadActor: true,
+                minusScoreNumber: 10,
+                transition: true,
               },
             ],
           },
@@ -2190,7 +2105,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
                 transition: true,
               },
               {
@@ -2204,25 +2119,22 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
               },
-              {
-                color: "purple",
-              },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2260,28 +2172,23 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
-                mistakenBadActor: true,
-                minusScoreNumber: 20,
-              },
-              {
-                color: "purple",
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2390,19 +2297,19 @@ const levelsData: LevelData[] = [
       {
         title: "Level gehaald!",
         description:
-          "“Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.”",
+          "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
       },
       {
         title: "Level niet gehaald...",
         description:
-          "“Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.”",
+          "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
       },
     ],
     newsArticle: {
-      title: "RKPI: een veiliger BGP binnen handbereik",
+      title: "RPKI: een veiliger BGP binnen handbereik",
       content:
-        "RPKI gebruikt digitale handtekeningen om BGP-routes te verifiëren. Routers controleren of de handtekeningen kloppen; zo niet, wordt de route verworpen, wat aanvallen en vergissingen voorkomt.",
-      imageUrl: "/images/news/4.png",
+        "RPKI gebruikt digitale handtekeningen om BGP-routes te verifiëren. Routers controleren of de handtekeningen kloppen; zo niet dan wordt de route verworpen, wat aanvallen en vergissingen voorkomt.",
+      imageUrl: "/images/news/4.jpg",
       readMoreLink:
         "https://www.sidn.nl/nieuws-en-blogs/rpki-beveiligt-internet-routeringssysteem-bgp",
       date: "24-10-2022",
@@ -2413,15 +2320,15 @@ const levelsData: LevelData[] = [
       accelerators: [
         {
           position: [0, 1, -16],
-          colors: ["blue", "red", "green", "purple", "yellow"],
+          colors: ["blue", "red", "green", "yellow"],
         },
         {
           position: [-8, 1, -24],
-          colors: ["blue", "red", "green", "purple", "yellow"],
+          colors: ["blue", "red", "green", "yellow"],
         },
         {
           position: [10, 1, -22],
-          colors: ["blue", "red", "green", "purple", "yellow"],
+          colors: ["blue", "red", "green", "yellow"],
         },
       ],
       buildings: [
@@ -2440,11 +2347,7 @@ const levelsData: LevelData[] = [
         {
           name: "Building2",
           position: [-7, 2, -32],
-          colors: [
-            {
-              color: "purple",
-            },
-          ],
+          colors: [],
         },
         {
           name: "Building3",
@@ -2456,7 +2359,7 @@ const levelsData: LevelData[] = [
             {
               color: "yellow",
               mistakenBadActor: true,
-              minusScoreNumber: 5,
+              minusScoreNumber: 3,
             },
           ],
         },
@@ -2468,7 +2371,7 @@ const levelsData: LevelData[] = [
       ],
       spawner: {
         position: [0, 0.75, 2.5],
-        ballColors: ["blue", "red", "green", "yellow", "purple"],
+        ballColors: ["blue", "red", "green", "yellow"],
       },
     },
     timeLine: {
@@ -2489,11 +2392,7 @@ const levelsData: LevelData[] = [
           },
           {
             name: "Building2",
-            colors: [
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building3",
@@ -2504,7 +2403,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
               },
             ],
           },
@@ -2513,19 +2412,19 @@ const levelsData: LevelData[] = [
             colors: [],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2551,9 +2450,6 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "purple",
-              },
-              {
                 color: "green",
               },
               {
@@ -2570,7 +2466,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 3,
                 transition: true,
               },
             ],
@@ -2581,24 +2477,24 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2615,9 +2511,6 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "purple",
-              },
-              {
                 color: "green",
               },
               {
@@ -2639,24 +2532,24 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2667,30 +2560,16 @@ const levelsData: LevelData[] = [
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
             colors: [
               {
-                color: "purple",
-                transition: true,
-              },
-              {
                 color: "green",
               },
               {
                 color: "yellow",
-                transition: true,
               },
               {
                 color: "blue",
@@ -2712,24 +2591,24 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2740,16 +2619,7 @@ const levelsData: LevelData[] = [
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
@@ -2757,7 +2627,9 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
               },
-
+              {
+                color: "yellow",
+              },
               {
                 color: "blue",
               },
@@ -2773,24 +2645,24 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2801,17 +2673,7 @@ const levelsData: LevelData[] = [
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-                transition: true,
-              },
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
@@ -2820,11 +2682,11 @@ const levelsData: LevelData[] = [
                 color: "green",
               },
               {
-                color: "blue",
-                transition: true,
+                color: "yellow",
               },
               {
-                color: "yellow",
+                color: "blue",
+                transition: true,
               },
             ],
           },
@@ -2838,7 +2700,7 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
               {
                 color: "blue",
@@ -2846,19 +2708,19 @@ const levelsData: LevelData[] = [
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2869,11 +2731,7 @@ const levelsData: LevelData[] = [
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "purple",
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
@@ -2881,7 +2739,6 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
               },
-
               {
                 color: "yellow",
               },
@@ -2897,7 +2754,7 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
               {
                 color: "blue",
@@ -2905,19 +2762,19 @@ const levelsData: LevelData[] = [
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2930,9 +2787,6 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "purple",
-              },
-              {
                 color: "red",
               },
             ],
@@ -2943,7 +2797,6 @@ const levelsData: LevelData[] = [
               {
                 color: "green",
               },
-
               {
                 color: "yellow",
               },
@@ -2957,32 +2810,30 @@ const levelsData: LevelData[] = [
             name: "Building4",
             colors: [
               {
-                color: "red",
-                mistakenBadActor: true,
-                minusScoreNumber: 20,
-                transition: true,
+                color: "blue",
               },
               {
-                color: "blue",
+                color: "red",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
+                minusScoreNumber: 10,
+                transition: true,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -2995,8 +2846,60 @@ const levelsData: LevelData[] = [
             name: "Building1",
             colors: [
               {
-                color: "purple",
+                color: "red",
               },
+            ],
+          },
+          {
+            name: "Building2",
+            colors: [
+              {
+                color: "green",
+              },
+              {
+                color: "yellow",
+                mistakenBadActor: true,
+                minusScoreNumber: 10,
+              },
+            ],
+          },
+          {
+            name: "Building3",
+            colors: [],
+          },
+          {
+            name: "Building4",
+            colors: [
+              {
+                color: "blue",
+              },
+            ],
+          },
+        ],
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
+        accelerators: [
+          {
+            position: [0, 1, -16],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [-8, 1, -24],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+          {
+            position: [10, 1, -22],
+            colors: ["blue", "red", "green", "yellow"],
+          },
+        ],
+      },
+      // ------------- transition scene -----------
+      scene10: {
+        time: 75,
+        spawnRate: 2.0,
+        buildingColors: [
+          {
+            name: "Building1",
+            colors: [
               {
                 color: "red",
                 transition: true,
@@ -3007,13 +2910,13 @@ const levelsData: LevelData[] = [
             name: "Building2",
             colors: [
               {
-                color: "green",
-                transition: true,
-              },
-              {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
+              },
+              {
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -3036,43 +2939,35 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
                 transition: true,
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
-      // ------------- transition scene -----------
-      scene10: {
-        time: 75,
+      // --------------------------------
+      scene11: {
+        time: 80,
         spawnRate: 2.0,
         buildingColors: [
           {
             name: "Building1",
-            colors: [
-              {
-                color: "purple",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-            ],
+            colors: [],
           },
           {
             name: "Building2",
@@ -3080,7 +2975,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
@@ -3103,91 +2998,19 @@ const levelsData: LevelData[] = [
             colors: [],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
-          },
-        ],
-      },
-      // --------------------------------
-      scene11: {
-        time: 80,
-        spawnRate: 2.0,
-        buildingColors: [
-          {
-            name: "Building1",
-            colors: [
-              {
-                color: "purple",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-              {
-                color: "green",
-              },
-            ],
-          },
-          {
-            name: "Building2",
-            colors: [
-              {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 20,
-              },
-            ],
-          },
-          {
-            name: "Building3",
-            colors: [
-              {
-                color: "red",
-                transition: true,
-              },
-              {
-                color: "blue",
-              },
-              {
-                color: "green",
-                transition: true,
-              },
-            ],
-          },
-          {
-            name: "Building4",
-            colors: [
-              {
-                color: "red",
-              },
-              {
-                color: "purple",
-              },
-            ],
-          },
-        ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
-        accelerators: [
-          {
-            position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
-          },
-          {
-            position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
-          },
-          {
-            position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -3210,7 +3033,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
+                minusScoreNumber: 10,
               },
             ],
           },
@@ -3219,8 +3042,14 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "blue",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
+              },
+              {
+                color: "red",
+                transition: true,
+              },
+              {
+                color: "green",
+                transition: true,
               },
             ],
           },
@@ -3230,25 +3059,22 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
               },
-              {
-                color: "purple",
-              },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -3262,10 +3088,6 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "green",
-                transition: true,
-              },
-              {
-                color: "blue",
               },
             ],
           },
@@ -3275,10 +3097,7 @@ const levelsData: LevelData[] = [
               {
                 color: "yellow",
                 mistakenBadActor: true,
-                minusScoreNumber: 20,
-              },
-              {
-                color: "green",
+                minusScoreNumber: 10,
               },
             ],
           },
@@ -3288,10 +3107,7 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
                 mistakenBadActor: true,
-                minusScoreNumber: 5,
-              },
-              {
-                color: "yellow",
+                minusScoreNumber: 3,
               },
             ],
           },
@@ -3301,25 +3117,22 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
               },
-              {
-                color: "purple",
-              },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -3334,19 +3147,23 @@ const levelsData: LevelData[] = [
               {
                 color: "blue",
               },
+              {
+                color: "green",
+                transition: true,
+              },
             ],
           },
           {
             name: "Building2",
             colors: [
               {
-                color: "yellow",
-                mistakenBadActor: true,
-                minusScoreNumber: 20,
-                transition: true,
+                color: "green",
               },
               {
-                color: "green",
+                color: "yellow",
+                mistakenBadActor: true,
+                minusScoreNumber: 10,
+                transition: true,
               },
             ],
           },
@@ -3354,13 +3171,13 @@ const levelsData: LevelData[] = [
             name: "Building3",
             colors: [
               {
-                color: "blue",
-                mistakenBadActor: true,
-                minusScoreNumber: 5,
-                transition: true,
+                color: "yellow",
               },
               {
-                color: "yellow",
+                color: "blue",
+                mistakenBadActor: true,
+                minusScoreNumber: 3,
+                transition: true,
               },
             ],
           },
@@ -3370,25 +3187,22 @@ const levelsData: LevelData[] = [
               {
                 color: "red",
               },
-              {
-                color: "purple",
-              },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
@@ -3426,28 +3240,23 @@ const levelsData: LevelData[] = [
             colors: [
               {
                 color: "red",
-                mistakenBadActor: true,
-                minusScoreNumber: 20,
-              },
-              {
-                color: "purple",
               },
             ],
           },
         ],
-        ballColors: ["blue", "red", "green", "yellow", "purple"], // Colors for the spawner
+        ballColors: ["blue", "red", "green", "yellow"], // Colors for the spawner
         accelerators: [
           {
             position: [0, 1, -16],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [-8, 1, -24],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
           {
             position: [10, 1, -22],
-            colors: ["blue", "red", "green", "purple", "yellow"],
+            colors: ["blue", "red", "green", "yellow"],
           },
         ],
       },
