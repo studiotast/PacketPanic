@@ -6,6 +6,7 @@ import {
   faRectangleList,
 } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useTranslation } from "react-i18next";
 import Button from "../Button/Button";
 import Layout from "../../Layout";
 import useGame from "../../stores/useGame";
@@ -15,21 +16,22 @@ import LeftCornerPiece from "../CornerPiece/LeftCornerPiece";
 import RightCornerPiece from "../CornerPiece/RightCornerPiece";
 
 const PauseScreen: React.FC = () => {
+  const { t } = useTranslation();
   const togglePause = useGame((state) => state.togglePause);
 
   const pauseScreenData = [
     {
-      title: "Over PacketPanic",
+      title: t("pause-screen.about-packet-panic"),
       icon: faCircleInfo,
       action: "about",
     },
     {
-      title: "Terug naar home",
+      title: t("pause-screen.back-to-home"),
       icon: faHome,
       action: "startFromIntro",
     },
     {
-      title: "Level kiezen",
+      title: t("pause-screen.choose-level"),
       icon: faRectangleList,
       action: "levelSelect",
     },
@@ -38,7 +40,7 @@ const PauseScreen: React.FC = () => {
   return (
     <Layout>
       <div className={styles.content}>
-        <h2 className={styles.heading}>Gepauzeerd</h2>
+        <h2 className={styles.heading}>{t("pause-screen.paused")}</h2>
         <div className={styles.cardWrapper}>
           {pauseScreenData.map((item, index) => (
             <Card
@@ -50,7 +52,7 @@ const PauseScreen: React.FC = () => {
           ))}
         </div>
         <Button onClick={togglePause}>
-          Verder spelen
+          {t("pause-screen.continue-playing")}
           <FontAwesomeIcon icon={faPlay} />
         </Button>
       </div>

@@ -5,15 +5,17 @@ import Button from "../../components/Button/Button";
 import Layout from "../../Layout";
 import styles from "./AboutPacketPanic.module.scss";
 import useGame from "../../stores/useGame";
+import { useTranslation } from "react-i18next";
 
 export default function AboutPacketPanic() {
+  const { t } = useTranslation();
   const playSound = useGame((state) => state.playSound);
   const prevPhase = useGame((state) => state.prevPhase);
 
   const paragraphs = [
-    "Packet Panic is een educatief spel dat is ontwikkeld door Studio Tast voor de SIDN-call 'Internet in beeld' om de onderliggende infrastructuur van het internet begrijpelijk uit te leggen.",
-    "Packet Panic focust op de gevaren van BGP-hijacking: het manipuleren en onderscheppen van internetverkeer door cybercriminelen. Het BGP is een essentieel, maar kwetsbaar onderdeel van het internet. Het internet is ontwikkeld door een groep onderzoekers die op basis van vertrouwen met elkaar samenwerkten. Het BGP gaat nog steeds uit van datzelfde onderlinge vertrouwen. Er zijn manieren om het BGP minder kwetsbaar te maken. Maar die zijn alleen effectief als die breed geimplementeerd worden. ",
-    "Het doel van Packet Panic is om meer mensen bewust te maken van de kwetsbaarheden van het Border Gateway Protocol (BGP). Via het spel krijgen spelers een inzicht in hoe BGP-hijacking werkt, wat de gevaren zijn en welke oplossingen er beschikbaar zijn.",
+    t('about-packet-panic.paragraph1'),
+    t('about-packet-panic.paragraph2'),
+    t('about-packet-panic.paragraph3'),
   ];
 
   const textContainer = {
@@ -50,7 +52,7 @@ export default function AboutPacketPanic() {
   return (
     <Layout>
       <div className={styles.pauseContent}>
-        <h2 className={styles.title}>Over Packet Panic</h2>
+        <h2 className={styles.title}>{t('about-packet-panic.title')}</h2>
         <motion.div
           className={styles.textContainer}
           initial="initial"
@@ -66,7 +68,7 @@ export default function AboutPacketPanic() {
         </motion.div>
         <Button onClick={handleBackClick}>
           <FontAwesomeIcon icon={faArrowLeft} />
-          Terug
+          {t('global.back')}
         </Button>
       </div>
     </Layout>

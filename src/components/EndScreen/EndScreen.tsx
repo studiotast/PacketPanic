@@ -9,6 +9,7 @@ import styles from "./EndScreen.module.scss";
 import LeftCornerPiece from "../CornerPiece/LeftCornerPiece";
 import RightCornerPiece from "../CornerPiece/RightCornerPiece";
 import useGame from "../../stores/useGame";
+import { useTranslation } from "react-i18next";
 
 // Define interfaces for the news article
 type NewsArticle = {
@@ -20,6 +21,7 @@ type NewsArticle = {
 };
 
 export default function EndScreen(): React.ReactElement {
+  const { t } = useTranslation();
   const newsArticles = getAllNewsArticles();
 
   const playSound = useGame((state) => state.playSound);
@@ -49,58 +51,44 @@ export default function EndScreen(): React.ReactElement {
   return (
     <Layout>
       <div className={styles.endScreen}>
-        <h1>Gefeliciteerd, je hebt Packet Panic voltooid!</h1>
+        <h1>{t("end-screen.title")}</h1>
         <div className={styles.row}>
           <div className={styles.card}>
-            <p>
-              Hopelijk heb je het gevoel gehad steeds achter de feiten aan te
-              lopen. Wat als je meldingen krijgt dat een website niet
-              beschikbaar is? Hoe weet je zeker dat een door het BGP
-              aangekondigde route betrouwbaar is?
-            </p>
-            <p>
-              Packet Panic is bewust een frustrerend spel. Omdat BGP-hijacks een
-              frustrerende realiteit zijn. RPKI is een goede oplossing, maar
-              werkt pas echt goed bij 100% adoptie. Daar zijn we nog niet. De
-              teller blijft vooralsnog steken op 50%
-            </p>
-            <p>
-              Nu weet jij dat ook. Dus help mee om RPKI adoptie naar 100% te
-              krijgen.
-            </p>
-            <p>Bedankt voor het spelen van Packet Panic.</p>
+            <p>{t("end-screen.paragraph1")}</p>
+            <p>{t("end-screen.paragraph2")}</p>
+            <p>{t("end-screen.paragraph3")}</p>
+            <p>{t("end-screen.paragraph4")}</p>
           </div>
           <div className={styles.blueCard}>
-            <h2>Wat kun je nu verder doen</h2>
+            <h2>{t("end-screen.what-to-do.title")}</h2>
             <span>
-              <p className={styles.subtitle}>Check RPKI-adoptie </p>
+              <p className={styles.subtitle}>
+                {t("end-screen.what-to-do.check-rpki.title")}
+              </p>
               <p>
-                Ga naar{" "}
+                {t("end-screen.go-to")}{" "}
                 <a target="_blank" href="https://internet.nl">
                   www.internet.nl
                 </a>{" "}
-                en controleer hoe het zit met RPKI adoptie van je werkgever, je
-                gemeente of je voetbalclub.
+                {t("end-screen.what-to-do.check-rpki.description")}
               </p>
             </span>
             <span>
-              <p className={styles.subtitle}>Deel je kennis</p>
-              <p>
-                Vertel anderen over de risico's van BGP-hijacking. Duw
-                bijvoorbeeld Packet Panic onder hun neus.
+              <p className={styles.subtitle}>
+                {t("end-screen.what-to-do.share-knowledge.title")}
               </p>
+              <p>{t("end-screen.what-to-do.share-knowledge.description")}</p>
             </span>
             <span>
-              <p className={styles.subtitle}>Verdiep je kennis </p>
-              <p>
-                Bekijk de zusterprojecten van Packet Panic, die inzicht bieden
-                in andere onderdelen van de infrastructuur van het internet.
+              <p className={styles.subtitle}>
+                {t("end-screen.what-to-do.deepen-knowledge.title")}
               </p>
+              <p>{t("end-screen.what-to-do.deepen-knowledge.description")}</p>
             </span>
           </div>
         </div>
         <div className={styles.row}>
-          <h2>Terugblik krantenknipsels</h2>
+          <h2>{t("end-screen.news-review-title")}</h2>
           <div className={styles.news}>
             {newsArticles.map((article: NewsArticle, idx: number) => (
               <ClickableCard
@@ -110,20 +98,20 @@ export default function EndScreen(): React.ReactElement {
                 wrapperClassName="newsArticleWrapper"
               >
                 <div className={styles.image}>
-                  <img src={article.imageUrl} alt={article.title} />
+                  <img src={article.imageUrl} alt={t(article.title as any)} />
                 </div>
-                <h3>{article.title}</h3>
+                <h3>{t(article.title as any)}</h3>
               </ClickableCard>
             ))}
           </div>
         </div>
         <div className={styles.buttons}>
-          <Button onClick={handleRestart}>Opnieuw spelen</Button>
+          <Button onClick={handleRestart}>{t("end-screen.play-again")}</Button>
           <Button
             color="blue"
             onClick={() => window.open("https://hoehetnetwerkt.nl", "_blank")}
           >
-            Bekijk Hoe het Net Werkt
+            {t("left-corner-piece.view-how-the-net-works")}
           </Button>
         </div>
       </div>

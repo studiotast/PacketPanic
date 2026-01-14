@@ -1,0 +1,324 @@
+{
+  "global": {
+    "back": "Back",
+    "continue": "Continue",
+    "share": "Share",
+    "skip": "Skip",
+    "level": "level"
+  },
+  "intro-screen": {
+    "about-packet-panic": "About Packet Panic",
+    "new-game": "New Game",
+    "start": "Start",
+    "paragraph": "Every second, billions of packets are on their way to their final destination on the internet. These pieces of data travel from router to router, often crossing the boundaries of multiple autonomous systems. They blindly trust the Border Gateway Protocol (BGP) to choose the best route. But BGP works based on information it receives from other networks, and that information is not always correct…",
+    "terms": {
+      "pakketjes": {
+        "term": "packets",
+        "explanation": "A packet is a piece of data, for example: an email, a video stream, or a request to visit a website."
+      },
+      "router": {
+        "term": "router to router",
+        "explanation": "A router forwards packets to the next stop based on instructions from protocols like BGP."
+      },
+      "autonome-systemen": {
+        "term": "autonomous systems",
+        "explanation": "An autonomous system is a collection of networks under the management of one organization, such as an internet provider or a large company."
+      },
+      "bgp": {
+        "term": "Border Gateway Protocol",
+        "explanation": "BGP is the protocol used to determine the best route to a destination outside the current autonomous system"
+      }
+    }
+  },
+  "left-corner-piece": {
+    "view-how-the-net-works": "View How the Network Works"
+  },
+  "pause-screen": {
+    "paused": "Paused",
+    "about-packet-panic": "About Packet Panic",
+    "back-to-home": "Back to home",
+    "choose-level": "Choose level",
+    "continue-playing": "Continue playing"
+  },
+  "level-picker": {
+    "choose-level": "Choose level"
+  },
+  "game-over-screen": {
+    "news-today": "News of today",
+    "full": "Full",
+    "read-article": "read article"
+  },
+  "about-packet-panic": {
+    "title": "About Packet Panic",
+    "paragraph1": "Packet Panic is an educational game developed by Studio Tast for the SIDN call 'Internet inBeeld' to explain the underlying infrastructure of the internet in an understandable way.",
+    "paragraph2": "Packet Panic focuses on the dangers of BGP hijacking: the manipulation and interception of internet traffic by cybercriminals. BGP is an essential but vulnerable part of the internet. The internet was developed by a group of researchers who collaborated based on trust. BGP still relies on that same mutual trust. There are ways to make BGP less vulnerable, but they are only effective if they are widely implemented.",
+    "paragraph3": "The goal of Packet Panic is to raise awareness among more people about the vulnerabilities of the Border Gateway Protocol (BGP). Through the game, players gain insight into how BGP hijacking works, what the dangers are, and what solutions are available."
+  },
+  "levels": {
+    "level-1": {
+      "description": "Direct the colored packets to their matching buildings!",
+      "tutorial": {
+        "step-1": "Direct the packets the right way.",
+        "step-2": "The packets follow the direction of the signpost.",
+        "step-3": "The flags indicate the best route according to BGP.",
+        "step-4": "The best route can change during the level. New flags indicate the new route, the old ones become transparent and then disappear.",
+        "step-5": "Move the mouse with the left mouse button pressed to rotate the camera.",
+        "step-6": "Scroll with your mouse wheel to zoom in and out."
+      },
+      "storyline": {
+        "step-1": {
+          "text": "Welcome to your first day as a traffic controller at Packet Panic Inc.",
+          "button": "..."
+        },
+        "step-2": {
+          "text": "The most prestigious autonomous system in the Netherlands.",
+          "button": "..."
+        },
+        "step-3": {
+          "text": "My name is D.I.R.K (Digital Internal Routing Force). But you can just call me 'boss'.",
+          "button": "Yes, boss..."
+        },
+        "step-4": {
+          "text": "You have the simplest job on earth. BGP tells you the best route for each packet.",
+          "button": "Okay!"
+        },
+        "step-5": {
+          "text": "You just need to make sure every signpost points in the right direction. Easy, right?",
+          "button": "I understand"
+        },
+        "step-6": {
+          "text": "Unless BGP gives you the wrong route. Then it gets complicated.",
+          "button": "..."
+        },
+        "step-7": {
+          "text": "But that probably won't happen...",
+          "button": "Uh..."
+        },
+        "step-8": {
+          "text": "Okay. You'll figure it out. Good luck!",
+          "button": "Thanks..."
+        }
+      },
+      "score-screen": {
+        "success": {
+          "title": "Level completed!",
+          "description": "Great work! But without my help, you wouldn't have made it, right?"
+        },
+        "fail": {
+          "title": "Level not completed...",
+          "description": "That's one way to do it. But not the right way. Apparently, it wasn't so simple after all..."
+        }
+      },
+      "news-article": {
+        "title": "BGP: the Achilles heel of the internet",
+        "content": "BGP often works fine. But what the creators didn't foresee is that the internet would become a place where not everyone is always honest. Due to the lack of authentication, you can't verify if a route announced via BGP is correct."
+      }
+    },
+    "level-2": {
+      "description": "Direct the colored packets to their matching buildings!",
+      "notifications": [
+        "YouTube is not reachable.",
+        "Getting error message on YouTube.",
+        "Can't load YouTube.",
+        "Website not reachable."
+      ],
+      "tutorial": {
+        "step-1": "Packets now pass multiple signposts, set them all correctly when a route changes."
+      },
+      "storyline": {
+        "step-1": {
+          "text": "So you didn't experience any problems with BGP yesterday?",
+          "button": "No"
+        },
+        "step-2": {
+          "text": "Everything that went wrong was your own fault?",
+          "button": "Yes?"
+        },
+        "step-3": {
+          "text": "Wonders never cease...",
+          "button": "..."
+        },
+        "step-4": {
+          "text": "Let's hope it stays that way today!",
+          "button": "Continue"
+        }
+      },
+      "score-screen": {
+        "success": {
+          "title": "Level completed!",
+          "description": "Yes! Success. What a fantastic team we are! Don't you think?"
+        },
+        "fail": {
+          "title": "Level not completed...",
+          "description": "Too bad... But we won't give up and just try again. Right? Right?"
+        }
+      },
+      "news-article": {
+        "title": "Pakistan BGP error takes down YouTube",
+        "content": "In March 2008, YouTube was down for millions of users for hours. The Pakistani government tried to block YouTube in their country. But due to an error in the BGP configuration, they redirected traffic from other countries to Pakistani networks."
+      }
+    },
+    "level-3": {
+      "description": "Direct the colored packets to their matching buildings!",
+      "notifications": ["Can't load the website.", "Website not reachable."],
+      "serious-notifications": [
+        "My crypto disappeared through this fake website!",
+        "My digital coins are gone! This was a scam!",
+        "I've been scammed! All my crypto is gone!",
+        "My crypto is gone! This was a fake website!"
+      ],
+      "warnings": [
+        "Warning, this site seems unsafe!",
+        "Warning: Website not quite right.",
+        "The website doesn't seem completely trustworthy.",
+        "This website looks suspicious."
+      ],
+      "tutorial": {
+        "step-1": "Avoid penalties! Redirect traffic as soon as you see that traffic isn't arriving at a new route."
+      },
+      "storyline": {
+        "step-1": { "text": "One small mistake...", "button": "..." },
+        "step-2": { "text": "YouTube unreachable for hours.", "button": "..." },
+        "step-3": {
+          "text": "Well, fortunately it wasn't our fault! Go team Packet Panic!",
+          "button": "YEAH!"
+        },
+        "step-4": {
+          "text": "But unhappy customers are still a problem.",
+          "button": "..."
+        },
+        "step-5": {
+          "text": "So if you notice that BGP is wrong.",
+          "button": "..."
+        },
+        "step-6": {
+          "text": "Ignore the flags and send the traffic via another route.",
+          "button": "Okay!"
+        },
+        "step-7": { "text": "Go get 'em tiger!", "button": "RAAAWR!" }
+      },
+      "score-screen": {
+        "success": {
+          "title": "Level completed!",
+          "description": "Wow, you're good at this. You should do something with that. Traffic controller. Or package deliverer!"
+        },
+        "fail": {
+          "title": "Level not completed...",
+          "description": "Oh dear... I think you broke the internet. Would you like a moment to yourself?"
+        }
+      },
+      "news-article": {
+        "title": "$235,000 in cryptocurrency stolen through BGP hijack",
+        "content": "In September 2022, an error at Amazon led to the theft of $235,000 in cryptocurrency. Traffic was redirected to a fake website that looked like a legitimate cryptocurrency service, where hackers stole visitors' crypto."
+      }
+    },
+    "level-4": {
+      "description": "Direct the colored packets to their matching buildings!",
+      "notifications": ["Can't load the website.", "Website not reachable."],
+      "serious-notifications": [
+        "My crypto disappeared through this fake website!",
+        "My digital coins are gone! This was a scam!",
+        "I've been scammed! All my crypto is gone!",
+        "My crypto is gone! This was a fake website!"
+      ],
+      "warnings": [
+        "Warning, this site seems unsafe!",
+        "Warning: Website not quite right.",
+        "The website doesn't seem completely trustworthy.",
+        "This website looks suspicious."
+      ],
+      "tutorial": {
+        "step-1": "An exclamation mark indicates that the route is not trustworthy, avoid these routes."
+      },
+      "storyline": {
+        "step-1": {
+          "text": "I have a news hamburger for you: bad news, good news, and bad news.",
+          "button": "..."
+        },
+        "step-2": {
+          "text": "Which one do you want first?",
+          "button": "Good news"
+        },
+        "step-3": {
+          "text": "I'll start with the bad news anyway.",
+          "button": "..."
+        },
+        "step-4": {
+          "text": "It's very likely that much less crypto would have been stolen if we had reacted faster.",
+          "button": "Oh, that's unfortunate..."
+        },
+        "step-5": {
+          "text": "The good news is that I took immediate action: from now on we have much better security in our autonomous system",
+          "button": "And the last bad news?"
+        },
+        "step-6": {
+          "text": "Oh yes, the most important news...",
+          "button": "..."
+        },
+        "step-7": {
+          "text": "Your work is going to be a lot less interesting. Boring, I would dare to say.",
+          "button": "..."
+        },
+        "step-8": {
+          "text": "They're even thinking about giving the company a new name: CalmConnect",
+          "button": "..."
+        },
+        "step-9": {
+          "text": "So I've handed in my resignation.",
+          "button": "Oh, no!"
+        },
+        "step-10": {
+          "text": "If I can't cause panic anymore, I'd rather use my services elsewhere.",
+          "button": "I'm going to miss you, boss!"
+        },
+        "step-11": {
+          "text": "Just call me D.I.R.K., I'm not your boss anymore...",
+          "button": ":("
+        },
+        "step-12": {
+          "text": "See you later, alligator!",
+          "button": "In a while, crocodile!"
+        }
+      },
+      "score-screen": {
+        "success": {
+          "title": "Level completed!",
+          "description": "This is D.I.R.K.'s voicemail. I'm unfortunately not available to give you positive or negative feedback. Please try again later."
+        },
+        "fail": {
+          "title": "Level not completed...",
+          "description": "This is D.I.R.K.'s voicemail. I'm unfortunately not available to give you positive or negative feedback. Please try again later."
+        }
+      },
+      "news-article": {
+        "title": "RPKI: a safer BGP within reach",
+        "content": "RPKI uses digital signatures to verify BGP routes. Routers check if the signatures are correct; if not, the route is rejected, which prevents attacks and mistakes."
+      }
+    }
+  },
+  "end-screen": {
+    "title": "Congratulations, you've completed Packet Panic!",
+    "paragraph1": "Hopefully you felt like you were constantly playing catch-up. What if you get notifications that a website is unavailable? How can you be sure that a route announced by BGP is trustworthy?",
+    "paragraph2": "Packet Panic is intentionally a frustrating game. Because BGP hijacks are a frustrating reality. RPKI is a good solution, but only works really well with 100% adoption. We're not there yet. The counter is still stuck at 50%",
+    "paragraph3": "Now you know that too. So help get RPKI adoption to 100%.",
+    "paragraph4": "Thank you for playing Packet Panic.",
+    "what-to-do": {
+      "title": "What you can do now",
+      "check-rpki": {
+        "title": "Check RPKI adoption",
+        "description": "and check the RPKI adoption of your employer, your municipality, or your football club."
+      },
+      "share-knowledge": {
+        "title": "Share your knowledge",
+        "description": "Tell others about the risks of BGP hijacking. For example, push Packet Panic under their nose."
+      },
+      "deepen-knowledge": {
+        "title": "Deepen your knowledge",
+        "description": "Check out Packet Panic's sister projects, which provide insight into other parts of the internet infrastructure."
+      }
+    },
+    "news-review-title": "News clippings review",
+    "play-again": "Play again",
+    "go-to": "Go to"
+  }
+}

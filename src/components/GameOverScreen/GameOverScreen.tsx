@@ -12,8 +12,10 @@ import Button from "../Button/Button";
 import TvWrapper from "../TutorialScreen/components/TvWrapper";
 import styles from "./GameOverScreen.module.scss";
 import ScoreProgressBar from "../ScoreProgressBar/ScoreProgressBar";
+import { useTranslation } from "react-i18next";
 
 export default function GameOverScreen() {
+  const { t } = useTranslation();
   const [page, setPage] = useState(0);
   const completeRestart = useGame((state) => state.completeRestart);
   const advanceToNextLevel = useGame((state) => state.advanceToNextLevel);
@@ -103,14 +105,14 @@ export default function GameOverScreen() {
                   }}
                 >{`${
                   progressPercentage >= 100
-                    ? currentLevel.scoreScreen[0].title
-                    : currentLevel.scoreScreen[1].title
+                    ? t(currentLevel.scoreScreen[0].title as any)
+                    : t(currentLevel.scoreScreen[1].title as any)
                 }`}</p>
                 <p className={styles.gameOverDetails}>
                   {`${
                     progressPercentage >= 100
-                      ? currentLevel.scoreScreen[0].description
-                      : currentLevel.scoreScreen[1].description
+                      ? t(currentLevel.scoreScreen[0].description as any)
+                      : t(currentLevel.scoreScreen[1].description as any)
                   }`}
                 </p>
               </div>
@@ -125,7 +127,7 @@ export default function GameOverScreen() {
               exit="exit"
               variants={pageVariants}
             >
-              <p className={styles.gameOverNewsHeader}>Nieuws van vandaag</p>
+              <p className={styles.gameOverNewsHeader}>{t("game-over-screen.news-today")}</p>
               <div className={styles.gameOverNewsContentWrapper}>
                 <img
                   src={currentLevel?.newsArticle?.imageUrl}
@@ -135,7 +137,7 @@ export default function GameOverScreen() {
                 <div className={styles.gameOverNewsText}>
                   <div className={styles.gameOverNewsHeaderContainer}>
                     <p className={styles.gameOverNewsTitle}>
-                      {currentLevel?.newsArticle?.title}
+                      {t((currentLevel?.newsArticle?.title as any) || "")}
                     </p>
                     <p className={styles.gameOverNewsDate}>
                       {currentLevel?.newsArticle?.date}
@@ -143,7 +145,7 @@ export default function GameOverScreen() {
                   </div>
                   <div className={styles.gameOverNewsDescriptionContainer}>
                     <p className={styles.gameOverNewsDescription}>
-                      {currentLevel?.newsArticle?.content}
+                      {t((currentLevel?.newsArticle?.content as any) || "")}
                     </p>
                     <Button
                       style={{ width: "fit-content" }}
@@ -157,8 +159,8 @@ export default function GameOverScreen() {
                       responsive
                     >
                       <span>
-                        <span className={styles.newsButtonText}>Volledig</span>{" "}
-                        artikel lezen
+                        <span className={styles.newsButtonText}>{t("game-over-screen.full")}</span>{" "}
+                        {t("game-over-screen.read-article")}
                       </span>
                     </Button>
                   </div>
@@ -170,17 +172,17 @@ export default function GameOverScreen() {
         <div className={styles.gameOverButtonContainer}>
           {page === 0 ? (
             <Button responsive onClick={handleClick}>
-              Verder
+              {t("global.continue")}
               <FontAwesomeIcon icon={faCircleCheck} />
             </Button>
           ) : (
             <>
               <Button responsive color="blue" onClick={handleRepeatLevel}>
-                {`Level ${currentLevel.id} `}
+                {`${t("global.level")} ${currentLevel.id} `}
                 <FontAwesomeIcon icon={faRotate} />
               </Button>
               <Button responsive onClick={handleClick}>
-                {isLastLevel ? "Doorgaan" : `Level ${currentLevel.id + 1} `}
+                {isLastLevel ? t("global.continue") : `${t("global.level")} ${currentLevel.id + 1} `}
                 <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </>

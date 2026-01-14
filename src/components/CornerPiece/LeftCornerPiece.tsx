@@ -3,8 +3,10 @@ import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 import styles from "./CornerPiece.module.scss";
+import { useTranslation } from "react-i18next";
 
 export default function LeftCornerPiece() {
+  const { t } = useTranslation();
   return (
     <div className={styles.leftCornerPiece}>
       <div className={styles.cornerPieceInner}>
@@ -18,7 +20,7 @@ export default function LeftCornerPiece() {
           className={styles.leftCornerPieceContent}
           onClick={() => window.open("https://hoehetnetwerkt.nl", "_blank")}
         >
-          <p>Bekijk Hoe het Net Werkt</p>
+          <p>{t("left-corner-piece.view-how-the-net-works")}</p>
           <FontAwesomeIcon fill="#000" icon={faArrowRight} />
         </motion.div>
       </div>

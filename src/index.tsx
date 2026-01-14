@@ -24,6 +24,7 @@ import LevelPicker from "./components/LevelPicker/LevelPicker.tsx";
 import AboutPacketPanic from "./components/AboutPacketPanic/AboutPacketPanic.tsx";
 import PauseScreen from "./components/PauseScreen/PauseScreen.tsx";
 import Interface from "./components/Interface/Interface.tsx";
+import "./utils/i18n";
 
 import { init } from "@plausible-analytics/tracker";
 
