@@ -1,7 +1,6 @@
 .languageSwitcher {
   position: relative;
   .tooltip {
-    backdrop-filter: blur(5px);
     z-index: 2;
     position: absolute;
     right: 0;
@@ -20,9 +19,10 @@
       padding: var(--spacing10) var(--spacing15);
       text-align: left;
       font-weight: var(--weight-regular);
+      background-color: color-mix(in srgb, var(--white) 50%, transparent);
       cursor: pointer;
       &.active {
-        background-color: color-mix(in srgb, var(--white) 50%, transparent);
+        background-color: var(--white);
       }
       &:hover {
         background-color: color-mix(in srgb, var(--white) 80%, transparent);

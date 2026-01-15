@@ -34,7 +34,7 @@ export default function LanguageSwitcher() {
       animate="visible"
       onClick={() => setOpen(() => !open)}
     >
-      <Button color="blue" onClick={() => {}}>
+      <Button color="white" onClick={() => {}}>
         <FontAwesomeIcon icon={faGlobe} />
         {i18n.language.toUpperCase()}
       </Button>
