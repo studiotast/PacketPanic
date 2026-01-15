@@ -1,5 +1,4 @@
 import {
-  faArrowRight,
   faCircleInfo,
   faForward,
   faPlay,
@@ -19,6 +18,7 @@ import LeftCornerPiece from "../CornerPiece/LeftCornerPiece.tsx";
 import RightCornerPiece from "../CornerPiece/RightCornerPiece.tsx";
 import { useGLTF } from "@react-three/drei";
 import { useTranslation } from "react-i18next";
+
 // Tooltip component for interactive terms
 interface InteractiveTermProps {
   term: string;
@@ -131,9 +131,7 @@ export default function IntroScreen() {
   }, [playSound, stopSound, isMuted]);
 
   // Split text into paragraphs
-  const paragraphs = [
-    t('intro-screen.paragraph'),
-  ];
+  const paragraphs = [t("intro-screen.paragraph")];
 
   // Handle button click
   const handleClick = () => {
@@ -221,23 +219,23 @@ export default function IntroScreen() {
     // Create a collection of terms and their tooltips
     const terms = [
       {
-        term: t('intro-screen.terms.pakketjes.term'),
-        explanation: t('intro-screen.terms.pakketjes.explanation'),
+        term: t("intro-screen.terms.pakketjes.term"),
+        explanation: t("intro-screen.terms.pakketjes.explanation"),
         image: "./assets/images/tooltips/tooltippakketjes_a02.png",
       },
       {
-        term: t('intro-screen.terms.router.term'),
-        explanation: t('intro-screen.terms.router.explanation'),
+        term: t("intro-screen.terms.router.term"),
+        explanation: t("intro-screen.terms.router.explanation"),
         image: "./assets/images/tooltips/tooltiprouter_a04.png",
       },
       {
-        term: t('intro-screen.terms.autonome-systemen.term'),
-        explanation: t('intro-screen.terms.autonome-systemen.explanation'),
+        term: t("intro-screen.terms.autonome-systemen.term"),
+        explanation: t("intro-screen.terms.autonome-systemen.explanation"),
         image: "./assets/images/tooltips/tooltipAS_a02.png",
       },
       {
-        term: t('intro-screen.terms.bgp.term'),
-        explanation: t('intro-screen.terms.bgp.explanation'),
+        term: t("intro-screen.terms.bgp.term"),
+        explanation: t("intro-screen.terms.bgp.explanation"),
         image: "./assets/images/tooltips/tooltipBGP_a02.png",
       },
     ];

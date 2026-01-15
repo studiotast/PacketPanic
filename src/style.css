@@ -1197,6 +1197,27 @@ body,
 /**
 Button styling
 */
+.language-switcher {
+  position: absolute;
+  top: var(--spacing20);
+  left: var(--spacing20);
+  z-index: 1000;
+
+  display: flex;
+  gap: var(--spacing10);
+  align-items: center;
+}
+
+.language-switcher.inset {
+  top: var(--spacing50);
+  left: var(--spacing50);
+
+  @media screen and (max-width: 768px) {
+    top: var(--spacing30);
+    left: var(--spacing30);
+  }
+}
+
 .top-right-buttons {
   position: absolute;
   top: var(--spacing20);

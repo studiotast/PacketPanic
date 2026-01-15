@@ -1,0 +1,32 @@
+.languageSwitcher {
+  position: relative;
+  .tooltip {
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: calc(44px + var(--spacing10));
+
+    background-color: color-mix(in srgb, var(--white) 40%, transparent);
+
+    font-size: var(--font-paragraph);
+    transition: opacity 0.2s;
+    border-radius: var(--border-radius10);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    p {
+      padding: var(--spacing10) var(--spacing15);
+      text-align: left;
+      font-weight: var(--weight-regular);
+      cursor: pointer;
+      &.active {
+        background-color: color-mix(in srgb, var(--white) 50%, transparent);
+      }
+      &:hover {
+        background-color: color-mix(in srgb, var(--white) 80%, transparent);
+      }
+    }
+  }
+}
