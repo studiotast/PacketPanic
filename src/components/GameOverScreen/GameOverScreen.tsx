@@ -139,21 +139,21 @@ export default function GameOverScreen() {
                 />
                 <div className={styles.gameOverNewsText}>
                   <div className={styles.gameOverNewsHeaderContainer}>
-                    <p className={styles.gameOverNewsTitle}>
-                      {getTranslated(
-                        currentLevel?.newsArticle?.title || { nl: "", en: "" }
-                      )}
-                    </p>
+                    {!!currentLevel?.newsArticle?.title && (
+                      <p className={styles.gameOverNewsTitle}>
+                        {getTranslated(currentLevel.newsArticle.title)}
+                      </p>
+                    )}
                     <p className={styles.gameOverNewsDate}>
                       {currentLevel?.newsArticle?.date}
                     </p>
                   </div>
                   <div className={styles.gameOverNewsDescriptionContainer}>
-                    <p className={styles.gameOverNewsDescription}>
-                      {getTranslated(
-                        currentLevel?.newsArticle?.content || { nl: "", en: "" }
-                      )}
-                    </p>
+                    {!!currentLevel?.newsArticle?.content && (
+                      <p className={styles.gameOverNewsDescription}>
+                        {getTranslated(currentLevel.newsArticle.content)}
+                      </p>
+                    )}
                     <Button
                       style={{ width: "fit-content" }}
                       onClick={() =>
