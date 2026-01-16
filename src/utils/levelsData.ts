@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import type { TranslatedString } from "./getTranslated";
 
 export function getAllNewsArticles() {
   return levelsData
@@ -11,7 +12,7 @@ export interface LevelData {
   scoreToAdvance: number;
   maxScore: number;
   timeLimit: number;
-  description: string;
+  description: TranslatedString;
   storyLine: StoryLine[];
   tutorial: Tutorial[];
   newsArticle?: NewsArticle;
@@ -51,7 +52,7 @@ export interface LevelData {
 }
 
 export interface NotificationsData {
-  text: string;
+  text: TranslatedString;
 }
 
 interface SceneData {
@@ -63,12 +64,12 @@ interface SceneData {
 }
 
 interface Tutorial {
-  text: string;
+  text: TranslatedString;
 }
 
 interface ScoreScreen {
-  title: string;
-  description: string;
+  title: TranslatedString;
+  description: TranslatedString;
 }
 
 export interface ColorConfig {
@@ -96,13 +97,13 @@ interface SpawnerConfig {
 }
 
 interface StoryLine {
-  text: string;
-  button: string;
+  text: TranslatedString;
+  button: TranslatedString;
 }
 
 interface NewsArticle {
-  title: string;
-  content: string;
+  title: TranslatedString;
+  content: TranslatedString;
   imageUrl: string;
   readMoreLink: string;
   date: string;
@@ -115,74 +116,161 @@ const levelsData: LevelData[] = [
     scoreToAdvance: 150,
     maxScore: 200,
     timeLimit: 60, // 60 seconds
-    description: "levels.level-1.description",
+    description: {
+      nl: "Stuur de gekleurde pakketjes naar de juiste gebouwen!",
+      en: "Direct the colored packets to their matching buildings!",
+    },
     tutorial: [
       {
-        text: "levels.level-1.tutorial.step-1",
+        text: {
+          nl: "Stuur de pakketjes de goede kant op.",
+          en: "Direct the packets the right way.",
+        },
       },
       {
-        text: "levels.level-1.tutorial.step-2",
+        text: {
+          nl: "De pakketjes volgen richting van de wegwijzer.",
+          en: "The packets follow the direction of the signpost.",
+        },
       },
       {
-        text: "levels.level-1.tutorial.step-3",
+        text: {
+          nl: "De vlaggetjes geven aan wat de beste route is volgens het BGP.",
+          en: "The flags indicate the best route according to BGP.",
+        },
       },
       {
-        text: "levels.level-1.tutorial.step-4",
+        text: {
+          nl: "Wat de beste route is kan tijdens het level veranderen. Nieuwe vlaggetjes geven de nieuwe route aan, de oude worden doorzichtig en verdwijnen vervolgens.",
+          en: "The best route can change during the level. New flags indicate the new route, the old ones become transparent and then disappear.",
+        },
       },
       {
-        text: "levels.level-1.tutorial.step-5",
+        text: {
+          nl: "Beweeg de muis met de linkermuisknop ingedrukt om de camera te draaien.",
+          en: "Move the mouse with the left mouse button pressed to rotate the camera.",
+        },
       },
       {
-        text: "levels.level-1.tutorial.step-6",
+        text: {
+          nl: "Scroll met je muiswiel om in en uit te zoomen.",
+          en: "Scroll with your mouse wheel to zoom in and out.",
+        },
       },
     ],
     storyLine: [
       {
-        text: "levels.level-1.storyline.step-1.text",
-        button: "levels.level-1.storyline.step-1.button",
+        text: {
+          nl: "Welkom op je eerste werkdag als verkeersleider bij Packet Panic B.V.",
+          en: "Welcome to your first day as a traffic controller at Packet Panic Inc.",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-1.storyline.step-2.text",
-        button: "levels.level-1.storyline.step-2.button",
+        text: {
+          nl: "Het meest prestigieuze autonome systeem van Nederland.",
+          en: "The most prestigious autonomous system in the Netherlands.",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-1.storyline.step-3.text",
-        button: "levels.level-1.storyline.step-3.button",
+        text: {
+          nl: "Mijn naam is D.I.R.K (Digitale Interne Routing Kracht). Maar jij mag me gewoon 'baas' noemen.",
+          en: "My name is D.I.R.K (Digital Internal Routing Force). But you can just call me 'boss'.",
+        },
+        button: {
+          nl: "Ja, baas...",
+          en: "Yes, boss...",
+        },
       },
       {
-        text: "levels.level-1.storyline.step-4.text",
-        button: "levels.level-1.storyline.step-4.button",
+        text: {
+          nl: "Je hebt het simpelste baantje op aarde. Het BGP vertelt je de beste route voor ieder pakketje.",
+          en: "You have the simplest job on earth. BGP tells you the best route for each packet.",
+        },
+        button: {
+          nl: "Oké!",
+          en: "Okay!",
+        },
       },
       {
-        text: "levels.level-1.storyline.step-5.text",
-        button: "levels.level-1.storyline.step-5.button",
+        text: {
+          nl: "Jij hoeft alleen maar te zorgen dat iedere wegwijzer de goede kant op wijst. Makkie toch?",
+          en: "You just need to make sure every signpost points in the right direction. Easy, right?",
+        },
+        button: {
+          nl: "Ik snap het",
+          en: "I understand",
+        },
       },
       {
-        text: "levels.level-1.storyline.step-6.text",
-        button: "levels.level-1.storyline.step-6.button",
+        text: {
+          nl: "Tenzij het BGP je de verkeerde route doorgeeft. Dan wordt het ingewikkeld. ",
+          en: "Unless BGP gives you the wrong route. Then it gets complicated.",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-1.storyline.step-7.text",
-        button: "levels.level-1.storyline.step-7.button",
+        text: {
+          nl: "Maar dat gebeurt waarschijnlijk niet...",
+          en: "But that probably won't happen...",
+        },
+        button: {
+          nl: "Eh...",
+          en: "Uh...",
+        },
       },
       {
-        text: "levels.level-1.storyline.step-8.text",
-        button: "levels.level-1.storyline.step-8.button",
+        text: {
+          nl: "Oké. Dan kom je er wel uit hé. Succes!",
+          en: "Okay. You'll figure it out. Good luck!",
+        },
+        button: {
+          nl: "Bedankt...",
+          en: "Thanks...",
+        },
       },
     ],
     scoreScreen: [
       {
-        title: "levels.level-1.score-screen.success.title",
-        description: "levels.level-1.score-screen.success.description",
+        title: {
+          nl: "Level gehaald!",
+          en: "Level completed!",
+        },
+        description: {
+          nl: "Lekker gewerkt zeg! Maar zonder mijn hulp was het natuurlijk niet gelukt. Toch?",
+          en: "Great work! But without my help, you wouldn't have made it, right?",
+        },
       },
       {
-        title: "levels.level-1.score-screen.fail.title",
-        description: "levels.level-1.score-screen.fail.description",
+        title: {
+          nl: "Level niet gehaald...",
+          en: "Level not completed...",
+        },
+        description: {
+          nl: "Dat is ook een manier om het te doen. Maar niet de goede. Blijkbaar was het toch niet zo simpel...",
+          en: "That's one way to do it. But not the right way. Apparently, it wasn't so simple after all...",
+        },
       },
     ],
     newsArticle: {
-      title: "levels.level-1.news-article.title",
-      content: "levels.level-1.news-article.content",
+      title: {
+        nl: "BGP: de achilleshiel van het internet",
+        en: "BGP: the Achilles heel of the internet",
+      },
+      content: {
+        nl: "Het BGP werkt vaak prima. Maar wat de bedenkers niet hebben voorzien, is dat het internet een plek zou worden waar niet iedereen altijd eerlijk is. Door het gebrek aan authenticatie, kun je niet checken of een via BGP aangekondigde route klopt.",
+        en: "BGP often works fine. But what the creators didn't foresee is that the internet would become a place where not everyone is always honest. Due to the lack of authentication, you can't verify if a route announced via BGP is correct.",
+      },
       imageUrl: "/images/news/1.jpg",
       readMoreLink:
         "https://tweakers.net/reviews/4155/all/border-gateway-protocol-de-achilleshiel-van-internet.html",
@@ -449,57 +537,117 @@ const levelsData: LevelData[] = [
     scoreToAdvance: 200,
     maxScore: 240,
     timeLimit: 90, // 1min 30secs
-    description: "levels.level-2.description",
+    description: {
+      nl: "Stuur de gekleurde pakketjes naar de juiste gebouwen!",
+      en: "Direct the colored packets to their matching buildings!",
+    },
     notifications: [
       {
-        text: "levels.level-2.notifications.0",
+        text: {
+          nl: "YouTube is niet bereikbaar.",
+          en: "YouTube is not reachable.",
+        },
       },
       {
-        text: "levels.level-2.notifications.1",
+        text: {
+          nl: "Krijg foutmelding bij YouTube.",
+          en: "Getting error message on YouTube.",
+        },
       },
       {
-        text: "levels.level-2.notifications.2",
+        text: {
+          nl: "Kan YouTube niet laden.",
+          en: "Can't load YouTube.",
+        },
       },
       {
-        text: "levels.level-2.notifications.3",
+        text: {
+          nl: "Website niet bereikbaar.",
+          en: "Website not reachable.",
+        },
       },
     ],
     tutorial: [
       {
-        text: "levels.level-2.tutorial.step-1",
+        text: {
+          nl: "Pakketje gaan nu langs meerdere wegwijzers, zet ze allemaal goed als een route wijzigt.",
+          en: "Packets now pass multiple signposts, set them all correctly when a route changes.",
+        },
       },
     ],
     storyLine: [
       {
-        text: "levels.level-2.storyline.step-1.text",
-        button: "levels.level-2.storyline.step-1.button",
+        text: {
+          nl: "Dus je hebt gister helemaal geen problemen met het BGP ervaren?",
+          en: "So you didn't experience any problems with BGP yesterday?",
+        },
+        button: {
+          nl: "Nee",
+          en: "No",
+        },
       },
       {
-        text: "levels.level-2.storyline.step-2.text",
-        button: "levels.level-2.storyline.step-2.button",
+        text: {
+          nl: "Alles wat mis ging was je eigen fout?",
+          en: "Everything that went wrong was your own fault?",
+        },
+        button: {
+          nl: "Ja?",
+          en: "Yes?",
+        },
       },
       {
-        text: "levels.level-2.storyline.step-3.text",
-        button: "levels.level-2.storyline.step-3.button",
+        text: {
+          nl: "De wonderen zijn de wereld nog niet uit...",
+          en: "Wonders never cease...",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-2.storyline.step-4.text",
-        button: "levels.level-2.storyline.step-4.button",
+        text: {
+          nl: "Laten we hopen dat dat vandaag zo blijft!",
+          en: "Let's hope it stays that way today!",
+        },
+        button: {
+          nl: "Verder",
+          en: "Continue",
+        },
       },
     ],
     scoreScreen: [
       {
-        title: "levels.level-2.score-screen.success.title",
-        description: "levels.level-2.score-screen.success.description",
+        title: {
+          nl: "Level gehaald!",
+          en: "Level completed!",
+        },
+        description: {
+          nl: "Yes! Gelukt. Wat zijn we toch een fantastisch team! Vind je ook niet?",
+          en: "Yes! Success. What a fantastic team we are! Don't you think?",
+        },
       },
       {
-        title: "levels.level-2.score-screen.fail.title",
-        description: "levels.level-2.score-screen.fail.description",
+        title: {
+          nl: "Level niet gehaald...",
+          en: "Level not completed...",
+        },
+        description: {
+          nl: "Helaas pindakaas... Maar we geven de moed niet op en proberen het gewoon nog een keer. Toch? Toch?",
+          en: "Too bad... But we won't give up and just try again. Right? Right?",
+        },
       },
     ],
     newsArticle: {
-      title: "levels.level-2.news-article.title",
-      content: "levels.level-2.news-article.content",
+      title: {
+        nl: "BGP-foutje Pakistan legt Youtube plat",
+        en: "Pakistan BGP error takes down YouTube",
+      },
+      content: {
+        nl: "In maart 2008 lag YouTube voor miljoenen gebruikers urenlang plat. De Pakistaanse overheid probeerde YouTube in hun land te blokkeren. Maar door een fout in de BGP-configuratie stuurden ze juist verkeer uit andere landen naar Pakistaanse netwerken.",
+        en: "In March 2008, YouTube was down for millions of users for hours. The Pakistani government tried to block YouTube in their country. But due to an error in the BGP configuration, they redirected traffic from other countries to Pakistani networks.",
+      },
       imageUrl: "/images/news/2.jpg",
       readMoreLink:
         "https://arstechnica.com/uncategorized/2008/02/insecure-routing-redirects-youtube-to-pakistan/",
@@ -1147,91 +1295,187 @@ const levelsData: LevelData[] = [
     scoreToAdvance: 200,
     maxScore: 240,
     timeLimit: 90, // 1min 30secs
-    description: "levels.level-3.description",
+    description: {
+      nl: "Stuur de gekleurde pakketjes naar de juiste gebouwen!",
+      en: "Direct the colored packets to their matching buildings!",
+    },
     notifications: [
       {
-        text: "levels.level-3.notifications.0",
+        text: {
+          nl: "Kan de website niet laden.",
+          en: "Can't load the website.",
+        },
       },
       {
-        text: "levels.level-3.notifications.1",
+        text: {
+          nl: "Website niet bereikbaar.",
+          en: "Website not reachable.",
+        },
       },
     ],
     seriousNotifications: [
       {
-        text: "levels.level-3.serious-notifications.0",
+        text: {
+          nl: "Mijn crypto is verdwenen door deze nepwebsite!",
+          en: "My crypto disappeared through this fake website!",
+        },
       },
       {
-        text: "levels.level-3.serious-notifications.1",
+        text: {
+          nl: "Mijn digitale munten zijn weg! Dit was een scam!",
+          en: "My digital coins are gone! This was a scam!",
+        },
       },
       {
-        text: "levels.level-3.serious-notifications.2",
+        text: {
+          nl: "Ik ben opgelicht! Al mijn crypto is verdwenen!",
+          en: "I've been scammed! All my crypto is gone!",
+        },
       },
       {
-        text: "levels.level-3.serious-notifications.3",
+        text: {
+          nl: "Mijn crypto is weg! Dit was een nepwebsite!",
+          en: "My crypto is gone! This was a fake website!",
+        },
       },
     ],
     warnings: [
       {
-        text: "levels.level-3.warnings.0",
+        text: {
+          nl: "Let op, deze site lijkt onveilig!",
+          en: "Warning, this site seems unsafe!",
+        },
       },
       {
-        text: "levels.level-3.warnings.1",
+        text: {
+          nl: "Waarschuwing: Website niet helemaal oké.",
+          en: "Warning: Website not quite right.",
+        },
       },
       {
-        text: "levels.level-3.warnings.2",
+        text: {
+          nl: "De website komt niet helemaal betrouwbaar over.",
+          en: "The website doesn't seem completely trustworthy.",
+        },
       },
       {
-        text: "levels.level-3.warnings.3",
+        text: {
+          nl: "Deze website lijkt verdacht.",
+          en: "This website looks suspicious.",
+        },
       },
     ],
     tutorial: [
       {
-        text: "levels.level-3.tutorial.step-1",
+        text: {
+          nl: "Vermijd strafpunten! Leidt het verkeer om zodra je ziet dat verkeer niet aankomt bij een nieuwe route.",
+          en: "Avoid penalties! Redirect traffic as soon as you see that traffic isn't arriving at a new route.",
+        },
       },
     ],
     storyLine: [
       {
-        text: "levels.level-3.storyline.step-1.text",
-        button: "levels.level-3.storyline.step-1.button",
+        text: {
+          nl: "Één klein foutje...",
+          en: "One small mistake...",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-3.storyline.step-2.text",
-        button: "levels.level-3.storyline.step-2.button",
+        text: {
+          nl: "YouTube urenlang onbereikbaar.",
+          en: "YouTube unreachable for hours.",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-3.storyline.step-3.text",
-        button: "levels.level-3.storyline.step-3.button",
+        text: {
+          nl: "Nouja, gelukkig was het niet onze schuld! Go team Packet Panic!",
+          en: "Well, fortunately it wasn't our fault! Go team Packet Panic!",
+        },
+        button: {
+          nl: "YEAH!",
+          en: "YEAH!",
+        },
       },
       {
-        text: "levels.level-3.storyline.step-4.text",
-        button: "levels.level-3.storyline.step-4.button",
+        text: {
+          nl: "Maar ontevreden klanten zijn wel een probleem.",
+          en: "But unhappy customers are still a problem.",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-3.storyline.step-5.text",
-        button: "levels.level-3.storyline.step-5.button",
+        text: {
+          nl: "Dus als je merkt dat BGP het bij het verkeerde eind heeft.",
+          en: "So if you notice that BGP is wrong.",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-3.storyline.step-6.text",
-        button: "levels.level-3.storyline.step-6.button",
+        text: {
+          nl: "Negeer de vlaggetjes en stuur het verkeer via een andere route.",
+          en: "Ignore the flags and send the traffic via another route.",
+        },
+        button: {
+          nl: "Oké!",
+          en: "Okay!",
+        },
       },
       {
-        text: "levels.level-3.storyline.step-7.text",
-        button: "levels.level-3.storyline.step-7.button",
+        text: {
+          nl: "Go get 'm tiger!",
+          en: "Go get 'em tiger!",
+        },
+        button: {
+          nl: "RAAAWR!",
+          en: "RAAAWR!",
+        },
       },
     ],
     scoreScreen: [
       {
-        title: "levels.level-3.score-screen.success.title",
-        description: "levels.level-3.score-screen.success.description",
+        title: {
+          nl: "Level gehaald!",
+          en: "Level completed!",
+        },
+        description: {
+          nl: "Wauw, je bent hier goed in. Daar zou je iets mee moeten doen. Verkeersleider. Of pakketjesbezorger!",
+          en: "Wow, you're good at this. You should do something with that. Traffic controller. Or package deliverer!",
+        },
       },
       {
-        title: "levels.level-3.score-screen.fail.title",
-        description: "levels.level-3.score-screen.fail.description",
+        title: {
+          nl: "Level niet gehaald...",
+          en: "Level not completed...",
+        },
+        description: {
+          nl: "Oh jee... Volgens mij heb je het internet kapotgemaakt. Wil je misschien even een momentje voor jezelf?",
+          en: "Oh dear... I think you broke the internet. Would you like a moment to yourself?",
+        },
       },
     ],
     newsArticle: {
-      title: "levels.level-3.news-article.title",
-      content: "levels.level-3.news-article.content",
+      title: {
+        nl: "$235,000 aan cryptocurrency gestolen door BGP-hijack",
+        en: "$235,000 in cryptocurrency stolen through BGP hijack",
+      },
+      content: {
+        nl: "In september 2022 leidde een fout bij Amazon tot de diefstal van 235.000 dollar aan cryptocurrency. Verkeer werd omgeleid naar een nepwebsite die eruitzag als een legitieme cryptocurrency-dienst, waar hackers de bezoekers hun crypto afhandig maakten.",
+        en: "In September 2022, an error at Amazon led to the theft of $235,000 in cryptocurrency. Traffic was redirected to a fake website that looked like a legitimate cryptocurrency service, where hackers stole visitors' crypto.",
+      },
       imageUrl: "/images/news/3.jpg",
       readMoreLink:
         "https://arstechnica.com/information-technology/2022/09/how-3-hours-of-inaction-from-amazon-cost-cryptocurrency-holders-235000/",
@@ -2192,111 +2436,237 @@ const levelsData: LevelData[] = [
     scoreToAdvance: 200,
     maxScore: 240,
     timeLimit: 90, // 1min 30secs
-    description: "levels.level-4.description",
+    description: {
+      nl: "Stuur de gekleurde pakketjes naar de juiste gebouwen!",
+      en: "Direct the colored packets to their matching buildings!",
+    },
     notifications: [
       {
-        text: "levels.level-4.notifications.0",
+        text: {
+          nl: "Kan de website niet laden.",
+          en: "Can't load the website.",
+        },
       },
       {
-        text: "levels.level-4.notifications.1",
+        text: {
+          nl: "Website niet bereikbaar.",
+          en: "Website not reachable.",
+        },
       },
     ],
     seriousNotifications: [
       {
-        text: "levels.level-4.serious-notifications.0",
+        text: {
+          nl: "Mijn crypto is verdwenen door deze nepwebsite!",
+          en: "My crypto disappeared through this fake website!",
+        },
       },
       {
-        text: "levels.level-4.serious-notifications.1",
+        text: {
+          nl: "Mijn digitale munten zijn weg! Dit was een scam!",
+          en: "My digital coins are gone! This was a scam!",
+        },
       },
       {
-        text: "levels.level-4.serious-notifications.2",
+        text: {
+          nl: "Ik ben opgelicht! Al mijn crypto is verdwenen!",
+          en: "I've been scammed! All my crypto is gone!",
+        },
       },
       {
-        text: "levels.level-4.serious-notifications.3",
+        text: {
+          nl: "Mijn crypto is weg! Dit was een nepwebsite!",
+          en: "My crypto is gone! This was a fake website!",
+        },
       },
     ],
     warnings: [
       {
-        text: "levels.level-4.warnings.0",
+        text: {
+          nl: "Let op, deze site lijkt onveilig!",
+          en: "Warning, this site seems unsafe!",
+        },
       },
       {
-        text: "levels.level-4.warnings.1",
+        text: {
+          nl: "Waarschuwing: Website niet helemaal oké.",
+          en: "Warning: Website not quite right.",
+        },
       },
       {
-        text: "levels.level-4.warnings.2",
+        text: {
+          nl: "De website komt niet helemaal betrouwbaar over.",
+          en: "The website doesn't seem completely trustworthy.",
+        },
       },
       {
-        text: "levels.level-4.warnings.3",
+        text: {
+          nl: "Deze website lijkt verdacht.",
+          en: "This website looks suspicious.",
+        },
       },
     ],
     tutorial: [
       {
-        text: "levels.level-4.tutorial.step-1",
+        text: {
+          nl: "Een uitroepteken geeft aan dat de route niet betrouwbaar is, vermijdt deze routes.",
+          en: "An exclamation mark indicates that the route is not trustworthy, avoid these routes.",
+        },
       },
     ],
     storyLine: [
       {
-        text: "levels.level-4.storyline.step-1.text",
-        button: "levels.level-4.storyline.step-1.button",
+        text: {
+          nl: "Ik heb een nieuwshamburger voor je: slecht nieuws, goed nieuws en slecht nieuws.",
+          en: "I have a news hamburger for you: bad news, good news, and bad news.",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-2.text",
-        button: "levels.level-4.storyline.step-2.button",
+        text: {
+          nl: "Welke wil je eerst?",
+          en: "Which one do you want first?",
+        },
+        button: {
+          nl: "Goed nieuws",
+          en: "Good news",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-3.text",
-        button: "levels.level-4.storyline.step-3.button",
+        text: {
+          nl: "Ik begin toch met het slechte nieuws.",
+          en: "I'll start with the bad news anyway.",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-4.text",
-        button: "levels.level-4.storyline.step-4.button",
+        text: {
+          nl: "Het is zeer waarschijnlijk dat er veel minder crypto was gestolen als wij wat sneller hadden gereageerd.",
+          en: "It's very likely that much less crypto would have been stolen if we had reacted faster.",
+        },
+        button: {
+          nl: "Oh, balen...",
+          en: "Oh, that's unfortunate...",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-5.text",
-        button: "levels.level-4.storyline.step-5.button",
+        text: {
+          nl: "Het goede nieuws is dat ik gelijk actie heb ondernomen: vanaf nu hebben we veel betere beveiliging in ons autonome systeem",
+          en: "The good news is that I took immediate action: from now on we have much better security in our autonomous system",
+        },
+        button: {
+          nl: "En het laatste slechte nieuws?",
+          en: "And the last bad news?",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-6.text",
-        button: "levels.level-4.storyline.step-6.button",
+        text: {
+          nl: "Oh ja, het belangrijkste nieuws...",
+          en: "Oh yes, the most important news...",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-7.text",
-        button: "levels.level-4.storyline.step-7.button",
+        text: {
+          nl: "Je werk wordt een stuk minder interessant. Saai, zou ik wel durven zeggen.",
+          en: "Your work is going to be a lot less interesting. Boring, I would dare to say.",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-8.text",
-        button: "levels.level-4.storyline.step-8.button",
+        text: {
+          nl: "Ze zitten er zelfs aan te denken het bedrijf een nieuwe naam te geven: CalmConnect",
+          en: "They're even thinking about giving the company a new name: CalmConnect",
+        },
+        button: {
+          nl: "...",
+          en: "...",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-9.text",
-        button: "levels.level-4.storyline.step-9.button",
+        text: {
+          nl: "Dus ik heb m'n ontslag ingediend.",
+          en: "So I've handed in my resignation.",
+        },
+        button: {
+          nl: "Oh, nee!",
+          en: "Oh, no!",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-10.text",
-        button: "levels.level-4.storyline.step-10.button",
+        text: {
+          nl: "Als ik geen paniek meer kan zaaien, zet ik mijn diensten liever ergens anders in.",
+          en: "If I can't cause panic anymore, I'd rather use my services elsewhere.",
+        },
+        button: {
+          nl: "Ik ga je missen, baas!",
+          en: "I'm going to miss you, boss!",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-11.text",
-        button: "levels.level-4.storyline.step-11.button",
+        text: {
+          nl: "Zeg maar D.I.R.K., ik ben je baas niet meer...",
+          en: "Just call me D.I.R.K., I'm not your boss anymore...",
+        },
+        button: {
+          nl: ":(",
+          en: ":(",
+        },
       },
       {
-        text: "levels.level-4.storyline.step-12.text",
-        button: "levels.level-4.storyline.step-12.button",
+        text: {
+          nl: "See you later, alligator!",
+          en: "See you later, alligator!",
+        },
+        button: {
+          nl: "In a while, crocodile!",
+          en: "In a while, crocodile!",
+        },
       },
     ],
     scoreScreen: [
       {
-        title: "levels.level-4.score-screen.success.title",
-        description: "levels.level-4.score-screen.success.description",
+        title: {
+          nl: "Level gehaald!",
+          en: "Level completed!",
+        },
+        description: {
+          nl: "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
+          en: "This is D.I.R.K.'s voicemail. I'm unfortunately not available to give you positive or negative feedback. Please try again later.",
+        },
       },
       {
-        title: "levels.level-4.score-screen.fail.title",
-        description: "levels.level-4.score-screen.fail.description",
+        title: {
+          nl: "Level niet gehaald...",
+          en: "Level not completed...",
+        },
+        description: {
+          nl: "Dit is de voicemail van D.I.R.K. Ik ben helaas niet beschikbaar om je positieve of negatieve feedback te geven. Probeer het later nog eens.",
+          en: "This is D.I.R.K.'s voicemail. I'm unfortunately not available to give you positive or negative feedback. Please try again later.",
+        },
       },
     ],
     newsArticle: {
-      title: "levels.level-4.news-article.title",
-      content: "levels.level-4.news-article.content",
+      title: {
+        nl: "RPKI: een veiliger BGP binnen handbereik",
+        en: "RPKI: a safer BGP within reach",
+      },
+      content: {
+        nl: "RPKI gebruikt digitale handtekeningen om BGP-routes te verifiëren. Routers controleren of de handtekeningen kloppen; zo niet dan wordt de route verworpen, wat aanvallen en vergissingen voorkomt.",
+        en: "RPKI uses digital signatures to verify BGP routes. Routers check if the signatures are correct; if not, the route is rejected, which prevents attacks and mistakes.",
+      },
       imageUrl: "/images/news/4.jpg",
       readMoreLink:
         "https://www.sidn.nl/nieuws-en-blogs/rpki-beveiligt-internet-routeringssysteem-bgp",

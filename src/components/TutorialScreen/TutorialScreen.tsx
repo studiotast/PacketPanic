@@ -7,6 +7,7 @@ import Button from "../Button/Button";
 import TvWrapper from "./components/TvWrapper";
 import styles from "./TutorialScreen.module.scss";
 import { useTranslation } from "react-i18next";
+import { getTranslated } from "../../utils/getTranslated";
 
 export default function TutorialScreen() {
   const { t } = useTranslation();
@@ -55,7 +56,7 @@ export default function TutorialScreen() {
             className={styles.tutorialText}
             key={tutorialIndex}
           >
-            <p>{t(currentLevel.tutorial[tutorialIndex].text as any)}</p>
+            <p>{getTranslated(currentLevel.tutorial[tutorialIndex].text)}</p>
           </motion.div>
 
           {/* Button in bottom right */}

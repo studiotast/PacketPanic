@@ -13,6 +13,7 @@ import TvWrapper from "../TutorialScreen/components/TvWrapper";
 import styles from "./GameOverScreen.module.scss";
 import ScoreProgressBar from "../ScoreProgressBar/ScoreProgressBar";
 import { useTranslation } from "react-i18next";
+import { getTranslated } from "../../utils/getTranslated";
 
 export default function GameOverScreen() {
   const { t } = useTranslation();
@@ -105,14 +106,14 @@ export default function GameOverScreen() {
                   }}
                 >{`${
                   progressPercentage >= 100
-                    ? t(currentLevel.scoreScreen[0].title as any)
-                    : t(currentLevel.scoreScreen[1].title as any)
+                    ? getTranslated(currentLevel.scoreScreen[0].title)
+                    : getTranslated(currentLevel.scoreScreen[1].title)
                 }`}</p>
                 <p className={styles.gameOverDetails}>
                   {`${
                     progressPercentage >= 100
-                      ? t(currentLevel.scoreScreen[0].description as any)
-                      : t(currentLevel.scoreScreen[1].description as any)
+                      ? getTranslated(currentLevel.scoreScreen[0].description)
+                      : getTranslated(currentLevel.scoreScreen[1].description)
                   }`}
                 </p>
               </div>
@@ -127,7 +128,9 @@ export default function GameOverScreen() {
               exit="exit"
               variants={pageVariants}
             >
-              <p className={styles.gameOverNewsHeader}>{t("game-over-screen.news-today")}</p>
+              <p className={styles.gameOverNewsHeader}>
+                {t("game-over-screen.news-today")}
+              </p>
               <div className={styles.gameOverNewsContentWrapper}>
                 <img
                   src={currentLevel?.newsArticle?.imageUrl}
@@ -137,7 +140,9 @@ export default function GameOverScreen() {
                 <div className={styles.gameOverNewsText}>
                   <div className={styles.gameOverNewsHeaderContainer}>
                     <p className={styles.gameOverNewsTitle}>
-                      {t((currentLevel?.newsArticle?.title as any) || "")}
+                      {getTranslated(
+                        currentLevel?.newsArticle?.title || { nl: "", en: "" }
+                      )}
                     </p>
                     <p className={styles.gameOverNewsDate}>
                       {currentLevel?.newsArticle?.date}
@@ -145,7 +150,9 @@ export default function GameOverScreen() {
                   </div>
                   <div className={styles.gameOverNewsDescriptionContainer}>
                     <p className={styles.gameOverNewsDescription}>
-                      {t((currentLevel?.newsArticle?.content as any) || "")}
+                      {getTranslated(
+                        currentLevel?.newsArticle?.content || { nl: "", en: "" }
+                      )}
                     </p>
                     <Button
                       style={{ width: "fit-content" }}
@@ -159,7 +166,9 @@ export default function GameOverScreen() {
                       responsive
                     >
                       <span>
-                        <span className={styles.newsButtonText}>{t("game-over-screen.full")}</span>{" "}
+                        <span className={styles.newsButtonText}>
+                          {t("game-over-screen.full")}
+                        </span>{" "}
                         {t("game-over-screen.read-article")}
                       </span>
                     </Button>
@@ -182,7 +191,9 @@ export default function GameOverScreen() {
                 <FontAwesomeIcon icon={faRotate} />
               </Button>
               <Button responsive onClick={handleClick}>
-                {isLastLevel ? t("global.continue") : `${t("global.level")} ${currentLevel.id + 1} `}
+                {isLastLevel
+                  ? t("global.continue")
+                  : `${t("global.level")} ${currentLevel.id + 1} `}
                 <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </>

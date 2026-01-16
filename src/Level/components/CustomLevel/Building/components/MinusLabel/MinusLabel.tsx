@@ -8,6 +8,7 @@ import { userNamesList } from "@utils/userNamesList";
 import styles from "./MinusLabel.module.scss";
 import { getColor } from "@/utils/getColor";
 import { useTranslation } from "react-i18next";
+import { getTranslated } from "@/utils/getTranslated";
 
 export type MinusLabelInfo = {
   isMistakeBadActor: boolean;
@@ -95,7 +96,7 @@ export default function MinusLabel({
             <p style={{ color: getColor(color ? color : "blue") }}>
               {userName}
             </p>
-            <p>{notification?.text ? t(notification.text as any) : ""}</p>
+            <p>{notification?.text ? getTranslated(notification.text) : ""}</p>
           </div>
         </div>
       </Html>
