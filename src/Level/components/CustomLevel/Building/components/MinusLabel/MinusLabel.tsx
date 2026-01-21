@@ -7,6 +7,8 @@ import { NotificationsData } from "@utils/levelsData";
 import { userNamesList } from "@utils/userNamesList";
 import styles from "./MinusLabel.module.scss";
 import { getColor } from "@/utils/getColor";
+import { useTranslation } from "react-i18next";
+import { getTranslated } from "@/utils/getTranslated";
 
 export type MinusLabelInfo = {
   isMistakeBadActor: boolean;
@@ -31,6 +33,7 @@ export default function MinusLabel({
   warningsExceeded,
   color,
 }: MinusLabelProps) {
+  const { t } = useTranslation();
   const groupRef = useRef<THREE.Group>(null); // Ref for the group
   const currentLevel = useGame((state) => state.currentLevel); // Get the current level from the store
   const notifications = currentLevel?.notifications; // Get notifications from the current level
@@ -93,7 +96,7 @@ export default function MinusLabel({
             <p style={{ color: getColor(color ? color : "blue") }}>
               {userName}
             </p>
-            <p>{notification?.text}</p>
+            <p>{notification?.text ? getTranslated(notification.text) : ""}</p>
           </div>
         </div>
       </Html>

@@ -1,5 +1,4 @@
 import {
-  faArrowRight,
   faCircleInfo,
   faForward,
   faPlay,
@@ -18,6 +17,7 @@ import styles from "./IntroScreen.module.scss";
 import LeftCornerPiece from "../CornerPiece/LeftCornerPiece.tsx";
 import RightCornerPiece from "../CornerPiece/RightCornerPiece.tsx";
 import { useGLTF } from "@react-three/drei";
+import { useTranslation } from "react-i18next";
 
 // Tooltip component for interactive terms
 interface InteractiveTermProps {
@@ -50,6 +50,8 @@ const InteractiveTerm: React.FC<InteractiveTermProps> = ({
 );
 
 export default function IntroScreen() {
+  const { t } = useTranslation();
+
   useEffect(() => {
     // Start met preloaden van alle modellen zodra het scherm zichtbaar is
     useGLTF.preload("assets/models/track_straight_long_a03.glb");
@@ -129,9 +131,7 @@ export default function IntroScreen() {
   }, [playSound, stopSound, isMuted]);
 
   // Split text into paragraphs
-  const paragraphs = [
-    "Iedere seconde zijn miljarden pakketjes op weg naar hun eindbestemming op het internet. Deze stukjes data reizen van router naar router, vaak over de grenzen van meerdere autonome systemen. Ze vertrouwen blind op het Border Gateway Protocol (BGP) om de beste route te kiezen. Maar het BGP werkt op basis van informatie die het krijgt van andere netwerken, en die informatie is niet altijd correct…",
-  ];
+  const paragraphs = [t("intro-screen.paragraph")];
 
   // Handle button click
   const handleClick = () => {
@@ -219,27 +219,23 @@ export default function IntroScreen() {
     // Create a collection of terms and their tooltips
     const terms = [
       {
-        term: "pakketjes",
-        explanation:
-          "Een pakketje is een stukje data, bijvoorbeeld: een e-mail, een videostream of een verzoek om een website te bezoeken.",
+        term: t("intro-screen.terms.pakketjes.term"),
+        explanation: t("intro-screen.terms.pakketjes.explanation"),
         image: "./assets/images/tooltips/tooltippakketjes_a02.png",
       },
       {
-        term: "router naar router",
-        explanation:
-          "Een router stuurt pakketjes door naar de volgende halte op basis van instructies van protocollen zoals het BGP.",
+        term: t("intro-screen.terms.router.term"),
+        explanation: t("intro-screen.terms.router.explanation"),
         image: "./assets/images/tooltips/tooltiprouter_a04.png",
       },
       {
-        term: "autonome systemen",
-        explanation:
-          "Een autonoom systeem is een verzameling netwerken onder het beheer van één organisatie, zoals een internetprovider of een groot bedrijf.",
+        term: t("intro-screen.terms.autonome-systemen.term"),
+        explanation: t("intro-screen.terms.autonome-systemen.explanation"),
         image: "./assets/images/tooltips/tooltipAS_a02.png",
       },
       {
-        term: "Border Gateway Protocol",
-        explanation:
-          "Het BGP is het protocol dat gebruikt wordt om de beste route te bepalen naar een bestemming die buiten het huidige autonome systeem ligt",
+        term: t("intro-screen.terms.bgp.term"),
+        explanation: t("intro-screen.terms.bgp.explanation"),
         image: "./assets/images/tooltips/tooltipBGP_a02.png",
       },
     ];
@@ -352,21 +348,22 @@ export default function IntroScreen() {
               <div className={styles.buttonContainerRow}>
                 <div className={styles.buttonPositionWrapper}>
                   <Button color="yellow" onClick={handleClick}>
-                    Nieuw spel
+                    {t("intro-screen.new-game")}
                     <FontAwesomeIcon icon={faPlay} />
                   </Button>
                 </div>
 
                 <div className={styles.buttonPositionWrapper}>
                   <Button color="yellow" onClick={handleContinue}>
-                    Doorgaan (Level {savedLevel ? savedLevel : "?"})
+                    {t("global.continue")} ({t("global.level")}{" "}
+                    {savedLevel ? savedLevel : "?"})
                     <FontAwesomeIcon icon={faForward} />
                   </Button>
                 </div>
               </div>
               <div className={styles.buttonPositionWrapper}>
                 <Button color="grey" onClick={() => aboutPage("intro")}>
-                  Over Packet Panic
+                  {t("intro-screen.about-packet-panic")}
                   <FontAwesomeIcon icon={faCircleInfo} />
                 </Button>
               </div>
@@ -376,14 +373,14 @@ export default function IntroScreen() {
               {page === 0 && (
                 <div className={styles.buttonPositionWrapper}>
                   <Button color="grey" onClick={() => aboutPage("intro")}>
-                    Over Packet Panic
+                    {t("intro-screen.about-packet-panic")}
                     <FontAwesomeIcon icon={faCircleInfo} />
                   </Button>
                 </div>
               )}
               <div className={styles.buttonPositionWrapper}>
                 <Button color="yellow" onClick={handleClick}>
-                  Beginnen
+                  {t("intro-screen.start")}
                   <FontAwesomeIcon icon={faPlay} />
                 </Button>
               </div>

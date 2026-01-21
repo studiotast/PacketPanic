@@ -1,0 +1,57 @@
+{
+  "global": {
+    "back": "Back",
+    "continue": "Continue",
+    "share": "Share",
+    "skip": "Skip",
+    "level": "level"
+  },
+  "intro-screen": {
+    "about-packet-panic": "About Packet Panic",
+    "new-game": "New Game",
+    "start": "Start",
+    "paragraph": "Every second, billions of packets are on their way to their final destination on the internet. These pieces of data travel from router to router, often crossing the boundaries of multiple autonomous systems. They blindly trust the Border Gateway Protocol (BGP) to choose the best route. But BGP works based on information it receives from other networks, and that information is not always correct…",
+    "terms": {
+      "pakketjes": {
+        "term": "packets",
+        "explanation": "A packet is a piece of data, for example: an email, a video stream, or a request to visit a website."
+      },
+      "router": {
+        "term": "router to router",
+        "explanation": "A router forwards packets to the next stop based on instructions from protocols like BGP."
+      },
+      "autonome-systemen": {
+        "term": "autonomous systems",
+        "explanation": "An autonomous system is a collection of networks under the management of one organization, such as an internet provider or a large company."
+      },
+      "bgp": {
+        "term": "Border Gateway Protocol",
+        "explanation": "BGP is the protocol used to determine the best route to a destination outside the current autonomous system"
+      }
+    }
+  },
+  "left-corner-piece": {
+    "view-how-the-net-works": "View How the Network Works"
+  },
+  "pause-screen": {
+    "paused": "Paused",
+    "about-packet-panic": "About Packet Panic",
+    "back-to-home": "Back to home",
+    "choose-level": "Choose level",
+    "continue-playing": "Continue playing"
+  },
+  "level-picker": {
+    "choose-level": "Choose level"
+  },
+  "game-over-screen": {
+    "news-today": "News of today",
+    "full": "Full",
+    "read-article": "read article"
+  },
+  "about-packet-panic": {
+    "title": "About Packet Panic",
+    "paragraph1": "Packet Panic is an educational game developed by Studio Tast for the SIDN call 'Internet inBeeld' to explain the underlying infrastructure of the internet in an understandable way.",
+    "paragraph2": "Packet Panic focuses on the dangers of BGP hijacking: the manipulation and interception of internet traffic by cybercriminals. BGP is an essential but vulnerable part of the internet. The internet was developed by a group of researchers who collaborated based on trust. BGP still relies on that same mutual trust. There are ways to make BGP less vulnerable, but they are only effective if they are widely implemented.",
+    "paragraph3": "The goal of Packet Panic is to raise awareness among more people about the vulnerabilities of the Border Gateway Protocol (BGP). Through the game, players gain insight into how BGP hijacking works, what the dangers are, and what solutions are available."
+  }
+}

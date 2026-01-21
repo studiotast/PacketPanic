@@ -6,8 +6,11 @@ import useGame from "../../stores/useGame";
 import Button from "../Button/Button";
 import TvWrapper from "./components/TvWrapper";
 import styles from "./TutorialScreen.module.scss";
+import { useTranslation } from "react-i18next";
+import { getTranslated } from "../../utils/getTranslated";
 
 export default function TutorialScreen() {
+  const { t } = useTranslation();
   const currentLevel = useGame((state) => state.currentLevel);
 
   const [readyToStart, setReadyToStart] = useState(false);
@@ -53,7 +56,7 @@ export default function TutorialScreen() {
             className={styles.tutorialText}
             key={tutorialIndex}
           >
-            <p>{currentLevel.tutorial[tutorialIndex].text}</p>
+            <p>{getTranslated(currentLevel.tutorial[tutorialIndex].text)}</p>
           </motion.div>
 
           {/* Button in bottom right */}
@@ -73,7 +76,7 @@ export default function TutorialScreen() {
                 setTutorialIndex((prev) => prev + 1);
               }}
             >
-              Verder
+              {t("global.continue")}
               <FontAwesomeIcon icon={faCircleCheck} />
             </Button>
           </div>

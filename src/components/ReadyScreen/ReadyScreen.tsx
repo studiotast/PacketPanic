@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import useGame from "../../stores/useGame";
 import styles from "./ReadyScreen.module.scss";
+import { getTranslated } from "@/utils/getTranslated";
 
 const ReadyScreen: React.FC = () => {
+  const { i18n } = useTranslation();
   const start = useGame((state) => state.start);
   const [countdown, setCountdown] = useState(3);
   const playSound = useGame((state) => state.playSound);
@@ -46,7 +49,10 @@ const ReadyScreen: React.FC = () => {
         {/* Use external SVG file for heading */}
         <div className={styles.readyHeading}>
           <img
-            src="/images/We-gaan-beginnen.svg"
+            src={getTranslated({
+              nl: "/images/we-gaan-beginnen.svg",
+              en: "/images/lets-get-started.svg",
+            })}
             alt="We gaan beginnen!"
             width="600"
             height="180"

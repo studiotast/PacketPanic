@@ -12,8 +12,11 @@ import Button from "../Button/Button";
 import TvWrapper from "../TutorialScreen/components/TvWrapper";
 import styles from "./GameOverScreen.module.scss";
 import ScoreProgressBar from "../ScoreProgressBar/ScoreProgressBar";
+import { useTranslation } from "react-i18next";
+import { getTranslated } from "../../utils/getTranslated";
 
 export default function GameOverScreen() {
+  const { t } = useTranslation();
   const [page, setPage] = useState(0);
   const completeRestart = useGame((state) => state.completeRestart);
   const advanceToNextLevel = useGame((state) => state.advanceToNextLevel);
@@ -103,14 +106,14 @@ export default function GameOverScreen() {
                   }}
                 >{`${
                   progressPercentage >= 100
-                    ? currentLevel.scoreScreen[0].title
-                    : currentLevel.scoreScreen[1].title
+                    ? getTranslated(currentLevel.scoreScreen[0].title)
+                    : getTranslated(currentLevel.scoreScreen[1].title)
                 }`}</p>
                 <p className={styles.gameOverDetails}>
                   {`${
                     progressPercentage >= 100
-                      ? currentLevel.scoreScreen[0].description
-                      : currentLevel.scoreScreen[1].description
+                      ? getTranslated(currentLevel.scoreScreen[0].description)
+                      : getTranslated(currentLevel.scoreScreen[1].description)
                   }`}
                 </p>
               </div>
@@ -125,7 +128,9 @@ export default function GameOverScreen() {
               exit="exit"
               variants={pageVariants}
             >
-              <p className={styles.gameOverNewsHeader}>Nieuws van vandaag</p>
+              <p className={styles.gameOverNewsHeader}>
+                {t("game-over-screen.news-today")}
+              </p>
               <div className={styles.gameOverNewsContentWrapper}>
                 <img
                   src={currentLevel?.newsArticle?.imageUrl}
@@ -134,17 +139,21 @@ export default function GameOverScreen() {
                 />
                 <div className={styles.gameOverNewsText}>
                   <div className={styles.gameOverNewsHeaderContainer}>
-                    <p className={styles.gameOverNewsTitle}>
-                      {currentLevel?.newsArticle?.title}
-                    </p>
+                    {!!currentLevel?.newsArticle?.title && (
+                      <p className={styles.gameOverNewsTitle}>
+                        {getTranslated(currentLevel.newsArticle.title)}
+                      </p>
+                    )}
                     <p className={styles.gameOverNewsDate}>
                       {currentLevel?.newsArticle?.date}
                     </p>
                   </div>
                   <div className={styles.gameOverNewsDescriptionContainer}>
-                    <p className={styles.gameOverNewsDescription}>
-                      {currentLevel?.newsArticle?.content}
-                    </p>
+                    {!!currentLevel?.newsArticle?.content && (
+                      <p className={styles.gameOverNewsDescription}>
+                        {getTranslated(currentLevel.newsArticle.content)}
+                      </p>
+                    )}
                     <Button
                       style={{ width: "fit-content" }}
                       onClick={() =>
@@ -157,8 +166,10 @@ export default function GameOverScreen() {
                       responsive
                     >
                       <span>
-                        <span className={styles.newsButtonText}>Volledig</span>{" "}
-                        artikel lezen
+                        <span className={styles.newsButtonText}>
+                          {t("game-over-screen.full")}
+                        </span>{" "}
+                        {t("game-over-screen.read-article")}
                       </span>
                     </Button>
                   </div>
@@ -170,17 +181,19 @@ export default function GameOverScreen() {
         <div className={styles.gameOverButtonContainer}>
           {page === 0 ? (
             <Button responsive onClick={handleClick}>
-              Verder
+              {t("global.continue")}
               <FontAwesomeIcon icon={faCircleCheck} />
             </Button>
           ) : (
             <>
               <Button responsive color="blue" onClick={handleRepeatLevel}>
-                {`Level ${currentLevel.id} `}
+                {`${t("global.level")} ${currentLevel.id} `}
                 <FontAwesomeIcon icon={faRotate} />
               </Button>
               <Button responsive onClick={handleClick}>
-                {isLastLevel ? "Doorgaan" : `Level ${currentLevel.id + 1} `}
+                {isLastLevel
+                  ? t("global.continue")
+                  : `${t("global.level")} ${currentLevel.id + 1} `}
                 <FontAwesomeIcon icon={faArrowRight} />
               </Button>
             </>

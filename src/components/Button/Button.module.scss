@@ -25,6 +25,16 @@
     }
   }
 
+  &.white {
+    .button {
+      background-color: var(--white);
+      color: var(--black);
+    }
+    .buttonShadow {
+      background-color: color-mix(in srgb, var(--white) 80%, black 20%);
+    }
+  }
+
   &.blue {
     .button {
       background-color: var(--blue);

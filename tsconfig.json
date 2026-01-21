@@ -35,7 +35,9 @@
     "src/**/*.tsx",
     "src/**/*.js",
     "src/**/*.jsx",
-    "src/types/**/*.d.ts"
+    "src/types/**/*.d.ts",
+    "vite.config.js",
+    "i18next.config.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

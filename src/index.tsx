@@ -1,31 +1,33 @@
-import "./style.css";
-import ReactDOM from "react-dom/client";
 import { Canvas } from "@react-three/fiber";
+import { Leva } from "leva";
+import { useEffect, useRef, useState } from "react";
+import ReactDOM from "react-dom/client";
 import {
+  Navigate,
+  Route,
   BrowserRouter as Router,
   Routes,
-  Route,
-  Navigate,
 } from "react-router-dom";
-import Experience from "./Experience.js";
-import { Leva } from "leva";
-import useGame from "./stores/useGame.js";
-import Explanation from "./components/Explanation/Explanation.tsx";
-import GarageTransition from "./GarageTransition.tsx";
-import { useEffect, useRef, useState } from "react";
-import IntroScreen from "./components/IntroScreen/IntroScreen.tsx";
-import EndScreen from "./components/EndScreen/EndScreen.tsx";
-import PauseButton from "./components/PauseButton/PauseButton.tsx";
-import MuteButton from "./components/MuteButton/MuteButton.tsx";
-import ReadyScreen from "./components/ReadyScreen/ReadyScreen.tsx";
-import GameOverScreen from "./components/GameOverScreen/GameOverScreen.tsx";
-import TutorialScreen from "./components/TutorialScreen/TutorialScreen.tsx";
-import LevelPicker from "./components/LevelPicker/LevelPicker.tsx";
 import AboutPacketPanic from "./components/AboutPacketPanic/AboutPacketPanic.tsx";
-import PauseScreen from "./components/PauseScreen/PauseScreen.tsx";
+import EndScreen from "./components/EndScreen/EndScreen.tsx";
+import Explanation from "./components/Explanation/Explanation.tsx";
+import GameOverScreen from "./components/GameOverScreen/GameOverScreen.tsx";
 import Interface from "./components/Interface/Interface.tsx";
+import IntroScreen from "./components/IntroScreen/IntroScreen.tsx";
+import LevelPicker from "./components/LevelPicker/LevelPicker.tsx";
+import MuteButton from "./components/MuteButton/MuteButton.tsx";
+import PauseButton from "./components/PauseButton/PauseButton.tsx";
+import PauseScreen from "./components/PauseScreen/PauseScreen.tsx";
+import ReadyScreen from "./components/ReadyScreen/ReadyScreen.tsx";
+import TutorialScreen from "./components/TutorialScreen/TutorialScreen.tsx";
+import Experience from "./Experience.js";
+import GarageTransition from "./GarageTransition.tsx";
+import useGame from "./stores/useGame.js";
+import "./style.css";
+import "./utils/i18n";
 
 import { init } from "@plausible-analytics/tracker";
+import LanguageSwitcher from "./components/LanguageSwitcher/LanguageSwitcher.tsx";
 
 function GameApp() {
   const phase = useGame((state) => state.phase);
@@ -63,6 +65,11 @@ function GameApp() {
 
   return (
     <>
+      {(phase == "intro" || isPaused) && (
+        <div className={`language-switcher inset`}>
+          <LanguageSwitcher />
+        </div>
+      )}
       <div
         className={`top-right-buttons ${
           isPaused ||

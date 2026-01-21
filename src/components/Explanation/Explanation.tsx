@@ -4,8 +4,11 @@ import useGame from "../../stores/useGame";
 import { useModels } from "../../stores/useModels";
 import SpeechBubble from "./components/SpeechBubble";
 import styles from "./Explanation.module.scss";
+import { useTranslation } from "react-i18next";
+import { getTranslated } from "../../utils/getTranslated";
 
 export default function Explanation(): React.ReactElement {
+  const { t } = useTranslation();
   const playSound = useGame((state) => state.playSound);
   const stopSound = useGame((state) => state.stopSound);
   const currentLevel = useGame((state) => state.currentLevel);
@@ -70,7 +73,7 @@ export default function Explanation(): React.ReactElement {
         />
         <SpeechBubble
           key={explanationIndex}
-          text={currentLevel.storyLine[explanationIndex].text}
+          text={getTranslated(currentLevel.storyLine[explanationIndex].text)}
         />
       </div>
       <div className={styles.buttonWrapper}>
@@ -89,7 +92,7 @@ export default function Explanation(): React.ReactElement {
           }}
           color="yellow"
         >
-          {currentLevel.storyLine[explanationIndex].button}
+          {getTranslated(currentLevel.storyLine[explanationIndex].button)}
         </Button>
       </div>
     </div>
