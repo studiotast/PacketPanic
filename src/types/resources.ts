@@ -7,6 +7,31 @@ interface Resources {
       "paragraph3": "Het doel van Packet Panic is om meer mensen bewust te maken van de kwetsbaarheden van het Border Gateway Protocol (BGP). Via het spel krijgen spelers een inzicht in hoe BGP-hijacking werkt, wat de gevaren zijn en welke oplossingen er beschikbaar zijn.",
       "title": "Over Packet Panic"
     },
+    "end-screen": {
+      "go-to": "Ga naar",
+      "news-review-title": "Terugblik krantenknipsels",
+      "paragraph1": "Hopelijk heb je het gevoel gehad steeds achter de feiten aan te lopen. Wat als je meldingen krijgt dat een website niet beschikbaar is? Hoe weet je zeker dat een door het BGP aangekondigde route betrouwbaar is?",
+      "paragraph2": "Packet Panic is bewust een frustrerend spel. Omdat BGP-hijacks een frustrerende realiteit zijn. RPKI is een goede oplossing, maar werkt pas echt goed bij 100% adoptie. Daar zijn we nog niet. De teller blijft vooralsnog steken op 50%",
+      "paragraph3": "Nu weet jij dat ook. Dus help mee om RPKI adoptie naar 100% te krijgen.",
+      "paragraph4": "Bedankt voor het spelen van Packet Panic.",
+      "play-again": "Opnieuw spelen",
+      "title": "Gefeliciteerd, je hebt Packet Panic voltooid!",
+      "what-to-do": {
+        "check-rpki": {
+          "description": "en controleer hoe het zit met RPKI adoptie van je werkgever, je gemeente of je voetbalclub.",
+          "title": "Check RPKI-adoptie"
+        },
+        "deepen-knowledge": {
+          "description": "Bekijk de zusterprojecten van Packet Panic, die inzicht bieden in andere onderdelen van de infrastructuur van het internet.",
+          "title": "Verdiep je kennis"
+        },
+        "share-knowledge": {
+          "description": "Vertel anderen over de risico's van BGP-hijacking. Duw bijvoorbeeld Packet Panic onder hun neus.",
+          "title": "Deel je kennis"
+        },
+        "title": "Wat kun je nu verder doen"
+      }
+    },
     "game-over-screen": {
       "full": "Volledig",
       "news-today": "Nieuws van vandaag",

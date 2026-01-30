@@ -10,11 +10,12 @@ import LeftCornerPiece from "../CornerPiece/LeftCornerPiece";
 import RightCornerPiece from "../CornerPiece/RightCornerPiece";
 import useGame from "../../stores/useGame";
 import { useTranslation } from "react-i18next";
+import { getTranslated, TranslatedString } from "../../utils/getTranslated";
 
 // Define interfaces for the news article
 type NewsArticle = {
-  title: string;
-  content: string;
+  title: TranslatedString;
+  content: TranslatedString;
   imageUrl: string;
   readMoreLink: string;
   date: string;
@@ -98,9 +99,12 @@ export default function EndScreen(): React.ReactElement {
                 wrapperClassName="newsArticleWrapper"
               >
                 <div className={styles.image}>
-                  <img src={article.imageUrl} alt={t(article.title as any)} />
+                  <img
+                    src={article.imageUrl}
+                    alt={getTranslated(article.title)}
+                  />
                 </div>
-                <h3>{t(article.title as any)}</h3>
+                <h3>{getTranslated(article.title)}</h3>
               </ClickableCard>
             ))}
           </div>

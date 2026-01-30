@@ -53,5 +53,30 @@
     "paragraph1": "Packet Panic is an educational game developed by Studio Tast for the SIDN call 'Internet in Beeld' to explain the underlying infrastructure of the internet in an understandable way.",
     "paragraph2": "Packet Panic focuses on the dangers of BGP hijacking: the manipulation and interception of internet traffic by cybercriminals. BGP is an essential but vulnerable part of the internet. The internet was developed by a group of researchers who collaborated based on trust. BGP still relies on that same mutual trust. There are ways to make BGP less vulnerable, but they are only effective if they are widely implemented.",
     "paragraph3": "The goal of Packet Panic is to raise awareness among more people about the vulnerabilities of the Border Gateway Protocol (BGP). Through the game, players gain insight into how BGP hijacking works, what the dangers are, and what solutions are available."
+  },
+  "end-screen": {
+    "title": "Congratulations, you have completed Packet Panic!",
+    "paragraph1": "Hopefully you felt like you were always running behind the facts. What if you receive notifications that a website is unavailable? How do you know for sure that a route announced by BGP is reliable?",
+    "paragraph2": "Packet Panic is intentionally a frustrating game. Because BGP hijacks are a frustrating reality. RPKI is a good solution, but only works really well with 100% adoption. We're not there yet. The counter remains stuck at 50% for now.",
+    "paragraph3": "Now you know that too. So help get RPKI adoption to 100%.",
+    "paragraph4": "Thank you for playing Packet Panic.",
+    "what-to-do": {
+      "title": "What can you do now",
+      "check-rpki": {
+        "title": "Check RPKI adoption",
+        "description": "and check how RPKI adoption is doing for your employer, your municipality, or your football club."
+      },
+      "share-knowledge": {
+        "title": "Share your knowledge",
+        "description": "Tell others about the risks of BGP hijacking. For example, push Packet Panic under their nose."
+      },
+      "deepen-knowledge": {
+        "title": "Deepen your knowledge",
+        "description": "Check out Packet Panic's sister projects, which provide insight into other parts of the internet infrastructure."
+      }
+    },
+    "go-to": "Go to",
+    "news-review-title": "News review",
+    "play-again": "Play again"
   }
 }
