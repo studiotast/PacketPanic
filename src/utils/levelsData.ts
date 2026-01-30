@@ -182,7 +182,7 @@ const levelsData: LevelData[] = [
       {
         text: {
           nl: "Mijn naam is D.I.R.K (Digitale Interne Routing Kracht). Maar jij mag me gewoon 'baas' noemen.",
-          en: "My name is D.I.R.K (Digital Internal Routing Force). But you can just call me 'boss'.",
+          en: "My name is D.I.R.K (Digital Internal Routing Kernel). But you can just call me 'boss'.",
         },
         button: {
           nl: "Ja, baas...",

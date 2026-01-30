@@ -4,7 +4,7 @@
     "continue": "Continue",
     "share": "Share",
     "skip": "Skip",
-    "level": "level"
+    "level": "Level"
   },
   "intro-screen": {
     "about-packet-panic": "About Packet Panic",
@@ -44,13 +44,13 @@
     "choose-level": "Choose level"
   },
   "game-over-screen": {
-    "news-today": "News of today",
-    "full": "Full",
-    "read-article": "read article"
+    "news-today": "Latest news",
+    "full": "Read the",
+    "read-article": "full article"
   },
   "about-packet-panic": {
     "title": "About Packet Panic",
-    "paragraph1": "Packet Panic is an educational game developed by Studio Tast for the SIDN call 'Internet inBeeld' to explain the underlying infrastructure of the internet in an understandable way.",
+    "paragraph1": "Packet Panic is an educational game developed by Studio Tast for the SIDN call 'Internet in Beeld' to explain the underlying infrastructure of the internet in an understandable way.",
     "paragraph2": "Packet Panic focuses on the dangers of BGP hijacking: the manipulation and interception of internet traffic by cybercriminals. BGP is an essential but vulnerable part of the internet. The internet was developed by a group of researchers who collaborated based on trust. BGP still relies on that same mutual trust. There are ways to make BGP less vulnerable, but they are only effective if they are widely implemented.",
     "paragraph3": "The goal of Packet Panic is to raise awareness among more people about the vulnerabilities of the Border Gateway Protocol (BGP). Through the game, players gain insight into how BGP hijacking works, what the dangers are, and what solutions are available."
   }

@@ -15,7 +15,7 @@ interface Resources {
     "global": {
       "back": "Terug",
       "continue": "Doorgaan",
-      "level": "level",
+      "level": "Level",
       "share": "Delen",
       "skip": "Overslaan"
     },
